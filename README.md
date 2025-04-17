@@ -2,7 +2,7 @@
 
 A self-contained, single-file HTML exam simulator designed for realistic exam practice. This tool dynamically loads a JSON-based question bank from GitHub Pages (or any comparable static hosting service) and offers a variety of features intended to emulate real test-taking conditions.
 
-Online demo: https://shfqrkhn.github.io/ExQuizMe/
+Online demo: https://shfqrkhn.github.io/ExQuizMyPMP/
 
 ## Features
 
@@ -33,55 +33,6 @@ Online demo: https://shfqrkhn.github.io/ExQuizMe/
 - **Minimalist & Responsive UI:**  
   A clean, user-friendly interface that works seamlessly across desktops, tablets, and mobile devices.
 
-## Sample JSON Question Bank
-
-The app is designed to work with a JSON file formatted as follows:
-
-```json
-{
-  "duration": 1800,
-  "questions": [
-    {
-      "question": "What is the capital of France?",
-      "choices": ["Paris", "Berlin", "Madrid", "Rome"],
-      "correctAnswer": "Paris",
-      "explanation": "Paris, famously known as the City of Lights, is the capital city of France.",
-      "category": "Geography",
-      "reference": "https://en.wikipedia.org/wiki/Paris"
-    },
-    {
-      "question": "Which element has the chemical symbol 'O'?",
-      "choices": ["Gold", "Oxygen", "Silver", "Carbon"],
-      "correctAnswer": "Oxygen",
-      "explanation": "The chemical symbol 'O' stands for Oxygen.",
-      "category": "Science",
-      "reference": "https://en.wikipedia.org/wiki/Oxygen"
-    }
-    // Add additional questions as needed
-  ]
-}
-```
-
-## How to Use
-
-1. **Clone or Download:**  
-   Clone this repository or download the `quiz.html` file.
-
-2. **Prepare Your Question Bank:**  
-   Host your JSON question bank on GitHub Pages (or another static hosting solution) ensuring it follows the sample structure.
-
-3. **Launch the Quiz:**  
-   Open `quiz.html` in your preferred web browser.
-
-4. **Enter the Question Bank URL:**  
-   Input the URL to your JSON file, select your desired mode (Timed Exam or Section-Based Practice), and optionally pick a specific section if using Section-Based Practice.
-
-5. **Begin Practicing:**  
-   Start your quiz and experience realistic exam conditions with timed sessions, immediate feedback, and progress saving.
-
-## Installation
-
-Simply download the `quiz.html` file and open it in any modern browser. No additional dependencies or installations are required.
 
 ## Contributing
 
