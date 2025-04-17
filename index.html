@@ -517,6 +517,7 @@
         }
 
         // Function to check the answer and provide feedback
+        // Function to check the answer and provide feedback
         function checkAnswer() {
             if (selectedAnswer !== null) {
                 userAnswers[currentQuestionIndex] = selectedAnswer;
@@ -536,9 +537,15 @@
                 referenceText.textContent = `PMBOK Section: ${currentQuestion.reference}`;
 
                 submitButton.disabled = true;
-                nextButton.disabled = currentQuestionIndex < currentQuestions.length - 1;
-                finishButton.style.display = currentQuestionIndex === currentQuestions.length - 1 ? 'inline-block' : 'none';
-                reviewButton.style.display = currentQuestions.length > 0 && currentQuestionIndex === currentQuestions.length - 1 ? 'inline-block' : 'none';
+
+                // Enable the Next button if not the last question
+                if (currentQuestionIndex < currentQuestions.length - 1) {
+                    nextButton.disabled = false;
+                } else {
+                    nextButton.disabled = true; // Keep it disabled on the last question
+                    finishButton.style.display = 'inline-block';
+                    reviewButton.style.display = 'inline-block';
+                }
             } else {
                 alert('Please select an answer.');
             }
