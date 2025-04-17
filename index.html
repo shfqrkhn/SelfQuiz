@@ -15,173 +15,140 @@
 
         * {
             box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui;
-            margin: 0;
-            padding: 0;
+            font-family: 'Segoe UI', system-ui, sans-serif;
         }
 
         body {
+            margin: 0;
+            padding: 20px;
             background: var(--light);
-            line-height: 1.6;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 20px;
         }
 
         .header {
-            background: var(--primary);
-            color: white;
-            padding: 1rem;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .control-panel {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            margin: 2rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .question-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            margin: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            display: none;
-        }
-
-        .active {
-            display: block;
+            margin-bottom: 2rem;
         }
 
         .timer {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            background: var(--secondary);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
+            font-size: 1.5rem;
             font-weight: bold;
+            color: var(--primary);
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin: 1rem 0;
         }
 
-        button {
-            background: var(--secondary);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: opacity 0.3s;
+        .question-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
         }
 
-        button:hover {
-            opacity: 0.9;
-        }
-
-        .choice {
+        .options li {
+            list-style: none;
             padding: 1rem;
             margin: 0.5rem 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            border: 2px solid var(--light);
+            border-radius: 6px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
         }
 
-        .choice:hover {
-            background: #f8f9fa;
+        .options li:hover {
+            background: var(--light);
         }
 
-        .correct { background: #d4edda !important; border-color: #28a745; }
-        .incorrect { background: #f8d7da !important; border-color: #dc3545; }
+        .selected.correct { border-color: var(--success); }
+        .selected.incorrect { border-color: var(--danger); }
 
         .explanation {
             margin-top: 1rem;
             padding: 1rem;
             background: #f8f9fa;
-            border-radius: 5px;
+            border-radius: 6px;
+            display: none;
         }
 
-        @media (max-width: 600px) {
-            .container {
-                padding: 10px;
-            }
-            
-            .question-card {
-                padding: 1rem;
-            }
-            
-            .timer {
-                position: static;
-                margin: 1rem 0;
-            }
+        .controls {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        button {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            background: var(--secondary);
+            color: white;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        button:hover { opacity: 0.9; }
+
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .question-container { padding: 1rem; }
+            .timer { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>PMP Exam Simulator</h1>
-    </div>
-
     <div class="container">
-        <div class="control-panel">
-            <select id="mode" class="form-control">
-                <option value="combined">Combined Exam</option>
-                <option value="chapter">Chapter Specific</option>
+        <div class="header">
+            <h1>PMP Exam Simulator</h1>
+            <select id="examMode">
+                <option value="20">20 Questions (1500s)</option>
+                <option value="100">100 Questions (7500s)</option>
+                <option value="200">200 Questions (15000s)</option>
             </select>
-            <select id="questionCount" class="form-control">
-                <option value="20">20 Questions</option>
-                <option value="100">100 Questions</option>
-                <option value="200">200 Questions</option>
-            </select>
-            <button onclick="startExam()">Start Exam</button>
+            <div class="timer" id="timer">00:25:00</div>
         </div>
 
-        <div class="timer" id="timer">00:00</div>
+        <div id="questionPanel" class="question-container">
+            <div id="questionText"></div>
+            <ul class="options" id="options"></ul>
+            <div class="explanation" id="explanation"></div>
+        </div>
 
-        <div id="questionContainer">
-            <!-- Questions will be injected here -->
+        <div class="controls">
+            <button onclick="nextQuestion()">Next Question</button>
         </div>
     </div>
 
     <script>
-        // Sample questions (expand with more questions)
-        const questions = [
-            {
-                id: 1,
-                chapter: 3,
-                question: "Which process group includes the process of developing the project charter?",
-                choices: ["Initiating", "Planning", "Executing", "Monitoring & Controlling"],
-                correct: 0,
-                explanation: "PMBOK 4.1 - The Develop Project Charter process belongs to the Initiating Process Group."
-            },
-            {
-                id: 2,
-                chapter: 2,
-                question: "What is the primary purpose of a business case?",
-                choices: [
-                    "To define project scope",
-                    "To justify project investment",
-                    "To identify stakeholders",
-                    "To create WBS"
-                ],
-                correct: 1,
-                explanation: "PMBOK 1.2.6 - The business case provides justification for undertaking the project."
-            },
-            // Add more questions following the same structure
-        ];
+        const config = {
+            modes: { 20: 1500, 100: 7500, 200: 15000 },
+            questions: [
+                {
+                    question: "A project manager is implementing a quality management plan. Which process is primarily concerned with quality improvement?",
+                    options: ["Plan Quality Management", "Manage Quality", "Control Quality", "Validate Scope"],
+                    correct: 1,
+                    explanation: "Manage Quality process focuses on quality improvement through process analysis and quality audits.",
+                    reference: "PMBOK 7.3"
+                },
+                {
+                    question: "Which document formally authorizes a project?",
+                    options: ["Project Charter", "Business Case", "Project Management Plan", "Stakeholder Register"],
+                    correct: 0,
+                    explanation: "The project charter formally initiates the project and authorizes the project manager.",
+                    reference: "PMBOK 4.1"
+                }
+                // Add 18 more sample questions following same structure
+            ]
+        };
 
-        let currentQuestion = 0;
-        let score = 0;
-        let timeLeft;
-        let timerId;
-        let shuffledQuestions = [];
+        let currentQ = 0, timeLeft, timerId, shuffledQuestions = [];
 
         function shuffle(array) {
             for (let i = array.length - 1; i > 0; i--) {
@@ -192,17 +159,8 @@
         }
 
         function startExam() {
-            const questionCount = parseInt(document.getElementById('questionCount').value);
-            const mode = document.getElementById('mode').value;
-            
-            let filteredQuestions = mode === 'chapter' 
-                ? questions.filter(q => q.chapter === 3) // Replace with actual chapter selection
-                : questions;
-            
-            shuffledQuestions = shuffle(filteredQuestions).slice(0, questionCount);
-            timeLeft = questionCount * 75;
-            
-            document.querySelector('.control-panel').style.display = 'none';
+            shuffledQuestions = shuffle([...config.questions]);
+            timeLeft = config.modes[document.getElementById('examMode').value];
             startTimer();
             showQuestion();
         }
@@ -210,93 +168,55 @@
         function startTimer() {
             timerId = setInterval(() => {
                 timeLeft--;
-                const minutes = Math.floor(timeLeft / 60).toString().padStart(2, '0');
-                const seconds = (timeLeft % 60).toString().padStart(2, '0');
-                document.getElementById('timer').textContent = `${minutes}:${seconds}`;
-                
+                document.getElementById('timer').textContent = 
+                    new Date(timeLeft * 1000).toISOString().substr(11, 8);
                 if(timeLeft <= 0) endExam();
             }, 1000);
         }
 
         function showQuestion() {
-            const container = document.getElementById('questionContainer');
-            const q = shuffledQuestions[currentQuestion];
+            const q = shuffledQuestions[currentQ];
+            document.getElementById('questionText').textContent = `${currentQ+1}. ${q.question}`;
             
-            const choices = shuffle([...q.choices]).map((choice, index) => `
-                <div class="choice" onclick="selectAnswer(${index})">
-                    ${String.fromCharCode(65 + index)}. ${choice}
-                </div>
+            const options = shuffle(q.options.map((opt, i) => ({opt, correct: i === q.correct})));
+            const optionsHtml = options.map((opt, i) => `
+                <li onclick="checkAnswer(${i}, ${opt.correct})">${String.fromCharCode(65+i)}. ${opt.opt}</li>
             `).join('');
-
-            container.innerHTML = `
-                <div class="question-card active">
-                    <h3>Question ${currentQuestion + 1} of ${shuffledQuestions.length}</h3>
-                    <p>${q.question}</p>
-                    ${choices}
-                    <button onclick="submitAnswer()" style="margin-top: 1rem;">Submit Answer</button>
-                </div>
-            `;
+            
+            document.getElementById('options').innerHTML = optionsHtml;
+            document.getElementById('explanation').style.display = 'none';
         }
 
-        function selectAnswer(index) {
-            document.querySelectorAll('.choice').forEach(choice => 
-                choice.style.backgroundColor = '');
-            document.querySelectorAll('.choice')[index].style.backgroundColor = '#e2e6ea';
-        }
-
-        function submitAnswer() {
-            const selected = document.querySelector('.choice[style*="background-color: rgb(226, 230, 234)"]');
-            if(!selected) return;
+        function checkAnswer(selectedIndex, isCorrect) {
+            const options = document.querySelectorAll('.options li');
+            options.forEach(opt => opt.style.pointerEvents = 'none');
             
-            const correctIndex = shuffledQuestions[currentQuestion].correct;
-            const correctAnswer = shuffledQuestions[currentQuestion].choices[correctIndex];
+            options[selectedIndex].classList.add(isCorrect ? 'correct' : 'incorrect');
             
-            // Show feedback
-            document.querySelectorAll('.choice').forEach((choice, index) => {
-                if(choice.textContent.includes(correctAnswer)) {
-                    choice.classList.add('correct');
-                }
-                if(choice === selected && !choice.textContent.includes(correctAnswer)) {
-                    choice.classList.add('incorrect');
-                }
-            });
-
-            // Show explanation
-            const explanation = document.createElement('div');
-            explanation.className = 'explanation';
+            const explanation = document.getElementById('explanation');
             explanation.innerHTML = `
-                <strong>Explanation:</strong> 
-                ${shuffledQuestions[currentQuestion].explanation}
+                ${isCorrect ? '✅ Correct' : '❌ Incorrect'}<br>
+                ${shuffledQuestions[currentQ].explanation}<br>
+                <em>${shuffledQuestions[currentQ].reference}</em>
             `;
-            document.querySelector('.question-card').appendChild(explanation);
-
-            // Add next question button
-            const nextBtn = document.createElement('button');
-            nextBtn.textContent = 'Next Question';
-            nextBtn.style.marginTop = '1rem';
-            nextBtn.onclick = nextQuestion;
-            document.querySelector('.question-card').appendChild(nextBtn);
+            explanation.style.display = 'block';
         }
 
         function nextQuestion() {
-            currentQuestion++;
-            if(currentQuestion < shuffledQuestions.length) {
-                showQuestion();
-            } else {
-                endExam();
-            }
+            currentQ++;
+            if(currentQ >= shuffledQuestions.length) endExam();
+            else showQuestion();
         }
 
         function endExam() {
             clearInterval(timerId);
-            document.getElementById('questionContainer').innerHTML = `
-                <div class="question-card active">
-                    <h2>Exam Completed!</h2>
-                    <p>Your score: ${score}/${shuffledQuestions.length}</p>
-                    <button onclick="location.reload()">Restart Exam</button>
-                </div>
-            `;
+            alert(`Exam completed! Score: ${currentQ}/${shuffledQuestions.length}`);
+            // Add detailed results reporting here
         }
+
+        // Initialization
+        document.getElementById('examMode').addEventListener('change', startExam);
+        startExam();
     </script>
 </body>
 </html>
