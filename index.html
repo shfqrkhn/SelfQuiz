@@ -1,511 +1,402 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exam Practice Quiz</title>
-    <style>
-      /* Basic styling */
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 10px;
-        background: #f9f9f9;
-        color: #333;
-      }
-      .container {
-        max-width: 800px;
-        margin: 0 auto;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PMP Exam Simulator</title>
+  <meta name="theme-color" content="#0078d7" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <!-- Inline manifest using a data URL -->
+  <link rel="manifest" href='data:application/manifest+json,{"name":"PMP Exam Simulator","short_name":"PMP Exam","start_url":".","display":"standalone","background_color":"#ffffff","theme_color":"#0078d7","icons":[{"src":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAJ0lEQVR4nKVWOwqAIAwD73%2F08FAFhQEE6q8kolupRXdxrsUKBhz9KAwFvLE8xZQAAAD%2F%2F4FkqIA%2F9gFnzAAAAAElFTkSuQmCC","sizes":"192x192","type":"image/png"}]}' />
+
+  <style>
+    /* CSS Reset */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    #app {
+      width: 100%;
+      max-width: 800px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 90vh;
+    }
+    header, footer {
+      background: #0078d7;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    #timer {
+      font-size: 1.2em;
+    }
+    #nav-controls button {
+      background: #005a9e;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      margin: 5px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    #nav-controls button:hover {
+      background: #004577;
+    }
+    main {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    #question-container {
+      margin-bottom: 20px;
+    }
+    #options label {
+      display: block;
+      margin: 10px 0;
+      cursor: pointer;
+    }
+    #options input[type="radio"] {
+      margin-right: 10px;
+    }
+    footer {
+      display: flex;
+      justify-content: center;
+    }
+    footer button {
+      background: #005a9e;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    footer button:hover {
+      background: #004577;
+    }
+    /* Setup and Results Screens */
+    #setup-screen, #results-screen {
+      padding: 20px;
+      text-align: center;
+    }
+    #setup-screen button, #results-screen button {
+      background: #0078d7;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    #setup-screen button:hover, #results-screen button:hover {
+      background: #005a9e;
+    }
+    .flagged {
+      background: #ff4081 !important;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
       header {
-        text-align: center;
-        margin-bottom: 20px;
+        flex-direction: column;
       }
-      .hidden {
-        display: none;
+      #nav-controls button {
+        margin: 5px 0;
+        width: 100%;
       }
-      .question-container {
-        background: #fff;
-        border-radius: 8px;
-        padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
-      .options {
-        list-style: none;
-        padding: 0;
-      }
-      .option {
-        margin: 10px 0;
-      }
-      button {
-        padding: 10px 20px;
-        margin: 5px;
-        cursor: pointer;
-      }
-      .flagged {
-        background: #fff3cd;
-        border: 1px solid #ffeeba;
-      }
-      .timer {
-        font-size: 1.2em;
-      }
-      .nav-buttons {
-        text-align: center;
-      }
-      @media (max-width: 600px) {
-        body {
-          font-size: 16px;
-        }
-        button {
-          width: 100%;
-          margin: 5px 0;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <h1>Exam Practice Quiz</h1>
-    </header>
-    <div class="container">
-      <!-- Start Screen -->
-      <div id="start-screen">
-        <p>
-          Enter the URL of the JSON Question Bank Hosted on GitHub Pages:
-        </p>
-        <input
-          type="text"
-          id="question-bank-url"
-          placeholder="https://yourgithubpages.com/questionbank.json"
-          style="width: 100%; max-width: 500px;"
-        />
-        <p>Select Mode:</p>
-        <select id="mode-select" style="width: 100%; max-width: 300px;">
-          <option value="timed">Timed Exam Mode</option>
-          <option value="section">Section-Based Practice Mode</option>
-        </select>
-        <div id="section-select-container" class="hidden">
-          <p>Select Section:</p>
-          <select id="section-select" style="width: 100%; max-width: 300px;">
-            <!-- Dynamically filled -->
-          </select>
-        </div>
-        <button id="start-btn">Start Quiz</button>
-        <div id="resume-section" class="hidden">
-          <p>Saved progress found. Do you want to resume?</p>
-          <button id="resume-btn">Resume</button>
-          <button id="new-btn">Start New Quiz</button>
-        </div>
-      </div>
-
-      <!-- Quiz Screen -->
-      <div id="quiz-screen" class="hidden">
-        <div id="top-bar">
-          <span class="timer" id="timer">Time: 00:00</span>
-          <span id="progress">Question 0/0</span>
-        </div>
-        <div class="question-container" id="question-container">
-          <!-- Question content will be injected here -->
-        </div>
-        <div class="nav-buttons">
-          <button id="prev-btn">Previous</button>
-          <button id="flag-btn">Flag</button>
-          <button id="next-btn">Next</button>
-        </div>
-        <div id="feedback"></div>
-        <button id="submit-btn" class="hidden">Submit Quiz</button>
-      </div>
-
-      <!-- Summary Screen -->
-      <div id="summary-screen" class="hidden">
-        <h2>Quiz Summary</h2>
-        <p id="score"></p>
-        <button id="restart-btn">Restart Quiz</button>
-      </div>
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- Setup Screen -->
+    <div id="setup-screen">
+      <h1>PMP Exam Simulator</h1>
+      <p>Click Start to begin your exam simulation.</p>
+      <button id="loadBtn">Start Exam</button>
     </div>
 
-    <script>
-      // Immediately invoked function to prevent global namespace pollution.
-      (function () {
-        let quizData = {
-          questions: [],
-          currentIndex: 0,
-          timerDuration: 0, // in seconds, set if timed mode
-          remainingTime: 0,
-          timerInterval: null,
-          mode: "timed", // or "section"
-          selectedSection: null,
-          answers: [],
-          flagged: {},
-        };
+    <!-- Exam Screen -->
+    <div id="exam-screen" style="display: none; flex-direction: column;">
+      <header>
+        <div id="timer">Time Left: <span id="timerValue">00:00</span></div>
+        <div id="nav-controls">
+          <button id="prevBtn">Previous</button>
+          <button id="nextBtn">Next</button>
+          <button id="flagBtn">Flag</button>
+        </div>
+      </header>
+      <main>
+        <div id="question-container">
+          <div id="question">Question text...</div>
+          <div id="options"></div>
+        </div>
+      </main>
+      <footer>
+        <button id="finishBtn">Finish Exam</button>
+      </footer>
+    </div>
 
-        // Utility function to shuffle an array in place.
-        function shuffle(array) {
-          for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
+    <!-- Results Screen -->
+    <div id="results-screen" style="display: none;">
+      <h2>Exam Results</h2>
+      <div id="performance-tracking"></div>
+      <button id="restartBtn">Restart</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Default hardcoded question bank (fallback)
+      var defaultQuestions = [
+        {
+          "id": 1,
+          "question": "What is the first process group in project management?",
+          "options": ["Initiating", "Planning", "Executing", "Closing"],
+          "correct": "Initiating"
+        },
+        {
+          "id": 2,
+          "question": "Which document officially starts a project?",
+          "options": ["Project Plan", "Business Case", "Project Charter", "Risk Register"],
+          "correct": "Project Charter"
+        },
+        {
+          "id": 3,
+          "question": "What is a common tool for project risk management?",
+          "options": ["Gantt Chart", "Risk Breakdown Structure", "PERT Chart", "Critical Path Method"],
+          "correct": "Risk Breakdown Structure"
+        }
+      ];
+
+      // Exam state and analytics
+      var examState = {
+        questions: [],
+        current: 0,
+        answers: {},
+        flagged: {},
+        startTime: null,
+        elapsedSeconds: 0,
+        duration: 600 // exam duration in seconds (10 minutes)
+      };
+
+      var analyticsData = {
+        events: []
+      };
+
+      function logEvent(event) {
+        analyticsData.events.push({ timestamp: Date.now(), event: event });
+      }
+
+      // Start the exam session.
+      function startExam() {
+        document.getElementById('setup-screen').style.display = 'none';
+        document.getElementById('exam-screen').style.display = 'flex';
+        examState.startTime = Date.now();
+        startTimer();
+        displayQuestion();
+        logEvent("Exam started");
+      }
+
+      // Timer management – counts down from examState.duration.
+      var timerInterval;
+      function startTimer() {
+        timerInterval = setInterval(() => {
+          var now = Date.now();
+          examState.elapsedSeconds = Math.floor((now - examState.startTime) / 1000);
+          var remaining = examState.duration - examState.elapsedSeconds;
+          if (remaining <= 0) {
+            clearInterval(timerInterval);
+            finishExam();
           }
-        }
+          var minutes = Math.floor(remaining / 60);
+          var seconds = remaining % 60;
+          document.getElementById('timerValue').textContent =
+            (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
+        }, 1000);
+      }
 
-        // Save progress to localStorage.
-        function saveProgress() {
-          localStorage.setItem("quizProgress", JSON.stringify(quizData));
-        }
-
-        // Load progress from localStorage.
-        function loadProgress() {
-          const data = localStorage.getItem("quizProgress");
-          return data ? JSON.parse(data) : null;
-        }
-
-        // Clear progress from localStorage.
-        function clearProgress() {
-          localStorage.removeItem("quizProgress");
-        }
-
-        // Format seconds into MM:SS.
-        function formatTime(seconds) {
-          const m = Math.floor(seconds / 60)
-            .toString()
-            .padStart(2, "0");
-          const s = (seconds % 60).toString().padStart(2, "0");
-          return m + ":" + s;
-        }
-
-        // Update UI for timer.
-        function updateTimerUI() {
-          const timerEl = document.getElementById("timer");
-          timerEl.textContent = "Time: " + formatTime(quizData.remainingTime);
-        }
-
-        // Start the countdown timer.
-        function startTimer() {
-          updateTimerUI();
-          quizData.timerInterval = setInterval(() => {
-            quizData.remainingTime--;
-            updateTimerUI();
-            if (quizData.remainingTime <= 0) {
-              clearInterval(quizData.timerInterval);
-              finishQuiz();
-            }
-          }, 1000);
-        }
-
-        // Stop the timer if running.
-        function stopTimer() {
-          if (quizData.timerInterval) {
-            clearInterval(quizData.timerInterval);
+      // Display the current question and its options.
+      function displayQuestion() {
+        var currentQuestion = examState.questions[examState.current];
+        document.getElementById('question').textContent = (examState.current + 1) + ". " + currentQuestion.question;
+        var optionsDiv = document.getElementById('options');
+        optionsDiv.innerHTML = "";
+        currentQuestion.options.forEach((option, index) => {
+          var optionId = "opt_" + index;
+          var label = document.createElement('label');
+          label.setAttribute("for", optionId);
+          var radio = document.createElement('input');
+          radio.type = "radio";
+          radio.name = "option";
+          radio.id = optionId;
+          radio.value = option;
+          if (examState.answers[currentQuestion.id] === option) {
+            radio.checked = true;
           }
-        }
-
-        // Load the question bank from a specified URL.
-        function loadQuestionBank(url) {
-          fetch(url)
-            .then((response) => response.json())
-            .then((data) => {
-              // Assume data is an object with a "questions" array.
-              quizData.questions = data.questions || [];
-
-              // Setup sections if available.
-              setupSections();
-
-              // Randomize question order.
-              shuffle(quizData.questions);
-
-              // Randomize answer order for each question.
-              quizData.questions.forEach((q) => {
-                if (q.choices) {
-                  shuffle(q.choices);
-                }
-              });
-
-              // Reset tracking arrays.
-              quizData.answers = new Array(quizData.questions.length).fill(null);
-              quizData.flagged = {};
-              quizData.currentIndex = 0;
-              updateProgressUI();
-              displayQuestion();
-
-              // Start timer if in timed mode.
-              if (quizData.mode === "timed") {
-                // Use provided duration from JSON or default to 30 minutes.
-                quizData.timerDuration = data.duration || 30 * 60;
-                quizData.remainingTime = quizData.timerDuration;
-                startTimer();
-              }
-              // Show quiz screen.
-              document.getElementById("start-screen").classList.add("hidden");
-              document.getElementById("quiz-screen").classList.remove("hidden");
-              saveProgress();
-            })
-            .catch((err) => {
-              alert("Error loading question bank: " + err);
-            });
-        }
-
-        // Setup section selection based on available question categories.
-        function setupSections() {
-          const sectionSelect = document.getElementById("section-select");
-          sectionSelect.innerHTML = "";
-          let categories = new Set();
-          quizData.questions.forEach((q) => {
-            if (q.category) {
-              categories.add(q.category);
-            }
+          radio.addEventListener('change', () => {
+            examState.answers[currentQuestion.id] = option;
+            logEvent("Answered question " + currentQuestion.id + " with " + option);
           });
-          if (categories.size === 0) {
-            document.getElementById("section-select-container").classList.add("hidden");
-          } else {
-            document.getElementById("section-select-container").classList.remove("hidden");
-            categories.forEach((cat) => {
-              const option = document.createElement("option");
-              option.value = cat;
-              option.textContent = cat;
-              sectionSelect.appendChild(option);
-            });
-          }
+          label.appendChild(radio);
+          label.appendChild(document.createTextNode(option));
+          optionsDiv.appendChild(label);
+          optionsDiv.appendChild(document.createElement('br'));
+        });
+        // Update flag button appearance
+        if (examState.flagged[currentQuestion.id]) {
+          document.getElementById('flagBtn').classList.add("flagged");
+        } else {
+          document.getElementById('flagBtn').classList.remove("flagged");
         }
+        logEvent("Displayed question " + currentQuestion.id);
+      }
 
-        // Filter questions by selected section (for section mode).
-        function filterQuestionsBySection() {
-          if (quizData.mode === "section") {
-            const selectedSection = document.getElementById("section-select").value;
-            quizData.selectedSection = selectedSection;
-            quizData.questions = quizData.questions.filter(
-              (q) => q.category === selectedSection
-            );
-            // Reset progress tracking.
-            quizData.answers = new Array(quizData.questions.length).fill(null);
-            quizData.flagged = {};
-            quizData.currentIndex = 0;
-            updateProgressUI();
-          }
-        }
+      // Finish the exam and show results.
+      function finishExam() {
+        clearInterval(timerInterval);
+        document.getElementById('exam-screen').style.display = 'none';
+        document.getElementById('results-screen').style.display = 'block';
+        showResults();
+        logEvent("Exam finished");
+      }
 
-        // Display the current question.
-        function displayQuestion() {
-          const qContainer = document.getElementById("question-container");
-          qContainer.innerHTML = "";
-          const index = quizData.currentIndex;
-          const question = quizData.questions[index];
-          if (!question) return;
-          const questionTitle = document.createElement("h3");
-          questionTitle.textContent =
-            "Question " + (index + 1) + ": " + question.question;
-          qContainer.appendChild(questionTitle);
+      // Calculate score and display performance statistics.
+      function showResults() {
+        var totalQuestions = examState.questions.length;
+        var answeredCount = Object.keys(examState.answers).length;
+        var flaggedCount = Object.keys(examState.flagged).length;
+        // Count correct answers:
+        var correctAnswers = examState.questions.reduce((acc, question) => {
+          return acc + ((examState.answers[question.id] === question.correct) ? 1 : 0);
+        }, 0);
+        var percentage = Math.round((correctAnswers / totalQuestions) * 100);
+        var resultsHTML = `
+          <p>Total Questions: ${totalQuestions}</p>
+          <p>Answered Questions: ${answeredCount}</p>
+          <p>Flagged Questions: ${flaggedCount}</p>
+          <p>Correct Answers: ${correctAnswers}</p>
+          <p>Score: ${percentage}%</p>
+          <p>Time Taken: ${examState.elapsedSeconds} seconds</p>
+          <p>Total Events Logged: ${analyticsData.events.length}</p>
+        `;
+        document.getElementById('performance-tracking').innerHTML = resultsHTML;
+      }
 
-          // Create answer options.
-          const ul = document.createElement("ul");
-          ul.className = "options";
-          question.choices.forEach((choice) => {
-            const li = document.createElement("li");
-            li.className = "option";
-            const label = document.createElement("label");
-            const radio = document.createElement("input");
-            radio.type = "radio";
-            radio.name = "option";
-            radio.value = choice;
-            if (quizData.answers[index] === choice) {
-              radio.checked = true;
+      // Event listeners for buttons.
+      document.getElementById('loadBtn').addEventListener('click', () => {
+        // Hardcoded link to the external JSON question bank on GitHub.
+        var hostedJsonUrl = "https://raw.githubusercontent.com/shfqrkhn/ExQuizMe/refs/heads/main/QuestionBank_Test.json";
+        fetch(hostedJsonUrl)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
             }
-            radio.addEventListener("change", () => {
-              quizData.answers[index] = choice;
-              // Immediately show feedback along with the explanation.
-              showFeedback(question, choice);
-              saveProgress();
-            });
-            label.appendChild(radio);
-            label.appendChild(document.createTextNode(" " + choice));
-            li.appendChild(label);
-            ul.appendChild(li);
+            return response.json();
+          })
+          .then(data => {
+            examState.questions = data;
+            startExam();
+          })
+          .catch(err => {
+            alert("Failed to load external question bank, using default questions.");
+            examState.questions = defaultQuestions;
+            startExam();
           });
-          qContainer.appendChild(ul);
+      });
 
-          // If already answered, show feedback.
-          if (quizData.answers[index] != null) {
-            showFeedback(question, quizData.answers[index]);
-          }
-          updateProgressUI();
-        }
-
-        // Provide immediate feedback for an answered question.
-        function showFeedback(question, selectedChoice) {
-          const feedbackDiv = document.getElementById("feedback");
-          feedbackDiv.innerHTML = "";
-          const correct = selectedChoice === question.correctAnswer;
-          const msg = document.createElement("p");
-          msg.style.fontWeight = "bold";
-          if (correct) {
-            msg.textContent = "Correct! " + (question.explanation || "");
-            msg.style.color = "green";
-          } else {
-            msg.textContent = "Incorrect. " + (question.explanation || "");
-            msg.style.color = "red";
-          }
-          feedbackDiv.appendChild(msg);
-        }
-
-        // Update the progress text.
-        function updateProgressUI() {
-          const progressEl = document.getElementById("progress");
-          progressEl.textContent =
-            "Question " + (quizData.currentIndex + 1) + " / " + quizData.questions.length;
-        }
-
-        // Navigate to the next question.
-        function nextQuestion() {
-          if (quizData.currentIndex < quizData.questions.length - 1) {
-            quizData.currentIndex++;
-            displayQuestion();
-            saveProgress();
-          }
-        }
-
-        // Navigate to the previous question.
-        function prevQuestion() {
-          if (quizData.currentIndex > 0) {
-            quizData.currentIndex--;
-            displayQuestion();
-            saveProgress();
-          }
-        }
-
-        // Toggle flagging for the current question.
-        function toggleFlag() {
-          const index = quizData.currentIndex;
-          if (quizData.flagged[index]) {
-            delete quizData.flagged[index];
-            document.getElementById("flag-btn").textContent = "Flag";
-          } else {
-            quizData.flagged[index] = true;
-            document.getElementById("flag-btn").textContent = "Unflag";
-          }
-          saveProgress();
-        }
-
-        // Finish the quiz and show the summary.
-        function finishQuiz() {
-          stopTimer();
-          document.getElementById("quiz-screen").classList.add("hidden");
-          document.getElementById("summary-screen").classList.remove("hidden");
-          let score = 0;
-          quizData.questions.forEach((q, idx) => {
-            if (quizData.answers[idx] === q.correctAnswer) score++;
-          });
-          document.getElementById("score").textContent =
-            "Your Score: " + score + " / " + quizData.questions.length;
-          clearProgress();
-        }
-
-        // Event listeners.
-        document.getElementById("start-btn").addEventListener("click", () => {
-          const url = document.getElementById("question-bank-url").value.trim();
-          if (!url) {
-            alert("Please enter a valid URL for the question bank.");
-            return;
-          }
-          quizData.mode = document.getElementById("mode-select").value;
-          if (quizData.mode === "section") {
-            loadQuestionBank(url);
-            // Wait briefly then filter by the selected section.
-            setTimeout(() => {
-              filterQuestionsBySection();
-              displayQuestion();
-            }, 500);
-          } else {
-            loadQuestionBank(url);
-          }
-        });
-
-        // Show/hide section selection on mode change.
-        document.getElementById("mode-select").addEventListener("change", (e) => {
-          if (e.target.value === "section") {
-            document.getElementById("section-select-container").classList.remove("hidden");
-          } else {
-            document.getElementById("section-select-container").classList.add("hidden");
-          }
-        });
-
-        document.getElementById("next-btn").addEventListener("click", nextQuestion);
-        document.getElementById("prev-btn").addEventListener("click", prevQuestion);
-        document.getElementById("flag-btn").addEventListener("click", toggleFlag);
-        document.getElementById("submit-btn").addEventListener("click", finishQuiz);
-        document.getElementById("restart-btn").addEventListener("click", () => {
-          location.reload();
-        });
-
-        // Resume functionality if saved progress exists.
-        const saved = loadProgress();
-        if (saved && saved.questions && saved.questions.length > 0) {
-          quizData = saved;
-          document.getElementById("start-screen").classList.add("hidden");
-          document.getElementById("resume-section").classList.remove("hidden");
-          if (quizData.flagged[quizData.currentIndex]) {
-            document.getElementById("flag-btn").textContent = "Unflag";
-          } else {
-            document.getElementById("flag-btn").textContent = "Flag";
-          }
-        }
-
-        document.getElementById("resume-btn").addEventListener("click", () => {
-          document.getElementById("resume-section").classList.add("hidden");
-          document.getElementById("quiz-screen").classList.remove("hidden");
+      document.getElementById('nextBtn').addEventListener('click', () => {
+        if (examState.current < examState.questions.length - 1) {
+          examState.current++;
           displayQuestion();
-          if (quizData.mode === "timed") {
-            startTimer();
-          }
-        });
-
-        document.getElementById("new-btn").addEventListener("click", () => {
-          clearProgress();
-          location.reload();
-        });
-
-        // Basic PWA Service Worker registration.
-        if ("serviceWorker" in navigator) {
-          const swCode = `
-            const CACHE_NAME = 'quiz-app-cache-v1';
-            const URLS_TO_CACHE = [location.href];
-            self.addEventListener('install', event => {
-              event.waitUntil(
-                caches.open(CACHE_NAME).then(cache => {
-                  return cache.addAll(URLS_TO_CACHE);
-                })
-              );
-            });
-            self.addEventListener('fetch', event => {
-              event.respondWith(
-                caches.match(event.request).then(response => {
-                  return response || fetch(event.request);
-                })
-              );
-            });
-            self.addEventListener('activate', event => {
-              event.waitUntil(
-                caches.keys().then(cacheNames => {
-                  return Promise.all(
-                    cacheNames.map(cacheName => {
-                      if (cacheName !== CACHE_NAME) {
-                        return caches.delete(cacheName);
-                      }
-                    })
-                  );
-                })
-              );
-            });
-          `;
-          const blob = new Blob([swCode], { type: "text/javascript" });
-          const swUrl = URL.createObjectURL(blob);
-          navigator.serviceWorker
-            .register(swUrl)
-            .then(() => {
-              console.log("Service Worker registered");
-            })
-            .catch((err) => {
-              console.error("Service Worker registration failed:", err);
-            });
         }
-      })();
-    </script>
-  </body>
+      });
+
+      document.getElementById('prevBtn').addEventListener('click', () => {
+        if (examState.current > 0) {
+          examState.current--;
+          displayQuestion();
+        }
+      });
+
+      document.getElementById('flagBtn').addEventListener('click', () => {
+        var currentQuestion = examState.questions[examState.current];
+        if (examState.flagged[currentQuestion.id]) {
+          delete examState.flagged[currentQuestion.id];
+        } else {
+          examState.flagged[currentQuestion.id] = true;
+        }
+        displayQuestion();
+        logEvent("Flag toggled for question " + currentQuestion.id);
+      });
+
+      document.getElementById('finishBtn').addEventListener('click', finishExam);
+
+      document.getElementById('restartBtn').addEventListener('click', () => {
+        location.reload();
+      });
+    });
+  </script>
+
+  <!-- Expanded Service Worker registration with asset caching -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      const swCode = `
+        const CACHE_NAME = 'pmp-exam-v1';
+        // Cache this file (the entire app)
+        const ASSETS_TO_CACHE = [
+          '/',
+          self.location.href
+          // Add additional assets (CSS, fonts, images) here if needed.
+        ];
+
+        self.addEventListener('install', event => {
+          event.waitUntil(
+            caches.open(CACHE_NAME)
+              .then(cache => cache.addAll(ASSETS_TO_CACHE))
+              .then(() => self.skipWaiting())
+          );
+        });
+
+        self.addEventListener('activate', event => {
+          event.waitUntil(
+            caches.keys().then(cacheNames =>
+              Promise.all(
+                cacheNames.filter(cacheName => cacheName !== CACHE_NAME)
+                          .map(cacheName => caches.delete(cacheName))
+              )).then(() => self.clients.claim())
+          );
+        });
+
+        self.addEventListener('fetch', event => {
+          event.respondWith(
+            caches.match(event.request)
+              .then(cachedResponse => cachedResponse || fetch(event.request))
+              .catch(() => new Response('Offline mode', { headers: { "Content-Type": "text/plain" } }))
+          );
+        });
+      `;
+      const blob = new Blob([swCode], { type: 'text/javascript' });
+      const swUrl = URL.createObjectURL(blob);
+      navigator.serviceWorker.register(swUrl);
+    }
+  </script>
+</body>
 </html>
