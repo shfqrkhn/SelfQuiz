@@ -1,38 +1,37 @@
-{
-  "sections": [
-    {
-      "name": "Mathematics",
-      "questions": [
-        {
-          "question": "What is 2+2?",
-          "choices": ["3", "4", "5", "6"],
-          "answer": "4",
-          "explanation": "Because 2+2 equals 4."
-        },
-        {
-          "question": "What is the square root of 16?",
-          "choices": ["2", "4", "6", "8"],
-          "answer": "4",
-          "explanation": "The square root of 16 is 4."
-        }
-      ]
-    },
-    {
-      "name": "Science",
-      "questions": [
-        {
-          "question": "What planet is known as the Red Planet?",
-          "choices": ["Earth", "Mars", "Jupiter", "Venus"],
-          "answer": "Mars",
-          "explanation": "Mars is known as the Red Planet due to its reddish appearance."
-        },
-        {
-          "question": "What gas do plants absorb from the atmosphere?",
-          "choices": ["Oxygen", "Hydrogen", "Nitrogen", "Carbon Dioxide"],
-          "answer": "Carbon Dioxide",
-          "explanation": "Plants absorb carbon dioxide for photosynthesis."
-        }
-      ]
-    }
-  ]
-}
+[
+  {
+    "question": "What is the capital of France?",
+    "choices": ["Paris", "Madrid", "Rome", "Berlin"],
+    "correct": "Paris",
+    "explanation": "Paris is the capital city of France.",
+    "section": "Geography"
+  },
+  {
+    "question": "What is 2 + 2?",
+    "choices": ["3", "4", "5", "22"],
+    "correct": "4",
+    "explanation": "2 + 2 equals 4.",
+    "section": "Mathematics"
+  },
+  {
+    "question": "Who wrote 'Hamlet'?",
+    "choices": ["Mark Twain", "Jane Austen", "William Shakespeare", "Charles Dickens"],
+    "correct": "William Shakespeare",
+    "explanation": "William Shakespeare is the playwright of 'Hamlet'.",
+    "section": "Literature"
+  },
+  {
+    "question": "What planet is known as the Red Planet?",
+    "choices": ["Earth", "Mars", "Venus", "Jupiter"],
+    "correct": "Mars",
+    "explanation": "Mars gets its nickname from its reddish appearance due to iron oxide on its surface.",
+    "section": "Science"
+  },
+  {
+    "question": "Who was the first President of the United States?",
+    "choices": ["Abraham Lincoln", "George Washington", "Thomas Jefferson", "John Adams"],
+    "correct": "George Washington",
+    "explanation": "George Washington was elected as the first President of the United States.",
+    "section": "History"
+  }
+]
