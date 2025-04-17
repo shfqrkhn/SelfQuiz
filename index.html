@@ -1,545 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PMP Exam Prep</title>
-    <style>
-        /* Minimalist Modern, Sleek, Responsive Styles */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            background-color: #f4f7f6;
-            color: #333;
-            line-height: 1.6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 600px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 25px;
-            color: #007bff;
-        }
-
-        .score-display, .question-counter, .progress-counter, #timer-display {
-            text-align: center;
-            margin-bottom: 15px;
-            font-size: 1em;
-            color: #555;
-            font-weight: bold;
-        }
-
-        #timer-display {
-            font-size: 1.2em;
-            color: #007bff;
-        }
-
-        .controls {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .controls label {
-            margin: 0 15px;
-            color: #777;
-            cursor: pointer;
-        }
-
-        .question-area {
-            margin-bottom: 25px;
-        }
-
-        .options-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .option-item {
-            border: 1px solid #ddd;
-            padding: 12px;
-            margin-bottom: 10px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .option-item:hover {
-            background-color: #f0f0f0;
-        }
-
-        .selected {
-            background-color: #e0f7fa;
-            border-color: #b2ebf2;
-        }
-
-        .feedback-area {
-            margin-top: 20px;
-            padding: 15px;
-            border: 1px solid #eee;
-            background-color: #f9f9f9;
-            border-radius: 6px;
-            display: none;
-        }
-
-        .explanation {
-            margin-top: 10px;
-            font-style: italic;
-            color: #777;
-        }
-
-        .reference {
-            margin-top: 5px;
-            font-size: 0.9em;
-            color: #999;
-        }
-
-        #no-answer-message {
-            color: #dc3545;
-            display: none;
-            margin-top: 15px;
-            text-align: center;
-        }
-
-        button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: background-color 0.3s ease;
-            margin: 5px;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-
-        .results-container {
-            margin-top: 40px;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            display: none;
-            text-align: center;
-        }
-
-        .results-container h2 {
-            color: #28a745;
-            margin-bottom: 20px;
-        }
-
-        .result-item {
-            margin-bottom: 15px;
-            padding: 15px;
-            border-bottom: 1px dashed #eee;
-            text-align: left;
-        }
-
-        .result-item:last-child {
-            border-bottom: none;
-        }
-
-        .result-item h3 {
-            color: #333;
-            margin-top: 0;
-        }
-
-        .correct-answer {
-            font-weight: bold;
-            color: #28a745;
-        }
-
-        .your-answer {
-            color: #007bff;
-        }
-
-        #final-score {
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-top: 20px;
-            color: #333;
-        }
-
-        #exam-completed-message {
-            font-size: 1.1em;
-            font-weight: bold;
-            margin-top: 15px;
-            color: #555;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                width: 95%;
-                margin: 20px auto;
-            }
-            .controls {
-                flex-direction: column;
-                align-items: center;
-            }
-            .controls label {
-                margin: 10px 0;
-            }
-            button {
-                width: 100%;
-                margin: 5px 0;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PMP Exam Simulator</title>
+  <style>
+    /* Basic Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background: #333;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+    main {
+      flex: 1;
+      padding: 1rem;
+      max-width: 800px;
+      width: 100%;
+      margin: 1rem auto;
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    #app > div {
+      margin-bottom: 1.5rem;
+    }
+    .question {
+      margin-bottom: 2rem;
+    }
+    .questionOptions {
+      list-style: none;
+      padding: 0;
+    }
+    .questionOptions li {
+      margin-bottom: 1rem;
+    }
+    .feedback {
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+    /* Button Styles */
+    button {
+      background: #333;
+      color: #fff;
+      border: none;
+      padding: 0.8rem 1.2rem;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      main {
+        padding: 0.5rem;
+        margin: 0.5rem;
+      }
+    }
+    /* Minimalist select box styling */
+    #chapterSelection label {
+      margin-right: 0.5rem;
+      font-weight: bold;
+    }
+    #chapterSelect {
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+    /* Timer styling */
+    #timerDisplay {
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>PMP Exam Prep</h1>
-        </header>
-
-        <div class="score-display" id="score-display">Score: 0 out of 5 (0%)</div>
-        <div class="question-counter" id="question-counter"></div>
-        <div class="progress-counter" id="progress-counter"></div>
-        <div id="timer-display"></div>
-
-        <div class="question-area">
-            <p id="question-text"></p>
-            <ul class="options-list" id="options-container"></ul>
-        </div>
-
-        <div class="feedback-area" id="feedback-container" style="display: none;">
-            <p id="feedback-message"></p>
-            <p class="explanation" id="explanation-text"></p>
-            <p class="reference" id="reference-text"></p>
-        </div>
-
-        <p id="no-answer-message"></p>
-        <div style="text-align: center;">
-            <button id="submit-button">Submit Answer</button>
-            <button id="next-button" disabled>Next</button>
-        </div>
+  <header>
+    <h1>PMP Exam Simulator</h1>
+  </header>
+  <main>
+    <div id="app">
+      <div id="chapterSelection">
+        <label for="chapterSelect">Select PMBOK Chapter:</label>
+        <select id="chapterSelect"></select>
+      </div>
+      <div id="timerDisplay">
+        Time Remaining: <span id="timeRemaining">00:00</span>
+      </div>
+      <div id="questionContainer"></div>
+      <button id="nextButton" style="display:none;">Next Question</button>
+      <div id="feedback" class="feedback"></div>
     </div>
+  </main>
 
-    <div class="results-container" id="results-container">
-        <h2>Final Results</h2>
-        <div id="results-list">
-            </div>
-        <p id="final-score"></p>
-        <p id="exam-completed-message"></p>
-    </div>
-
-    <script>
-        const questionText = document.getElementById('question-text');
-        const optionsContainer = document.getElementById('options-container');
-        const feedbackContainer = document.getElementById('feedback-container');
-        const feedbackMessage = document.getElementById('feedback-message');
-        const submitButton = document.getElementById('submit-button');
-        const nextButton = document.getElementById('next-button');
-        const shuffleQuestionsCheckbox = document.getElementById('shuffle-questions');
-        const shuffleOptionsCheckbox = document.getElementById('shuffle-options');
-        const explanationText = document.getElementById('explanation-text');
-        const referenceText = document.getElementById('reference-text');
-        const scoreDisplay = document.getElementById('score-display');
-        const questionCounter = document.getElementById('question-counter');
-        const progressCounter = document.getElementById('progress-counter');
-        const timerDisplay = document.getElementById('timer-display');
-        const resultsContainer = document.getElementById('results-container');
-        const resultsList = document.getElementById('results-list');
-        const finalScoreDisplay = document.getElementById('final-score');
-        const mainContainer = document.querySelector('.container');
-        const examCompletedMessage = document.getElementById('exam-completed-message');
-        const noAnswerMessage = document.getElementById('no-answer-message');
-
-        let allQuestions = [
-          {
-            "category": "Project Initiation",
-            "question": "Which of the following is the primary purpose of the Project Charter?",
-            "options": [
-              "To outline the detailed project schedule.",
-              "To formally authorize a project or a phase.",
-              "To define the project budget.",
-              "To identify all project risks."
-            ],
-            "correctAnswerIndex": 1,
-            "explanation": "The Project Charter formally authorizes the existence of a project and provides the project manager with the authority to apply organizational resources to project activities.",
-            "reference": "PMBOK 6th Edition, Section 4.1"
-          },
-          {
-            "category": "Project Planning",
-            "question": "A project manager is developing the project management plan. Which of the following is NOT an output of the Develop Project Management Plan process?",
-            "options": [
-              "Project Management Plan",
-              "Project Charter",
-              "Team Charter",
-              "Updates to the Project Documents"
-            ],
-            "correctAnswerIndex": 1,
-            "explanation": "The Project Charter is an output of the Develop Project Charter process, which occurs during Project Initiation.",
-            "reference": "PMBOK 6th Edition, Section 4.2"
-          },
-          {
-            "category": "Project Execution",
-            "question": "During project execution, a key stakeholder expresses concern about a deliverable that was already approved. What should the project manager do FIRST?",
-            "options": [
-              "Immediately rework the deliverable to satisfy the stakeholder.",
-              "Inform the sponsor about the stakeholder's concerns.",
-              "Review the stakeholder engagement plan and the change management plan.",
-              "Hold a meeting with the project team to discuss the issue."
-            ],
-            "correctAnswerIndex": 2,
-            "explanation": "The project manager should first consult the stakeholder engagement plan to understand the stakeholder's level of influence and interest, and the change management plan to follow the established process for handling such requests.",
-            "reference": "PMBOK 6th Edition, Section 4.3 & 13.2"
-          },
-          {
-            "category": "Project Monitoring and Controlling",
-            "question": "Earned Value (EV) is $100, Planned Value (PV) is $120, and Actual Cost (AC) is $90. What is the Cost Variance (CV)?",
-            "options": [
-              "$10",
-              "-$20",
-              "$30",
-              "-$30"
-            ],
-            "correctAnswerIndex": 0,
-            "explanation": "Cost Variance (CV) = Earned Value (EV) - Actual Cost (AC). In this case, CV = $100 - $90 = $10. A positive CV indicates that the project is under budget.",
-            "reference": "PMBOK 6th Edition, Section 7.4"
-          },
-          {
-            "category": "Project Closure",
-            "question": "Which of the following activities is typically performed during the Close Project or Phase process?",
-            "options": [
-              "Developing the project management plan.",
-              "Creating the work breakdown structure.",
-              "Finalizing all activities across all the Project Management Process Groups.",
-              "Monitoring and controlling the project work."
-            ],
-            "correctAnswerIndex": 2,
-            "explanation": "The Close Project or Phase process involves finalizing all activities across all the Project Management Process Groups to formally complete the project or phase.",
-            "reference": "PMBOK 6th Edition, Section 4.6"
-          }
-        ];
-
-        let currentQuestionIndex = 0;
-        let currentQuestions = [];
-        let shuffledQuestions = false;
-        let shuffledOptions = false;
-        let selectedAnswerIndex = null;
-        let score = 0;
-        let userAnswers = []; // To store the index of the user's selected answer for each question
-        let timerInterval;
-        const timePerQuestion = 75;
-
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
+  <script>
+    // Embedded exam data containing PMBOK chapters and questions.
+    const examData = {
+      "chapters": [
+        {
+          "name": "Chapter 1: Introduction",
+          "questions": [
+            {
+              "question": "What is the primary purpose of the PMP exam?",
+              "options": [
+                "To test theoretical knowledge only",
+                "To evaluate your practical project management skills by applying PMBOK guidelines",
+                "To assess technical IT skills",
+                "To refine general management theories"
+              ],
+              "correctIndex": 1,
+              "explanation": "The PMP exam evaluates your ability to manage real-world project scenarios in line with PMBOK guidelines."
+            },
+            {
+              "question": "Which document outlines the processes and knowledge areas used in project management?",
+              "options": [
+                "Project Charter",
+                "PMBOK Guide",
+                "Project Management Plan",
+                "Risk Register"
+              ],
+              "correctIndex": 1,
+              "explanation": "The PMBOK Guide outlines the processes and knowledge areas essential for project management."
             }
-            return array;
-        }
-
-        function startTimer(duration) {
-            let timeLeft = duration;
-            timerDisplay.textContent = formatTime(timeLeft);
-
-            timerInterval = setInterval(function () {
-                timeLeft--;
-                timerDisplay.textContent = formatTime(timeLeft);
-
-                if (timeLeft < 0) {
-                    clearInterval(timerInterval);
-                    timerDisplay.textContent = "Time's up!";
-                    submitButton.disabled = true;
-                    if (currentQuestionIndex < currentQuestions.length - 1) {
-                        nextQuestion();
-                    } else {
-                        showFinalResults();
-                    }
-                }
-            }, 1000);
-        }
-
-        function formatTime(seconds) {
-            const minutes = Math.floor(seconds / 60);
-            const remainingSeconds = seconds % 60;
-            const formattedMinutes = String(minutes).padStart(1, '0');
-            const formattedSeconds = String(remainingSeconds).padStart(2, '0');
-            return `${formattedMinutes}:${formattedSeconds}`;
-        }
-
-        function loadQuestion() {
-            if (currentQuestionIndex < currentQuestions.length) {
-                const currentQuestion = currentQuestions[currentQuestionIndex];
-                questionText.textContent = currentQuestion.question;
-                optionsContainer.innerHTML = '';
-                const options = shuffledOptions ? shuffleArray([...currentQuestion.options]) : [...currentQuestion.options];
-                currentQuestion.shuffledOptionsOrder = options; // Store the shuffled order to map back later
-                options.forEach((option, index) => {
-                    const li = document.createElement('li');
-                    li.classList.add('option-item');
-                    li.textContent = option;
-                    li.dataset.index = index; // Store the index in the shuffled array
-                    li.addEventListener('click', selectOption);
-                    optionsContainer.appendChild(li);
-                });
-                feedbackContainer.style.display = 'none';
-                submitButton.disabled = false;
-                if (currentQuestionIndex === currentQuestions.length - 1) {
-                    nextButton.textContent = 'Finish';
-                } else {
-                    nextButton.textContent = 'Next';
-                }
-                nextButton.disabled = true;
-                explanationText.textContent = '';
-                referenceText.textContent = '';
-                noAnswerMessage.style.display = 'none'; // Hide the no answer message when loading a new question
-                questionCounter.textContent = `Question ${currentQuestionIndex + 1} of ${currentQuestions.length}`;
-                const progress = ((currentQuestionIndex + 1) / currentQuestions.length) * 100;
-                progressCounter.textContent = `Progress: ${progress.toFixed(0)}%`;
-
-                clearInterval(timerInterval); // Clear any existing timer
-                startTimer(timePerQuestion); // Start the timer for the new question
-            } else {
-                showFinalResults();
+          ]
+        },
+        {
+          "name": "Chapter 2: Planning",
+          "questions": [
+            {
+              "question": "Which process group is primarily responsible for outlining the project schedule?",
+              "options": [
+                "Initiating",
+                "Planning",
+                "Executing",
+                "Closing"
+              ],
+              "correctIndex": 1,
+              "explanation": "Project scheduling and detailed planning are functions of the Planning process group."
+            },
+            {
+              "question": "What is a key output of the Planning phase?",
+              "options": [
+                "Project Charter",
+                "Project Schedule",
+                "Status Report",
+                "Contract Agreement"
+              ],
+              "correctIndex": 1,
+              "explanation": "The project schedule is a key output during the planning process, detailing timelines and milestones."
             }
+          ]
         }
+      ]
+    };
 
-        function selectOption(event) {
-            if (!submitButton.disabled) {
-                const previouslySelected = document.querySelector('.option-item.selected');
-                if (previouslySelected) {
-                    previouslySelected.classList.remove('selected');
-                }
-                event.target.classList.add('selected');
-                selectedAnswerIndex = parseInt(event.target.dataset.index);
-                noAnswerMessage.style.display = 'none'; // Hide the no answer message when an option is selected
-                submitButton.disabled = false; // Enable submit button once an option is selected
-            }
-        }
+    let currentIndex = 0;
+    let currentChapter = '';
+    let timerInterval;
+    let totalTime = 0;      // Total exam time in seconds for the selected chapter
+    let timeRemaining = 0;  // Remaining time in seconds
 
-        function checkAnswer() {
-            clearInterval(timerInterval); // Stop the timer when the answer is submitted
-            if (selectedAnswerIndex === null) {
-                noAnswerMessage.textContent = "Please select an answer.";
-                noAnswerMessage.style.display = 'block';
-                startTimer(timePerQuestion); // Restart the timer if no answer was selected
-                return; // Stop the function if no answer is selected
-            }
-
-            const currentQuestion = currentQuestions[currentQuestionIndex];
-            feedbackContainer.style.display = 'block';
-            const originalCorrectIndex = currentQuestion.correctAnswerIndex;
-            const selectedOptionText = currentQuestion.shuffledOptionsOrder[selectedAnswerIndex];
-            const originalCorrectAnswer = currentQuestion.options[originalCorrectIndex];
-            const isCorrect = selectedOptionText === originalCorrectAnswer;
-
-            userAnswers[currentQuestionIndex] = selectedAnswerIndex; // Store the index in the shuffled options
-
-            if (isCorrect) {
-                score++; // Increment score BEFORE calculating percentage
-                const percentage = (score / currentQuestions.length) * 100;
-                feedbackMessage.textContent = "Correct!";
-                scoreDisplay.textContent = `Score: ${score} out of ${currentQuestions.length} (${percentage.toFixed(0)}%)`;
-            } else {
-                const percentage = (score / currentQuestions.length) * 100; // Calculate percentage even if incorrect
-                feedbackMessage.textContent = "Incorrect.";
-                scoreDisplay.textContent = `Score: ${score} out of ${currentQuestions.length} (${percentage.toFixed(0)}%)`;
-            }
-            explanationText.textContent = currentQuestion.explanation;
-            referenceText.textContent = `PMBOK Section: ${currentQuestion.reference}`;
-            submitButton.disabled = true;
-            if (currentQuestionIndex < currentQuestions.length - 1) {
-                nextButton.disabled = false;
-            } else {
-                nextButton.disabled = true; // Disable next button on the last question after submitting
-            }
-            selectedAnswerIndex = null; // Reset after submitting
-        }
-
-        function nextQuestion() {
-            currentQuestionIndex++;
-            loadQuestion();
-        }
-
-        function showFinalResults() {
-            clearInterval(timerInterval); // Ensure timer is stopped at the end
-            mainContainer.style.display = 'none';
-            resultsContainer.style.display = 'block';
-            resultsList.innerHTML = '';
-            currentQuestions.forEach((question, index) => {
-                const resultItem = document.createElement('div');
-                resultItem.classList.add('result-item');
-                const questionNumber = index + 1;
-                resultItem.innerHTML = `<h3>Question ${questionNumber}: ${question.question}</h3>`;
-
-                const originalCorrectAnswer = question.options[question.correctAnswerIndex];
-                resultItem.innerHTML += `<p class="correct-answer">Correct Answer: ${originalCorrectAnswer}</p>`;
-
-                if (userAnswers[index] !== undefined) {
-                    const selectedOptionText = question.shuffledOptionsOrder[userAnswers[index]];
-                    resultItem.innerHTML += `<p class="your-answer">Your Answer: ${selectedOptionText}</p>`;
-                    if (selectedOptionText === originalCorrectAnswer) {
-                        resultItem.classList.add('correct');
-                    } else {
-                        resultItem.classList.add('incorrect');
-                    }
-                } else {
-                    resultItem.innerHTML += `<p class="your-answer">Your Answer: Not answered</p>`;
-                }
-                resultsList.appendChild(resultItem);
-            });
-            const finalPercentage = (score / currentQuestions.length) * 100;
-            finalScoreDisplay.textContent = `Final Score: ${score} out of ${currentQuestions.length} (${finalPercentage.toFixed(0)}%)`;
-            examCompletedMessage.textContent = 'Exam Completed';
-        }
-
-        submitButton.addEventListener('click', checkAnswer);
-        nextButton.addEventListener('click', nextQuestion);
-
-        shuffleQuestionsCheckbox.addEventListener('change', () => {
-            shuffledQuestions = shuffleQuestionsCheckbox.checked;
-            currentQuestionIndex = 0;
-            loadQuestions();
+    // Populate the chapter dropdown using the embedded exam data.
+    function populateChapters() {
+      const chapterSelect = document.getElementById('chapterSelect');
+      if (examData && examData.chapters && examData.chapters.length > 0) {
+        examData.chapters.forEach(chapter => {
+          const option = document.createElement('option');
+          option.value = chapter.name;
+          option.textContent = chapter.name;
+          chapterSelect.appendChild(option);
         });
-
-        shuffleOptionsCheckbox.addEventListener('change', () => {
-            shuffledOptions = shuffleOptionsCheckbox.checked;
-            loadQuestion();
+        // Set default chapter selection and initialize the timer.
+        chapterSelect.value = examData.chapters[0].name;
+        currentChapter = examData.chapters[0].name;
+        chapterSelect.addEventListener('change', e => {
+          currentChapter = e.target.value;
+          currentIndex = 0;
+          startTimer();   // (Re)start the timer for the new chapter selection.
+          showQuestion();
         });
+        startTimer(); // Start timer for the default chapter.
+        showQuestion();
+      } else {
+        document.getElementById('questionContainer').innerHTML =
+          '<p>No chapters found in the exam data.</p>';
+      }
+    }
 
-        function loadQuestions() {
-            currentQuestions = [...allQuestions]; // Create a copy
-
-            if (shuffledQuestions) {
-                currentQuestions = shuffleArray(currentQuestions);
-            }
-            userAnswers = new Array(currentQuestions.length).fill(null); // Reset user answers
-            score = 0;
-            scoreDisplay.textContent = `Score: ${score} out of ${currentQuestions.length} (0%)`;
-            currentQuestionIndex = 0;
-            loadQuestion();
+    // Display a single question from the selected chapter.
+    function showQuestion() {
+      const questionContainer = document.getElementById('questionContainer');
+      const chapter = examData.chapters.find(ch => ch.name === currentChapter);
+      if (!chapter || currentIndex >= chapter.questions.length) {
+        questionContainer.innerHTML = '<p>You have completed all questions in this chapter!</p>';
+        document.getElementById('nextButton').style.display = 'none';
+        if (timerInterval) {
+          clearInterval(timerInterval);
         }
+        return;
+      }
+      const q = chapter.questions[currentIndex];
+      questionContainer.innerHTML = `
+        <div class="question">
+          <p>${q.question}</p>
+          <ul class="questionOptions">
+            ${q.options.map((option, i) => `
+              <li>
+                <label>
+                  <input type="radio" name="answer" value="${i}"> ${option}
+                </label>
+              </li>
+            `).join('')}
+          </ul>
+          <button onclick="checkAnswer()">Submit Answer</button>
+        </div>
+      `;
+      document.getElementById('feedback').textContent = '';
+      document.getElementById('nextButton').style.display = 'none';
+    }
 
-        // Initialize
-        loadQuestions();
-        examCompletedMessage.textContent = ''; // Clear initial message
-    </script>
+    // Check the selected answer and provide instant feedback.
+    function checkAnswer() {
+      const selected = document.querySelector('input[name="answer"]:checked');
+      const feedbackDiv = document.getElementById('feedback');
+      if (!selected) {
+        feedbackDiv.textContent = 'Please select an answer.';
+        return;
+      }
+      const userAnswer = parseInt(selected.value, 10);
+      const chapter = examData.chapters.find(ch => ch.name === currentChapter);
+      const q = chapter.questions[currentIndex];
 
-    <noscript>Please enable JavaScript to use this application.</noscript>
+      if (userAnswer === q.correctIndex) {
+        feedbackDiv.textContent = 'Correct! ' + (q.explanation || '');
+      } else {
+        feedbackDiv.textContent = 'Incorrect! ' + (q.explanation || '');
+      }
+
+      // Reveal the "Next Question" button after answer submission.
+      document.getElementById('nextButton').style.display = 'block';
+    }
+
+    // Advance to the next question.
+    document.getElementById('nextButton').addEventListener('click', () => {
+      currentIndex++;
+      showQuestion();
+    });
+
+    // Start or restart the exam timer based on the selected chapter's number of questions.
+    function startTimer() {
+      if (timerInterval) {
+        clearInterval(timerInterval);
+      }
+      const chapter = examData.chapters.find(ch => ch.name === currentChapter);
+      if (!chapter) return;
+      // Calculate total exam time (in seconds): number of questions * 75.
+      totalTime = chapter.questions.length * 75;
+      timeRemaining = totalTime;
+      updateTimerDisplay();
+
+      timerInterval = setInterval(() => {
+        timeRemaining--;
+        if (timeRemaining <= 0) {
+          clearInterval(timerInterval);
+          timeRemaining = 0;
+          updateTimerDisplay();
+          examTimeOver();
+        } else {
+          updateTimerDisplay();
+        }
+      }, 1000);
+    }
+
+    // Update the displayed timer in a mm:ss format.
+    function updateTimerDisplay() {
+      const minutes = Math.floor(timeRemaining / 60);
+      const seconds = timeRemaining % 60;
+      document.getElementById('timeRemaining').textContent =
+        (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+    }
+
+    // End the exam when the timer runs out.
+    function examTimeOver() {
+      alert("Time's up! The exam will now end.");
+      document.getElementById('questionContainer').innerHTML = "<p>Time's up! The exam is over.</p>";
+      document.getElementById('feedback').textContent = "";
+      document.getElementById('nextButton').style.display = "none";
+    }
+
+    // Initialize the exam simulation.
+    populateChapters();
+  </script>
 </body>
 </html>
