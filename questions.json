@@ -4,114 +4,64 @@
       "name": "Chapter 1: Initiation",
       "questions": [
         {
-          "question": "What is the primary purpose of a Project Charter?",
+          "question": "What is the primary purpose of the project charter?",
           "options": [
-            "Define detailed project requirements",
-            "Authorize the project and provide a high-level overview",
-            "Outline the project schedule in detail",
-            "Detail resource allocation"
+            "Provide a high-level overview and authorize the project",
+            "Define detailed work breakdown structure",
+            "Manage risk throughout the project",
+            "Develop a detailed schedule"
           ],
-          "correctIndex": 1,
-          "explanation": "The Project Charter authorizes the project and provides a high-level view."
+          "correctIndex": 0,
+          "explanation": "The project charter formally authorizes the project and outlines high-level objectives.",
+          "chapterReference": "PMBOK Initiation"
         },
         {
-          "question": "What key document formally initiates a project?",
+          "question": "Who is primarily responsible for approving the project charter?",
+          "options": [
+            "Project Manager",
+            "Project Sponsor",
+            "Business Analyst",
+            "Team Member"
+          ],
+          "correctIndex": 1,
+          "explanation": "The Project Sponsor typically approves the project charter.",
+          "chapterReference": "PMBOK Initiation"
+        },
+        {
+          "question": "What key information is typically included in a project charter?",
+          "options": [
+            "Detailed risk registers",
+            "High-level project goals, scope, and stakeholders",
+            "Daily work schedules",
+            "Technical specifications"
+          ],
+          "correctIndex": 1,
+          "explanation": "A project charter provides an overview including high-level goals, scope, and identification of key stakeholders.",
+          "chapterReference": "PMBOK Initiation"
+        },
+        {
+          "question": "Which document is used to formally initiate a project?",
           "options": [
             "Project Charter",
             "Project Management Plan",
-            "Risk Register",
-            "Work Breakdown Structure"
+            "Statement of Work",
+            "Risk Management Plan"
           ],
           "correctIndex": 0,
-          "explanation": "The Project Charter is the document that formally initiates a project."
+          "explanation": "The Project Charter is the key document that formally initiates a project.",
+          "chapterReference": "PMBOK Initiation"
         },
         {
-          "question": "Which stakeholder is primarily responsible for approving the project charter?",
+          "question": "What benefit does a project charter provide?",
           "options": [
-            "Project Manager",
-            "Project Sponsor",
-            "Team Member",
-            "Customer"
+            "It allows the project manager to ignore scope creep",
+            "It establishes a clear vision and formal authorization to begin the project",
+            "It details every task that will be performed",
+            "It minimizes stakeholder involvement"
           ],
           "correctIndex": 1,
-          "explanation": "The Project Sponsor generally approves the project charter."
-        },
-        {
-          "question": "What is usually included in a project charter?",
-          "options": [
-            "Detailed activity schedules",
-            "High-level project objectives and scope",
-            "Employee payroll details",
-            "Detailed risk analysis"
-          ],
-          "correctIndex": 1,
-          "explanation": "A project charter includes high-level objectives, scope, assumptions, and constraints."
-        },
-        {
-          "question": "Who is often responsible for drafting the project charter?",
-          "options": [
-            "Project Manager",
-            "Business Analyst",
-            "Project Sponsor",
-            "Quality Assurance Analyst"
-          ],
-          "correctIndex": 0,
-          "explanation": "The Project Manager is typically responsible for drafting the project charter with input from stakeholders."
-        },
-        {
-          "question": "What is a key benefit of having a project charter?",
-          "options": [
-            "Ensures detailed planning of every task",
-            "Provides a clear project vision and authorization",
-            "Reduces project costs immediately",
-            "Guarantees stakeholder satisfaction"
-          ],
-          "correctIndex": 1,
-          "explanation": "The charter sets a clear vision and officially authorizes the project."
-        },
-        {
-          "question": "Which of the following best describes a stakeholder?",
-          "options": [
-            "Only the project manager is a stakeholder",
-            "Individuals or organizations affected by the project",
-            "Contractors only",
-            "Shareholders exclusively"
-          ],
-          "correctIndex": 1,
-          "explanation": "Stakeholders include any individual or group affected by the project."
-        },
-        {
-          "question": "What does the initiation phase primarily aim to do?",
-          "options": [
-            "Plan detailed work schedules",
-            "Define and authorize a new project or phase",
-            "Execute project tasks",
-            "Close out completed projects"
-          ],
-          "correctIndex": 1,
-          "explanation": "Initiation is about defining and authorizing a project."
-        },
-        {
-          "question": "Which document is essential before moving to detailed planning?",
-          "options": [
-            "Project Charter",
-            "Communication Plan",
-            "Expense Sheet",
-            "Change Request"
-          ],
-          "correctIndex": 0,
-          "explanation": "The Project Charter is required before detailed planning can begin."
-        },
-        {
-          "question": "The initiation phase mainly focuses on:",
-          "options": [
-            "Establishing a detailed project timeline",
-            "Defining project objectives and securing authority",
-            "Allocating all resources",
-            "Developing risk management strategies"
-          ],
-          "correctIndex": 1,
-          "explanation": "It focuses on setting objectives and obtaining formal authorization."
+          "explanation": "The project charter provides a clear vision and formal approval to start the project.",
+          "chapterReference": "PMBOK Initiation"
         }
       ]
     },
@@ -119,114 +69,194 @@
       "name": "Chapter 2: Planning",
       "questions": [
         {
-          "question": "What is the primary objective of the project planning phase?",
+          "question": "What is the primary objective of the planning phase?",
           "options": [
-            "Authorize the project",
-            "Develop a comprehensive project management plan",
-            "Execute project tasks",
-            "Close the project"
-          ],
-          "correctIndex": 1,
-          "explanation": "The planning phase centers on developing a detailed project management plan."
-        },
-        {
-          "question": "Which plan outlines the schedule, resources, and cost estimates?",
-          "options": [
-            "Project Charter",
-            "Project Management Plan",
-            "Risk Register",
-            "Quality Plan"
-          ],
-          "correctIndex": 1,
-          "explanation": "The Project Management Plan includes details on schedule, scope, resources, and costs."
-        },
-        {
-          "question": "What tool is commonly used to break down project work into manageable sections?",
-          "options": [
-            "Gantt Chart",
-            "Work Breakdown Structure (WBS)",
-            "Project Charter",
-            "Issue Log"
-          ],
-          "correctIndex": 1,
-          "explanation": "The WBS divides the project into smaller, manageable components."
-        },
-        {
-          "question": "Which process involves identifying and documenting project risks?",
-          "options": [
-            "Risk Management Planning",
-            "Quality Assurance",
-            "Scope Definition",
-            "Resource Allocation"
+            "Define project scope, develop a management plan, and allocate resources",
+            "Execute the planned work",
+            "Close the project activities",
+            "Collect project deliverables"
           ],
           "correctIndex": 0,
-          "explanation": "Risk management planning is about identifying and mitigating risks."
+          "explanation": "The planning phase focuses on defining scope and creating detailed plans to guide the project.",
+          "chapterReference": "PMBOK Planning"
         },
         {
-          "question": "What is the purpose of a schedule baseline?",
+          "question": "Which tool is used to visually represent the project schedule?",
           "options": [
-            "Capture changes after project closure",
-            "Establish a reference for project schedule performance",
-            "Document project risks",
-            "Outline stakeholder expectations"
+            "Gantt Chart",
+            "RACI Chart",
+            "Brainstorming Diagram",
+            "SWOT Analysis"
+          ],
+          "correctIndex": 0,
+          "explanation": "A Gantt Chart displays tasks along a timeline and is widely used for scheduling.",
+          "chapterReference": "PMBOK Planning"
+        },
+        {
+          "question": "What is a critical element of a project management plan?",
+          "options": [
+            "Detailed employee contracts",
+            "Communication strategy, scope statement, schedule, and budget",
+            "Personal development plans",
+            "Manufacturer warranties"
           ],
           "correctIndex": 1,
-          "explanation": "The schedule baseline provides a benchmark to track project progress."
+          "explanation": "The project management plan typically covers the strategy for communication, as well as scope, schedule, and cost details.",
+          "chapterReference": "PMBOK Planning"
         },
         {
-          "question": "Which document outlines the allocation of resources and responsibilities?",
+          "question": "Which document helps break down the project deliverables into smaller components?",
           "options": [
-            "Resource Management Plan",
-            "Communication Plan",
+            "Work Breakdown Structure (WBS)",
+            "Risk Management Plan",
             "Project Charter",
             "Stakeholder Register"
           ],
           "correctIndex": 0,
-          "explanation": "The Resource Management Plan details resource assignments and roles."
+          "explanation": "The Work Breakdown Structure decomposes high-level deliverables into manageable work packages.",
+          "chapterReference": "PMBOK Planning"
         },
         {
-          "question": "A detailed budget developed during planning is known as:",
+          "question": "Why is risk planning an important part of the planning phase?",
           "options": [
+            "It identifies potential risks and outlines mitigation strategies",
+            "It guarantees that no risks will occur",
+            "It dismisses any potential impacts",
+            "It is only used for creating contingency budgets"
+          ],
+          "correctIndex": 0,
+          "explanation": "Risk planning helps prepare the team for potential challenges by identifying and mitigating risks.",
+          "chapterReference": "PMBOK Planning"
+        }
+      ]
+    },
+    {
+      "name": "Chapter 3: Execution",
+      "questions": [
+        {
+          "question": "During the execution phase, what is the primary focus?",
+          "options": [
+            "Authorizing the project",
+            "Coordinating people and resources to carry out the plan",
+            "Developing the project charter",
+            "Creating a risk register"
+          ],
+          "correctIndex": 1,
+          "explanation": "Execution focuses on implementing the plans by coordinating people and resources.",
+          "chapterReference": "PMBOK Execution"
+        },
+        {
+          "question": "Which role is primarily accountable for project execution?",
+          "options": [
+            "Project Sponsor",
+            "Project Manager",
+            "Business Analyst",
+            "Human Resources Manager"
+          ],
+          "correctIndex": 1,
+          "explanation": "The Project Manager is responsible for leading the execution and ensuring objectives are met.",
+          "chapterReference": "PMBOK Execution"
+        },
+        {
+          "question": "What tool is commonly used to track project progress during execution?",
+          "options": [
+            "Earned Value Management (EVM)",
             "Project Charter",
-            "Cost Baseline",
-            "Risk Register",
-            "Quality Plan"
-          ],
-          "correctIndex": 1,
-          "explanation": "The Cost Baseline is the approved version of the project budget."
-        },
-        {
-          "question": "What is the purpose of a communication plan in project planning?",
-          "options": [
-            "To establish how project information will be shared",
-            "To assign roles and responsibilities",
-            "To develop the project scope",
-            "To schedule tasks"
+            "SWOT Analysis",
+            "Requirements Traceability Matrix"
           ],
           "correctIndex": 0,
-          "explanation": "It ensures that project information is distributed appropriately."
+          "explanation": "Earned Value Management is an effective tool for monitoring progress and performance.",
+          "chapterReference": "PMBOK Execution"
         },
         {
-          "question": "Which planning tool visually shows project tasks over time?",
+          "question": "How are changes managed during the execution phase?",
           "options": [
-            "Scatter Diagram",
-            "Gantt Chart",
-            "Pareto Chart",
-            "Fishbone Diagram"
+            "They are ignored",
+            "Through a formal change control process",
+            "They are implemented without review",
+            "Only minor changes are allowed"
           ],
           "correctIndex": 1,
-          "explanation": "A Gantt Chart displays project tasks along a timeline."
+          "explanation": "A formal change control process ensures that any modifications are properly evaluated and approved.",
+          "chapterReference": "PMBOK Execution"
         },
         {
-          "question": "In project planning, a comprehensive risk register includes:",
+          "question": "What is a key output of the execution phase?",
           "options": [
-            "Risks, their likelihood, impact, and mitigation strategies",
-            "Only the identified risks",
-            "Budget and resource allocations",
-            "Project schedules and milestones"
+            "Status reports and deliverables",
+            "Work breakdown structure",
+            "Project charter",
+            "Lessons learned register"
           ],
           "correctIndex": 0,
-          "explanation": "A risk register documents risks along with their probability, impact, and planned responses."
+          "explanation": "Execution results in tangible deliverables along with ongoing performance reports.",
+          "chapterReference": "PMBOK Execution"
+        }
+      ]
+    },
+    {
+      "name": "Chapter 4: Closing",
+      "questions": [
+        {
+          "question": "What is the main purpose of the closing phase?",
+          "options": [
+            "To initiate the project",
+            "To formally complete and close the project or phase",
+            "To develop detailed project plans",
+            "To register project risks"
+          ],
+          "correctIndex": 1,
+          "explanation": "The closing phase is focused on finalizing all activities and formally closing the project.",
+          "chapterReference": "PMBOK Closing"
+        },
+        {
+          "question": "Which document is created during the closing phase to capture lessons learned?",
+          "options": [
+            "Lessons Learned Register",
+            "Project Charter",
+            "Stakeholder Register",
+            "WBS Dictionary"
+          ],
+          "correctIndex": 0,
+          "explanation": "A Lessons Learned Register documents what went well and what could be improved for future projects.",
+          "chapterReference": "PMBOK Closing"
+        },
+        {
+          "question": "What is an important aspect of project closure?",
+          "options": [
+            "Ensuring that all deliverables are accepted by the customer",
+            "Increasing the project budget",
+            "Conducting daily stand-up meetings",
+            "Redesigning the project plan"
+          ],
+          "correctIndex": 0,
+          "explanation": "Securing customer acceptance of the final deliverables is a critical closing task.",
+          "chapterReference": "PMBOK Closing"
+        },
+        {
+          "question": "Which activity is typically performed during the closing phase?",
+          "options": [
+            "Resource allocation",
+            "Finalizing contractual agreements and releasing resources",
+            "Risk identification",
+            "Developing project schedules"
+          ],
+          "correctIndex": 1,
+          "explanation": "Closing includes finalizing contracts, settling accounts, and releasing project resources.",
+          "chapterReference": "PMBOK Closing"
+        },
+        {
+          "question": "Why is it important to document lessons learned at project closure?",
+          "options": [
+            "For legal accountability only",
+            "To improve future project performance and share knowledge",
+            "To justify increased budgets",
+            "To delay future projects"
+          ],
+          "correctIndex": 1,
+          "explanation": "Documenting lessons learned provides insight to enhance the efficiency of future projects.",
+          "chapterReference": "PMBOK Closing"
         }
       ]
     }
