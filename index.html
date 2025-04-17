@@ -145,33 +145,138 @@
   </main>
 
   <script>
-    /***** Embedded Exam Data *****/
+    /***** Exam Data: Easy-to-Fill Question Bank *****/
+    /* 
+       To add a new question, follow this template:
+       
+       {
+         "question": "Your question here?",
+         "options": [
+           "Option 1",
+           "Option 2",
+           "Option 3",
+           "Option 4"
+         ],
+         "correctIndex": [index of the correct option, 0-3],
+         "explanation": "Brief explanation of the answer."
+       }
+       
+       You can add new chapters or append questions to an existing chapter.
+    */
     const examData = {
       "chapters": [
         {
-          "name": "Chapter 1: Introduction",
+          "name": "Chapter 1: Initiation",
           "questions": [
             {
-              "question": "What is the primary purpose of the PMP exam?",
+              "question": "What is the primary purpose of a Project Charter?",
               "options": [
-                "To test theoretical knowledge only",
-                "To evaluate your practical project management skills by applying PMBOK guidelines",
-                "To assess technical IT skills",
-                "To refine general management theories"
+                "Define detailed project requirements",
+                "Authorize the project and provide a high-level overview",
+                "Outline the project schedule in detail",
+                "Detail resource allocation"
               ],
               "correctIndex": 1,
-              "explanation": "The PMP exam evaluates your ability to manage real-world project scenarios in line with PMBOK guidelines."
+              "explanation": "The Project Charter authorizes the project and provides a high-level view."
             },
             {
-              "question": "Which document outlines the processes and knowledge areas used in project management?",
+              "question": "What key document formally initiates a project?",
               "options": [
                 "Project Charter",
-                "PMBOK Guide",
                 "Project Management Plan",
-                "Risk Register"
+                "Risk Register",
+                "Work Breakdown Structure"
+              ],
+              "correctIndex": 0,
+              "explanation": "The Project Charter is the document that formally initiates a project."
+            },
+            {
+              "question": "Which stakeholder is primarily responsible for approving the project charter?",
+              "options": [
+                "Project Manager",
+                "Project Sponsor",
+                "Team Member",
+                "Customer"
               ],
               "correctIndex": 1,
-              "explanation": "The PMBOK Guide outlines the processes and knowledge areas essential for project management."
+              "explanation": "The Project Sponsor generally approves the project charter."
+            },
+            {
+              "question": "What is usually included in a project charter?",
+              "options": [
+                "Detailed activity schedules",
+                "High-level project objectives and scope",
+                "Employee payroll details",
+                "Detailed risk analysis"
+              ],
+              "correctIndex": 1,
+              "explanation": "A project charter includes high-level objectives, scope, assumptions, and constraints."
+            },
+            {
+              "question": "Who is often responsible for drafting the project charter?",
+              "options": [
+                "Project Manager",
+                "Business Analyst",
+                "Project Sponsor",
+                "Quality Assurance Analyst"
+              ],
+              "correctIndex": 0,
+              "explanation": "The Project Manager is typically responsible for drafting the project charter with input from stakeholders."
+            },
+            {
+              "question": "What is a key benefit of having a project charter?",
+              "options": [
+                "Ensures detailed planning of every task",
+                "Provides a clear project vision and authorization",
+                "Reduces project costs immediately",
+                "Guarantees stakeholder satisfaction"
+              ],
+              "correctIndex": 1,
+              "explanation": "The charter sets a clear vision and officially authorizes the project."
+            },
+            {
+              "question": "Which of the following best describes a stakeholder?",
+              "options": [
+                "Only the project manager is a stakeholder",
+                "Individuals or organizations affected by the project",
+                "Contractors only",
+                "Shareholders exclusively"
+              ],
+              "correctIndex": 1,
+              "explanation": "Stakeholders include any individual or group affected by the project."
+            },
+            {
+              "question": "What does the initiation phase primarily aim to do?",
+              "options": [
+                "Plan detailed work schedules",
+                "Define and authorize a new project or phase",
+                "Execute project tasks",
+                "Close out completed projects"
+              ],
+              "correctIndex": 1,
+              "explanation": "Initiation is about defining and authorizing a project."
+            },
+            {
+              "question": "Which document is essential before moving to detailed planning?",
+              "options": [
+                "Project Charter",
+                "Communication Plan",
+                "Expense Sheet",
+                "Change Request"
+              ],
+              "correctIndex": 0,
+              "explanation": "The Project Charter is required before detailed planning can begin."
+            },
+            {
+              "question": "The initiation phase mainly focuses on:",
+              "options": [
+                "Establishing a detailed project timeline",
+                "Defining project objectives and securing authority",
+                "Allocating all resources",
+                "Developing risk management strategies"
+              ],
+              "correctIndex": 1,
+              "explanation": "It focuses on setting objectives and obtaining formal authorization."
             }
           ]
         },
@@ -179,30 +284,117 @@
           "name": "Chapter 2: Planning",
           "questions": [
             {
-              "question": "Which process group is primarily responsible for outlining the project schedule?",
+              "question": "What is the primary objective of the project planning phase?",
               "options": [
-                "Initiating",
-                "Planning",
-                "Executing",
-                "Closing"
+                "Authorize the project",
+                "Develop a comprehensive project management plan",
+                "Execute project tasks",
+                "Close the project"
               ],
               "correctIndex": 1,
-              "explanation": "Project scheduling and detailed planning are functions of the Planning process group."
+              "explanation": "The planning phase centers on developing a detailed project management plan."
             },
             {
-              "question": "What is a key output of the Planning phase?",
+              "question": "Which plan outlines the schedule, resources, and cost estimates?",
               "options": [
                 "Project Charter",
-                "Project Schedule",
-                "Status Report",
-                "Contract Agreement"
+                "Project Management Plan",
+                "Risk Register",
+                "Quality Plan"
               ],
               "correctIndex": 1,
-              "explanation": "The project schedule is a key output during the planning process, detailing timelines and milestones."
+              "explanation": "The Project Management Plan includes details on schedule, scope, resources, and costs."
+            },
+            {
+              "question": "What tool is commonly used to break down project work into manageable sections?",
+              "options": [
+                "Gantt Chart",
+                "Work Breakdown Structure (WBS)",
+                "Project Charter",
+                "Issue Log"
+              ],
+              "correctIndex": 1,
+              "explanation": "The WBS divides the project into smaller, manageable components."
+            },
+            {
+              "question": "Which process involves identifying and documenting project risks?",
+              "options": [
+                "Risk Management Planning",
+                "Quality Assurance",
+                "Scope Definition",
+                "Resource Allocation"
+              ],
+              "correctIndex": 0,
+              "explanation": "Risk management planning is about identifying and mitigating risks."
+            },
+            {
+              "question": "What is the purpose of a schedule baseline?",
+              "options": [
+                "Capture changes after project closure",
+                "Establish a reference for project schedule performance",
+                "Document project risks",
+                "Outline stakeholder expectations"
+              ],
+              "correctIndex": 1,
+              "explanation": "The schedule baseline provides a benchmark to track project progress."
+            },
+            {
+              "question": "Which document outlines the allocation of resources and responsibilities?",
+              "options": [
+                "Resource Management Plan",
+                "Communication Plan",
+                "Project Charter",
+                "Stakeholder Register"
+              ],
+              "correctIndex": 0,
+              "explanation": "The Resource Management Plan details resource assignments and roles."
+            },
+            {
+              "question": "A detailed budget developed during planning is known as:",
+              "options": [
+                "Project Charter",
+                "Cost Baseline",
+                "Risk Register",
+                "Quality Plan"
+              ],
+              "correctIndex": 1,
+              "explanation": "The Cost Baseline is the approved version of the project budget."
+            },
+            {
+              "question": "What is the purpose of a communication plan in project planning?",
+              "options": [
+                "To establish how project information will be shared",
+                "To assign roles and responsibilities",
+                "To develop the project scope",
+                "To schedule tasks"
+              ],
+              "correctIndex": 0,
+              "explanation": "It ensures that project information is distributed in a timely and appropriate manner."
+            },
+            {
+              "question": "Which planning tool visually shows project tasks over time?",
+              "options": [
+                "Scatter Diagram",
+                "Gantt Chart",
+                "Pareto Chart",
+                "Fishbone Diagram"
+              ],
+              "correctIndex": 1,
+              "explanation": "A Gantt Chart displays project tasks along a timeline."
+            },
+            {
+              "question": "In project planning, a comprehensive risk register includes:",
+              "options": [
+                "Risks, their likelihood, impact, and mitigation strategies",
+                "Only the identified risks",
+                "Budget and resource allocation",
+                "Project schedules and milestones"
+              ],
+              "correctIndex": 0,
+              "explanation": "A risk register documents risks along with their probability, impact, and the planned responses."
             }
           ]
         }
-        // You can add more chapters and questions as needed.
       ]
     };
 
@@ -213,11 +405,11 @@
     let timeRemaining = 0;  // Remaining time in seconds
     let examMode = "chapter"; // "chapter" or "combined"
     let currentChapter = "";
-    let combinedQuestions = []; // To store questions for Combined Mode
-    let currentQuestion = null; // The current question (with shuffled choices)
+    let combinedQuestions = []; // For Combined Mode questions
+    let currentQuestion = null; // To store the current question (with shuffled choices)
 
     /***** Utility Functions *****/
-    // Shuffle an array using Fisher-Yates algorithm.
+    // Shuffle an array using the Fisher-Yates algorithm.
     function shuffleArray(array) {
       let newArray = array.slice();
       for (let i = newArray.length - 1; i > 0; i--) {
@@ -232,7 +424,7 @@
       if (!question.hasOwnProperty("shuffledOptions")) {
         let options = question.options.slice();
         for (let i = options.length - 1; i > 0; i--) {
-          let j = Math.floor(Math.random() * (i + 1));
+          const j = Math.floor(Math.random() * (i + 1));
           [options[i], options[j]] = [options[j], options[i]];
         }
         question.shuffledOptions = options;
@@ -263,11 +455,11 @@
       }
     }
 
-    // Prepare the combined exam by aggregating and shuffling questions.
+    // Prepare the combined exam by aggregating and shuffling questions from all chapters.
     function prepareCombinedExam() {
       let allQuestions = [];
-      examData.chapters.forEach(ch => {
-        allQuestions = allQuestions.concat(ch.questions);
+      examData.chapters.forEach(chapter => {
+        allQuestions = allQuestions.concat(chapter.questions);
       });
       allQuestions = shuffleArray(allQuestions);
       const questionCount = parseInt(document.getElementById('questionCountSelect').value);
@@ -288,16 +480,15 @@
       const minutes = Math.floor((timeRemaining % 3600) / 60);
       const seconds = timeRemaining % 60;
       document.getElementById('timeRemaining').textContent =
-        (hours < 10 ? "0" : "") + hours + ":" +
-        (minutes < 10 ? "0" : "") + minutes + ":" +
-        (seconds < 10 ? "0" : "") + seconds;
+        (hours < 10 ? "0" + hours : hours) + ":" +
+        (minutes < 10 ? "0" + minutes : minutes) + ":" +
+        (seconds < 10 ? "0" + seconds : seconds);
     }
 
-    // End the exam when time runs out.
+    // End the exam when the timer runs out.
     function examTimeOver() {
       alert("Time's up! The exam will now end.");
-      document.getElementById('questionContainer').innerHTML =
-        "<p>Time's up! The exam is over.</p>";
+      document.getElementById('questionContainer').innerHTML = "<p>Time's up! The exam is over.</p>";
       document.getElementById('feedback').textContent = "";
       document.getElementById('nextButton').style.display = "none";
       clearInterval(timerInterval);
@@ -355,7 +546,7 @@
       q = shuffleChoices(q);
       currentQuestion = q;
 
-      let optionsHTML = q.shuffledOptions.map((option, i) => `
+      const optionsHTML = q.shuffledOptions.map((option, i) => `
           <li>
             <label>
               <input type="radio" name="answer" value="${i}"> ${option}
