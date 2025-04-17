@@ -68,13 +68,14 @@
     #question-container {
       margin-bottom: 20px;
     }
+    /* Reduced vertical spacing for options */
     #options label {
       display: block;
-      margin: 10px 0;
+      margin: 5px 0;
       cursor: pointer;
     }
     #options input[type="radio"] {
-      margin-right: 10px;
+      margin-right: 5px;
     }
     footer {
       display: flex;
@@ -164,25 +165,52 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Default hardcoded question bank (fallback)
+      // Hardcoded fallback question bank with explanations and PMBOK chapters.
       var defaultQuestions = [
         {
           "id": 1,
           "question": "What is the first process group in project management?",
           "options": ["Initiating", "Planning", "Executing", "Closing"],
-          "correct": "Initiating"
+          "correct": "Initiating",
+          "explanation": "The initiating process group officially starts the project and defines its objectives.",
+          "chapter": "Chapter 1: Project Initiation"
         },
         {
           "id": 2,
           "question": "Which document officially starts a project?",
           "options": ["Project Plan", "Business Case", "Project Charter", "Risk Register"],
-          "correct": "Project Charter"
+          "correct": "Project Charter",
+          "explanation": "The project charter provides formal consent and authorization to start the project.",
+          "chapter": "Chapter 2: Project Initiation"
         },
         {
           "id": 3,
           "question": "What is a common tool for project risk management?",
           "options": ["Gantt Chart", "Risk Breakdown Structure", "PERT Chart", "Critical Path Method"],
-          "correct": "Risk Breakdown Structure"
+          "correct": "Risk Breakdown Structure",
+          "explanation": "A Risk Breakdown Structure (RBS) helps in categorizing risks to address them systematically.",
+          "chapter": "Chapter 5: Risk Management"
+        },
+        {
+          "id": 4,
+          "question": "Which process group involves monitoring and controlling the project?",
+          "options": ["Initiating", "Planning", "Executing", "Monitoring and Controlling"],
+          "correct": "Monitoring and Controlling",
+          "explanation": "Monitoring and Controlling ensures that project objectives are met by tracking progress.",
+          "chapter": "Chapter 4: Integration Management"
+        },
+        {
+          "id": 5,
+          "question": "What is the main goal of the closing process group?",
+          "options": [
+            "Define project scope",
+            "Obtain project approval",
+            "Finalize all activities",
+            "Conduct project kickoff"
+          ],
+          "correct": "Finalize all activities",
+          "explanation": "The closing process group wraps up the project, ensuring all documentation is complete.",
+          "chapter": "Chapter 9: Project Closing"
         }
       ];
 
@@ -197,9 +225,7 @@
         duration: 600 // exam duration in seconds (10 minutes)
       };
 
-      var analyticsData = {
-        events: []
-      };
+      var analyticsData = { events: [] };
 
       function logEvent(event) {
         analyticsData.events.push({ timestamp: Date.now(), event: event });
@@ -258,7 +284,6 @@
           label.appendChild(radio);
           label.appendChild(document.createTextNode(option));
           optionsDiv.appendChild(label);
-          optionsDiv.appendChild(document.createElement('br'));
         });
         // Update flag button appearance
         if (examState.flagged[currentQuestion.id]) {
@@ -278,7 +303,7 @@
         logEvent("Exam finished");
       }
 
-      // Calculate score and display performance statistics.
+      // Calculate score, display performance statistics, and review details.
       function showResults() {
         var totalQuestions = examState.questions.length;
         var answeredCount = Object.keys(examState.answers).length;
@@ -296,14 +321,29 @@
           <p>Score: ${percentage}%</p>
           <p>Time Taken: ${examState.elapsedSeconds} seconds</p>
           <p>Total Events Logged: ${analyticsData.events.length}</p>
+          <hr>
+          <h3>Review</h3>
         `;
+        // Append a review for each question.
+        examState.questions.forEach((question, index) => {
+          var userAnswer = examState.answers[question.id] || "Not Answered";
+          resultsHTML += `
+            <div style="text-align:left; margin-bottom:10px;">
+              <strong>Question ${index + 1}:</strong> ${question.question}<br>
+              <em>Your answer:</em> ${userAnswer}<br>
+              <em>Correct answer:</em> ${question.correct}<br>
+              <em>Explanation:</em> ${question.explanation}<br>
+              <em>PMBOK Chapter:</em> ${question.chapter}<br>
+            </div>
+          `;
+        });
         document.getElementById('performance-tracking').innerHTML = resultsHTML;
       }
 
       // Event listeners for buttons.
       document.getElementById('loadBtn').addEventListener('click', () => {
-        // Hardcoded link to the external JSON question bank on GitHub.
-        var hostedJsonUrl = "https://raw.githubusercontent.com/shfqrkhn/ExQuizMe/refs/heads/main/QuestionBank_Test.json";
+        // Hardcoded link to an external JSON question bank on GitHub.
+        var hostedJsonUrl = "https://raw.githubusercontent.com/yourusername/yourrepo/main/questions.json";
         fetch(hostedJsonUrl)
           .then(response => {
             if (!response.ok) {
@@ -360,11 +400,11 @@
     if ('serviceWorker' in navigator) {
       const swCode = `
         const CACHE_NAME = 'pmp-exam-v1';
-        // Cache this file (the entire app)
+        // Cache the entire app file for offline support.
         const ASSETS_TO_CACHE = [
           '/',
           self.location.href
-          // Add additional assets (CSS, fonts, images) here if needed.
+          // You can add additional assets like CSS, fonts, images here.
         ];
 
         self.addEventListener('install', event => {
@@ -381,7 +421,8 @@
               Promise.all(
                 cacheNames.filter(cacheName => cacheName !== CACHE_NAME)
                           .map(cacheName => caches.delete(cacheName))
-              )).then(() => self.clients.claim())
+              )
+            ).then(() => self.clients.claim())
           );
         });
 
