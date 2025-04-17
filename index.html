@@ -72,12 +72,22 @@
         margin: 0.5rem;
       }
     }
-    /* Minimalist select box styling */
-    #chapterSelection label {
+    /* Control Panel styling */
+    #controls {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    #modeSelection label {
+      margin-right: 1rem;
+      font-weight: bold;
+    }
+    #chapterSelection label,
+    #combinedOptions label {
       margin-right: 0.5rem;
       font-weight: bold;
     }
-    #chapterSelect {
+    select {
       padding: 0.5rem;
       font-size: 1rem;
     }
@@ -94,13 +104,40 @@
   </header>
   <main>
     <div id="app">
-      <div id="chapterSelection">
-        <label for="chapterSelect">Select PMBOK Chapter:</label>
-        <select id="chapterSelect"></select>
+      <div id="controls">
+        <!-- Exam Mode Selection -->
+        <div id="modeSelection">
+          <label>
+            <input type="radio" name="examMode" value="chapter" checked>
+            Chapter Mode
+          </label>
+          <label>
+            <input type="radio" name="examMode" value="combined">
+            Combined Mode
+          </label>
+        </div>
+        <!-- Chapter Selection (for Chapter Mode) -->
+        <div id="chapterSelection">
+          <label for="chapterSelect">Select PMBOK Chapter:</label>
+          <select id="chapterSelect"></select>
+        </div>
+        <!-- Combined Options (for Combined Mode) -->
+        <div id="combinedOptions" style="display:none;">
+          <label for="questionCountSelect">Select number of questions:</label>
+          <select id="questionCountSelect">
+            <option value="20">20</option>
+            <option value="100">100</option>
+            <option value="200">200</option>
+          </select>
+        </div>
       </div>
+
+      <!-- Timer Display -->
       <div id="timerDisplay">
-        Time Remaining: <span id="timeRemaining">00:00</span>
+        Time Remaining: <span id="timeRemaining">00:00:00</span>
       </div>
+
+      <!-- Question & Feedback Area -->
       <div id="questionContainer"></div>
       <button id="nextButton" style="display:none;">Next Question</button>
       <div id="feedback" class="feedback"></div>
@@ -108,7 +145,7 @@
   </main>
 
   <script>
-    // Embedded exam data containing PMBOK chapters and questions.
+    /***** Embedded Exam Data *****/
     const examData = {
       "chapters": [
         {
@@ -165,111 +202,118 @@
             }
           ]
         }
+        // You can add more chapters and questions as needed.
       ]
     };
 
+    /***** Global Variables *****/
     let currentIndex = 0;
-    let currentChapter = '';
     let timerInterval;
-    let totalTime = 0;      // Total exam time in seconds for the selected chapter
+    let totalTime = 0;      // Total exam time in seconds
     let timeRemaining = 0;  // Remaining time in seconds
+    let examMode = "chapter"; // "chapter" or "combined"
+    let currentChapter = "";
+    let combinedQuestions = []; // To store questions for Combined Mode
+    let currentQuestion = null; // The current question (with shuffled choices)
 
-    // Populate the chapter dropdown using the embedded exam data.
+    /***** Utility Functions *****/
+    // Shuffle an array using Fisher-Yates algorithm.
+    function shuffleArray(array) {
+      let newArray = array.slice();
+      for (let i = newArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+      }
+      return newArray;
+    }
+
+    // Shuffle answer choices for a question and update the correct answer index.
+    function shuffleChoices(question) {
+      if (!question.hasOwnProperty("shuffledOptions")) {
+        let options = question.options.slice();
+        for (let i = options.length - 1; i > 0; i--) {
+          let j = Math.floor(Math.random() * (i + 1));
+          [options[i], options[j]] = [options[j], options[i]];
+        }
+        question.shuffledOptions = options;
+        const correctAnswer = question.options[question.correctIndex];
+        question.shuffledCorrectIndex = question.shuffledOptions.findIndex(opt => opt === correctAnswer);
+      }
+      return question;
+    }
+
+    /***** Exam Mode Initialization Functions *****/
+    // Populate the chapter selection dropdown.
     function populateChapters() {
       const chapterSelect = document.getElementById('chapterSelect');
-      if (examData && examData.chapters && examData.chapters.length > 0) {
+      chapterSelect.innerHTML = "";
+      if (examData?.chapters?.length) {
         examData.chapters.forEach(chapter => {
           const option = document.createElement('option');
           option.value = chapter.name;
           option.textContent = chapter.name;
           chapterSelect.appendChild(option);
         });
-        // Set default chapter selection and initialize the timer.
+        // Set default chapter.
         chapterSelect.value = examData.chapters[0].name;
         currentChapter = examData.chapters[0].name;
-        chapterSelect.addEventListener('change', e => {
-          currentChapter = e.target.value;
-          currentIndex = 0;
-          startTimer();   // (Re)start the timer for the new chapter selection.
-          showQuestion();
-        });
-        startTimer(); // Start timer for the default chapter.
-        showQuestion();
       } else {
         document.getElementById('questionContainer').innerHTML =
           '<p>No chapters found in the exam data.</p>';
       }
     }
 
-    // Display a single question from the selected chapter.
-    function showQuestion() {
-      const questionContainer = document.getElementById('questionContainer');
-      const chapter = examData.chapters.find(ch => ch.name === currentChapter);
-      if (!chapter || currentIndex >= chapter.questions.length) {
-        questionContainer.innerHTML = '<p>You have completed all questions in this chapter!</p>';
-        document.getElementById('nextButton').style.display = 'none';
-        if (timerInterval) {
-          clearInterval(timerInterval);
-        }
-        return;
+    // Prepare the combined exam by aggregating and shuffling questions.
+    function prepareCombinedExam() {
+      let allQuestions = [];
+      examData.chapters.forEach(ch => {
+        allQuestions = allQuestions.concat(ch.questions);
+      });
+      allQuestions = shuffleArray(allQuestions);
+      const questionCount = parseInt(document.getElementById('questionCountSelect').value);
+      if (allQuestions.length > questionCount) {
+        allQuestions = allQuestions.slice(0, questionCount);
       }
-      const q = chapter.questions[currentIndex];
-      questionContainer.innerHTML = `
-        <div class="question">
-          <p>${q.question}</p>
-          <ul class="questionOptions">
-            ${q.options.map((option, i) => `
-              <li>
-                <label>
-                  <input type="radio" name="answer" value="${i}"> ${option}
-                </label>
-              </li>
-            `).join('')}
-          </ul>
-          <button onclick="checkAnswer()">Submit Answer</button>
-        </div>
-      `;
-      document.getElementById('feedback').textContent = '';
-      document.getElementById('nextButton').style.display = 'none';
+      allQuestions.forEach(q => {
+        delete q.shuffledOptions;
+        delete q.shuffledCorrectIndex;
+      });
+      combinedQuestions = allQuestions;
     }
 
-    // Check the selected answer and provide instant feedback.
-    function checkAnswer() {
-      const selected = document.querySelector('input[name="answer"]:checked');
-      const feedbackDiv = document.getElementById('feedback');
-      if (!selected) {
-        feedbackDiv.textContent = 'Please select an answer.';
-        return;
-      }
-      const userAnswer = parseInt(selected.value, 10);
-      const chapter = examData.chapters.find(ch => ch.name === currentChapter);
-      const q = chapter.questions[currentIndex];
-
-      if (userAnswer === q.correctIndex) {
-        feedbackDiv.textContent = 'Correct! ' + (q.explanation || '');
-      } else {
-        feedbackDiv.textContent = 'Incorrect! ' + (q.explanation || '');
-      }
-
-      // Reveal the "Next Question" button after answer submission.
-      document.getElementById('nextButton').style.display = 'block';
+    /***** Timer Functions *****/
+    // Update the displayed timer in HH:MM:SS format.
+    function updateTimerDisplay() {
+      const hours = Math.floor(timeRemaining / 3600);
+      const minutes = Math.floor((timeRemaining % 3600) / 60);
+      const seconds = timeRemaining % 60;
+      document.getElementById('timeRemaining').textContent =
+        (hours < 10 ? "0" : "") + hours + ":" +
+        (minutes < 10 ? "0" : "") + minutes + ":" +
+        (seconds < 10 ? "0" : "") + seconds;
     }
 
-    // Advance to the next question.
-    document.getElementById('nextButton').addEventListener('click', () => {
-      currentIndex++;
-      showQuestion();
-    });
+    // End the exam when time runs out.
+    function examTimeOver() {
+      alert("Time's up! The exam will now end.");
+      document.getElementById('questionContainer').innerHTML =
+        "<p>Time's up! The exam is over.</p>";
+      document.getElementById('feedback').textContent = "";
+      document.getElementById('nextButton').style.display = "none";
+      clearInterval(timerInterval);
+    }
 
-    // Start or restart the exam timer based on the selected chapter's number of questions.
+    // Start or restart the exam timer.
     function startTimer() {
-      if (timerInterval) {
-        clearInterval(timerInterval);
+      if (timerInterval) clearInterval(timerInterval);
+      let numberOfQuestions = 0;
+      if (examMode === "chapter") {
+        const chapter = examData.chapters.find(ch => ch.name === currentChapter);
+        numberOfQuestions = chapter ? chapter.questions.length : 0;
+      } else if (examMode === "combined") {
+        numberOfQuestions = parseInt(document.getElementById('questionCountSelect').value);
       }
-      const chapter = examData.chapters.find(ch => ch.name === currentChapter);
-      if (!chapter) return;
-      // Calculate total exam time (in seconds): number of questions * 75.
-      totalTime = chapter.questions.length * 75;
+      totalTime = numberOfQuestions * 75;
       timeRemaining = totalTime;
       updateTimerDisplay();
 
@@ -286,24 +330,127 @@
       }, 1000);
     }
 
-    // Update the displayed timer in a mm:ss format.
-    function updateTimerDisplay() {
-      const minutes = Math.floor(timeRemaining / 60);
-      const seconds = timeRemaining % 60;
-      document.getElementById('timeRemaining').textContent =
-        (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+    /***** Question Display & Answer Checking *****/
+    function showQuestion() {
+      const questionContainer = document.getElementById('questionContainer');
+      let q;
+      if (examMode === "chapter") {
+        const chapter = examData.chapters.find(ch => ch.name === currentChapter);
+        if (!chapter || currentIndex >= chapter.questions.length) {
+          questionContainer.innerHTML = '<p>You have completed all questions in this chapter!</p>';
+          document.getElementById('nextButton').style.display = 'none';
+          clearInterval(timerInterval);
+          return;
+        }
+        q = chapter.questions[currentIndex];
+      } else if (examMode === "combined") {
+        if (!combinedQuestions || currentIndex >= combinedQuestions.length) {
+          questionContainer.innerHTML = '<p>You have completed all questions in this exam!</p>';
+          document.getElementById('nextButton').style.display = 'none';
+          clearInterval(timerInterval);
+          return;
+        }
+        q = combinedQuestions[currentIndex];
+      }
+      q = shuffleChoices(q);
+      currentQuestion = q;
+
+      let optionsHTML = q.shuffledOptions.map((option, i) => `
+          <li>
+            <label>
+              <input type="radio" name="answer" value="${i}"> ${option}
+            </label>
+          </li>`).join('');
+
+      questionContainer.innerHTML = `
+        <div class="question">
+          <p>${q.question}</p>
+          <ul class="questionOptions">
+            ${optionsHTML}
+          </ul>
+          <button onclick="checkAnswer()">Submit Answer</button>
+        </div>
+      `;
+      document.getElementById('feedback').textContent = '';
+      document.getElementById('nextButton').style.display = 'none';
     }
 
-    // End the exam when the timer runs out.
-    function examTimeOver() {
-      alert("Time's up! The exam will now end.");
-      document.getElementById('questionContainer').innerHTML = "<p>Time's up! The exam is over.</p>";
-      document.getElementById('feedback').textContent = "";
-      document.getElementById('nextButton').style.display = "none";
+    function checkAnswer() {
+      const selected = document.querySelector('input[name="answer"]:checked');
+      const feedbackDiv = document.getElementById('feedback');
+      if (!selected) {
+        feedbackDiv.textContent = 'Please select an answer.';
+        return;
+      }
+      const userAnswer = parseInt(selected.value, 10);
+      if (userAnswer === currentQuestion.shuffledCorrectIndex) {
+        feedbackDiv.textContent = 'Correct! ' + (currentQuestion.explanation || '');
+      } else {
+        feedbackDiv.textContent = 'Incorrect! ' + (currentQuestion.explanation || '');
+      }
+      document.getElementById('nextButton').style.display = 'block';
     }
 
-    // Initialize the exam simulation.
-    populateChapters();
+    // Advance to the next question.
+    document.getElementById('nextButton').addEventListener('click', () => {
+      currentIndex++;
+      showQuestion();
+    });
+
+    /***** Exam Mode & Control Handlers *****/
+    function setupModeSelection() {
+      const modeRadios = document.getElementsByName("examMode");
+      modeRadios.forEach(radio => {
+        radio.addEventListener('change', (e) => {
+          examMode = e.target.value;
+          currentIndex = 0;
+          if (examMode === "chapter") {
+            document.getElementById('chapterSelection').style.display = "block";
+            document.getElementById('combinedOptions').style.display = "none";
+            currentChapter = document.getElementById('chapterSelect').value;
+          } else {
+            document.getElementById('chapterSelection').style.display = "none";
+            document.getElementById('combinedOptions').style.display = "block";
+            prepareCombinedExam();
+          }
+          startTimer();
+          showQuestion();
+        });
+      });
+    }
+
+    function setupChapterSelection() {
+      document.getElementById('chapterSelect').addEventListener('change', e => {
+        currentChapter = e.target.value;
+        currentIndex = 0;
+        startTimer();
+        showQuestion();
+      });
+    }
+
+    function setupCombinedOptions() {
+      document.getElementById('questionCountSelect').addEventListener('change', e => {
+        currentIndex = 0;
+        prepareCombinedExam();
+        startTimer();
+        showQuestion();
+      });
+    }
+
+    /***** Initialization *****/
+    function initExam() {
+      populateChapters();
+      setupModeSelection();
+      setupChapterSelection();
+      setupCombinedOptions();
+      examMode = document.querySelector('input[name="examMode"]:checked').value;
+      currentChapter = document.getElementById('chapterSelect').value;
+      currentIndex = 0;
+      startTimer();
+      showQuestion();
+    }
+
+    initExam();
   </script>
 </body>
 </html>
