@@ -1,0 +1,234 @@
+{
+  "chapters": [
+    {
+      "name": "Chapter 1: Initiation",
+      "questions": [
+        {
+          "question": "What is the primary purpose of a Project Charter?",
+          "options": [
+            "Define detailed project requirements",
+            "Authorize the project and provide a high-level overview",
+            "Outline the project schedule in detail",
+            "Detail resource allocation"
+          ],
+          "correctIndex": 1,
+          "explanation": "The Project Charter authorizes the project and provides a high-level view."
+        },
+        {
+          "question": "What key document formally initiates a project?",
+          "options": [
+            "Project Charter",
+            "Project Management Plan",
+            "Risk Register",
+            "Work Breakdown Structure"
+          ],
+          "correctIndex": 0,
+          "explanation": "The Project Charter is the document that formally initiates a project."
+        },
+        {
+          "question": "Which stakeholder is primarily responsible for approving the project charter?",
+          "options": [
+            "Project Manager",
+            "Project Sponsor",
+            "Team Member",
+            "Customer"
+          ],
+          "correctIndex": 1,
+          "explanation": "The Project Sponsor generally approves the project charter."
+        },
+        {
+          "question": "What is usually included in a project charter?",
+          "options": [
+            "Detailed activity schedules",
+            "High-level project objectives and scope",
+            "Employee payroll details",
+            "Detailed risk analysis"
+          ],
+          "correctIndex": 1,
+          "explanation": "A project charter includes high-level objectives, scope, assumptions, and constraints."
+        },
+        {
+          "question": "Who is often responsible for drafting the project charter?",
+          "options": [
+            "Project Manager",
+            "Business Analyst",
+            "Project Sponsor",
+            "Quality Assurance Analyst"
+          ],
+          "correctIndex": 0,
+          "explanation": "The Project Manager is typically responsible for drafting the project charter with input from stakeholders."
+        },
+        {
+          "question": "What is a key benefit of having a project charter?",
+          "options": [
+            "Ensures detailed planning of every task",
+            "Provides a clear project vision and authorization",
+            "Reduces project costs immediately",
+            "Guarantees stakeholder satisfaction"
+          ],
+          "correctIndex": 1,
+          "explanation": "The charter sets a clear vision and officially authorizes the project."
+        },
+        {
+          "question": "Which of the following best describes a stakeholder?",
+          "options": [
+            "Only the project manager is a stakeholder",
+            "Individuals or organizations affected by the project",
+            "Contractors only",
+            "Shareholders exclusively"
+          ],
+          "correctIndex": 1,
+          "explanation": "Stakeholders include any individual or group affected by the project."
+        },
+        {
+          "question": "What does the initiation phase primarily aim to do?",
+          "options": [
+            "Plan detailed work schedules",
+            "Define and authorize a new project or phase",
+            "Execute project tasks",
+            "Close out completed projects"
+          ],
+          "correctIndex": 1,
+          "explanation": "Initiation is about defining and authorizing a project."
+        },
+        {
+          "question": "Which document is essential before moving to detailed planning?",
+          "options": [
+            "Project Charter",
+            "Communication Plan",
+            "Expense Sheet",
+            "Change Request"
+          ],
+          "correctIndex": 0,
+          "explanation": "The Project Charter is required before detailed planning can begin."
+        },
+        {
+          "question": "The initiation phase mainly focuses on:",
+          "options": [
+            "Establishing a detailed project timeline",
+            "Defining project objectives and securing authority",
+            "Allocating all resources",
+            "Developing risk management strategies"
+          ],
+          "correctIndex": 1,
+          "explanation": "It focuses on setting objectives and obtaining formal authorization."
+        }
+      ]
+    },
+    {
+      "name": "Chapter 2: Planning",
+      "questions": [
+        {
+          "question": "What is the primary objective of the project planning phase?",
+          "options": [
+            "Authorize the project",
+            "Develop a comprehensive project management plan",
+            "Execute project tasks",
+            "Close the project"
+          ],
+          "correctIndex": 1,
+          "explanation": "The planning phase centers on developing a detailed project management plan."
+        },
+        {
+          "question": "Which plan outlines the schedule, resources, and cost estimates?",
+          "options": [
+            "Project Charter",
+            "Project Management Plan",
+            "Risk Register",
+            "Quality Plan"
+          ],
+          "correctIndex": 1,
+          "explanation": "The Project Management Plan includes details on schedule, scope, resources, and costs."
+        },
+        {
+          "question": "What tool is commonly used to break down project work into manageable sections?",
+          "options": [
+            "Gantt Chart",
+            "Work Breakdown Structure (WBS)",
+            "Project Charter",
+            "Issue Log"
+          ],
+          "correctIndex": 1,
+          "explanation": "The WBS divides the project into smaller, manageable components."
+        },
+        {
+          "question": "Which process involves identifying and documenting project risks?",
+          "options": [
+            "Risk Management Planning",
+            "Quality Assurance",
+            "Scope Definition",
+            "Resource Allocation"
+          ],
+          "correctIndex": 0,
+          "explanation": "Risk management planning is about identifying and mitigating risks."
+        },
+        {
+          "question": "What is the purpose of a schedule baseline?",
+          "options": [
+            "Capture changes after project closure",
+            "Establish a reference for project schedule performance",
+            "Document project risks",
+            "Outline stakeholder expectations"
+          ],
+          "correctIndex": 1,
+          "explanation": "The schedule baseline provides a benchmark to track project progress."
+        },
+        {
+          "question": "Which document outlines the allocation of resources and responsibilities?",
+          "options": [
+            "Resource Management Plan",
+            "Communication Plan",
+            "Project Charter",
+            "Stakeholder Register"
+          ],
+          "correctIndex": 0,
+          "explanation": "The Resource Management Plan details resource assignments and roles."
+        },
+        {
+          "question": "A detailed budget developed during planning is known as:",
+          "options": [
+            "Project Charter",
+            "Cost Baseline",
+            "Risk Register",
+            "Quality Plan"
+          ],
+          "correctIndex": 1,
+          "explanation": "The Cost Baseline is the approved version of the project budget."
+        },
+        {
+          "question": "What is the purpose of a communication plan in project planning?",
+          "options": [
+            "To establish how project information will be shared",
+            "To assign roles and responsibilities",
+            "To develop the project scope",
+            "To schedule tasks"
+          ],
+          "correctIndex": 0,
+          "explanation": "It ensures that project information is distributed appropriately."
+        },
+        {
+          "question": "Which planning tool visually shows project tasks over time?",
+          "options": [
+            "Scatter Diagram",
+            "Gantt Chart",
+            "Pareto Chart",
+            "Fishbone Diagram"
+          ],
+          "correctIndex": 1,
+          "explanation": "A Gantt Chart displays project tasks along a timeline."
+        },
+        {
+          "question": "In project planning, a comprehensive risk register includes:",
+          "options": [
+            "Risks, their likelihood, impact, and mitigation strategies",
+            "Only the identified risks",
+            "Budget and resource allocations",
+            "Project schedules and milestones"
+          ],
+          "correctIndex": 0,
+          "explanation": "A risk register documents risks along with their probability, impact, and planned responses."
+        }
+      ]
+    }
+  ]
+}
