@@ -2,6 +2,8 @@
 
 A self-contained, single-file HTML exam simulator designed for realistic exam practice. This tool dynamically loads a JSON-based question bank from GitHub Pages (or any comparable static hosting service) and offers a variety of features intended to emulate real test-taking conditions.
 
+Online demo: https://shfqrkhn.github.io/ExQuizMe/
+
 ## Features
 
 - **Dynamic Question Bank Loading:**  
