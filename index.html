@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PMP Exam Prep</title>
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="/manifest.json">
     <style>
         /* Modern, Sleek, and Responsive CSS (as provided previously) */
         :root {
@@ -711,7 +711,7 @@
         // Load saved settings
         const savedShuffleQuestions = localStorage.getItem('shuffleQuestions');
         if (savedShuffleQuestions === 'true') {
-            shuffledQuestionsCheckbox.checked = true;
+            shuffleQuestionsCheckbox.checked = true;
             shuffledQuestions = true;
         }
         const savedShuffleOptions = localStorage.getItem('shuffleOptions');
@@ -727,7 +727,7 @@
 
         // PWA Service Worker Registration
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('service-worker.js')
+            navigator.serviceWorker.register('/service-worker.js')
                 .then(registration => {
                     console.log('Service Worker registered with scope:', registration.scope);
                 })
