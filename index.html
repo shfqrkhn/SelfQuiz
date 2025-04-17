@@ -4,263 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PMP Exam Prep</title>
-    <link rel="manifest" href="data:application/json;base64,ewogICJpY29ucyI6IFtdLAogICJuYW1lIjogIlBNUCBFeGFtIFByZXAiLAogICJzaG9ydF9uYW1lIjogIlBNUCBQcmVwIiwKICAic3RhcnRfdXJsIjogIi4iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNmOGY5ZmEiLAogICJ0aGVtZV9jb2xvciI6ICIjMDA3YmZmIgopfQ==">
     <style>
-        /* Modern, Sleek, and Responsive CSS (as provided previously) */
-        :root {
-            --primary-color: #007bff;
-            --secondary-color: #6c757d;
-            --light-bg: #f8f9fa;
-            --dark-bg: #343a40;
-            --text-primary: #212529;
-            --text-secondary: #6c757d;
-            --border-color: #dee2e6;
-            --correct-bg: #e6ffe6;
-            --incorrect-bg: #ffe6e6;
-            --review-bg: #fff3cd;
-        }
-
+        /* Basic CSS for functionality */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            background-color: var(--light-bg);
-            color: var(--text-primary);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-            box-sizing: border-box;
+            font-family: sans-serif;
+            margin: 20px;
         }
-
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .container {
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 95%;
-            max-width: 960px;
-            box-sizing: border-box;
-        }
-
         .controls {
-            display: grid;
-            grid-template-columns: auto auto auto;
-            gap: 15px;
-            margin-bottom: 30px;
-            align-items: center;
-        }
-
-        #category-select {
-            padding: 12px;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-            font-size: 1rem;
-            flex-grow: 1;
-        }
-
-        .timer {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .question-area {
-            margin-bottom: 30px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .question-number {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
             margin-bottom: 10px;
         }
-
-        .question {
-            font-size: 1.4rem;
+        .question-area {
             margin-bottom: 20px;
-            line-height: 1.6;
         }
-
         .options-list {
             list-style: none;
             padding: 0;
-            margin: 0;
         }
-
         .option-item {
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            margin-bottom: 12px;
-            padding: 15px;
+            border: 1px solid #ccc;
+            padding: 8px;
+            margin-bottom: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease, border-color 0.3s ease;
-            font-size: 1rem;
         }
-
-        .option-item:hover {
-            background-color: var(--light-bg);
-            border-color: var(--primary-color);
+        .selected {
+            background-color: lightblue;
         }
-
-        .option-item.selected {
-            background-color: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-
         .feedback-area {
-            margin-top: 30px;
-            padding: 20px;
-            border-radius: 6px;
-            font-size: 1rem;
-        }
-
-        .feedback-area.correct {
-            background-color: var(--correct-bg);
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-
-        .feedback-area.incorrect {
-            background-color: var(--incorrect-bg);
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-
-        .explanation {
             margin-top: 15px;
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        .reference {
-            font-style: italic;
-            color: #777;
-            font-size: 0.9rem;
-        }
-
-        button {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 6px;
-            background-color: var(--primary-color);
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            font-size: 1rem;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        button:disabled {
-            background-color: #cccccc;
-            color: #666666;
-            cursor: not-allowed;
-        }
-
-        .practice-controls {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-            justify-content: center;
-        }
-
-        .review-controls {
-            margin-top: 30px;
-            text-align: center;
-        }
-
-        .review-question {
-            margin-bottom: 30px;
-            padding: 20px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            background-color: var(--light-bg);
-        }
-
-        .review-question h3 {
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-        }
-
-        .review-options-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .review-option-item {
-            padding: 10px;
-            margin-bottom: 8px;
-            border-radius: 4px;
-            font-size: 0.95rem;
-        }
-
-        .review-option-item.correct-answer {
-            background-color: var(--correct-bg);
-            color: #155724;
-            font-weight: bold;
-        }
-
-        .review-option-item.wrong-answer {
-            background-color: var(--incorrect-bg);
-            color: #721c24;
-        }
-
-        .review-option-item.selected-answer {
-            font-weight: bold;
-            background-color: #f0f8ff; /* Light blue to indicate selection */
-        }
-
-        #final-score {
-            margin-top: 30px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .navigation-buttons {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-            justify-content: space-between;
-        }
-
-        .shuffle-options {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .container {
-                padding: 30px;
-            }
-            .controls {
-                grid-template-columns: auto auto;
-            }
-            .shuffle-options {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .controls {
-                grid-template-columns: auto;
-            }
         }
     </style>
 </head>
@@ -272,529 +42,123 @@
 
     <div class="container">
         <div class="controls">
-            <label for="category-select">Select Category:</label>
-            <select id="category-select">
-                <option value="">All Categories</option>
-            </select>
-            <div class="shuffle-options">
-                <label><input type="checkbox" id="shuffle-questions"> Shuffle Questions</label>
-                <label><input type="checkbox" id="shuffle-options"> Shuffle Options</label>
-            </div>
-            <span class="timer" id="timer">00:00</span>
+            <label><input type="checkbox" id="shuffle-questions"> Shuffle Questions</label>
         </div>
 
         <div class="question-area">
-            <p class="question-number" id="question-number"></p>
-            <p class="question" id="question-text"></p>
+            <p id="question-text"></p>
             <ul class="options-list" id="options-container"></ul>
-            <div class="navigation-buttons">
-                <button id="previous-button" disabled>Previous</button>
-                <button id="mark-review-button">Mark for Review</button>
-                <button id="next-button" disabled>Next</button>
-            </div>
         </div>
 
         <div class="feedback-area" id="feedback-container" style="display: none;">
             <p id="feedback-message"></p>
-            <p class="explanation" id="explanation-text"></p>
-            <p class="reference" id="reference-text"></p>
         </div>
 
-        <div id="review-section" style="display: none;">
-            <h2>Review</h2>
-            <div id="review-questions-container">
-                </div>
-            <button id="back-to-practice-button">Back to Practice</button>
-            <div id="final-score"></div>
-        </div>
-
-        <div class="practice-controls">
-            <button id="submit-button">Submit Answer</button>
-            <button id="finish-button" style="display: none;">Finish Exam</button>
-            <button id="review-button" style="display: none;">Review Answers</button>
-        </div>
+        <button id="submit-button">Submit Answer</button>
+        <button id="next-button" disabled>Next</button>
     </div>
 
     <script>
-        const categorySelect = document.getElementById('category-select');
-        const questionNumberDisplay = document.getElementById('question-number');
         const questionText = document.getElementById('question-text');
         const optionsContainer = document.getElementById('options-container');
         const feedbackContainer = document.getElementById('feedback-container');
         const feedbackMessage = document.getElementById('feedback-message');
-        const explanationText = document.getElementById('explanation-text');
-        const referenceText = document.getElementById('reference-text');
         const submitButton = document.getElementById('submit-button');
         const nextButton = document.getElementById('next-button');
-        const previousButton = document.getElementById('previous-button');
-        const finishButton = document.getElementById('finish-button');
-        const reviewButton = document.getElementById('review-button');
-        const markReviewButton = document.getElementById('mark-review-button');
-        const timerDisplay = document.getElementById('timer');
         const shuffleQuestionsCheckbox = document.getElementById('shuffle-questions');
-        const shuffleOptionsCheckbox = document.getElementById('shuffle-options');
-        const reviewSection = document.getElementById('review-section');
-        const reviewQuestionsContainer = document.getElementById('review-questions-container');
-        const backToPracticeButton = document.getElementById('back-to-practice-button');
-        const finalScoreDisplay = document.getElementById('final-score');
-        const practiceControls = document.querySelector('.practice-controls');
 
-        let allQuestions = [
-          {
-            "category": "Project Initiation",
-            "question": "Which of the following is the primary purpose of the Project Charter?",
-            "options": [
-              "To outline the detailed project schedule.",
-              "To formally authorize a project or a phase.",
-              "To define the project budget.",
-              "To identify all project risks."
-            ],
-            "correctAnswerIndex": 1,
-            "explanation": "The Project Charter formally authorizes the existence of a project and provides the project manager with the authority to apply organizational resources to project activities.",
-            "reference": "PMBOK 6th Edition, Section 4.1"
-          },
-          {
-            "category": "Project Planning",
-            "question": "A project manager is developing the project management plan. Which of the following is NOT an output of the Develop Project Management Plan process?",
-            "options": [
-              "Project Management Plan",
-              "Project Charter",
-              "Team Charter",
-              "Updates to the Project Documents"
-            ],
-            "correctAnswerIndex": 1,
-            "explanation": "The Project Charter is an output of the Develop Project Charter process, which occurs during Project Initiation.",
-            "reference": "PMBOK 6th Edition, Section 4.2"
-          },
-          {
-            "category": "Project Execution",
-            "question": "During project execution, a key stakeholder expresses concern about a deliverable that was already approved. What should the project manager do FIRST?",
-            "options": [
-              "Immediately rework the deliverable to satisfy the stakeholder.",
-              "Inform the sponsor about the stakeholder's concerns.",
-              "Review the stakeholder engagement plan and the change management plan.",
-              "Hold a meeting with the project team to discuss the issue."
-            ],
-            "correctAnswerIndex": 2,
-            "explanation": "The project manager should first consult the stakeholder engagement plan to understand the stakeholder's level of influence and interest, and the change management plan to follow the established process for handling such requests.",
-            "reference": "PMBOK 6th Edition, Section 4.3 & 13.2"
-          },
-          {
-            "category": "Project Monitoring and Controlling",
-            "question": "Earned Value (EV) is $100, Planned Value (PV) is $120, and Actual Cost (AC) is $90. What is the Cost Variance (CV)?",
-            "options": [
-              "$10",
-              "-$20",
-              "$30",
-              "-$30"
-            ],
-            "correctAnswerIndex": 0,
-            "explanation": "Cost Variance (CV) = Earned Value (EV) - Actual Cost (AC). In this case, CV = $100 - $90 = $10. A positive CV indicates that the project is under budget.",
-            "reference": "PMBOK 6th Edition, Section 7.4"
-          },
-          {
-            "category": "Project Closure",
-            "question": "Which of the following activities is typically performed during the Close Project or Phase process?",
-            "options": [
-              "Developing the project management plan.",
-              "Creating the work breakdown structure.",
-              "Finalizing all activities across all the Project Management Process Groups.",
-              "Monitoring and controlling the project work."
-            ],
-            "correctAnswerIndex": 2,
-            "explanation": "The Close Project or Phase process involves finalizing all activities across all the Project Management Process Groups to formally complete the project or phase.",
-            "reference": "PMBOK 6th Edition, Section 4.6"
-          }
-        ];
-        let currentQuestions = [];
         let currentQuestionIndex = 0;
-        let selectedAnswer = null;
-        let categorizedQuestions = {};
-        let currentCategory = '';
+        let questions = [
+            {
+                question: "Question 1",
+                options: ["A", "B", "C"],
+                correctAnswer: "A"
+            },
+            {
+                question: "Question 2",
+                options: ["X", "Y", "Z"],
+                correctAnswer: "Y"
+            }
+        ];
         let shuffledQuestions = false;
-        let shuffledOptions = false;
-        let timerInterval;
-        let examStartTime;
-        const EXAM_DURATION_MINUTES = 230;
-        let examEndTime;
-        let userAnswers = [];
-        let markedForReview = [];
+        let selectedAnswer = null;
 
-        const QUESTIONS_STORAGE_KEY = 'pmp_questions';
-        const USER_DATA_STORAGE_KEY = 'pmp_user_data';
-
-        // Function to format time (HH:MM:SS)
-        function formatTime(totalSeconds) {
-            const hours = Math.floor(totalSeconds / 3600).toString().padStart(2, '0');
-            const minutes = Math.floor((totalSeconds % 3600) / 60).toString().padStart(2, '0');
-            const seconds = (totalSeconds % 60).toString().padStart(2, '0');
-            return `${hours}:${minutes}:${seconds}`;
-        }
-
-        // Function to start the exam timer
-        function startExamTimer() {
-            examStartTime = examStartTime || Date.now();
-            examEndTime = examStartTime + EXAM_DURATION_MINUTES * 60 * 1000;
-            timerInterval = setInterval(() => {
-                const now = Date.now();
-                const timeLeft = Math.max(0, examEndTime - now);
-                const totalSecondsLeft = Math.floor(timeLeft / 1000);
-                timerDisplay.textContent = formatTime(totalSecondsLeft);
-                if (totalSecondsLeft <= 0) {
-                    stopTimer();
-                    finishPractice();
-                }
-            }, 1000);
-        }
-
-        // Function to stop the timer
-        function stopTimer() {
-            clearInterval(timerInterval);
-        }
-
-        // Function to categorize questions by PMBOK chapter
-        function categorizeQuestions() {
-            categorizedQuestions = {};
-            allQuestions.forEach(question => {
-                const category = question.category;
-                if (!categorizedQuestions[category]) {
-                    categorizedQuestions[category] = [];
-                }
-                categorizedQuestions[category].push(question);
-            });
-        }
-
-        // Function to populate the category dropdown
-        function populateCategoryDropdown() {
-            const categories = Object.keys(categorizedQuestions).sort();
-            categories.forEach(category => {
-                const option = document.createElement('option');
-                option.value = category;
-                option.textContent = category;
-                categorySelect.appendChild(option);
-            });
-        }
-
-        // Function to shuffle an array (Fisher-Yates algorithm)
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        }
-
-        // Function to load questions based on current category and shuffle state
-        function loadCurrentQuestions() {
-            currentQuestions = currentCategory
-                ? [...categorizedQuestions[currentCategory]]
-                : [...allQuestions];
-
-            if (shuffledQuestions) {
-                currentQuestions = shuffleArray(currentQuestions);
-            }
-        }
-
-        // Function to load a question
         function loadQuestion() {
-            loadCurrentQuestions();
-            if (currentQuestionIndex >= 0 && currentQuestionIndex < currentQuestions.length) {
-                const currentQuestion = currentQuestions[currentQuestionIndex];
-                questionNumberDisplay.textContent = `Question ${currentQuestionIndex + 1} of ${currentQuestions.length}`;
-                questionText.textContent = currentQuestion.question;
-                optionsContainer.innerHTML = '';
-
-                const options = shuffledOptions ? shuffleArray([...currentQuestion.options]) : [...currentQuestion.options];
-                options.forEach((option, index) => {
-                    const listItem = document.createElement('li');
-                    listItem.classList.add('option-item');
-                    listItem.textContent = option;
-                    listItem.dataset.index = currentQuestion.options.indexOf(option); // Store original index
-                    listItem.addEventListener('click', selectAnswer);
-
-                    if (userAnswers[currentQuestionIndex] !== undefined && parseInt(listItem.dataset.index) === userAnswers[currentQuestionIndex]) {
-                        listItem.classList.add('selected');
-                    }
-
-                    optionsContainer.appendChild(listItem);
-                });
-
-                feedbackContainer.style.display = 'none';
-                submitButton.disabled = false;
-                nextButton.disabled = currentQuestionIndex < currentQuestions.length - 1;
-                previousButton.disabled = currentQuestionIndex > 0;
-                finishButton.style.display = currentQuestionIndex === currentQuestions.length - 1 ? 'inline-block' : 'none';
-                reviewButton.style.display = currentQuestions.length > 0 && currentQuestionIndex === currentQuestions.length - 1 ? 'inline-block' : 'none';
-                selectedAnswer = userAnswers[currentQuestionIndex] !== undefined ? userAnswers[currentQuestionIndex] : null;
-                updateMarkReviewButton();
-            } else {
-                questionText.textContent = 'You have reached the end of the questions.';
-                optionsContainer.innerHTML = '';
-                feedbackContainer.style.display = 'none';
-                submitButton.disabled = true;
-                nextButton.disabled = true;
-                previousButton.disabled = currentQuestionIndex > 0;
-                finishButton.style.display = 'none';
-                reviewButton.style.display = currentQuestions.length > 0 ? 'inline-block' : 'none';
-            }
+            const currentQuestion = questions[currentQuestionIndex];
+            questionText.textContent = currentQuestion.question;
+            optionsContainer.innerHTML = '';
+            currentQuestion.options.forEach(option => {
+                const li = document.createElement('li');
+                li.classList.add('option-item');
+                li.textContent = option;
+                li.addEventListener('click', selectOption);
+                optionsContainer.appendChild(li);
+            });
+            feedbackContainer.style.display = 'none';
+            submitButton.disabled = false;
+            nextButton.disabled = true;
         }
 
-        // Function to handle option selection
-        function selectAnswer(event) {
-            const selectedOption = event.target;
+        function selectOption(event) {
             if (!submitButton.disabled) {
                 const previouslySelected = document.querySelector('.option-item.selected');
                 if (previouslySelected) {
                     previouslySelected.classList.remove('selected');
                 }
-                selectedOption.classList.add('selected');
-                selectedAnswer = parseInt(selectedOption.dataset.index);
+                event.target.classList.add('selected');
+                selectedAnswer = event.target.textContent;
             }
         }
 
-        // Function to check the answer and provide feedback
         function checkAnswer() {
-            if (selectedAnswer !== null) {
-                userAnswers[currentQuestionIndex] = selectedAnswer;
-                const currentQuestion = currentQuestions[currentQuestionIndex];
-                const isCorrect = selectedAnswer === currentQuestion.correctAnswerIndex;
-
+            if (selectedAnswer) {
+                const currentQuestion = questions[currentQuestionIndex];
                 feedbackContainer.style.display = 'block';
-                if (isCorrect) {
-                    feedbackContainer.className = 'feedback-area correct';
-                    feedbackMessage.textContent = 'Correct!';
+                if (selectedAnswer === currentQuestion.correctAnswer) {
+                    feedbackMessage.textContent = "Correct!";
                 } else {
-                    feedbackContainer.className = 'feedback-area incorrect';
-                    feedbackMessage.textContent = 'Incorrect.';
+                    feedbackMessage.textContent = "Incorrect.";
                 }
-
-                explanationText.textContent = currentQuestion.explanation;
-                referenceText.textContent = `PMBOK Section: ${currentQuestion.reference}`;
-
                 submitButton.disabled = true;
-
-                // Enable the Next button if not the last question
-                if (currentQuestionIndex < currentQuestions.length - 1) {
+                if (currentQuestionIndex < questions.length - 1) {
                     nextButton.disabled = false;
-                } else {
-                    nextButton.disabled = true; // Keep it disabled on the last question
-                    finishButton.style.display = 'inline-block';
-                    reviewButton.style.display = 'inline-block';
                 }
             } else {
-                alert('Please select an answer.');
+                alert("Please select an answer.");
             }
         }
 
-        // Function to move to the next question
         function nextQuestion() {
             currentQuestionIndex++;
-            loadQuestion();
-        }
-
-        // Function to move to the previous question
-        function previousQuestion() {
-            currentQuestionIndex--;
-            loadQuestion();
-        }
-
-        // Function to mark the current question for review
-        function markForReview() {
-            if (!markedForReview.includes(currentQuestionIndex)) {
-                markedForReview.push(currentQuestionIndex);
-                markReviewButton.classList.add('review-button-marked');
-                markReviewButton.textContent = 'Unmark for Review';
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+                selectedAnswer = null;
             } else {
-                markedForReview = markedForReview.filter(index => index !== currentQuestionIndex);
-                markReviewButton.classList.remove('review-button-marked');
-                markReviewButton.textContent = 'Mark for Review';
+                questionText.textContent = "Quiz Finished!";
+                optionsContainer.innerHTML = '';
+                feedbackContainer.style.display = 'none';
+                submitButton.style.display = 'none';
+                nextButton.style.display = 'none';
             }
         }
-
-        // Function to update the "Mark for Review" button text and style
-        function updateMarkReviewButton() {
-            if (markedForReview.includes(currentQuestionIndex)) {
-                markReviewButton.textContent = 'Unmark for Review';
-                markReviewButton.classList.add('review-button-marked');
-            } else {
-                markReviewButton.textContent = 'Mark for Review';
-                markReviewButton.classList.remove('review-button-marked');
-            }
-        }
-
-        // Function to finish the practice and show review options
-        function finishPractice() {
-            stopTimer();
-            practiceControls.style.display = 'none';
-            loadReview();
-            reviewSection.style.display = 'block';
-        }
-
-        // Function to load the review section
-        function loadReview() {
-            reviewQuestionsContainer.innerHTML = '';
-            let score = 0;
-            currentQuestions.forEach((question, index) => {
-                const reviewQuestionDiv = document.createElement('div');
-                reviewQuestionDiv.classList.add('review-question');
-                reviewQuestionDiv.innerHTML = `<h3>Question ${index + 1}: ${question.question}</h3>`;
-
-                const optionsList = document.createElement('ul');
-                optionsList.classList.add('review-options-list');
-
-                question.options.forEach((option, optionIndex) => {
-                    const listItem = document.createElement('li');
-                    listItem.classList.add('review-option-item');
-                    listItem.textContent = option;
-
-                    if (optionIndex === question.correctAnswerIndex) {
-                        listItem.classList.add('correct-answer');
-                    }
-                    if (userAnswers[index] !== undefined && userAnswers[index] === optionIndex) {
-                        listItem.classList.add('selected-answer');
-                        if (userAnswers[index] !== question.correctAnswerIndex) {
-                            listItem.classList.add('wrong-answer');
-                        }
-                    }
-
-                    optionsList.appendChild(listItem);
-                });
-
-                reviewQuestionDiv.appendChild(optionsList);
-                reviewQuestionsContainer.appendChild(reviewQuestionDiv);
-
-                if (userAnswers[index] === question.correctAnswerIndex) {
-                    score++;
-                }
-            });
-
-            const percentage = currentQuestions.length > 0 ? (score / currentQuestions.length) * 100 : 0;
-            finalScoreDisplay.textContent = `Your Score: ${score} out of ${currentQuestions.length} (${percentage.toFixed(2)}%)`;
-        }
-
-        // Function to go back to practice from the review section
-        function backToPractice() {
-            reviewSection.style.display = 'none';
-            practiceControls.style.display = 'flex';
-            loadQuestion();
-            startExamTimer();
-        }
-
-        // Event listeners
-        categorySelect.addEventListener('change', () => {
-            currentCategory = categorySelect.value;
-            currentQuestionIndex = 0;
-            loadQuestion();
-        });
 
         submitButton.addEventListener('click', checkAnswer);
         nextButton.addEventListener('click', nextQuestion);
-        previousButton.addEventListener('click', previousQuestion);
-        finishButton.addEventListener('click', finishPractice);
-        reviewButton.addEventListener('click', finishPractice);
-        markReviewButton.addEventListener('click', markForReview);
-        backToPracticeButton.addEventListener('click', backToPractice);
 
         shuffleQuestionsCheckbox.addEventListener('change', () => {
             shuffledQuestions = shuffleQuestionsCheckbox.checked;
-            localStorage.setItem('shuffleQuestions', shuffledQuestions);
+            if (shuffledQuestions) {
+                // Basic shuffle - you might want a more robust algorithm
+                questions.sort(() => Math.random() - 0.5);
+            } else {
+                // Reset to original order if you had one
+                // For this simple example, we won't implement a reset
+            }
             currentQuestionIndex = 0;
             loadQuestion();
         });
 
-        shuffleOptionsCheckbox.addEventListener('change', () => {
-            shuffledOptions = shuffleOptionsCheckbox.checked;
-            localStorage.setItem('shuffleOptions', shuffledOptions);
-            loadQuestion();
-        });
-
-        // Load saved settings
-        const savedShuffleQuestions = localStorage.getItem('shuffleQuestions');
-        if (savedShuffleQuestions === 'true') {
-            shuffledQuestionsCheckbox.checked = true;
-            shuffledQuestions = true;
-        }
-        const savedShuffleOptions = localStorage.getItem('shuffleOptions');
-        if (savedShuffleOptions === 'true') {
-            shuffleOptionsCheckbox.checked = true;
-            shuffledOptions = true;
-        }
-
-        categorizeQuestions();
-        populateCategoryDropdown();
         loadQuestion();
-        startExamTimer();
-
-        // PWA Service Worker Registration (Embedded)
-        if ('serviceWorker' in navigator) {
-            const serviceWorkerContent = `
-                const CACHE_NAME = 'pmp-prep-v3';
-                const urlsToCache = [
-                    './',
-                    'index.html'
-                ];
-
-                self.addEventListener('install', function(event) {
-                    event.waitUntil(
-                        caches.open(CACHE_NAME)
-                            .then(function(cache) {
-                                console.log('Opened cache');
-                                return cache.addAll(urlsToCache);
-                            })
-                    );
-                });
-
-                self.addEventListener('fetch', function(event) {
-                    event.respondWith(
-                        caches.match(event.request)
-                            .then(function(response) {
-                                if (response) {
-                                    return response;
-                                }
-                                return fetch(event.request).then(
-                                    function(response) {
-                                        if(!response || response.status !== 200 || response.type !== 'basic') {
-                                            return response;
-                                        }
-                                        var responseToCache = response.clone();
-                                        caches.open(CACHE_NAME)
-                                            .then(function(cache) {
-                                                cache.put(event.request, responseToCache);
-                                            });
-                                        return response;
-                                    }
-                                ).catch(function() {
-                                    return caches.match('index.html'); // Fallback to the main page if offline and no cache
-                                });
-                            })
-                    );
-                });
-
-                self.addEventListener('activate', function(event) {
-                    var cacheWhitelist = [CACHE_NAME];
-                    event.waitUntil(
-                        caches.keys().then(function(cacheNames) {
-                            return Promise.all(
-                                cacheNames.map(function(cacheName) {
-                                    if (cacheWhitelist.indexOf(cacheName) === -1) {
-                                        return caches.delete(cacheName);
-                                    }
-                                })
-                            );
-                        })
-                    );
-                });
-            `;
-            const swBlob = new Blob([serviceWorkerContent], { type: 'text/javascript' });
-            const swURL = URL.createObjectURL(swBlob);
-            navigator.serviceWorker.register(swURL)
-                .then(registration => {
-                    console.log('Service Worker registered with scope:', registration.scope);
-                })
-                .catch(error => {
-                    console.error('Service Worker registration failed:', error);
-                });
-        }
     </script>
 
     <noscript>Please enable JavaScript to use this application.</noscript>
