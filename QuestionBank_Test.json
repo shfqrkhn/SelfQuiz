@@ -1,37 +1,37 @@
 [
   {
-    "question": "What is the capital of France?",
-    "choices": ["Paris", "Madrid", "Rome", "Berlin"],
-    "correct": "Paris",
-    "explanation": "Paris is the capital city of France.",
-    "section": "Geography"
+    "id": 1,
+    "question": "What is the first process group in project management?",
+    "options": ["Initiating", "Planning", "Executing", "Closing"],
+    "correct": "Initiating"
   },
   {
-    "question": "What is 2 + 2?",
-    "choices": ["3", "4", "5", "22"],
-    "correct": "4",
-    "explanation": "2 + 2 equals 4.",
-    "section": "Mathematics"
+    "id": 2,
+    "question": "Which document officially starts a project?",
+    "options": ["Project Plan", "Business Case", "Project Charter", "Risk Register"],
+    "correct": "Project Charter"
   },
   {
-    "question": "Who wrote 'Hamlet'?",
-    "choices": ["Mark Twain", "Jane Austen", "William Shakespeare", "Charles Dickens"],
-    "correct": "William Shakespeare",
-    "explanation": "William Shakespeare is the playwright of 'Hamlet'.",
-    "section": "Literature"
+    "id": 3,
+    "question": "What is a common tool for project risk management?",
+    "options": ["Gantt Chart", "Risk Breakdown Structure", "PERT Chart", "Critical Path Method"],
+    "correct": "Risk Breakdown Structure"
   },
   {
-    "question": "What planet is known as the Red Planet?",
-    "choices": ["Earth", "Mars", "Venus", "Jupiter"],
-    "correct": "Mars",
-    "explanation": "Mars gets its nickname from its reddish appearance due to iron oxide on its surface.",
-    "section": "Science"
+    "id": 4,
+    "question": "Which process group involves monitoring and controlling the project?",
+    "options": ["Initiating", "Planning", "Executing", "Monitoring and Controlling"],
+    "correct": "Monitoring and Controlling"
   },
   {
-    "question": "Who was the first President of the United States?",
-    "choices": ["Abraham Lincoln", "George Washington", "Thomas Jefferson", "John Adams"],
-    "correct": "George Washington",
-    "explanation": "George Washington was elected as the first President of the United States.",
-    "section": "History"
+    "id": 5,
+    "question": "What is the main goal of the closing process group?",
+    "options": [
+      "Define project scope",
+      "Obtain project approval",
+      "Finalize all activities",
+      "Conduct project kickoff"
+    ],
+    "correct": "Finalize all activities"
   }
 ]
