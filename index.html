@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PMP Exam Prep</title>
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="data:application/json;base64,ewogICJpY29ucyI6IFtdLAogICJuYW1lIjogIlBNUCBFeGFtIFByZXAiLAogICJzaG9ydF9uYW1lIjogIlBNUCBQcmVwIiwKICAic3RhcnRfdXJsIjogIi4iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNmOGY5ZmEiLAogICJ0aGVtZV9jb2xvciI6ICIjMDA3YmZmIgopfQ==">
     <style>
         /* Modern, Sleek, and Responsive CSS (as provided previously) */
         :root {
@@ -711,7 +711,7 @@
         // Load saved settings
         const savedShuffleQuestions = localStorage.getItem('shuffleQuestions');
         if (savedShuffleQuestions === 'true') {
-            shuffleQuestionsCheckbox.checked = true;
+            shuffledQuestionsCheckbox.checked = true;
             shuffledQuestions = true;
         }
         const savedShuffleOptions = localStorage.getItem('shuffleOptions');
@@ -725,9 +725,69 @@
         loadQuestion();
         startExamTimer();
 
-        // PWA Service Worker Registration
+        // PWA Service Worker Registration (Embedded)
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/service-worker.js')
+            const serviceWorkerContent = `
+                const CACHE_NAME = 'pmp-prep-v3';
+                const urlsToCache = [
+                    './',
+                    'index.html'
+                ];
+
+                self.addEventListener('install', function(event) {
+                    event.waitUntil(
+                        caches.open(CACHE_NAME)
+                            .then(function(cache) {
+                                console.log('Opened cache');
+                                return cache.addAll(urlsToCache);
+                            })
+                    );
+                });
+
+                self.addEventListener('fetch', function(event) {
+                    event.respondWith(
+                        caches.match(event.request)
+                            .then(function(response) {
+                                if (response) {
+                                    return response;
+                                }
+                                return fetch(event.request).then(
+                                    function(response) {
+                                        if(!response || response.status !== 200 || response.type !== 'basic') {
+                                            return response;
+                                        }
+                                        var responseToCache = response.clone();
+                                        caches.open(CACHE_NAME)
+                                            .then(function(cache) {
+                                                cache.put(event.request, responseToCache);
+                                            });
+                                        return response;
+                                    }
+                                ).catch(function() {
+                                    return caches.match('index.html'); // Fallback to the main page if offline and no cache
+                                });
+                            })
+                    );
+                });
+
+                self.addEventListener('activate', function(event) {
+                    var cacheWhitelist = [CACHE_NAME];
+                    event.waitUntil(
+                        caches.keys().then(function(cacheNames) {
+                            return Promise.all(
+                                cacheNames.map(function(cacheName) {
+                                    if (cacheWhitelist.indexOf(cacheName) === -1) {
+                                        return caches.delete(cacheName);
+                                    }
+                                })
+                            );
+                        })
+                    );
+                });
+            `;
+            const swBlob = new Blob([serviceWorkerContent], { type: 'text/javascript' });
+            const swURL = URL.createObjectURL(swBlob);
+            navigator.serviceWorker.register(swURL)
                 .then(registration => {
                     console.log('Service Worker registered with scope:', registration.scope);
                 })
