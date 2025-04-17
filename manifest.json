@@ -1,8 +1,0 @@
-{
-  "name": "PMP Exam Prep",
-  "short_name": "PMP Prep",
-  "start_url": ".",
-  "display": "standalone",
-  "background_color": "#f8f9fa",
-  "theme_color": "#007bff"
-}
