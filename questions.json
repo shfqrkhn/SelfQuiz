@@ -1,264 +1,244 @@
 {
-  "chapters": [
+  "questionBank": [
     {
-      "name": "Chapter 1: Initiation",
-      "questions": [
-        {
-          "question": "What is the primary purpose of the project charter?",
-          "options": [
-            "Provide a high-level overview and authorize the project",
-            "Define detailed work breakdown structure",
-            "Manage risk throughout the project",
-            "Develop a detailed schedule"
-          ],
-          "correctIndex": 0,
-          "explanation": "The project charter formally authorizes the project and outlines high-level objectives.",
-          "chapterReference": "PMBOK Initiation"
-        },
-        {
-          "question": "Who is primarily responsible for approving the project charter?",
-          "options": [
-            "Project Manager",
-            "Project Sponsor",
-            "Business Analyst",
-            "Team Member"
-          ],
-          "correctIndex": 1,
-          "explanation": "The Project Sponsor typically approves the project charter.",
-          "chapterReference": "PMBOK Initiation"
-        },
-        {
-          "question": "What key information is typically included in a project charter?",
-          "options": [
-            "Detailed risk registers",
-            "High-level project goals, scope, and stakeholders",
-            "Daily work schedules",
-            "Technical specifications"
-          ],
-          "correctIndex": 1,
-          "explanation": "A project charter provides an overview including high-level goals, scope, and identification of key stakeholders.",
-          "chapterReference": "PMBOK Initiation"
-        },
-        {
-          "question": "Which document is used to formally initiate a project?",
-          "options": [
-            "Project Charter",
-            "Project Management Plan",
-            "Statement of Work",
-            "Risk Management Plan"
-          ],
-          "correctIndex": 0,
-          "explanation": "The Project Charter is the key document that formally initiates a project.",
-          "chapterReference": "PMBOK Initiation"
-        },
-        {
-          "question": "What benefit does a project charter provide?",
-          "options": [
-            "It allows the project manager to ignore scope creep",
-            "It establishes a clear vision and formal authorization to begin the project",
-            "It details every task that will be performed",
-            "It minimizes stakeholder involvement"
-          ],
-          "correctIndex": 1,
-          "explanation": "The project charter provides a clear vision and formal approval to start the project.",
-          "chapterReference": "PMBOK Initiation"
-        }
-      ]
+      "question": "According to the PMBOK® Guide – Seventh Edition, what are the two main components included in this edition?",
+      "options": [
+        "The Standard for Project Management and the Project Management Body of Knowledge",
+        "Project Management Principles and Knowledge Areas",
+        "Process Groups and Project Performance Domains",
+        "Agile Manifesto and Waterfall Methodology"
+      ],
+      "correctIndex": 0,
+      "explanation": "The Seventh Edition includes both **The Standard for Project Management** and the **PMBOK® Guide** [1, 2].",
+      "chapterReference": "PMBOK Introduction"
     },
     {
-      "name": "Chapter 2: Planning",
-      "questions": [
-        {
-          "question": "What is the primary objective of the planning phase?",
-          "options": [
-            "Define project scope, develop a management plan, and allocate resources",
-            "Execute the planned work",
-            "Close the project activities",
-            "Collect project deliverables"
-          ],
-          "correctIndex": 0,
-          "explanation": "The planning phase focuses on defining scope and creating detailed plans to guide the project.",
-          "chapterReference": "PMBOK Planning"
-        },
-        {
-          "question": "Which tool is used to visually represent the project schedule?",
-          "options": [
-            "Gantt Chart",
-            "RACI Chart",
-            "Brainstorming Diagram",
-            "SWOT Analysis"
-          ],
-          "correctIndex": 0,
-          "explanation": "A Gantt Chart displays tasks along a timeline and is widely used for scheduling.",
-          "chapterReference": "PMBOK Planning"
-        },
-        {
-          "question": "What is a critical element of a project management plan?",
-          "options": [
-            "Detailed employee contracts",
-            "Communication strategy, scope statement, schedule, and budget",
-            "Personal development plans",
-            "Manufacturer warranties"
-          ],
-          "correctIndex": 1,
-          "explanation": "The project management plan typically covers the strategy for communication, as well as scope, schedule, and cost details.",
-          "chapterReference": "PMBOK Planning"
-        },
-        {
-          "question": "Which document helps break down the project deliverables into smaller components?",
-          "options": [
-            "Work Breakdown Structure (WBS)",
-            "Risk Management Plan",
-            "Project Charter",
-            "Stakeholder Register"
-          ],
-          "correctIndex": 0,
-          "explanation": "The Work Breakdown Structure decomposes high-level deliverables into manageable work packages.",
-          "chapterReference": "PMBOK Planning"
-        },
-        {
-          "question": "Why is risk planning an important part of the planning phase?",
-          "options": [
-            "It identifies potential risks and outlines mitigation strategies",
-            "It guarantees that no risks will occur",
-            "It dismisses any potential impacts",
-            "It is only used for creating contingency budgets"
-          ],
-          "correctIndex": 0,
-          "explanation": "Risk planning helps prepare the team for potential challenges by identifying and mitigating risks.",
-          "chapterReference": "PMBOK Planning"
-        }
-      ]
+      "question": "How many project management principles are presented in the PMBOK® Guide – Seventh Edition?",
+      "options": [
+        "5",
+        "10",
+        "12",
+        "49"
+      ],
+      "correctIndex": 2,
+      "explanation": "This edition presents **12 principles of project management** [1, 2].",
+      "chapterReference": "PMBOK Project Management Principles"
     },
     {
-      "name": "Chapter 3: Execution",
-      "questions": [
-        {
-          "question": "During the execution phase, what is the primary focus?",
-          "options": [
-            "Authorizing the project",
-            "Coordinating people and resources to carry out the plan",
-            "Developing the project charter",
-            "Creating a risk register"
-          ],
-          "correctIndex": 1,
-          "explanation": "Execution focuses on implementing the plans by coordinating people and resources.",
-          "chapterReference": "PMBOK Execution"
-        },
-        {
-          "question": "Which role is primarily accountable for project execution?",
-          "options": [
-            "Project Sponsor",
-            "Project Manager",
-            "Business Analyst",
-            "Human Resources Manager"
-          ],
-          "correctIndex": 1,
-          "explanation": "The Project Manager is responsible for leading the execution and ensuring objectives are met.",
-          "chapterReference": "PMBOK Execution"
-        },
-        {
-          "question": "What tool is commonly used to track project progress during execution?",
-          "options": [
-            "Earned Value Management (EVM)",
-            "Project Charter",
-            "SWOT Analysis",
-            "Requirements Traceability Matrix"
-          ],
-          "correctIndex": 0,
-          "explanation": "Earned Value Management is an effective tool for monitoring progress and performance.",
-          "chapterReference": "PMBOK Execution"
-        },
-        {
-          "question": "How are changes managed during the execution phase?",
-          "options": [
-            "They are ignored",
-            "Through a formal change control process",
-            "They are implemented without review",
-            "Only minor changes are allowed"
-          ],
-          "correctIndex": 1,
-          "explanation": "A formal change control process ensures that any modifications are properly evaluated and approved.",
-          "chapterReference": "PMBOK Execution"
-        },
-        {
-          "question": "What is a key output of the execution phase?",
-          "options": [
-            "Status reports and deliverables",
-            "Work breakdown structure",
-            "Project charter",
-            "Lessons learned register"
-          ],
-          "correctIndex": 0,
-          "explanation": "Execution results in tangible deliverables along with ongoing performance reports.",
-          "chapterReference": "PMBOK Execution"
-        }
-      ]
+      "question": "What are the critical areas for effectively delivering project outcomes, as defined by the PMBOK® Guide – Seventh Edition?",
+      "options": [
+        "Knowledge Areas",
+        "Process Groups",
+        "Project Performance Domains",
+        "Technical Specifications"
+      ],
+      "correctIndex": 2,
+      "explanation": "The edition presents **eight project performance domains** that are critical for effectively delivering project outcomes [1, 2].",
+      "chapterReference": "PMBOK Project Performance Domains"
     },
     {
-      "name": "Chapter 4: Closing",
-      "questions": [
-        {
-          "question": "What is the main purpose of the closing phase?",
-          "options": [
-            "To initiate the project",
-            "To formally complete and close the project or phase",
-            "To develop detailed project plans",
-            "To register project risks"
-          ],
-          "correctIndex": 1,
-          "explanation": "The closing phase is focused on finalizing all activities and formally closing the project.",
-          "chapterReference": "PMBOK Closing"
-        },
-        {
-          "question": "Which document is created during the closing phase to capture lessons learned?",
-          "options": [
-            "Lessons Learned Register",
-            "Project Charter",
-            "Stakeholder Register",
-            "WBS Dictionary"
-          ],
-          "correctIndex": 0,
-          "explanation": "A Lessons Learned Register documents what went well and what could be improved for future projects.",
-          "chapterReference": "PMBOK Closing"
-        },
-        {
-          "question": "What is an important aspect of project closure?",
-          "options": [
-            "Ensuring that all deliverables are accepted by the customer",
-            "Increasing the project budget",
-            "Conducting daily stand-up meetings",
-            "Redesigning the project plan"
-          ],
-          "correctIndex": 0,
-          "explanation": "Securing customer acceptance of the final deliverables is a critical closing task.",
-          "chapterReference": "PMBOK Closing"
-        },
-        {
-          "question": "Which activity is typically performed during the closing phase?",
-          "options": [
-            "Resource allocation",
-            "Finalizing contractual agreements and releasing resources",
-            "Risk identification",
-            "Developing project schedules"
-          ],
-          "correctIndex": 1,
-          "explanation": "Closing includes finalizing contracts, settling accounts, and releasing project resources.",
-          "chapterReference": "PMBOK Closing"
-        },
-        {
-          "question": "Why is it important to document lessons learned at project closure?",
-          "options": [
-            "For legal accountability only",
-            "To improve future project performance and share knowledge",
-            "To justify increased budgets",
-            "To delay future projects"
-          ],
-          "correctIndex": 1,
-          "explanation": "Documenting lessons learned provides insight to enhance the efficiency of future projects.",
-          "chapterReference": "PMBOK Closing"
-        }
-      ]
+      "question": "The PMBOK® Guide – Seventh Edition reflects which range of development approaches?",
+      "options": [
+        "Strictly predictive approaches",
+        "Only agile and adaptive approaches",
+        "The full range of development approaches (predictive, traditional, adaptive, agile, hybrid, etc.)",
+        "Primarily waterfall and iterative approaches"
+      ],
+      "correctIndex": 2,
+      "explanation": "This edition **reflects the full range of development approaches** (predictive, traditional, adaptive, agile, hybrid, etc.) [1-3].",
+      "chapterReference": "PMBOK Introduction"
+    },
+    {
+      "question": "What is the focus of the Measurement Performance Domain?",
+      "options": [
+        "Identifying and engaging stakeholders",
+        "Managing and supporting the project team",
+        "Evaluating the degree to which project work meets identified metrics",
+        "Addressing uncertainty and risk"
+      ],
+      "correctIndex": 2,
+      "explanation": "The **Measurement Performance Domain evaluates the degree to which the work done in the Delivery Performance Domain is meeting the metrics identified in the Planning Performance Domain** [4].",
+      "chapterReference": "PMBOK Measurement Performance Domain"
+    },
+    {
+      "question": "What is a 'system for value delivery' according to The Standard for Project Management?",
+      "options": [
+        "A set of tools and techniques used in project management",
+        "A collection of strategic business activities aimed at building, sustaining, and/or advancing an organization",
+        "The process of creating project deliverables",
+        "A framework for managing project teams"
+      ],
+      "correctIndex": 1,
+      "explanation": "A **system for value delivery** is a collection of strategic business activities aimed at building, sustaining, and/or advancing an organization [5].",
+      "chapterReference": "The Standard for Project Management: A System for Value Delivery"
+    },
+    {
+      "question": "What is the primary difference between the project management principles and the project performance domains in the PMBOK® Guide – Seventh Edition?",
+      "options": [
+        "Principles define the 'what' and domains define the 'how'",
+        "Principles guide behavior, while performance domains present broad areas of focus",
+        "Domains are mandatory, while principles are optional guidelines",
+        "Principles are for predictive projects, and domains are for adaptive projects"
+      ],
+      "correctIndex": 1,
+      "explanation": "The **principles guide behavior**, while the **performance domains present broad areas of focus in which to demonstrate that behavior** [6].",
+      "chapterReference": "PMBOK Relationship of the PMBOK® Guide and The Standard for Project Management"
+    },
+    {
+      "question": "Which of the following is an example of an outcome, as defined in The Standard for Project Management?",
+      "options": [
+        "A project schedule",
+        "A software deliverable",
+        "Increased customer satisfaction resulting from the use of a new product",
+        "A risk management plan"
+      ],
+      "correctIndex": 2,
+      "explanation": "An **outcome** is an end result or consequence of a process or project, focusing on the benefits and value delivered, such as increased customer satisfaction [7, 8].",
+      "chapterReference": "The Standard for Project Management: Key Terms and Concepts"
+    },
+    {
+      "question": "What is the purpose of tailoring in the context of project management?",
+      "options": [
+        "To strictly adhere to all standard processes",
+        "To customize the development approach and processes to suit the specific project context",
+        "To minimize planning efforts",
+        "To use only agile methodologies"
+      ],
+      "correctIndex": 1,
+      "explanation": "**Tailoring** involves customizing the development approach and processes based on the specific needs of the project [2, 9-12].",
+      "chapterReference": "PMBOK Tailoring"
+    },
+    {
+      "question": "Which project performance domain involves working with individuals, groups, and organizations to maintain alignment and foster positive relationships?",
+      "options": [
+        "Team",
+        "Stakeholders",
+        "Planning",
+        "Delivery"
+      ],
+      "correctIndex": 1,
+      "explanation": "The **Stakeholder Performance Domain** entails working with stakeholders to maintain alignment and engaging with them to foster positive relationships and satisfaction [13].",
+      "chapterReference": "PMBOK Stakeholder Performance Domain"
+    },
+    {
+      "question": "What is the focus of the Team Performance Domain?",
+      "options": [
+        "Identifying and analyzing stakeholder needs",
+        "Managing the project budget and schedule",
+        "Building and sustaining a high-performing project team",
+        "Ensuring the quality of project deliverables"
+      ],
+      "correctIndex": 2,
+      "explanation": "The **Team Performance Domain** focuses on building and sustaining a high-performing project team [9, 14].",
+      "chapterReference": "PMBOK Team Performance Domain"
+    },
+    {
+      "question": "Which performance domain addresses the selection of the appropriate method to produce project deliverables?",
+      "options": [
+        "Project Work",
+        "Development Approach and Life Cycle",
+        "Delivery",
+        "Planning"
+      ],
+      "correctIndex": 1,
+      "explanation": "The **Development Approach and Life Cycle Performance Domain** concerns the methodologies and phases used to create project deliverables [9, 14, 15].",
+      "chapterReference": "PMBOK Development Approach and Life Cycle Performance Domain"
+    },
+    {
+      "question": "What is the purpose of the Planning Performance Domain?",
+      "options": [
+        "Overseeing the execution of project tasks",
+        "Establishing and maintaining an organized approach for the overall effort",
+        "Measuring project performance",
+        "Managing project risks"
+      ],
+      "correctIndex": 1,
+      "explanation": "The **Planning Performance Domain** is about establishing and maintaining an organized approach for the overall effort of the project [9, 16, 17].",
+      "chapterReference": "PMBOK Planning Performance Domain"
+    },
+    {
+      "question": "Which performance domain focuses on executing the planned work to deliver project outcomes?",
+      "options": [
+        "Delivery",
+        "Project Work",
+        "Measurement",
+        "Stakeholders"
+      ],
+      "correctIndex": 1,
+      "explanation": "The **Project Work Performance Domain** encompasses the processes and activities of executing the planned work [9, 18, 19].",
+      "chapterReference": "PMBOK Project Work Performance Domain"
+    },
+    {
+      "question": "What is the primary goal of the Delivery Performance Domain?",
+      "options": [
+        "Ensuring that the project team follows the project management plan",
+        "Producing the expected project deliverables that provide value",
+        "Monitoring and controlling project costs",
+        "Identifying and mitigating potential risks"
+      ],
+      "correctIndex": 1,
+      "explanation": "The **Delivery Performance Domain** addresses producing the expected project deliverables that provide value [9, 18, 20].",
+      "chapterReference": "PMBOK Delivery Performance Domain"
+    },
+    {
+      "question": "Which performance domain involves understanding and addressing issues, events, or paths that can affect the project?",
+      "options": [
+        "Quality",
+        "Uncertainty",
+        "Resources",
+        "Communications"
+      ],
+      "correctIndex": 1,
+      "explanation": "The **Uncertainty Performance Domain** involves being aware of and proactively addressing potential threats and opportunities [9, 16, 21].",
+      "chapterReference": "PMBOK Uncertainty Performance Domain"
+    },
+    {
+      "question": "What is the role of 'models, methods, and artifacts' in the PMBOK® Guide – Seventh Edition?",
+      "options": [
+        "They replace the project management principles and performance domains",
+        "They provide a section dedicated to tailoring development approaches",
+        "They expand the list of tools and techniques for applying the PMBOK® Guide",
+        "They are only relevant for predictive project management"
+      ],
+      "correctIndex": 2,
+      "explanation": "This edition expands the list of tools and techniques in a new section, **'Models, Methods, and Artifacts'**, to help users apply the PMBOK® Guide [2, 22].",
+      "chapterReference": "PMBOK Models, Methods, and Artifacts"
+    },
+    {
+      "question": "According to the feedback from PMI stakeholders, what was a key point emphasized regarding the PMBOK® Guide?",
+      "options": [
+        "Reducing the number of pages in the guide",
+        "Maintaining and enhancing the credibility and relevance of the PMBOK® Guide",
+        "Focusing solely on agile methodologies",
+        "Eliminating the discussion of predictive approaches"
+      ],
+      "correctIndex": 1,
+      "explanation": "Feedback collectively emphasized the need to **maintain and enhance the credibility and relevance of the PMBOK® Guide** [23].",
+      "chapterReference": "PMBOK Research and Development"
+    },
+    {
+      "question": "What is the connection between the PMBOK® Guide – Seventh Edition and PMIstandards+?",
+      "options": [
+        "PMIstandards+ replaces the PMBOK® Guide",
+        "The PMBOK® Guide is no longer updated; PMIstandards+ is the primary resource",
+        "The platform links to the PMBOK® Guide via the Models, Methods, and Artifacts section and further expands on that content",
+        "There is no relationship between the two"
+      ],
+      "correctIndex": 2,
+      "explanation": "The platform **links to the PMBOK® Guide via the Models, Methods, and Artifacts section while further expanding on that content** [2, 24-26].",
+      "chapterReference": "PMBOK Relationship to PMIstandards+"
+    },
+    {
+      "question": "What is the focus of the principle 'Focus on Value' in project management?",
+      "options": [
+        "Adhering strictly to the project budget",
+        "Delivering the project outputs regardless of their usefulness",
+        "Ensuring that the project delivers benefits and worth to stakeholders",
+        "Minimizing project risks at all costs"
+      ],
+      "correctIndex": 2,
+      "explanation": "The principle **'Focus on Value'** emphasizes ensuring that the project delivers benefits and worth to stakeholders [27, 28].",
+      "chapterReference": "The Standard for Project Management: Project Management Principles"
     }
   ]
 }
