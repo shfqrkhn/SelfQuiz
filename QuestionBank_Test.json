@@ -1,0 +1,37 @@
+{
+  "duration": 1800,
+  "questions": [
+    {
+      "question": "What is the capital of France?",
+      "choices": ["Paris", "Berlin", "Madrid", "Rome"],
+      "correctAnswer": "Paris",
+      "explanation": "Paris, famously known as the City of Lights, is the capital city of France.",
+      "category": "Geography",
+      "reference": "https://en.wikipedia.org/wiki/Paris"
+    },
+    {
+      "question": "Which element has the chemical symbol 'O'?",
+      "choices": ["Gold", "Oxygen", "Silver", "Carbon"],
+      "correctAnswer": "Oxygen",
+      "explanation": "The chemical symbol 'O' stands for Oxygen.",
+      "category": "Science",
+      "reference": "https://en.wikipedia.org/wiki/Oxygen"
+    },
+    {
+      "question": "Solve for x in the equation: 2x + 4 = 12.",
+      "choices": ["4", "5", "6", "8"],
+      "correctAnswer": "4",
+      "explanation": "Subtract 4 from both sides to get 2x = 8, then divide by 2 to solve for x, resulting in x = 4.",
+      "category": "Mathematics",
+      "reference": "https://www.khanacademy.org/math/algebra"
+    },
+    {
+      "question": "In which year did World War II end?",
+      "choices": ["1942", "1945", "1950", "1939"],
+      "correctAnswer": "1945",
+      "explanation": "World War II ended in the year 1945.",
+      "category": "History",
+      "reference": "https://en.wikipedia.org/wiki/World_War_II"
+    }
+  ]
+}
