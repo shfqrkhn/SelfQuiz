@@ -1,443 +1,809 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PMP Exam Simulator</title>
-  <meta name="theme-color" content="#0078d7" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <!-- Inline manifest using a data URL -->
-  <link rel="manifest" href='data:application/manifest+json,{"name":"PMP Exam Simulator","short_name":"PMP Exam","start_url":".","display":"standalone","background_color":"#ffffff","theme_color":"#0078d7","icons":[{"src":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAJ0lEQVR4nKVWOwqAIAwD73%2F08FAFhQEE6q8kolupRXdxrsUKBhz9KAwFvLE8xZQAAAD%2F%2F4FkqIA%2F9gFnzAAAAAElFTkSuQmCC","sizes":"192x192","type":"image/png"}]}' />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMP Exam Prep</title>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        /* Modern, Sleek, and Responsive CSS (as provided previously) */
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --light-bg: #f8f9fa;
+            --dark-bg: #343a40;
+            --text-primary: #212529;
+            --text-secondary: #6c757d;
+            --border-color: #dee2e6;
+            --correct-bg: #e6ffe6;
+            --incorrect-bg: #ffe6e6;
+            --review-bg: #fff3cd;
+        }
 
-  <style>
-    /* CSS Reset */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      color: #333;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    #app {
-      width: 100%;
-      max-width: 800px;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      min-height: 90vh;
-    }
-    header, footer {
-      background: #0078d7;
-      color: #fff;
-      padding: 10px;
-      text-align: center;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    #timer {
-      font-size: 1.2em;
-    }
-    #nav-controls button {
-      background: #005a9e;
-      color: #fff;
-      border: none;
-      padding: 8px 12px;
-      margin: 5px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    #nav-controls button:hover {
-      background: #004577;
-    }
-    main {
-      flex: 1;
-      padding: 20px;
-      overflow-y: auto;
-    }
-    #question-container {
-      margin-bottom: 20px;
-    }
-    /* Reduced vertical spacing for options */
-    #options label {
-      display: block;
-      margin: 5px 0;
-      cursor: pointer;
-    }
-    #options input[type="radio"] {
-      margin-right: 5px;
-    }
-    footer {
-      display: flex;
-      justify-content: center;
-    }
-    footer button {
-      background: #005a9e;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      margin: 5px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    footer button:hover {
-      background: #004577;
-    }
-    /* Setup and Results Screens */
-    #setup-screen, #results-screen {
-      padding: 20px;
-      text-align: center;
-    }
-    #setup-screen button, #results-screen button {
-      background: #0078d7;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      margin: 10px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    #setup-screen button:hover, #results-screen button:hover {
-      background: #005a9e;
-    }
-    .flagged {
-      background: #ff4081 !important;
-    }
-    /* Responsive adjustments */
-    @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-      }
-      #nav-controls button {
-        margin: 5px 0;
-        width: 100%;
-      }
-    }
-  </style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: var(--light-bg);
+            color: var(--text-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 95%;
+            max-width: 960px;
+            box-sizing: border-box;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            gap: 15px;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+
+        #category-select {
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            font-size: 1rem;
+            flex-grow: 1;
+        }
+
+        .timer {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .question-area {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .question-number {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .question {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .options-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .option-item {
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            margin-bottom: 12px;
+            padding: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .option-item:hover {
+            background-color: var(--light-bg);
+            border-color: var(--primary-color);
+        }
+
+        .option-item.selected {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .feedback-area {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .feedback-area.correct {
+            background-color: var(--correct-bg);
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .feedback-area.incorrect {
+            background-color: var(--incorrect-bg);
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .explanation {
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .reference {
+            font-style: italic;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button:disabled {
+            background-color: #cccccc;
+            color: #666666;
+            cursor: not-allowed;
+        }
+
+        .practice-controls {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+
+        .review-controls {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .review-question {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: var(--light-bg);
+        }
+
+        .review-question h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .review-options-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .review-option-item {
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+
+        .review-option-item.correct-answer {
+            background-color: var(--correct-bg);
+            color: #155724;
+            font-weight: bold;
+        }
+
+        .review-option-item.wrong-answer {
+            background-color: var(--incorrect-bg);
+            color: #721c24;
+        }
+
+        .review-option-item.selected-answer {
+            font-weight: bold;
+            background-color: #f0f8ff; /* Light blue to indicate selection */
+        }
+
+        #final-score {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: space-between;
+        }
+
+        .shuffle-options {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px;
+            }
+            .controls {
+                grid-template-columns: auto auto;
+            }
+            .shuffle-options {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .controls {
+                grid-template-columns: auto;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div id="app">
-    <!-- Setup Screen -->
-    <div id="setup-screen">
-      <h1>PMP Exam Simulator</h1>
-      <p>Click Start to begin your exam simulation.</p>
-      <button id="loadBtn">Start Exam</button>
-    </div>
+    <header>
+        <h1>PMP Exam Prep</h1>
+        <p>Simulated Exam</p>
+    </header>
 
-    <!-- Exam Screen -->
-    <div id="exam-screen" style="display: none; flex-direction: column;">
-      <header>
-        <div id="timer">Time Left: <span id="timerValue">00:00</span></div>
-        <div id="nav-controls">
-          <button id="prevBtn">Previous</button>
-          <button id="nextBtn">Next</button>
-          <button id="flagBtn">Flag</button>
-        </div>
-      </header>
-      <main>
-        <div id="question-container">
-          <div id="question">Question text...</div>
-          <div id="options"></div>
-        </div>
-      </main>
-      <footer>
-        <button id="finishBtn">Finish Exam</button>
-      </footer>
-    </div>
-
-    <!-- Results Screen -->
-    <div id="results-screen" style="display: none;">
-      <h2>Exam Results</h2>
-      <div id="performance-tracking"></div>
-      <button id="restartBtn">Restart</button>
-    </div>
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Hardcoded fallback question bank with explanations and PMBOK chapters.
-      var defaultQuestions = [
-        {
-          "id": 1,
-          "question": "What is the first process group in project management?",
-          "options": ["Initiating", "Planning", "Executing", "Closing"],
-          "correct": "Initiating",
-          "explanation": "The initiating process group officially starts the project and defines its objectives.",
-          "chapter": "Chapter 1: Project Initiation"
-        },
-        {
-          "id": 2,
-          "question": "Which document officially starts a project?",
-          "options": ["Project Plan", "Business Case", "Project Charter", "Risk Register"],
-          "correct": "Project Charter",
-          "explanation": "The project charter provides formal consent and authorization to start the project.",
-          "chapter": "Chapter 2: Project Initiation"
-        },
-        {
-          "id": 3,
-          "question": "What is a common tool for project risk management?",
-          "options": ["Gantt Chart", "Risk Breakdown Structure", "PERT Chart", "Critical Path Method"],
-          "correct": "Risk Breakdown Structure",
-          "explanation": "A Risk Breakdown Structure (RBS) helps in categorizing risks to address them systematically.",
-          "chapter": "Chapter 5: Risk Management"
-        },
-        {
-          "id": 4,
-          "question": "Which process group involves monitoring and controlling the project?",
-          "options": ["Initiating", "Planning", "Executing", "Monitoring and Controlling"],
-          "correct": "Monitoring and Controlling",
-          "explanation": "Monitoring and Controlling ensures that project objectives are met by tracking progress.",
-          "chapter": "Chapter 4: Integration Management"
-        },
-        {
-          "id": 5,
-          "question": "What is the main goal of the closing process group?",
-          "options": [
-            "Define project scope",
-            "Obtain project approval",
-            "Finalize all activities",
-            "Conduct project kickoff"
-          ],
-          "correct": "Finalize all activities",
-          "explanation": "The closing process group wraps up the project, ensuring all documentation is complete.",
-          "chapter": "Chapter 9: Project Closing"
-        }
-      ];
-
-      // Exam state and analytics
-      var examState = {
-        questions: [],
-        current: 0,
-        answers: {},
-        flagged: {},
-        startTime: null,
-        elapsedSeconds: 0,
-        duration: 600 // exam duration in seconds (10 minutes)
-      };
-
-      var analyticsData = { events: [] };
-
-      function logEvent(event) {
-        analyticsData.events.push({ timestamp: Date.now(), event: event });
-      }
-
-      // Start the exam session.
-      function startExam() {
-        document.getElementById('setup-screen').style.display = 'none';
-        document.getElementById('exam-screen').style.display = 'flex';
-        examState.startTime = Date.now();
-        startTimer();
-        displayQuestion();
-        logEvent("Exam started");
-      }
-
-      // Timer management – counts down from examState.duration.
-      var timerInterval;
-      function startTimer() {
-        timerInterval = setInterval(() => {
-          var now = Date.now();
-          examState.elapsedSeconds = Math.floor((now - examState.startTime) / 1000);
-          var remaining = examState.duration - examState.elapsedSeconds;
-          if (remaining <= 0) {
-            clearInterval(timerInterval);
-            finishExam();
-          }
-          var minutes = Math.floor(remaining / 60);
-          var seconds = remaining % 60;
-          document.getElementById('timerValue').textContent =
-            (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
-        }, 1000);
-      }
-
-      // Display the current question and its options.
-      function displayQuestion() {
-        var currentQuestion = examState.questions[examState.current];
-        document.getElementById('question').textContent = (examState.current + 1) + ". " + currentQuestion.question;
-        var optionsDiv = document.getElementById('options');
-        optionsDiv.innerHTML = "";
-        currentQuestion.options.forEach((option, index) => {
-          var optionId = "opt_" + index;
-          var label = document.createElement('label');
-          label.setAttribute("for", optionId);
-          var radio = document.createElement('input');
-          radio.type = "radio";
-          radio.name = "option";
-          radio.id = optionId;
-          radio.value = option;
-          if (examState.answers[currentQuestion.id] === option) {
-            radio.checked = true;
-          }
-          radio.addEventListener('change', () => {
-            examState.answers[currentQuestion.id] = option;
-            logEvent("Answered question " + currentQuestion.id + " with " + option);
-          });
-          label.appendChild(radio);
-          label.appendChild(document.createTextNode(option));
-          optionsDiv.appendChild(label);
-        });
-        // Update flag button appearance
-        if (examState.flagged[currentQuestion.id]) {
-          document.getElementById('flagBtn').classList.add("flagged");
-        } else {
-          document.getElementById('flagBtn').classList.remove("flagged");
-        }
-        logEvent("Displayed question " + currentQuestion.id);
-      }
-
-      // Finish the exam and show results.
-      function finishExam() {
-        clearInterval(timerInterval);
-        document.getElementById('exam-screen').style.display = 'none';
-        document.getElementById('results-screen').style.display = 'block';
-        showResults();
-        logEvent("Exam finished");
-      }
-
-      // Calculate score, display performance statistics, and review details.
-      function showResults() {
-        var totalQuestions = examState.questions.length;
-        var answeredCount = Object.keys(examState.answers).length;
-        var flaggedCount = Object.keys(examState.flagged).length;
-        // Count correct answers:
-        var correctAnswers = examState.questions.reduce((acc, question) => {
-          return acc + ((examState.answers[question.id] === question.correct) ? 1 : 0);
-        }, 0);
-        var percentage = Math.round((correctAnswers / totalQuestions) * 100);
-        var resultsHTML = `
-          <p>Total Questions: ${totalQuestions}</p>
-          <p>Answered Questions: ${answeredCount}</p>
-          <p>Flagged Questions: ${flaggedCount}</p>
-          <p>Correct Answers: ${correctAnswers}</p>
-          <p>Score: ${percentage}%</p>
-          <p>Time Taken: ${examState.elapsedSeconds} seconds</p>
-          <p>Total Events Logged: ${analyticsData.events.length}</p>
-          <hr>
-          <h3>Review</h3>
-        `;
-        // Append a review for each question.
-        examState.questions.forEach((question, index) => {
-          var userAnswer = examState.answers[question.id] || "Not Answered";
-          resultsHTML += `
-            <div style="text-align:left; margin-bottom:10px;">
-              <strong>Question ${index + 1}:</strong> ${question.question}<br>
-              <em>Your answer:</em> ${userAnswer}<br>
-              <em>Correct answer:</em> ${question.correct}<br>
-              <em>Explanation:</em> ${question.explanation}<br>
-              <em>PMBOK Chapter:</em> ${question.chapter}<br>
+    <div class="container">
+        <div class="controls">
+            <label for="category-select">Select Category:</label>
+            <select id="category-select">
+                <option value="">All Categories</option>
+            </select>
+            <div class="shuffle-options">
+                <label><input type="checkbox" id="shuffle-questions"> Shuffle Questions</label>
+                <label><input type="checkbox" id="shuffle-options"> Shuffle Options</label>
             </div>
-          `;
-        });
-        document.getElementById('performance-tracking').innerHTML = resultsHTML;
-      }
+            <span class="timer" id="timer">00:00</span>
+        </div>
 
-      // Event listeners for buttons.
-      document.getElementById('loadBtn').addEventListener('click', () => {
-        // Hardcoded link to an external JSON question bank on GitHub.
-        var hostedJsonUrl = "https://raw.githubusercontent.com/yourusername/yourrepo/main/questions.json";
-        fetch(hostedJsonUrl)
-          .then(response => {
-            if (!response.ok) {
-              throw new Error("Network response was not ok");
+        <div class="question-area">
+            <p class="question-number" id="question-number"></p>
+            <p class="question" id="question-text"></p>
+            <ul class="options-list" id="options-container"></ul>
+            <div class="navigation-buttons">
+                <button id="previous-button" disabled>Previous</button>
+                <button id="mark-review-button">Mark for Review</button>
+                <button id="next-button" disabled>Next</button>
+            </div>
+        </div>
+
+        <div class="feedback-area" id="feedback-container" style="display: none;">
+            <p id="feedback-message"></p>
+            <p class="explanation" id="explanation-text"></p>
+            <p class="reference" id="reference-text"></p>
+        </div>
+
+        <div id="review-section" style="display: none;">
+            <h2>Review</h2>
+            <div id="review-questions-container">
+                </div>
+            <button id="back-to-practice-button">Back to Practice</button>
+            <div id="final-score"></div>
+        </div>
+
+        <div class="practice-controls">
+            <button id="submit-button">Submit Answer</button>
+            <button id="finish-button" style="display: none;">Finish Exam</button>
+            <button id="review-button" style="display: none;">Review Answers</button>
+        </div>
+    </div>
+
+    <script>
+        const categorySelect = document.getElementById('category-select');
+        const questionNumberDisplay = document.getElementById('question-number');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const feedbackContainer = document.getElementById('feedback-container');
+        const feedbackMessage = document.getElementById('feedback-message');
+        const explanationText = document.getElementById('explanation-text');
+        const referenceText = document.getElementById('reference-text');
+        const submitButton = document.getElementById('submit-button');
+        const nextButton = document.getElementById('next-button');
+        const previousButton = document.getElementById('previous-button');
+        const finishButton = document.getElementById('finish-button');
+        const reviewButton = document.getElementById('review-button');
+        const markReviewButton = document.getElementById('mark-review-button');
+        const timerDisplay = document.getElementById('timer');
+        const shuffleQuestionsCheckbox = document.getElementById('shuffle-questions');
+        const shuffleOptionsCheckbox = document.getElementById('shuffle-options');
+        const reviewSection = document.getElementById('review-section');
+        const reviewQuestionsContainer = document.getElementById('review-questions-container');
+        const backToPracticeButton = document.getElementById('back-to-practice-button');
+        const finalScoreDisplay = document.getElementById('final-score');
+        const practiceControls = document.querySelector('.practice-controls');
+
+        let allQuestions = [];
+        let currentQuestions = [];
+        let currentQuestionIndex = 0;
+        let selectedAnswer = null;
+        let categorizedQuestions = {};
+        let currentCategory = '';
+        let shuffledQuestions = false;
+        let shuffledOptions = false;
+        let timerInterval;
+        let examStartTime;
+        const EXAM_DURATION_MINUTES = 230;
+        let examEndTime;
+        let userAnswers = [];
+        let markedForReview = [];
+
+        const QUESTIONS_STORAGE_KEY = 'pmp_questions';
+        const USER_DATA_STORAGE_KEY = 'pmp_user_data';
+
+        // Function to format time (HH:MM:SS)
+        function formatTime(totalSeconds) {
+            const hours = Math.floor(totalSeconds / 3600).toString().padStart(2, '0');
+            const minutes = Math.floor((totalSeconds % 3600) / 60).toString().padStart(2, '0');
+            const seconds = (totalSeconds % 60).toString().padStart(2, '0');
+            return `${hours}:${minutes}:${seconds}`;
+        }
+
+        // Function to start the exam timer
+        function startExamTimer() {
+            examStartTime = examStartTime || Date.now();
+            examEndTime = examStartTime + EXAM_DURATION_MINUTES * 60 * 1000;
+            timerInterval = setInterval(() => {
+                const now = Date.now();
+                const timeLeft = Math.max(0, examEndTime - now);
+                const totalSecondsLeft = Math.floor(timeLeft / 1000);
+                timerDisplay.textContent = formatTime(totalSecondsLeft);
+                if (totalSecondsLeft <= 0) {
+                    stopTimer();
+                    finishPractice();
+                }
+            }, 1000);
+        }
+
+        // Function to stop the timer
+        function stopTimer() {
+            clearInterval(timerInterval);
+        }
+
+        // Function to fetch questions from GitHub or local storage
+        async function fetchQuestions() {
+            const githubRawUrl = 'https://raw.githubusercontent.com/shfqrkhn/ExQuizMe/refs/heads/main/QuestionBank_Test.json'; // Replace with your actual URL
+
+            try {
+                const storedQuestions = localStorage.getItem(QUESTIONS_STORAGE_KEY);
+                if (storedQuestions) {
+                    allQuestions = JSON.parse(storedQuestions);
+                    categorizeQuestions();
+                    populateCategoryDropdown();
+                    loadQuestion();
+                    return;
+                }
+
+                const response = await fetch(githubRawUrl);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                allQuestions = data;
+                localStorage.setItem(QUESTIONS_STORAGE_KEY, JSON.stringify(allQuestions));
+                categorizeQuestions();
+                populateCategoryDropdown();
+                loadQuestion();
+            } catch (error) {
+                console.error('Failed to fetch or load questions:', error);
+                questionText.textContent = 'Failed to load questions. Please check the console.';
             }
-            return response.json();
-          })
-          .then(data => {
-            examState.questions = data;
-            startExam();
-          })
-          .catch(err => {
-            alert("Failed to load external question bank, using default questions.");
-            examState.questions = defaultQuestions;
-            startExam();
-          });
-      });
-
-      document.getElementById('nextBtn').addEventListener('click', () => {
-        if (examState.current < examState.questions.length - 1) {
-          examState.current++;
-          displayQuestion();
         }
-      });
 
-      document.getElementById('prevBtn').addEventListener('click', () => {
-        if (examState.current > 0) {
-          examState.current--;
-          displayQuestion();
+        // Function to categorize questions by PMBOK chapter
+        function categorizeQuestions() {
+            categorizedQuestions = {};
+            allQuestions.forEach(question => {
+                const category = question.category;
+                if (!categorizedQuestions[category]) {
+                    categorizedQuestions[category] = [];
+                }
+                categorizedQuestions[category].push(question);
+            });
         }
-      });
 
-      document.getElementById('flagBtn').addEventListener('click', () => {
-        var currentQuestion = examState.questions[examState.current];
-        if (examState.flagged[currentQuestion.id]) {
-          delete examState.flagged[currentQuestion.id];
-        } else {
-          examState.flagged[currentQuestion.id] = true;
+        // Function to populate the category dropdown
+        function populateCategoryDropdown() {
+            const categories = Object.keys(categorizedQuestions).sort();
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = category;
+                categorySelect.appendChild(option);
+            });
         }
-        displayQuestion();
-        logEvent("Flag toggled for question " + currentQuestion.id);
-      });
 
-      document.getElementById('finishBtn').addEventListener('click', finishExam);
+        // Function to shuffle an array (Fisher-Yates algorithm)
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
 
-      document.getElementById('restartBtn').addEventListener('click', () => {
-        location.reload();
-      });
-    });
-  </script>
+        // Function to load questions based on current category and shuffle state
+        function loadCurrentQuestions() {
+            currentQuestions = currentCategory
+                ? [...categorizedQuestions[currentCategory]]
+                : [...allQuestions];
 
-  <!-- Expanded Service Worker registration with asset caching -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      const swCode = `
-        const CACHE_NAME = 'pmp-exam-v1';
-        // Cache the entire app file for offline support.
-        const ASSETS_TO_CACHE = [
-          '/',
-          self.location.href
-          // You can add additional assets like CSS, fonts, images here.
-        ];
+            if (shuffledQuestions) {
+                currentQuestions = shuffleArray(currentQuestions);
+            }
+        }
 
-        self.addEventListener('install', event => {
-          event.waitUntil(
-            caches.open(CACHE_NAME)
-              .then(cache => cache.addAll(ASSETS_TO_CACHE))
-              .then(() => self.skipWaiting())
-          );
+        // Function to load a question
+        function loadQuestion() {
+            loadCurrentQuestions();
+            if (currentQuestionIndex >= 0 && currentQuestionIndex < currentQuestions.length) {
+                const currentQuestion = currentQuestions[currentQuestionIndex];
+                questionNumberDisplay.textContent = `Question ${currentQuestionIndex + 1} of ${currentQuestions.length}`;
+                questionText.textContent = currentQuestion.question;
+                optionsContainer.innerHTML = '';
+
+                const options = shuffledOptions ? shuffleArray([...currentQuestion.options]) : [...currentQuestion.options];
+                options.forEach((option, index) => {
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('option-item');
+                    listItem.textContent = option;
+                    listItem.dataset.index = currentQuestion.options.indexOf(option); // Store original index
+                    listItem.addEventListener('click', selectAnswer);
+
+                    if (userAnswers[currentQuestionIndex] !== undefined && parseInt(listItem.dataset.index) === userAnswers[currentQuestionIndex]) {
+                        listItem.classList.add('selected');
+                    }
+
+                    optionsContainer.appendChild(listItem);
+                });
+
+                feedbackContainer.style.display = 'none';
+                submitButton.disabled = false;
+                nextButton.disabled = currentQuestionIndex < currentQuestions.length - 1;
+                previousButton.disabled = currentQuestionIndex > 0;
+                finishButton.style.display = currentQuestionIndex === currentQuestions.length - 1 ? 'inline-block' : 'none';
+                reviewButton.style.display = currentQuestions.length > 0 && currentQuestionIndex === currentQuestions.length - 1 ? 'inline-block' : 'none';
+                selectedAnswer = userAnswers[currentQuestionIndex] !== undefined ? userAnswers[currentQuestionIndex] : null;
+                updateMarkReviewButton();
+            } else {
+                questionText.textContent = 'You have reached the end of the questions.';
+                optionsContainer.innerHTML = '';
+                feedbackContainer.style.display = 'none';
+                submitButton.disabled = true;
+                nextButton.disabled = true;
+                previousButton.disabled = currentQuestionIndex > 0;
+                finishButton.style.display = 'none';
+                reviewButton.style.display = currentQuestions.length > 0 ? 'inline-block' : 'none';
+            }
+        }
+
+        // Function to handle option selection
+        function selectAnswer(event) {
+            const selectedOption = event.target;
+            if (!submitButton.disabled) {
+                const previouslySelected = document.querySelector('.option-item.selected');
+                if (previouslySelected) {
+                    previouslySelected.classList.remove('selected');
+                }
+                selectedOption.classList.add('selected');
+                selectedAnswer = parseInt(selectedOption.dataset.index);
+            }
+        }
+
+        // Function to check the answer and provide feedback
+        function checkAnswer() {
+            if (selectedAnswer !== null) {
+                userAnswers[currentQuestionIndex] = selectedAnswer;
+                const currentQuestion = currentQuestions[currentQuestionIndex];
+                const isCorrect = selectedAnswer === currentQuestion.correctAnswerIndex;
+
+                feedbackContainer.style.display = 'block';
+                if (isCorrect) {
+                    feedbackContainer.className = 'feedback-area correct';
+                    feedbackMessage.textContent = 'Correct!';
+                } else {
+                    feedbackContainer.className = 'feedback-area incorrect';
+                    feedbackMessage.textContent = 'Incorrect.';
+                }
+
+                explanationText.textContent = currentQuestion.explanation;
+                referenceText.textContent = `PMBOK Section: ${currentQuestion.reference}`;
+
+                submitButton.disabled = true;
+                nextButton.disabled = currentQuestionIndex < currentQuestions.length - 1;
+                finishButton.style.display = currentQuestionIndex === currentQuestions.length - 1 ? 'inline-block' : 'none';
+                reviewButton.style.display = currentQuestions.length > 0 && currentQuestionIndex === currentQuestions.length - 1 ? 'inline-block' : 'none';
+            } else {
+                alert('Please select an answer.');
+            }
+        }
+
+        // Function to move to the next question
+        function nextQuestion() {
+            currentQuestionIndex++;
+            loadQuestion();
+        }
+
+        // Function to move to the previous question
+        function previousQuestion() {
+            currentQuestionIndex--;
+            loadQuestion();
+        }
+
+        // Function to mark the current question for review
+        function markForReview() {
+            if (!markedForReview.includes(currentQuestionIndex)) {
+                markedForReview.push(currentQuestionIndex);
+                markReviewButton.classList.add('review-button-marked');
+                markReviewButton.textContent = 'Unmark for Review';
+            } else {
+                markedForReview = markedForReview.filter(index => index !== currentQuestionIndex);
+                markReviewButton.classList.remove('review-button-marked');
+                markReviewButton.textContent = 'Mark for Review';
+            }
+        }
+
+        // Function to update the "Mark for Review" button text and style
+        function updateMarkReviewButton() {
+            if (markedForReview.includes(currentQuestionIndex)) {
+                markReviewButton.textContent = 'Unmark for Review';
+                markReviewButton.classList.add('review-button-marked');
+            } else {
+                markReviewButton.textContent = 'Mark for Review';
+                markReviewButton.classList.remove('review-button-marked');
+            }
+        }
+
+        // Function to finish the practice and show review options
+        function finishPractice() {
+            stopTimer();
+            practiceControls.style.display = 'none';
+            loadReview();
+            reviewSection.style.display = 'block';
+        }
+
+        // Function to load the review section
+        function loadReview() {
+            reviewQuestionsContainer.innerHTML = '';
+            let score = 0;
+            currentQuestions.forEach((question, index) => {
+                const reviewQuestionDiv = document.createElement('div');
+                reviewQuestionDiv.classList.add('review-question');
+                reviewQuestionDiv.innerHTML = `<h3>Question ${index + 1}: ${question.question}</h3>`;
+
+                const optionsList = document.createElement('ul');
+                optionsList.classList.add('review-options-list');
+
+                question.options.forEach((option, optionIndex) => {
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('review-option-item');
+                    listItem.textContent = option;
+
+                    if (optionIndex === question.correctAnswerIndex) {
+                        listItem.classList.add('correct-answer');
+                    }
+                    if (userAnswers[index] !== undefined && userAnswers[index] === optionIndex) {
+                        listItem.classList.add('selected-answer');
+                        if (userAnswers[index] !== question.correctAnswerIndex) {
+                            listItem.classList.add('wrong-answer');
+                        }
+                    }
+
+                    optionsList.appendChild(listItem);
+                });
+
+                reviewQuestionDiv.appendChild(optionsList);
+                reviewQuestionsContainer.appendChild(reviewQuestionDiv);
+
+                if (userAnswers[index] === question.correctAnswerIndex) {
+                    score++;
+                }
+            });
+
+            const percentage = currentQuestions.length > 0 ? (score / currentQuestions.length) * 100 : 0;
+            finalScoreDisplay.textContent = `Your Score: ${score} out of ${currentQuestions.length} (${percentage.toFixed(2)}%)`;
+        }
+
+        // Function to go back to practice from the review section
+        function backToPractice() {
+            reviewSection.style.display = 'none';
+            practiceControls.style.display = 'flex';
+            loadQuestion();
+            startExamTimer();
+        }
+
+        // Event listeners
+        categorySelect.addEventListener('change', () => {
+            currentCategory = categorySelect.value;
+            currentQuestionIndex = 0;
+            loadQuestion();
         });
 
-        self.addEventListener('activate', event => {
-          event.waitUntil(
-            caches.keys().then(cacheNames =>
-              Promise.all(
-                cacheNames.filter(cacheName => cacheName !== CACHE_NAME)
-                          .map(cacheName => caches.delete(cacheName))
-              )
-            ).then(() => self.clients.claim())
-          );
+        submitButton.addEventListener('click', checkAnswer);
+        nextButton.addEventListener('click', nextQuestion);
+        previousButton.addEventListener('click', previousQuestion);
+        finishButton.addEventListener('click', finishPractice);
+        reviewButton.addEventListener('click', finishPractice);
+        markReviewButton.addEventListener('click', markForReview);
+        backToPracticeButton.addEventListener('click', backToPractice);
+
+        shuffleQuestionsCheckbox.addEventListener('change', () => {
+            shuffledQuestions = shuffleQuestionsCheckbox.checked;
+            localStorage.setItem('shuffleQuestions', shuffledQuestions);
+            currentQuestionIndex = 0;
+            loadQuestion();
         });
 
-        self.addEventListener('fetch', event => {
-          event.respondWith(
-            caches.match(event.request)
-              .then(cachedResponse => cachedResponse || fetch(event.request))
-              .catch(() => new Response('Offline mode', { headers: { "Content-Type": "text/plain" } }))
-          );
+        shuffleOptionsCheckbox.addEventListener('change', () => {
+            shuffledOptions = shuffleOptionsCheckbox.checked;
+            localStorage.setItem('shuffleOptions', shuffledOptions);
+            loadQuestion();
         });
-      `;
-      const blob = new Blob([swCode], { type: 'text/javascript' });
-      const swUrl = URL.createObjectURL(blob);
-      navigator.serviceWorker.register(swUrl);
-    }
-  </script>
+
+        // Load saved settings
+        const savedShuffleQuestions = localStorage.getItem('shuffleQuestions');
+        if (savedShuffleQuestions === 'true') {
+            shuffledQuestionsCheckbox.checked = true;
+            shuffledQuestions = true;
+        }
+        const savedShuffleOptions = localStorage.getItem('shuffleOptions');
+        if (savedShuffleOptions === 'true') {
+            shuffleOptionsCheckbox.checked = true;
+            shuffledOptions = true;
+        }
+
+        // Initial load
+        fetchQuestions().then(() => {
+            startExamTimer();
+        });
+
+        // PWA Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(registration => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch(error => {
+                    console.error('Service Worker registration failed:', error);
+                });
+        }
+    </script>
+
+    <script type="application/json" id="manifest-data">
+{
+  "name": "PMP Exam Prep",
+  "short_name": "PMP Prep",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f8f9fa",
+  "theme_color": "#007bff"
+  // "icons": [ // Removed icons
+  //   {
+  //     "src": "icon-192x192.png",
+  //     "sizes": "192x192",
+  //     "type": "image/png"
+  //   },
+  //   {
+  //     "src": "icon-512x512.png",
+  //     "sizes": "512x512",
+  //     "type": "image/png"
+  //   }
+  // ]
+}
+    </script>
+
+    <script>
+        const manifestLink = document.querySelector('link[rel="manifest"]');
+        const manifestDataScript = document.getElementById('manifest-data');
+        if (manifestLink && manifestDataScript) {
+            const manifestURL = URL.createObjectURL(new Blob([manifestDataScript.textContent], { type: 'application/json' }));
+            manifestLink.href = manifestURL;
+        }
+    </script>
+
+    <script>
+        const serviceWorkerContent = `
+const CACHE_NAME = 'pmp-prep-v3';
+const urlsToCache = [
+    './',
+    'index.html',
+    'questions.json'
+    // 'icon-192x192.png', // Removed icons
+    // 'icon-512x512.png'
+];
+
+self.addEventListener('install', function(event) {
+    event.waitUntil(
+        caches.open(CACHE_NAME)
+            .then(function(cache) {
+                console.log('Opened cache');
+                return cache.addAll(urlsToCache);
+            })
+    );
+});
+
+self.addEventListener('fetch', function(event) {
+    event.respondWith(
+        caches.match(event.request)
+            .then(function(response) {
+                if (response) {
+                    return response;
+                }
+                return fetch(event.request).then(
+                    function(response) {
+                        if(!response || response.status !== 200 || response.type !== 'basic') {
+                            return response;
+                        }
+                        var responseToCache = response.clone();
+                        caches.open(CACHE_NAME)
+                            .then(function(cache) {
+                                cache.put(event.request, responseToCache);
+                            });
+                        return response;
+                    }
+                ).catch(function() {
+                    return caches.match('index.html'); // Fallback to the main page if offline and no cache
+                });
+            })
+    );
+});
+
+self.addEventListener('activate', function(event) {
+    var cacheWhitelist = [CACHE_NAME];
+    event.waitUntil(
+        caches.keys().then(function(cacheNames) {
+            return Promise.all(
+                cacheNames.map(function(cacheName) {
+                    if (cacheWhitelist.indexOf(cacheName) === -1) {
+                        return caches.delete(cacheName);
+                    }
+                })
+            );
+        })
+    );
+});
+`;
+
+        const swBlob = new Blob([serviceWorkerContent], { type: 'text/javascript' });
+        const swURL = URL.createObjectURL(swBlob);
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register(swURL)
+                .then(registration => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch(error => {
+                    console.error('Service Worker registration failed:', error);
+                });
+        }
+    </script>
+
+    <noscript>Please enable JavaScript to use this application.</noscript>
 </body>
 </html>
