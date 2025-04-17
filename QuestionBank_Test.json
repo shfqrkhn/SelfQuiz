@@ -1,37 +1,55 @@
 {
-  "duration": 1800,
-  "questions": [
+  "sections": [
     {
-      "question": "What is the capital of France?",
-      "choices": ["Paris", "Berlin", "Madrid", "Rome"],
-      "correctAnswer": "Paris",
-      "explanation": "Paris, famously known as the City of Lights, is the capital city of France.",
-      "category": "Geography",
-      "reference": "https://en.wikipedia.org/wiki/Paris"
+      "name": "Mathematics",
+      "questions": [
+        {
+          "question": "What is 2 + 2?",
+          "options": ["3", "4", "5", "22"],
+          "answer": "4",
+          "explanation": "The sum of 2 and 2 is 4."
+        },
+        {
+          "question": "What is 10 * 10?",
+          "options": ["10", "100", "20", "1000"],
+          "answer": "100",
+          "explanation": "Multiplying 10 by 10 gives 100."
+        }
+      ]
     },
     {
-      "question": "Which element has the chemical symbol 'O'?",
-      "choices": ["Gold", "Oxygen", "Silver", "Carbon"],
-      "correctAnswer": "Oxygen",
-      "explanation": "The chemical symbol 'O' stands for Oxygen.",
-      "category": "Science",
-      "reference": "https://en.wikipedia.org/wiki/Oxygen"
+      "name": "Science",
+      "questions": [
+        {
+          "question": "Which planet is known as the Red Planet?",
+          "options": ["Mars", "Jupiter", "Venus", "Saturn"],
+          "answer": "Mars",
+          "explanation": "Mars is called the Red Planet due to its reddish hue."
+        },
+        {
+          "question": "What is the chemical formula for water?",
+          "options": ["HO", "H2O", "OH", "O2"],
+          "answer": "H2O",
+          "explanation": "Water is composed of two hydrogen atoms joined with one oxygen atom."
+        }
+      ]
     },
     {
-      "question": "Solve for x in the equation: 2x + 4 = 12.",
-      "choices": ["4", "5", "6", "8"],
-      "correctAnswer": "4",
-      "explanation": "Subtract 4 from both sides to get 2x = 8, then divide by 2 to solve for x, resulting in x = 4.",
-      "category": "Mathematics",
-      "reference": "https://www.khanacademy.org/math/algebra"
-    },
-    {
-      "question": "In which year did World War II end?",
-      "choices": ["1942", "1945", "1950", "1939"],
-      "correctAnswer": "1945",
-      "explanation": "World War II ended in the year 1945.",
-      "category": "History",
-      "reference": "https://en.wikipedia.org/wiki/World_War_II"
+      "name": "History",
+      "questions": [
+        {
+          "question": "Who was the first president of the United States?",
+          "options": ["Thomas Jefferson", "George Washington", "Abraham Lincoln", "John Adams"],
+          "answer": "George Washington",
+          "explanation": "George Washington served as the first President from 1789 to 1797."
+        },
+        {
+          "question": "In which year did the World War II end?",
+          "options": ["1945", "1939", "1918", "1965"],
+          "answer": "1945",
+          "explanation": "World War II ended in 1945 with the surrender of Japan."
+        }
+      ]
     }
   ]
 }
