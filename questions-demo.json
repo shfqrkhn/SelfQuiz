@@ -1,0 +1,145 @@
+{
+  "topic": "General Knowledge",
+  "questions": [
+    {
+      "questionText": "What is the capital of France?",
+      "choices": ["London", "Berlin", "Paris", "Madrid"],
+      "correctAnswer": 2,
+      "explanation": "Paris is the capital of France. It's known as the 'City of Light' and is famous for landmarks like the Eiffel Tower.",
+      "time": 20
+    },
+    {
+      "questionText": "Which planet is known as the Red Planet?",
+      "choices": ["Venus", "Mars", "Jupiter", "Saturn"],
+      "correctAnswer": 1,
+      "explanation": "Mars is called the Red Planet due to iron oxide (rust) on its surface giving it a reddish appearance.",
+      "time": 25
+    },
+    {
+      "questionText": "Who painted the Mona Lisa?",
+      "choices": ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Michelangelo"],
+      "correctAnswer": 2,
+      "explanation": "Leonardo da Vinci painted the Mona Lisa between 1503 and 1506. It's now displayed in the Louvre Museum in Paris.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the largest ocean on Earth?",
+      "choices": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+      "correctAnswer": 3,
+      "explanation": "The Pacific Ocean covers about 63 million square miles and contains more than half of the Earth's free water.",
+      "time": 20
+    },
+    {
+      "questionText": "Which element has the chemical symbol 'O'?",
+      "choices": ["Gold", "Oxygen", "Osmium", "Oganesson"],
+      "correctAnswer": 1,
+      "explanation": "Oxygen is essential for human life and makes up about 21% of Earth's atmosphere.",
+      "time": 15
+    },
+    {
+      "questionText": "What is the tallest mammal?",
+      "choices": ["Elephant", "Giraffe", "Blue Whale", "Polar Bear"],
+      "correctAnswer": 1,
+      "explanation": "Giraffes can grow up to 18 feet tall, with their long necks accounting for much of their height.",
+      "time": 20
+    },
+    {
+      "questionText": "Which country is home to the kangaroo?",
+      "choices": ["South Africa", "Brazil", "Australia", "New Zealand"],
+      "correctAnswer": 2,
+      "explanation": "Kangaroos are marsupials native to Australia. There are four main species of kangaroo.",
+      "time": 20
+    },
+    {
+      "questionText": "What is the largest organ in the human body?",
+      "choices": ["Liver", "Brain", "Skin", "Heart"],
+      "correctAnswer": 2,
+      "explanation": "The skin is the body's largest organ, with an average adult's skin covering about 22 square feet.",
+      "time": 25
+    },
+    {
+      "questionText": "Which year did World War II end?",
+      "choices": ["1943", "1945", "1947", "1950"],
+      "correctAnswer": 1,
+      "explanation": "World War II ended in 1945 with the surrender of Germany in May and Japan in September.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the currency of Japan?",
+      "choices": ["Won", "Yen", "Yuan", "Ringgit"],
+      "correctAnswer": 1,
+      "explanation": "The Japanese yen is the third most traded currency in the foreign exchange market after the US dollar and euro.",
+      "time": 20
+    },
+    {
+      "questionText": "Who wrote 'Romeo and Juliet'?",
+      "choices": ["Charles Dickens", "William Shakespeare", "Jane Austen", "Mark Twain"],
+      "correctAnswer": 1,
+      "explanation": "William Shakespeare wrote this famous tragedy between 1591-1595. It's one of his most popular plays.",
+      "time": 25
+    },
+    {
+      "questionText": "Which country is the largest by land area?",
+      "choices": ["China", "United States", "Canada", "Russia"],
+      "correctAnswer": 3,
+      "explanation": "Russia covers about 17.1 million square kilometers, making it the largest country by land area.",
+      "time": 25
+    },
+    {
+      "questionText": "What is the hardest natural substance on Earth?",
+      "choices": ["Gold", "Iron", "Diamond", "Quartz"],
+      "correctAnswer": 2,
+      "explanation": "Diamond scores 10 on the Mohs hardness scale, making it the hardest known natural material.",
+      "time": 20
+    },
+    {
+      "questionText": "Which language has the most native speakers?",
+      "choices": ["English", "Hindi", "Spanish", "Mandarin Chinese"],
+      "correctAnswer": 3,
+      "explanation": "Mandarin Chinese has about 1.1 billion native speakers, more than any other language.",
+      "time": 25
+    },
+    {
+      "questionText": "What is the smallest prime number?",
+      "choices": ["0", "1", "2", "3"],
+      "correctAnswer": 2,
+      "explanation": "2 is the smallest and the only even prime number. A prime number is divisible only by 1 and itself.",
+      "time": 30
+    },
+    {
+      "questionText": "Which planet is closest to the Sun?",
+      "choices": ["Venus", "Mercury", "Earth", "Mars"],
+      "correctAnswer": 1,
+      "explanation": "Mercury is the smallest planet in our solar system and closest to the Sun.",
+      "time": 20
+    },
+    {
+      "questionText": "What is the main component of the Sun?",
+      "choices": ["Liquid lava", "Hydrogen gas", "Oxygen gas", "Rocky material"],
+      "correctAnswer": 1,
+      "explanation": "The Sun is primarily composed of hydrogen (about 74%) and helium (about 24%).",
+      "time": 25
+    },
+    {
+      "questionText": "How many continents are there?",
+      "choices": ["5", "6", "7", "8"],
+      "correctAnswer": 2,
+      "explanation": "There are 7 continents: Africa, Antarctica, Asia, Europe, North America, Australia, and South America.",
+      "time": 20
+    },
+    {
+      "questionText": "Which blood type is the universal donor?",
+      "choices": ["A", "B", "AB", "O"],
+      "correctAnswer": 3,
+      "explanation": "Type O negative blood is considered the universal donor type because it can be transfused to people of any blood type.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the largest species of shark?",
+      "choices": ["Great White Shark", "Whale Shark", "Tiger Shark", "Hammerhead Shark"],
+      "correctAnswer": 1,
+      "explanation": "The whale shark is the largest fish in the world, reaching lengths of up to 40 feet or more.",
+      "time": 25
+    }
+  ]
+}
