@@ -3,220 +3,300 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PMP Exam Simulator</title>
+    <title>Interactive Quiz Application</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --light: #ecf0f1;
-            --success: #27ae60;
-            --danger: #c0392b;
-        }
-
-        * {
-            box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-        }
-
-        body {
-            margin: 0;
-            padding: 20px;
-            background: var(--light);
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .timer {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary);
-            background: white;
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin: 1rem 0;
-        }
-
-        .question-container {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            margin-bottom: 1rem;
-        }
-
-        .options li {
-            list-style: none;
-            padding: 1rem;
-            margin: 0.5rem 0;
-            border: 2px solid var(--light);
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .options li:hover {
-            background: var(--light);
-        }
-
-        .selected.correct { border-color: var(--success); }
-        .selected.incorrect { border-color: var(--danger); }
-
-        .explanation {
-            margin-top: 1rem;
-            padding: 1rem;
+        .quiz-container { max-width: 800px; margin: 2rem auto; }
+        .question-card { transition: all 0.3s ease; }
+        .choice-btn { transition: transform 0.2s; }
+        .choice-btn:hover { transform: translateY(-2px); }
+        .progress-bar { transition: width 0.5s ease; }
+        .correct { background-color: #d4edda!important; }
+        .incorrect { background-color: #f8d7da!important; }
+        .review-item { cursor: pointer; }
+        .fade-in { animation: fadeIn 0.5s; }
+        .score-display {
             background: #f8f9fa;
-            border-radius: 6px;
-            display: none;
+            border-radius: 10px;
+            padding: 10px 15px;
+            text-align: center;
+            min-width: 180px;
         }
-
-        .controls {
+        .progress-container {
             display: flex;
-            gap: 1rem;
-            margin: 1rem 0;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
         }
-
-        button {
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 6px;
-            background: var(--secondary);
-            color: white;
-            cursor: pointer;
-            transition: opacity 0.2s;
+        .progress-label {
+            font-weight: 500;
+            color: #495057;
         }
-
-        button:hover { opacity: 0.9; }
-
-        @media (max-width: 768px) {
-            body { padding: 10px; }
-            .question-container { padding: 1rem; }
-            .timer { font-size: 1.2rem; }
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>PMP Exam Simulator</h1>
-            <select id="examMode">
-                <option value="20">20 Questions (1500s)</option>
-                <option value="100">100 Questions (7500s)</option>
-                <option value="200">200 Questions (15000s)</option>
-            </select>
-            <div class="timer" id="timer">00:25:00</div>
+<body class="bg-light">
+    <div class="container py-4">
+        <!-- File Upload Section -->
+        <div id="uploadSection" class="text-center">
+            <h2 class="mb-4">Load Quiz Questions</h2>
+            <input type="file" id="jsonFile" class="form-control mb-3" accept=".json">
+            <div id="fileError" class="text-danger"></div>
         </div>
 
-        <div id="questionPanel" class="question-container">
-            <div id="questionText"></div>
-            <ul class="options" id="options"></ul>
-            <div class="explanation" id="explanation"></div>
+        <!-- Quiz Interface -->
+        <div id="quizInterface" class="d-none">
+            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+                <h3 id="quizTopic" class="mb-0"></h3>
+                <div class="score-display">
+                    <div class="d-flex justify-content-between">
+                        <span class="progress-label">Score:</span>
+                        <span><strong id="currentScore">0</strong>/<span id="totalQuestions">0</span></span>
+                    </div>
+                    <div class="d-flex justify-content-between mt-1">
+                        <span class="progress-label">Quiz Progress:</span>
+                        <span><strong id="percentageScore">0</strong>%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="progress-container">
+                <div class="flex-grow-1">
+                    <div class="progress mb-1">
+                        <div id="progressBar" class="progress-bar" role="progressbar"></div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <small>Question <span id="currentQuestionNum">1</span> of <span id="totalQuestionsDisplay">0</span></small>
+                        <small id="timer" class="text-muted">Time left: 0s</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="questionContainer" class="question-card card p-4 mb-4"></div>
         </div>
 
-        <div class="controls">
-            <button onclick="nextQuestion()">Next Question</button>
+        <!-- Results Section -->
+        <div id="resultsSection" class="d-none">
+            <div class="card p-4">
+                <h2 class="mb-4">Quiz Results</h2>
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-2">
+                        <h4 class="mb-0">Score:</h4>
+                        <h4 class="mb-0"><strong id="finalScore">0</strong>/<span id="finalTotalQuestions">0</span></h4>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <h4 class="mb-0">Quiz Progress:</h4>
+                        <h4 class="mb-0"><strong id="finalPercentage">0</strong>%</h4>
+                    </div>
+                    <div class="progress mt-3" style="height: 25px;">
+                        <div id="finalPercentageBar" class="progress-bar" role="progressbar" style="width: 0%"></div>
+                    </div>
+                </div>
+                <button id="reviewBtn" class="btn btn-info mb-3 w-100">Review Questions</button>
+                <button class="btn btn-primary w-100" onclick="location.reload()">Restart Quiz</button>
+            </div>
+        </div>
+
+        <!-- Review Section -->
+        <div id="reviewSection" class="d-none">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="mb-0">Question Review</h2>
+                <div class="score-display">
+                    <div class="d-flex justify-content-between">
+                        <span class="progress-label">Final Score:</span>
+                        <span><strong id="reviewFinalScore">0</strong>/<span id="reviewTotalQuestions">0</span></span>
+                    </div>
+                </div>
+            </div>
+            <div id="reviewQuestions"></div>
+            <button class="btn btn-primary mt-3 w-100" onclick="location.reload()">Restart Quiz</button>
         </div>
     </div>
 
     <script>
-        const config = {
-            modes: { 20: 1500, 100: 7500, 200: 15000 },
-            questions: [
-                {
-                    question: "A project manager is implementing a quality management plan. Which process is primarily concerned with quality improvement?",
-                    options: ["Plan Quality Management", "Manage Quality", "Control Quality", "Validate Scope"],
-                    correct: 1,
-                    explanation: "Manage Quality process focuses on quality improvement through process analysis and quality audits.",
-                    reference: "PMBOK 7.3"
-                },
-                {
-                    question: "Which document formally authorizes a project?",
-                    options: ["Project Charter", "Business Case", "Project Management Plan", "Stakeholder Register"],
-                    correct: 0,
-                    explanation: "The project charter formally initiates the project and authorizes the project manager.",
-                    reference: "PMBOK 4.1"
-                }
-                // Add 18 more sample questions following same structure
-            ]
-        };
-
-        let currentQ = 0, timeLeft, timerId, shuffledQuestions = [];
-
-        function shuffle(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
+        class QuizManager {
+            constructor() {
+                this.questions = [];
+                this.currentQuestionIndex = 0;
+                this.score = 0;
+                this.timer = null;
+                this.timeLeft = 0;
+                this.userAnswers = [];
+                this.quizTopic = '';
             }
-            return array;
+
+            loadQuestions(jsonData) {
+                try {
+                    this.quizTopic = jsonData.topic;
+                    this.questions = jsonData.questions.sort(() => Math.random() - 0.5);
+                    this.updateTotalQuestionsDisplay();
+                } catch (error) {
+                    throw new Error('Invalid JSON format');
+                }
+            }
+
+            updateTotalQuestionsDisplay() {
+                const total = this.questions.length;
+                document.getElementById('totalQuestions').textContent = total;
+                document.getElementById('totalQuestionsDisplay').textContent = total;
+                document.getElementById('finalTotalQuestions').textContent = total;
+                document.getElementById('reviewTotalQuestions').textContent = total;
+            }
+
+            startQuiz() {
+                this.currentQuestionIndex = 0;
+                this.score = 0;
+                this.userAnswers = [];
+                document.getElementById('currentScore').textContent = 0;
+                this.updatePercentageScore();
+                this.showQuestion();
+            }
+
+            showQuestion() {
+                const question = this.questions[this.currentQuestionIndex];
+                this.timeLeft = question.time || 30;
+                this.startTimer();
+                this.updateProgress();
+                this.renderQuestion(question);
+                document.getElementById('currentQuestionNum').textContent = this.currentQuestionIndex + 1;
+            }
+
+            startTimer() {
+                if (this.timer) clearInterval(this.timer);
+                this.timer = setInterval(() => {
+                    this.timeLeft--;
+                    document.getElementById('timer').textContent = `Time left: ${this.timeLeft}s`;
+                    if (this.timeLeft <= 0) this.handleTimeExpired();
+                }, 1000);
+            }
+
+            handleAnswer(selectedIndex) {
+                const question = this.questions[this.currentQuestionIndex];
+                const isCorrect = selectedIndex === question.correctAnswer;
+                
+                this.userAnswers.push({
+                    question: question.questionText,
+                    selected: selectedIndex,
+                    correct: question.correctAnswer,
+                    explanation: question.explanation
+                });
+
+                if (isCorrect) {
+                    this.score += 1;
+                    document.getElementById('currentScore').textContent = this.score;
+                    this.updatePercentageScore();
+                }
+
+                clearInterval(this.timer);
+                this.showFeedback(isCorrect);
+                setTimeout(() => this.nextQuestion(), 2000);
+            }
+
+            updatePercentageScore() {
+                const percentage = Math.round((this.score / this.questions.length) * 100);
+                document.getElementById('percentageScore').textContent = percentage;
+            }
+
+            nextQuestion() {
+                if (this.currentQuestionIndex < this.questions.length - 1) {
+                    this.currentQuestionIndex++;
+                    this.showQuestion();
+                } else {
+                    this.endQuiz();
+                }
+            }
+
+            endQuiz() {
+                document.getElementById('quizInterface').classList.add('d-none');
+                document.getElementById('resultsSection').classList.remove('d-none');
+                
+                const totalQuestions = this.questions.length;
+                const percentage = Math.round((this.score / totalQuestions) * 100);
+                
+                document.getElementById('finalScore').textContent = this.score;
+                document.getElementById('reviewFinalScore').textContent = this.score;
+                document.getElementById('finalPercentage').textContent = percentage;
+                document.getElementById('finalPercentageBar').style.width = `${percentage}%`;
+            }
+
+            renderQuestion(question) {
+                const container = document.getElementById('questionContainer');
+                container.innerHTML = `
+                    <h4 class="mb-4">${question.questionText}</h4>
+                    <div class="row g-3">
+                        ${question.choices.map((choice, index) => `
+                            <div class="col-md-6">
+                                <button onclick="quiz.handleAnswer(${index})" 
+                                    class="choice-btn btn btn-outline-primary w-100 text-start p-3">
+                                    ${String.fromCharCode(65 + index)}. ${choice}
+                                </button>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+
+            showFeedback(isCorrect) {
+                const buttons = document.querySelectorAll('.choice-btn');
+                buttons.forEach(btn => {
+                    btn.disabled = true;
+                    const index = Array.from(buttons).indexOf(btn);
+                    btn.classList.add(index === this.questions[this.currentQuestionIndex].correctAnswer ? 'correct' : 'incorrect');
+                });
+            }
+
+            updateProgress() {
+                const progress = ((this.currentQuestionIndex + 1) / this.questions.length) * 100;
+                document.getElementById('progressBar').style.width = `${progress}%`;
+            }
+
+            showReview() {
+                document.getElementById('resultsSection').classList.add('d-none');
+                document.getElementById('reviewSection').classList.remove('d-none');
+                document.getElementById('reviewQuestions').innerHTML = this.userAnswers
+                    .map((answer, index) => `
+                        <div class="card mb-3 fade-in">
+                            <div class="card-body">
+                                <h5>Question ${index + 1}</h5>
+                                <p>${this.questions[index].questionText}</p>
+                                <p class="${answer.selected === answer.correct ? 'text-success' : 'text-danger'}">
+                                    Your answer: ${String.fromCharCode(65 + answer.selected)}<br>
+                                    Correct answer: ${String.fromCharCode(65 + answer.correct)}
+                                </p>
+                                <p class="text-muted">Explanation: ${answer.explanation}</p>
+                            </div>
+                        </div>
+                    `).join('');
+            }
         }
 
-        function startExam() {
-            shuffledQuestions = shuffle([...config.questions]);
-            timeLeft = config.modes[document.getElementById('examMode').value];
-            startTimer();
-            showQuestion();
-        }
+        const quiz = new QuizManager();
 
-        function startTimer() {
-            timerId = setInterval(() => {
-                timeLeft--;
-                document.getElementById('timer').textContent = 
-                    new Date(timeLeft * 1000).toISOString().substr(11, 8);
-                if(timeLeft <= 0) endExam();
-            }, 1000);
-        }
-
-        function showQuestion() {
-            const q = shuffledQuestions[currentQ];
-            document.getElementById('questionText').textContent = `${currentQ+1}. ${q.question}`;
+        // Event Listeners
+        document.getElementById('jsonFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const reader = new FileReader();
             
-            const options = shuffle(q.options.map((opt, i) => ({opt, correct: i === q.correct})));
-            const optionsHtml = options.map((opt, i) => `
-                <li onclick="checkAnswer(${i}, ${opt.correct})">${String.fromCharCode(65+i)}. ${opt.opt}</li>
-            `).join('');
+            reader.onload = function(e) {
+                try {
+                    const jsonData = JSON.parse(e.target.result);
+                    quiz.loadQuestions(jsonData);
+                    
+                    document.getElementById('uploadSection').classList.add('d-none');
+                    document.getElementById('quizInterface').classList.remove('d-none');
+                    document.getElementById('quizTopic').textContent = jsonData.topic;
+                    quiz.startQuiz();
+                } catch (error) {
+                    document.getElementById('fileError').textContent = 'Error loading JSON file: ' + error.message;
+                }
+            };
             
-            document.getElementById('options').innerHTML = optionsHtml;
-            document.getElementById('explanation').style.display = 'none';
-        }
+            reader.readAsText(file);
+        });
 
-        function checkAnswer(selectedIndex, isCorrect) {
-            const options = document.querySelectorAll('.options li');
-            options.forEach(opt => opt.style.pointerEvents = 'none');
-            
-            options[selectedIndex].classList.add(isCorrect ? 'correct' : 'incorrect');
-            
-            const explanation = document.getElementById('explanation');
-            explanation.innerHTML = `
-                ${isCorrect ? '✅ Correct' : '❌ Incorrect'}<br>
-                ${shuffledQuestions[currentQ].explanation}<br>
-                <em>${shuffledQuestions[currentQ].reference}</em>
-            `;
-            explanation.style.display = 'block';
-        }
-
-        function nextQuestion() {
-            currentQ++;
-            if(currentQ >= shuffledQuestions.length) endExam();
-            else showQuestion();
-        }
-
-        function endExam() {
-            clearInterval(timerId);
-            alert(`Exam completed! Score: ${currentQ}/${shuffledQuestions.length}`);
-            // Add detailed results reporting here
-        }
-
-        // Initialization
-        document.getElementById('examMode').addEventListener('change', startExam);
-        startExam();
+        document.getElementById('reviewBtn').addEventListener('click', () => {
+            quiz.showReview();
+        });
     </script>
 </body>
 </html>
