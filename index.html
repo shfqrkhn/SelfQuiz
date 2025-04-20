@@ -32,6 +32,13 @@
             font-weight: 500;
             color: #495057;
         }
+        .explanation-box {
+            background-color: #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            animation: fadeIn 0.5s;
+        }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
@@ -73,6 +80,7 @@
             </div>
             
             <div id="questionContainer" class="question-card card p-4 mb-4"></div>
+            <div id="explanationContainer" class="explanation-box d-none"></div>
         </div>
 
         <!-- Results Section -->
@@ -159,6 +167,7 @@
                 this.updateProgress();
                 this.renderQuestion(question);
                 document.getElementById('currentQuestionNum').textContent = this.currentQuestionIndex + 1;
+                document.getElementById('explanationContainer').classList.add('d-none');
             }
 
             startTimer() {
@@ -188,8 +197,25 @@
                 }
 
                 clearInterval(this.timer);
-                this.showFeedback(isCorrect);
-                setTimeout(() => this.nextQuestion(), 2000);
+                this.showFeedback(isCorrect, question.explanation);
+            }
+
+            showFeedback(isCorrect, explanation) {
+                const buttons = document.querySelectorAll('.choice-btn');
+                buttons.forEach(btn => {
+                    btn.disabled = true;
+                    const index = Array.from(buttons).indexOf(btn);
+                    btn.classList.add(index === this.questions[this.currentQuestionIndex].correctAnswer ? 'correct' : 'incorrect');
+                });
+
+                // Show explanation
+                const explanationContainer = document.getElementById('explanationContainer');
+                explanationContainer.innerHTML = `
+                    <h5>Explanation:</h5>
+                    <p>${explanation}</p>
+                    <button class="btn btn-primary mt-2" onclick="quiz.nextQuestion()">Continue</button>
+                `;
+                explanationContainer.classList.remove('d-none');
             }
 
             updatePercentageScore() {
@@ -234,15 +260,6 @@
                         `).join('')}
                     </div>
                 `;
-            }
-
-            showFeedback(isCorrect) {
-                const buttons = document.querySelectorAll('.choice-btn');
-                buttons.forEach(btn => {
-                    btn.disabled = true;
-                    const index = Array.from(buttons).indexOf(btn);
-                    btn.classList.add(index === this.questions[this.currentQuestionIndex].correctAnswer ? 'correct' : 'incorrect');
-                });
             }
 
             updateProgress() {
