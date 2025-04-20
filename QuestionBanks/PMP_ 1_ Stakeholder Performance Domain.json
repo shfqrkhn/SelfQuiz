@@ -1,0 +1,1205 @@
+{
+  "topic": "Stakeholder Performance Domain",
+  "questions": [
+    {
+      "questionText": "What is the primary focus of the Stakeholder Performance Domain?",
+      "choices": [
+        "Managing the project schedule and budget.",
+        "Establishing the project team and their roles.",
+        "Addressing activities and functions associated with stakeholders.",
+        "Defining the technical specifications of the project deliverables."
+      ],
+      "correctAnswer": 2,
+      "explanation": "The Stakeholder Performance Domain specifically concerns activities related to individuals, groups, or organizations affected by the project.",
+      "time": 30
+    },
+    {
+      "questionText": "According to the sources, who is considered a project stakeholder?",
+      "choices": [
+        "Only the project team members.",
+        "Only the project sponsor and client.",
+        "An individual, group, or organization that may affect, be affected by, or perceive itself to be affected by the project.",
+        "Only those who are actively involved in the project's execution."
+      ],
+      "correctAnswer": 2,
+      "explanation": "A stakeholder is broadly defined as anyone who has an interest in or can be impacted by the project.",
+      "time": 30
+    },
+    {
+      "questionText": "What is a desired outcome of effectively executing the Stakeholder Performance Domain?",
+      "choices": [
+        "Completion of the project within the original deadline.",
+        "A productive working relationship with stakeholders throughout the project.",
+        "Minimizing project costs and resource utilization.",
+        "Achieving the highest possible technical quality of deliverables."
+      ],
+      "correctAnswer": 1,
+      "explanation": "Building and maintaining positive relationships with stakeholders is a key goal of this domain.",
+      "time": 30
+    },
+    {
+      "questionText": "What is another desired outcome of the Stakeholder Performance Domain?",
+      "choices": [
+        "Comprehensive risk identification and mitigation.",
+        "Stakeholder agreement with project objectives.",
+        "Efficient allocation and management of project resources.",
+        "Accurate and timely project performance reporting."
+      ],
+      "correctAnswer": 1,
+      "explanation": "Gaining stakeholders' buy-in and alignment with the project's goals is crucial.",
+      "time": 30
+    },
+    {
+      "questionText": "A key aspect of stakeholder management involves understanding and analyzing:",
+      "choices": [
+        "The technical skills of the project team.",
+        "The project budget and financial forecasts.",
+        "Stakeholder needs and expectations.",
+        "The detailed steps in the project schedule."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Identifying and comprehending what stakeholders require and anticipate is fundamental to stakeholder management.",
+      "time": 30
+    },
+    {
+      "questionText": "What is a common technique used in the \"Identify Stakeholders\" process?",
+      "choices": [
+        "Critical path method.",
+        "Earned value analysis.",
+        "Expert judgment.",
+        "Monte Carlo analysis."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Leveraging the knowledge of experienced individuals is a common way to identify project stakeholders.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the primary output of the \"Identify Stakeholders\" process?",
+      "choices": [
+        "Project management plan.",
+        "Risk register.",
+        "Stakeholder register.",
+        "Communications management plan."
+      ],
+      "correctAnswer": 2,
+      "explanation": "The stakeholder register, which documents stakeholder information, is the main result of this process.",
+      "time": 30
+    },
+    {
+      "questionText": "What kind of information is typically included in the stakeholder register?",
+      "choices": [
+        "Detailed project tasks and durations.",
+        "Stakeholders' interests, involvement, and potential impact on the project.",
+        "The project budget and cost breakdown structure.",
+        "A list of identified project risks and their response plans."
+      ],
+      "correctAnswer": 1,
+      "explanation": "The stakeholder register captures key details about each stakeholder relevant to the project.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the purpose of stakeholder analysis?",
+      "choices": [
+        "To define the project scope and objectives.",
+        "To allocate resources to project activities.",
+        "To determine stakeholders' interests, influence, and potential impact on the project.",
+        "To track project progress and performance against the plan."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Stakeholder analysis helps understand the power and interest of each stakeholder.",
+      "time": 30
+    },
+    {
+      "questionText": "Which document outlines strategies for assessing and managing stakeholder expectations and involvement?",
+      "choices": [
+        "Project charter.",
+        "Risk management plan.",
+        "Stakeholder Engagement Plan.",
+        "Communications management plan."
+      ],
+      "correctAnswer": 2,
+      "explanation": "The Stakeholder Engagement Plan details how stakeholders will be engaged throughout the project.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the primary purpose of the Stakeholder Engagement Plan?",
+      "choices": [
+        "To define project roles and responsibilities.",
+        "To document how stakeholder engagement activities will be managed.",
+        "To establish communication channels and frequencies.",
+        "To identify and analyze potential project risks."
+      ],
+      "correctAnswer": 1,
+      "explanation": "This plan serves as a guide for managing interactions and involvement with stakeholders.",
+      "time": 30
+    },
+    {
+      "questionText": "Which of the following is an input to the \"Plan Stakeholder Engagement\" process?",
+      "choices": [
+        "Project schedule.",
+        "Project charter.",
+        "Performance reports.",
+        "Lessons learned register."
+      ],
+      "correctAnswer": 1,
+      "explanation": "The project charter provides high-level information relevant to planning stakeholder engagement.",
+      "time": 30
+    },
+    {
+      "questionText": "What does the Stakeholder Engagement Plan typically include?",
+      "choices": [
+        "The project budget and schedule baselines.",
+        "A list of all project team members and their contact information.",
+        "Description of stakeholders' interests, involvement, and engagement strategies.",
+        "The project's risk management strategy and contingency plans."
+      ],
+      "correctAnswer": 2,
+      "explanation": "The plan details how different stakeholders will be involved and managed.",
+      "time": 30
+    },
+    {
+      "questionText": "Who is typically responsible for developing the Stakeholder Engagement Plan?",
+      "choices": [
+        "Project sponsor.",
+        "Project manager.",
+        "Project team members.",
+        "Key stakeholders."
+      ],
+      "correctAnswer": 1,
+      "explanation": "The project manager usually takes the lead in creating the Stakeholder Engagement Plan.",
+      "time": 30
+    },
+    {
+      "questionText": "Which document provides the foundation for developing the Stakeholder Engagement Plan?",
+      "choices": [
+        "Project schedule.",
+        "Stakeholder register.",
+        "Risk management plan.",
+        "Quality management plan."
+      ],
+      "correctAnswer": 1,
+      "explanation": "The information about identified stakeholders in the register is crucial for planning their engagement.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the primary purpose of the \"Manage Stakeholder Engagement\" process?",
+      "choices": [
+        "To identify new project stakeholders.",
+        "To communicate and work with stakeholders to meet their needs and expectations.",
+        "To monitor and control stakeholder engagement levels.",
+        "To document stakeholder requirements and ensure they are met."
+      ],
+      "correctAnswer": 1,
+      "explanation": "This process involves actively engaging with stakeholders to address their needs.",
+      "time": 30
+    },
+    {
+      "questionText": "Which of the following is an input to the \"Manage Stakeholder Engagement\" process?",
+      "choices": [
+        "Project scope statement.",
+        "Stakeholder engagement plan.",
+        "Risk register.",
+        "Project schedule."
+      ],
+      "correctAnswer": 1,
+      "explanation": "The Stakeholder Engagement Plan guides the activities in managing stakeholder relationships.",
+      "time": 30
+    },
+    {
+      "questionText": "What is a potential output of the \"Manage Stakeholder Engagement\" process?",
+      "choices": [
+        "Project charter update.",
+        "Risk management plan update.",
+        "Change requests.",
+        "Stakeholder register update."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Engaging with stakeholders may lead to requests for changes to the project.",
+      "time": 30
+    },
+    {
+      "questionText": "Effective communication skills are essential in which Stakeholder Management process?",
+      "choices": [
+        "Identify Stakeholders.",
+        "Plan Stakeholder Engagement.",
+        "Manage Stakeholder Engagement.",
+        "Monitor Stakeholder Engagement."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Engaging with stakeholders requires strong communication abilities.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the purpose of the \"Monitor Stakeholder Engagement\" process?",
+      "choices": [
+        "To create the stakeholder register.",
+        "To develop the stakeholder engagement plan.",
+        "To monitor the status of stakeholder relationships and engagement strategies.",
+        "To execute the activities outlined in the stakeholder engagement plan."
+      ],
+      "correctAnswer": 2,
+      "explanation": "This process tracks the effectiveness of stakeholder engagement efforts.",
+      "time": 30
+    },
+    {
+      "questionText": "Which tool or technique is used in the \"Monitor Stakeholder Engagement\" process to assess the effectiveness of engagement strategies?",
+      "choices": [
+        "Interviews.",
+        "Stakeholder analysis.",
+        "Stakeholder engagement assessments.",
+        "Communication methods."
+      ],
+      "correctAnswer": 2,
+      "explanation": "These assessments help evaluate how well engagement strategies are working.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the role of the stakeholder engagement assessment matrix?",
+      "choices": [
+        "To list all project stakeholders.",
+        "To compare current and desired stakeholder engagement levels.",
+        "To define the communication requirements for each stakeholder.",
+        "To categorize stakeholders based on their power and interest."
+      ],
+      "correctAnswer": 1,
+      "explanation": "This matrix helps visualize the current and target engagement of stakeholders.",
+      "time": 30
+    },
+    {
+      "questionText": "If a stakeholder's current engagement level is \"resistant,\" what should the project manager aim for as the desired level for project success, especially if the stakeholder has high influence?",
+      "choices": [
+        "Unaware.",
+        "Neutral.",
+        "Supportive.",
+        "Leading."
+      ],
+      "correctAnswer": 3,
+      "explanation": "For influential resistant stakeholders, the goal is to move them to actively support the project.",
+      "time": 30
+    },
+    {
+      "questionText": "What should a project manager do when new stakeholders are identified during project execution?",
+      "choices": [
+        "Ignore them if the project is already underway.",
+        "Inform the sponsor but take no further action.",
+        "Add them to the stakeholder register and update engagement plans as needed.",
+        "Communicate with them only if they directly request information."
+      ],
+      "correctAnswer": 2,
+      "explanation": "The stakeholder register should be a living document, updated with any new stakeholders.",
+      "time": 30
+    },
+    {
+      "questionText": "How can a project manager effectively handle a key stakeholder who is showing a decline in engagement?",
+      "choices": [
+        "Increase the frequency of project status reports.",
+        "Initiate a one-on-one meeting to understand their concerns and re-engage them.",
+        "Escalate the issue to the project sponsor immediately.",
+        "Focus more on other supportive stakeholders."
+      ],
+      "correctAnswer": 1,
+      "explanation": "Direct communication is often the best way to address disengaged stakeholders.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the formula to calculate the number of potential communication channels with *n* stakeholders?",
+      "choices": [
+        "*n*.",
+        "2^*n*.",
+        "*n* x 2.",
+        "*n(n - 1) / 2*."
+      ],
+      "correctAnswer": 3,
+      "explanation": "This formula determines the complexity of communication based on the number of stakeholders.",
+      "time": 30
+    },
+    {
+      "questionText": "With 7 identified stakeholders, how many potential communication channels exist?",
+      "choices": [
+        "7.",
+        "14.",
+        "21.",
+        "49."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Using the formula 7 * (7 - 1) / 2 = 21.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the importance of asking \"why\" when a stakeholder requests specific information?",
+      "choices": [
+        "To challenge the stakeholder's need for the information.",
+        "To delay providing the information until the reason is clear.",
+        "To understand how the information is expected to be used.",
+        "To determine if the stakeholder is authorized to receive the information."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Understanding the purpose helps ensure the information provided is relevant and useful.",
+      "time": 30
+    },
+    {
+      "questionText": "Which communication method is suitable for quickly accumulating information from a large number of geographically dispersed stakeholders?",
+      "choices": [
+        "Face-to-face meetings.",
+        "Workshops.",
+        "Questionnaires and surveys.",
+        "Brainstorming sessions."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Surveys are efficient for gathering data from many respondents across different locations.",
+      "time": 30
+    },
+    {
+      "questionText": "What type of questions in a survey provide respondents with a predefined list of answer choices?",
+      "choices": [
+        "Open-ended questions.",
+        "Closed-ended questions.",
+        "Probing questions.",
+        "Hypothetical questions."
+      ],
+      "correctAnswer": 1,
+      "explanation": "Closed-ended questions offer limited, specific response options.",
+      "time": 30
+    },
+    {
+      "questionText": "Which stakeholder mapping technique considers stakeholders' level of authority and their level of concern about the project's outcome?",
+      "choices": [
+        "Power-influence grid.",
+        "Position-power grid.",
+        "Power-interest grid.",
+        "Impact-influence grid."
+      ],
+      "correctAnswer": 1,
+      "explanation": "Stakeholder mapping helps categorize stakeholders for tailored engagement strategies.",
+      "time": 30
+    },
+    {
+      "questionText": "Which stakeholder mapping technique considers stakeholders' ability to exert influence and their level of interest in the project?",
+      "choices": [
+        "Position-power grid.",
+        "Power-interest grid.",
+        "Impact-influence grid.",
+        "Salience model."
+      ],
+      "correctAnswer": 1,
+      "explanation": "This grid helps prioritize stakeholders based on their power to affect the project and their level of concern.",
+      "time": 30
+    },
+    {
+      "questionText": "Which stakeholder mapping technique considers stakeholders' ability to influence the project and the potential impact if their needs are not met?",
+      "choices": [
+        "Power-interest grid.",
+        "Position-power grid.",
+        "Impact-influence grid.",
+        "Urgency-proximity-legitimacy model."
+      ],
+      "correctAnswer": 2,
+      "explanation": "This grid focuses on the stakeholder's power to change the project and the consequences of not meeting their needs.",
+      "time": 30
+    },
+    {
+      "questionText": "Why is it important to identify stakeholders throughout the project lifecycle, and not just at the beginning?",
+      "choices": [
+        "To ensure the project manager has enough tasks to perform.",
+        "Because new stakeholders may emerge, and existing stakeholders' influence or interest may change.",
+        "To create more documentation for the project.",
+        "To justify extending the project timeline."
+      ],
+      "correctAnswer": 1,
+      "explanation": "The stakeholder landscape can evolve, requiring ongoing identification.",
+      "time": 30
+    },
+    {
+      "questionText": "What should a project manager do to foster stakeholder support?",
+      "choices": [
+        "Keep stakeholders at a distance to avoid interference.",
+        "Only communicate positive project progress.",
+        "Identify and analyze their needs, manage expectations, and communicate effectively.",
+        "Make all project decisions independently to maintain control."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Building support involves understanding needs and maintaining open communication.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the role of the project manager in stakeholder engagement?",
+      "choices": [
+        "To simply follow the directives of the project sponsor.",
+        "To actively work to understand and meet stakeholder needs and expectations.",
+        "To minimize communication with stakeholders to save time.",
+        "To prioritize the needs of the project team above all others."
+      ],
+      "correctAnswer": 1,
+      "explanation": "Project managers are key to effective stakeholder interaction and satisfaction.",
+      "time": 30
+    },
+    {
+      "questionText": "What should a project manager do when dealing with disagreements or conflicts among key stakeholders?",
+      "choices": [
+        "Ignore the conflict and hope it resolves itself.",
+        "Take sides with the stakeholder who has more authority.",
+        "Keep the team communication open and respectful to allow for the expression of different views.",
+        "Make a unilateral decision to resolve the conflict quickly."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Open and respectful communication helps in navigating stakeholder conflicts.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the meaning of \"stakeholder satisfaction\" in project management?",
+      "choices": [
+        "Stakeholders always get exactly what they want.",
+        "The project meets all technical specifications.",
+        "The extent to which stakeholders' needs and expectations have been met or exceeded.",
+        "The project is completed under budget and ahead of schedule."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Stakeholder satisfaction is about meeting or exceeding their expectations.",
+      "time": 30
+    },
+    {
+      "questionText": "How can a project manager measure stakeholder satisfaction?",
+      "choices": [
+        "By tracking the number of project deliverables completed.",
+        "By monitoring the project's earned value metrics.",
+        "Through surveys, feedback sessions, and ongoing communication.",
+        "By assessing the project team's morale and productivity."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Gathering direct feedback from stakeholders is essential for measuring their satisfaction.",
+      "time": 30
+    },
+    {
+      "questionText": "What is a \"stakeholder engagement assessment matrix\" used for?",
+      "choices": [
+        "To identify all project stakeholders and their contact information.",
+        "To define the roles and responsibilities of stakeholders in the project.",
+        "To evaluate the current and desired levels of stakeholder engagement.",
+        "To track the communication history with each project stakeholder."
+      ],
+      "correctAnswer": 2,
+      "explanation": "This matrix visually represents the alignment of stakeholder engagement.",
+      "time": 30
+    },
+    {
+      "questionText": "Why is it important to identify stakeholders throughout the project lifecycle, and not just at the beginning?",
+      "choices": [
+        "To ensure the project manager has enough tasks to perform.",
+        "Because new stakeholders may emerge, and existing stakeholders' influence or interest may change.",
+        "To create more documentation for the project.",
+        "To justify extending the project timeline."
+      ],
+      "correctAnswer": 1,
+      "explanation": "The stakeholder landscape can evolve, requiring ongoing identification.",
+      "time": 30
+    },
+    {
+      "questionText": "What should a project manager do to foster stakeholder support?",
+      "choices": [
+        "Keep stakeholders at a distance to avoid interference.",
+        "Only communicate positive project progress.",
+        "Identify and analyze their needs, manage expectations, and communicate effectively.",
+        "Make all project decisions independently to maintain control."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Building support involves understanding needs and maintaining open communication.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the role of the project manager in stakeholder engagement?",
+      "choices": [
+        "To simply follow the directives of the project sponsor.",
+        "To actively work to understand and meet stakeholder needs and expectations.",
+        "To minimize communication with stakeholders to save time.",
+        "To prioritize the needs of the project team above all others."
+      ],
+      "correctAnswer": 1,
+      "explanation": "Project managers are key to effective stakeholder interaction and satisfaction.",
+      "time": 30
+    },
+    {
+      "questionText": "What should a project manager do when dealing with disagreements or conflicts among key stakeholders?",
+      "choices": [
+        "Ignore the conflict and hope it resolves itself.",
+        "Take sides with the stakeholder who has more authority.",
+        "Keep the team communication open and respectful to allow for the expression of different views.",
+        "Make a unilateral decision to resolve the conflict quickly."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Open and respectful communication helps in navigating stakeholder conflicts.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the meaning of \"stakeholder satisfaction\" in project management?",
+      "choices": [
+        "Stakeholders always get exactly what they want.",
+        "The project meets all technical specifications.",
+        "The extent to which stakeholders' needs and expectations have been met or exceeded.",
+        "The project is completed under budget and ahead of schedule."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Stakeholder satisfaction is about meeting or exceeding their expectations.",
+      "time": 30
+    },
+    {
+      "questionText": "How can a project manager measure stakeholder satisfaction?",
+      "choices": [
+        "By tracking the number of project deliverables completed.",
+        "By monitoring the project's earned value metrics.",
+        "Through surveys, feedback sessions, and ongoing communication.",
+        "By assessing the project team's morale and productivity."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Gathering direct feedback from stakeholders is essential for measuring their satisfaction.",
+      "time": 30
+    },
+    {
+      "questionText": "What is a \"stakeholder engagement assessment matrix\" used for?",
+      "choices": [
+        "To identify all project stakeholders and their contact information.",
+        "To define the roles and responsibilities of stakeholders in the project.",
+        "To evaluate the current and desired levels of stakeholder engagement.",
+        "To track the communication history with each project stakeholder."
+      ],
+      "correctAnswer": 2,
+      "explanation": "This matrix visually represents the alignment of stakeholder engagement.",
+      "time": 30
+    },
+    {
+      "questionText": "What does a \"Leading\" stakeholder engagement level indicate?",
+      "choices": [
+        "The stakeholder is unaware of the project and its potential impact.",
+        "The stakeholder is neutral and neither supports nor opposes the project.",
+        "The stakeholder is aware of the project and actively works to ensure its success.",
+        "The stakeholder is aware of the project and resists any changes associated with it."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Leading stakeholders are champions for the project.",
+      "time": 30
+    },
+    {
+      "questionText": "What does a \"Resistant\" stakeholder engagement level indicate?",
+      "choices": [
+        "The stakeholder actively supports the project and its goals.",
+        "The stakeholder has no interest in or knowledge of the project.",
+        "The stakeholder is passively observing the project's progress.",
+        "The stakeholder is aware of the project but opposes it or its outcomes."
+      ],
+      "correctAnswer": 3,
+      "explanation": "Resistant stakeholders are aware but not supportive.",
+      "time": 30
+    },
+    {
+      "questionText": "What does an \"Unaware\" stakeholder engagement level indicate?",
+      "choices": [
+        "The stakeholder is actively involved in project decision-making.",
+        "The stakeholder is not aware of the project or its potential impacts.",
+        "The stakeholder is providing consistent support and encouragement.",
+        "The stakeholder has expressed concerns or objections to the project."
+      ],
+      "correctAnswer": 1,
+      "explanation": "Unaware stakeholders lack knowledge about the project.",
+      "time": 30
+    },
+    {
+      "questionText": "What does a \"Neutral\" stakeholder engagement level indicate?",
+      "choices": [
+        "The stakeholder is highly supportive and actively promoting the project.",
+        "The stakeholder is neither supportive nor resistant to the project.",
+        "The stakeholder is actively working against the project's objectives.",
+        "The stakeholder is fully informed and engaged in all project activities."
+      ],
+      "correctAnswer": 1,
+      "explanation": "Neutral stakeholders do not have a strong positive or negative stance.",
+      "time": 30
+    },
+    {
+      "questionText": "What does a \"Supportive\" stakeholder engagement level indicate?",
+      "choices": [
+        "The stakeholder is actively trying to hinder the project's progress.",
+        "The stakeholder is indifferent to the project's success or failure.",
+        "The stakeholder is aware of and generally in favor of the project.",
+        "The stakeholder is taking a leadership role in guiding the project team."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Supportive stakeholders are in favor of the project.",
+      "time": 30
+    },
+    {
+      "questionText": "In Agile projects, how are stakeholders typically engaged throughout the project?",
+      "choices": [
+        "Primarily through formal documentation and reports.",
+        "Only during the final project delivery and acceptance phase.",
+        "Actively through regular communication, feedback loops, and collaboration.",
+        "Minimally, to avoid disrupting the development team's work."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Agile emphasizes continuous stakeholder involvement.",
+      "time": 30
+    },
+    {
+      "questionText": "Techniques like personas and user stories in Agile help in:",
+      "choices": [
+        "Managing the project budget and schedule.",
+        "Defining the technical architecture of the system.",
+        "Gaining a deep understanding of stakeholder needs.",
+        "Tracking the progress of development tasks."
+      ],
+      "correctAnswer": 2,
+      "explanation": "These techniques focus on understanding the users and their requirements.",
+      "time": 30
+    },
+    {
+      "questionText": "Sprint reviews in Agile provide an opportunity for:",
+      "choices": [
+        "The development team to internally assess their progress.",
+        "The project manager to report status to the sponsor.",
+        "Regular communication, feedback, and collaboration with stakeholders.",
+        "Planning the tasks for the next iteration."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Sprint reviews are key for stakeholder feedback in Agile.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the main challenge when managing stakeholders spread across multiple geographies and time zones?",
+      "choices": [
+        "Ensuring all stakeholders have the same level of technical expertise.",
+        "Managing language barriers within the project team.",
+        "Ensuring effective communication and engagement despite the distances and time differences.",
+        "Coordinating logistics for in-person meetings."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Geographical dispersion complicates communication and engagement.",
+      "time": 30
+    },
+    {
+      "questionText": "What communication tool is effective for geographically dispersed teams to access project information in real-time?",
+      "choices": [
+        "Formal printed reports.",
+        "Regularly scheduled conference calls without shared visuals.",
+        "A shared cloud-based document repository.",
+        "Email threads with large attachments."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Cloud repositories allow for simultaneous access regardless of location.",
+      "time": 30
+    },
+    {
+      "questionText": "When facing a busy stakeholder with limited availability, what informal approach might a project manager use to communicate project requirements?",
+      "choices": [
+        "Sending a detailed formal report.",
+        "Scheduling multiple follow-up meetings.",
+        "Utilizing an opportunity for informal dialogue during an organizational meeting.",
+        "Escalating the lack of availability to the stakeholder's manager."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Informal interactions can sometimes be effective when formal channels are challenging.",
+      "time": 30
+    },
+    {
+      "questionText": "What is a potential risk if stakeholder expectations are not managed effectively?",
+      "choices": [
+        "The project team may become demotivated.",
+        "The project budget may be exceeded.",
+        "Stakeholder dissatisfaction, leading to potential project failure or opposition.",
+        "The project schedule may be delayed."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Unmet expectations can lead to negative stakeholder reactions.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the role of \"emotional intelligence\" in managing stakeholders?",
+      "choices": [
+        "To manipulate stakeholders into supporting the project.",
+        "To avoid dealing with difficult stakeholder personalities.",
+        "To assess behaviors, understand emotional needs, and adjust interactions accordingly.",
+        "To ensure all stakeholders agree with every project decision."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Emotional intelligence helps in building positive stakeholder relationships.",
+      "time": 30
+    },
+    {
+      "questionText": "When should the process of identifying stakeholders ideally begin for a project?",
+      "choices": [
+        "During the project execution phase.",
+        "Towards the end of the project, before final sign-off.",
+        "As early as possible, preferably after the project's initiation phase.",
+        "Only after the project scope and requirements are fully defined."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Early identification allows for timely engagement and consideration of their needs.",
+      "time": 30
+    },
+    {
+      "questionText": "For a project with over 200 identified stakeholders, what is a practical approach to prioritize engagement efforts?",
+      "choices": [
+        "Treat every stakeholder equally and spend the same amount of time with each.",
+        "Focus solely on internal stakeholders and disregard external ones.",
+        "Identify stakeholders with the most interest and highest potential influence on the project's outcome.",
+        "Only engage with stakeholders who actively reach out to the project team."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Prioritization based on influence and interest is necessary for large stakeholder groups.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the relationship between the Stakeholder Performance Domain and the Team Performance Domain?",
+      "choices": [
+        "They are independent and do not influence each other.",
+        "The Team Performance Domain is a subset of the Stakeholder Performance Domain.",
+        "Effective stakeholder engagement can contribute to a high-performing project team.",
+        "The Stakeholder Performance Domain only becomes relevant after the team is fully established."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Positive stakeholder relationships can positively impact team morale and performance.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the relationship between the Communications Management Plan and the Stakeholder Performance Domain?",
+      "choices": [
+        "They are unrelated documents with different purposes.",
+        "The Stakeholder Performance Domain dictates the technical aspects of communication.",
+        "The Communications Management Plan describes how project information will be administered and disseminated to stakeholders.",
+        "The Stakeholder Performance Domain is only concerned with internal team communication."
+      ],
+      "correctAnswer": 2,
+      "explanation": "The Communications Management Plan outlines how stakeholder information needs will be met.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the significance of \"transparency and honesty\" in building strong stakeholder relationships?",
+      "choices": [
+        "To ensure all stakeholders are aware of every minor project detail.",
+        "To avoid having to deliver bad news to stakeholders.",
+        "To develop and maintain trust with stakeholders.",
+        "To create more opportunities for stakeholder feedback, even if it delays the project."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Trust is a cornerstone of positive stakeholder relationships, built through openness.",
+      "time": 30
+    },
+    {
+      "questionText": "When a project faces a significant risk that was not previously documented, what should the project manager do *first* in relation to stakeholders?",
+      "choices": [
+        "Implement a contingency plan without informing stakeholders.",
+        "Update the risk register and develop a risk response plan, and then communicate with relevant stakeholders.",
+        "Blame the team members for not identifying the risk earlier.",
+        "Request additional budget from the sponsor to cover the risk."
+      ],
+      "correctAnswer": 1,
+      "explanation": "Stakeholders need to be informed about significant new risks and how they are being addressed.",
+      "time": 30
+    },
+    {
+      "questionText": "If project costs are significantly higher than planned, what is a key action for the project manager involving stakeholders?",
+      "choices": [
+        "Conceal the cost overruns to avoid stakeholder panic.",
+        "Immediately cut project scope to reduce costs without stakeholder input.",
+        "Communicate the situation to relevant stakeholders, analyze the causes, and collaboratively determine the best course of action.",
+        "Absorb the cost overruns from the project manager's personal funds."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Open communication about financial issues is crucial for maintaining stakeholder trust.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the primary benefit of actively engaging stakeholders early in the project planning process?",
+      "choices": [
+        "It reduces the workload of the project manager during execution.",
+        "It guarantees that all stakeholder requests can be accommodated.",
+        "It helps build trust, strengthens relationships, and ensures stakeholder feedback is considered.",
+        "It eliminates the need for further stakeholder communication during the project."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Early engagement fosters collaboration and buy-in.",
+      "time": 30
+    },
+    {
+      "questionText": "Why should a project team consider stakeholder feedback when making decisions?",
+      "choices": [
+        "To avoid taking responsibility for project outcomes.",
+        "To delay the decision-making process and allow for more analysis.",
+        "Because stakeholder insights can improve project outcomes and increase satisfaction.",
+        "To create a record of stakeholder involvement for audit purposes."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Stakeholder input can provide valuable perspectives and improve the project.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the potential consequence of not delivering on commitments made to stakeholders?",
+      "choices": [
+        "It may lead to the project finishing ahead of schedule.",
+        "It will likely increase stakeholder trust and support.",
+        "It can damage credibility and erode trust with stakeholders.",
+        "It will have no significant impact if the final deliverables are of high quality."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Reliability in fulfilling promises is key to maintaining positive relationships.",
+      "time": 30
+    },
+    {
+      "questionText": "When stakeholders have concerns or issues with the project, what is the best approach for the project team?",
+      "choices": [
+        "Minimize their concerns to avoid project delays.",
+        "Address only the concerns of the most powerful stakeholders.",
+        "Address them promptly and work towards resolution.",
+        "Document the concerns but take no immediate action."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Timely resolution of issues prevents escalation and maintains stakeholder satisfaction.",
+      "time": 30
+    },
+    {
+      "questionText": "Implementing a risk response plan is primarily aimed at:",
+      "choices": [
+        "Building strong relationships with project stakeholders.",
+        "Ensuring effective communication throughout the project lifecycle.",
+        "Managing potential threats and opportunities that could affect project objectives.",
+        "Engaging stakeholders early and often in the project planning process."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Risk response plans focus on mitigating negative impacts and leveraging positive ones.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the difference between identifying risks and managing stakeholder engagement?",
+      "choices": [
+        "They are the same process with different names.",
+        "Identifying risks focuses on potential threats, while stakeholder engagement focuses on opportunities.",
+        "Identifying risks is about potential future events, while managing stakeholder engagement is about current relationships and communication.",
+        "Identifying risks is done throughout the project, while stakeholder engagement is only done at the beginning."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Risk management deals with uncertainties, while stakeholder management deals with people.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the role of stewardship in relation to stakeholders?",
+      "choices": [
+        "To dictate project requirements to stakeholders.",
+        "To avoid involving stakeholders in project decisions.",
+        "To act responsibly and in the best interests of the stakeholders and the project.",
+        "To prioritize the organization's interests above those of individual stakeholders."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Stewardship implies a responsible and ethical approach to managing the project for all involved.",
+      "time": 30
+    },
+    {
+      "questionText": "How can a project manager ensure a shared understanding of project success among stakeholders?",
+      "choices": [
+        "By keeping the definition of success confidential to the project team.",
+        "By imposing their own definition of success on all stakeholders.",
+        "By actively engaging stakeholders to detect, collect, and evaluate their expectations of success.",
+        "By assuming that all stakeholders have the same implicit understanding of project success."
+      ],
+      "correctAnswer": 2,
+      "explanation": "A shared understanding requires active engagement and communication.",
+      "time": 30
+    },
+    {
+      "questionText": "When the project team observes that a stakeholder is actively working against the project, what should be a primary course of action?",
+      "choices": [
+        "Ignore the stakeholder's actions if they lack formal authority.",
+        "Publicly confront the stakeholder to address their negativity.",
+        "Analyze the reasons for their opposition and develop a strategy to address their concerns or mitigate their impact.",
+        "Restrict communication with the stakeholder to essential project updates only."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Understanding and addressing the root cause of opposition is crucial.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the purpose of a \"Stakeholder Engagement Assessment Matrix\" in managing a resistant stakeholder?",
+      "choices": [
+        "To document the stakeholder's negative comments and behaviors.",
+        "To justify excluding the stakeholder from future project communications.",
+        "To help plan and track efforts to move the stakeholder from a resistant to a more supportive engagement level.",
+        "To prove that the stakeholder's resistance is the primary cause of project delays."
+      ],
+      "correctAnswer": 2,
+      "explanation": "The matrix aids in strategizing and monitoring engagement improvements.",
+      "time": 30
+    },
+    {
+      "questionText": "Which of the following is a key skill for a project manager to effectively manage diverse stakeholder expectations?",
+      "choices": [
+        "Strict adherence to the original project plan, regardless of stakeholder feedback.",
+        "The ability to say \"no\" to all stakeholder requests for changes.",
+        "Strong negotiation and conflict resolution skills.",
+        "Maintaining a formal and distant relationship with all stakeholders."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Balancing different needs often requires skillful negotiation.",
+      "time": 30
+    },
+    {
+      "questionText": "In a project with both tangible and intangible requirements, requiring a hybrid approach, how should stakeholder engagement be managed for the adaptive portions?",
+      "choices": [
+        "Use the same rigid engagement plan as the predictive parts.",
+        "Minimize stakeholder involvement to allow for flexibility.",
+        "Employ more frequent feedback loops and collaborative sessions to address evolving needs.",
+        "Document all adaptive requirements upfront to avoid ongoing engagement."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Adaptive work requires iterative engagement and feedback.",
+      "time": 30
+    },
+    {
+      "questionText": "For a healthcare project with strict compliance and numerous identified risks, what is the most appropriate approach to stakeholder engagement regarding risks?",
+      "choices": [
+        "Only communicate about risks if they materialize and impact the project.",
+        "Share the full list of 50+ risks in detail with all stakeholders at once.",
+        "Regularly review the identified risks and their potential impact with relevant stakeholders, prioritizing based on likelihood and impact.",
+        "Assume that stakeholders in the healthcare domain are already familiar with all potential risks."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Proactive and regular communication about risks is vital in high-compliance environments.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the role of \"quick wins\" in stakeholder management?",
+      "choices": [
+        "To distract stakeholders from more significant project issues.",
+        "To complete the easiest project tasks first, regardless of value.",
+        "To benefit key stakeholders and build early support and momentum for the project.",
+        "To reduce the overall scope of the project without formal change control."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Quick wins can generate positive perception and stakeholder buy-in.",
+      "time": 30
+    },
+    {
+      "questionText": "When a project is strategically important to the organization, how should stakeholder engagement be approached?",
+      "choices": [
+        "Focus solely on the project sponsor's needs.",
+        "Minimize engagement with lower-level stakeholders.",
+        "Use a systematic approach to ensure all relevant stakeholders understand the strategic importance and their role in its success.",
+        "Keep stakeholder engagement activities informal to expedite decision-making."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Strategic projects require comprehensive and aligned stakeholder support.",
+      "time": 30
+    },
+    {
+      "questionText": "What is a potential negative consequence of poor stakeholder engagement?",
+      "choices": [
+        "The project team may receive excessive praise and recognition.",
+        "The project may be completed too quickly, leading to quality issues.",
+        "Increased resistance, delays, rework, and ultimately project failure.",
+        "Stakeholders may become overly enthusiastic and make unrealistic demands."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Poor engagement can lead to significant project challenges.",
+      "time": 30
+    },
+    {
+      "questionText": "How can a project manager leverage a stakeholder register during project execution?",
+      "choices": [
+        "To assign tasks to project team members.",
+        "To track project progress against the schedule.",
+        "To refer to stakeholder information when planning communication, managing expectations, and addressing concerns.",
+        "To document lessons learned at the end of the project."
+      ],
+      "correctAnswer": 2,
+      "explanation": "The register is a key reference for all stakeholder-related activities.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the primary goal of stakeholder communication?",
+      "choices": [
+        "To overwhelm stakeholders with project information.",
+        "To only share positive updates and avoid mentioning challenges.",
+        "To ensure stakeholders are appropriately informed and engaged throughout the project lifecycle.",
+        "To dictate project decisions and ensure stakeholder compliance."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Effective communication keeps stakeholders informed and involved.",
+      "time": 30
+    },
+    {
+      "questionText": "In a project using a waterfall approach, when is stakeholder engagement typically most intense?",
+      "choices": [
+        "Primarily during the project execution phase.",
+        "Only during the final testing and deployment stages.",
+        "During the initial requirements gathering and final acceptance phases.",
+        "Stakeholder engagement is consistent and uniform throughout the entire project lifecycle."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Waterfall often has concentrated engagement points at the beginning and end.",
+      "time": 30
+    },
+    {
+      "questionText": "In a virtual project team, what are some key considerations for effective stakeholder engagement?",
+      "choices": [
+        "Rely solely on email for all communication to maintain a written record.",
+        "Schedule fewer meetings to accommodate different time zones.",
+        "Utilize a variety of communication tools and methods, and be mindful of cultural and time zone differences.",
+        "Assume that all virtual stakeholders have the same level of technological proficiency."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Virtual environments require thoughtful communication strategies.",
+      "time": 30
+    },
+    {
+      "questionText": "What should a project manager do if a stakeholder repeatedly requests changes that are outside the agreed-upon scope?",
+      "choices": [
+        "Implement all requested changes to maintain stakeholder satisfaction.",
+        "Ignore the requests to avoid scope creep.",
+        "Remind the stakeholder of the agreed-upon scope and follow the project's change control process.",
+        "Agree to the changes but secretly cut corners on other deliverables."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Managing scope requires adherence to the change control process.",
+      "time": 30
+    },
+    {
+      "questionText": "How can a project manager address a situation where two key stakeholders have conflicting requirements?",
+      "choices": [
+        "Prioritize the requirements of the stakeholder with more formal power.",
+        "Implement both sets of requirements, even if they contradict each other.",
+        "Facilitate discussions to find a mutually acceptable solution or compromise, referencing project objectives.",
+        "Defer the decision and hope the stakeholders resolve the conflict themselves."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Conflict resolution and finding common ground are essential.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the role of the project sponsor in stakeholder engagement?",
+      "choices": [
+        "To handle all communication with external stakeholders.",
+        "To provide technical guidance to the project team.",
+        "To provide overall direction, support the project manager in engaging stakeholders, and help resolve high-level issues.",
+        "To monitor the project budget and approve all expenditures."
+      ],
+      "correctAnswer": 2,
+      "explanation": "The sponsor plays a key leadership role in stakeholder management.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the benefit of categorizing stakeholders based on their power and interest?",
+      "choices": [
+        "To create a hierarchical list of who is most important.",
+        "To determine who should receive the most project funding.",
+        "To develop tailored engagement strategies for different stakeholder groups.",
+        "To decide which stakeholders' opinions can be safely ignored."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Categorization allows for focused engagement efforts.",
+      "time": 30
+    },
+    {
+      "questionText": "What should a project manager do if a key stakeholder who was initially supportive becomes resistant during the project?",
+      "choices": [
+        "Ignore the change in attitude and continue with the existing engagement plan.",
+        "Immediately escalate the issue to the project sponsor.",
+        "Try to understand the reasons for the resistance and adapt the engagement strategy accordingly.",
+        "Reduce communication with the stakeholder to avoid further negativity."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Adapting to changing stakeholder attitudes is crucial.",
+      "time": 30
+    },
+    {
+      "questionText": "Which of the following is NOT a recommended approach for building a strong relationship with project stakeholders?",
+      "choices": [
+        "Ensure effective communication throughout the project lifecycle.",
+        "Develop and maintain trust through transparency and honesty.",
+        "Engage stakeholders early and often in the project planning process.",
+        "Implement a risk response plan to address stakeholder concerns."
+      ],
+      "correctAnswer": 3,
+      "explanation": "While important, risk response doesn't directly build relationships; communication and trust do.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the primary focus when checking the results of the Stakeholder Performance Domain?",
+      "choices": [
+        "Ensuring the project is on schedule and within budget.",
+        "Verifying the technical accuracy and quality of deliverables.",
+        "Assessing stakeholder satisfaction and the effectiveness of engagement.",
+        "Monitoring the performance of the project team members."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Checking results in this domain focuses on stakeholder-related outcomes.",
+      "time": 30
+    },
+    {
+      "questionText": "Which of the following is a way to check the outcomes of the Stakeholder Performance Domain, as indicated in Table 2-2 of the sources?",
+      "choices": [
+        "Reviewing the project's budget burn-down chart.",
+        "Analyzing the team's velocity in completing tasks.",
+        "Assessing stakeholder satisfaction through surveys or feedback sessions.",
+        "Tracking the number of change requests submitted by the project team."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Checking outcomes involves gauging stakeholder satisfaction.",
+      "time": 30
+    },
+    {
+      "questionText": "When working with stakeholders, what is a crucial element for the project team to understand and analyze?",
+      "choices": [
+        "Their technical expertise in the project domain.",
+        "Their reporting structure within their own organization.",
+        "Their needs and desired outcomes from the project.",
+        "Their past experience with similar projects."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Understanding stakeholder needs is fundamental to successful engagement.",
+      "time": 30
+    },
+    {
+      "questionText": "Which of the following documents can provide valuable information for identifying project stakeholders?",
+      "choices": [
+        "Project schedule and resource plan.",
+        "Risk register and issue log.",
+        "Project charter.",
+        "Performance reports and status updates."
+      ],
+      "correctAnswer": 2,
+      "explanation": "The project charter often contains initial information about key stakeholders.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the benefit of a project manager having a \"service-oriented\" mindset when engaging with stakeholders?",
+      "choices": [
+        "It allows the project manager to dictate project terms to stakeholders.",
+        "It minimizes the need for the project manager to understand stakeholder needs.",
+        "It helps the project manager focus on meeting stakeholder needs and providing value.",
+        "It ensures that all stakeholder requests are immediately fulfilled, regardless of impact."
+      ],
+      "correctAnswer": 2,
+      "explanation": "A service orientation prioritizes meeting stakeholder needs effectively.",
+      "time": 30
+    },
+    {
+      "questionText": "When should a project manager consider stakeholders who have left the project from previous phases?",
+      "choices": [
+        "Only if they had a significant negative impact on the project.",
+        "Never, as they are no longer involved.",
+        "The stakeholder register should mention them as there may be lessons learned or historical context.",
+        "Only if they were strong advocates for the project."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Past stakeholders can provide valuable historical information.",
+      "time": 30
+    },
+    {
+      "questionText": "What is the relationship between the Stakeholder Performance Domain and the Uncertainty Performance Domain?",
+      "choices": [
+        "They are completely independent of each other.",
+        "The Uncertainty Performance Domain is a subset of the Stakeholder Performance Domain.",
+        "Understanding stakeholder perspectives can help in identifying and managing project uncertainty.",
+        "The Stakeholder Performance Domain only deals with known entities, not uncertainties."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Stakeholder input can reveal potential ambiguities and complexities.",
+      "time": 30
+    }
+  ]
+}
