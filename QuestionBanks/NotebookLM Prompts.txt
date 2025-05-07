@@ -1,0 +1,157 @@
+**Prompt 1: Stakeholder Performance Domain**
+
+"Based on the content of the uploaded project management texts, generate 100 unique multiple-choice questions (MCQs) covering the core principles, key concepts, processes (such as stakeholder identification, analysis, engagement, and communication management), and common practices related to the **Stakeholder Performance Domain**.
+
+The output must be a single JSON object.
+The root of the JSON object should have two keys: `\"topic\"` and `\"questions\"`.
+The value for `\"topic\"` should be \"Stakeholder Performance Domain Quiz\".
+The value for `\"questions\"` should be an array of 100 unique MCQ objects.
+
+Each MCQ object in the `\"questions\"` array must have the following structure:
+- `\"questionText\"`: A string containing the question.
+- `\"choices\"`: An array of exactly four strings: one correct answer and three plausible distractors.
+- `\"correctAnswer\"`: An integer representing the 0-based index of the correct answer within the `\"choices\"` array.
+- `\"explanation\"`: A string providing a detailed explanation for why the correct answer is right.
+- `\"time\"`: An integer representing the allocated time for the question in seconds (e.g., 30).
+
+Ensure all 100 questions are unique, suitable for PMP exam preparation, and reflect a comprehensive understanding of the Stakeholder Performance Domain as presented in the uploaded sources."
+
+---
+
+**Prompt 2: Team Performance Domain**
+
+"Based on the content of the uploaded project management texts, generate 100 unique multiple-choice questions (MCQs) covering the core principles, key concepts, processes (such as team development stages, conflict resolution, leadership styles, motivation, and resource management), and common practices related to the **Team Performance Domain**.
+
+The output must be a single JSON object.
+The root of the JSON object should have two keys: `\"topic\"` and `\"questions\"`.
+The value for `\"topic\"` should be \"Team Performance Domain Quiz\".
+The value for `\"questions\"` should be an array of 100 unique MCQ objects.
+
+Each MCQ object in the `\"questions\"` array must have the following structure:
+- `\"questionText\"`: A string containing the question.
+- `\"choices\"`: An array of exactly four strings: one correct answer and three plausible distractors.
+- `\"correctAnswer\"`: An integer representing the 0-based index of the correct answer within the `\"choices\"` array.
+- `\"explanation\"`: A string providing a detailed explanation for why the correct answer is right.
+- `\"time\"`: An integer representing the allocated time for the question in seconds (e.g., 30).
+
+Ensure all 100 questions are unique, suitable for PMP exam preparation, and reflect a comprehensive understanding of the Team Performance Domain as presented in the uploaded sources."
+
+---
+
+**Prompt 3: Development Approach and Life Cycle Performance Domain**
+
+"Based on the content of the uploaded project management texts, generate 100 unique multiple-choice questions (MCQs) covering the core principles, key concepts (such as predictive, iterative, incremental, agile, and hybrid life cycles, characteristics of each, and selecting appropriate approaches), and common practices related to the **Development Approach and Life Cycle Performance Domain**.
+
+The output must be a single JSON object.
+The root of the JSON object should have two keys: `\"topic\"` and `\"questions\"`.
+The value for `\"topic\"` should be \"Development Approach and Life Cycle Performance Domain Quiz\".
+The value for `\"questions\"` should be an array of 100 unique MCQ objects.
+
+Each MCQ object in the `\"questions\"` array must have the following structure:
+- `\"questionText\"`: A string containing the question.
+- `\"choices\"`: An array of exactly four strings: one correct answer and three plausible distractors.
+- `\"correctAnswer\"`: An integer representing the 0-based index of the correct answer within the `\"choices\"` array.
+- `\"explanation\"`: A string providing a detailed explanation for why the correct answer is right.
+- `\"time\"`: An integer representing the allocated time for the question in seconds (e.g., 30).
+
+Ensure all 100 questions are unique, suitable for PMP exam preparation, and reflect a comprehensive understanding of the Development Approach and Life Cycle Performance Domain as presented in the uploaded sources."
+
+---
+
+**Prompt 4: Planning Performance Domain**
+
+"Based on the content of the uploaded project management texts, generate 100 unique multiple-choice questions (MCQs) covering the core principles, key concepts, processes (such as scope definition, WBS creation, activity sequencing, estimating, schedule development, cost budgeting, quality planning, risk planning, and procurement planning), and common practices related to the **Planning Performance Domain**.
+
+The output must be a single JSON object.
+The root of the JSON object should have two keys: `\"topic\"` and `\"questions\"`.
+The value for `\"topic\"` should be \"Planning Performance Domain Quiz\".
+The value for `\"questions\"` should be an array of 100 unique MCQ objects.
+
+Each MCQ object in the `\"questions\"` array must have the following structure:
+- `\"questionText\"`: A string containing the question.
+- `\"choices\"`: An array of exactly four strings: one correct answer and three plausible distractors.
+- `\"correctAnswer\"`: An integer representing the 0-based index of the correct answer within the `\"choices\"` array.
+- `\"explanation\"`: A string providing a detailed explanation for why the correct answer is right.
+- `\"time\"`: An integer representing the allocated time for the question in seconds (e.g., 30).
+
+Ensure all 100 questions are unique, suitable for PMP exam preparation, and reflect a comprehensive understanding of the Planning Performance Domain as presented in the uploaded sources."
+
+---
+
+**Prompt 5: Project Work Performance Domain**
+
+"Based on the content of the uploaded project management texts, generate 100 unique multiple-choice questions (MCQs) covering the core principles, key concepts, processes (such as managing project execution, ensuring quality, managing communications, implementing risk responses, and managing procurements), and common practices related to the **Project Work Performance Domain**.
+
+The output must be a single JSON object.
+The root of the JSON object should have two keys: `\"topic\"` and `\"questions\"`.
+The value for `\"topic\"` should be \"Project Work Performance Domain Quiz\".
+The value for `\"questions\"` should be an array of 100 unique MCQ objects.
+
+Each MCQ object in the `\"questions\"` array must have the following structure:
+- `\"questionText\"`: A string containing the question.
+- `\"choices\"`: An array of exactly four strings: one correct answer and three plausible distractors.
+- `\"correctAnswer\"`: An integer representing the 0-based index of the correct answer within the `\"choices\"` array.
+- `\"explanation\"`: A string providing a detailed explanation for why the correct answer is right.
+- `\"time\"`: An integer representing the allocated time for the question in seconds (e.g., 30).
+
+Ensure all 100 questions are unique, suitable for PMP exam preparation, and reflect a comprehensive understanding of the Project Work Performance Domain as presented in the uploaded sources."
+
+---
+
+**Prompt 6: Delivery Performance Domain**
+
+"Based on the content of the uploaded project management texts, generate 100 unique multiple-choice questions (MCQs) covering the core principles, key concepts, processes (such as delivering value, managing scope, ensuring quality of deliverables, and validating scope), and common practices related to the **Delivery Performance Domain**.
+
+The output must be a single JSON object.
+The root of the JSON object should have two keys: `\"topic\"` and `\"questions\"`.
+The value for `\"topic\"` should be \"Delivery Performance Domain Quiz\".
+The value for `\"questions\"` should be an array of 100 unique MCQ objects.
+
+Each MCQ object in the `\"questions\"` array must have the following structure:
+- `\"questionText\"`: A string containing the question.
+- `\"choices\"`: An array of exactly four strings: one correct answer and three plausible distractors.
+- `\"correctAnswer\"`: An integer representing the 0-based index of the correct answer within the `\"choices\"` array.
+- `\"explanation\"`: A string providing a detailed explanation for why the correct answer is right.
+- `\"time\"`: An integer representing the allocated time for the question in seconds (e.g., 30).
+
+Ensure all 100 questions are unique, suitable for PMP exam preparation, and reflect a comprehensive understanding of the Delivery Performance Domain as presented in the uploaded sources."
+
+---
+
+**Prompt 7: Measurement Performance Domain**
+
+"Based on the content of the uploaded project management texts, generate 100 unique multiple-choice questions (MCQs) covering the core principles, key concepts, processes (such as establishing metrics, collecting data, analyzing performance, earned value management (EVM), forecasting, and reporting progress), and common practices related to the **Measurement Performance Domain**.
+
+The output must be a single JSON object.
+The root of the JSON object should have two keys: `\"topic\"` and `\"questions\"`.
+The value for `\"topic\"` should be \"Measurement Performance Domain Quiz\".
+The value for `\"questions\"` should be an array of 100 unique MCQ objects.
+
+Each MCQ object in the `\"questions\"` array must have the following structure:
+- `\"questionText\"`: A string containing the question.
+- `\"choices\"`: An array of exactly four strings: one correct answer and three plausible distractors.
+- `\"correctAnswer\"`: An integer representing the 0-based index of the correct answer within the `\"choices\"` array.
+- `\"explanation\"`: A string providing a detailed explanation for why the correct answer is right.
+- `\"time\"`: An integer representing the allocated time for the question in seconds (e.g., 30).
+
+Ensure all 100 questions are unique, suitable for PMP exam preparation, and reflect a comprehensive understanding of the Measurement Performance Domain as presented in the uploaded sources."
+
+---
+
+**Prompt 8: Uncertainty Performance Domain**
+
+"Based on the content of the uploaded project management texts, generate 100 unique multiple-choice questions (MCQs) covering the core principles, key concepts, processes (such as risk identification, qualitative and quantitative risk analysis, risk response planning, implementing risk responses, and monitoring risks, including ambiguity and complexity), and common practices related to the **Uncertainty Performance Domain**.
+
+The output must be a single JSON object.
+The root of the JSON object should have two keys: `\"topic\"` and `\"questions\"`.
+The value for `\"topic\"` should be \"Uncertainty Performance Domain Quiz\".
+The value for `\"questions\"` should be an array of 100 unique MCQ objects.
+
+Each MCQ object in the `\"questions\"` array must have the following structure:
+- `\"questionText\"`: A string containing the question.
+- `\"choices\"`: An array of exactly four strings: one correct answer and three plausible distractors.
+- `\"correctAnswer\"`: An integer representing the 0-based index of the correct answer within the `\"choices\"` array.
+- `\"explanation\"`: A string providing a detailed explanation for why the correct answer is right.
+- `\"time\"`: An integer representing the allocated time for the question in seconds (e.g., 30).
+
+Ensure all 100 questions are unique, suitable for PMP exam preparation, and reflect a comprehensive understanding of the Uncertainty Performance Domain as presented in the uploaded sources."
