@@ -3,316 +3,1116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Quiz Application</title>
+    <title>SelfQuiz - Exam Practice Quiz Web App</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .quiz-container { max-width: 800px; margin: 2rem auto; }
-        .question-card { transition: all 0.3s ease; }
-        .choice-btn { transition: transform 0.2s; }
-        .choice-btn:hover { transform: translateY(-2px); }
-        .progress-bar { transition: width 0.5s ease; }
-        .correct { background-color: #d4edda!important; }
-        .incorrect { background-color: #f8d7da!important; }
-        .review-item { cursor: pointer; }
-        .fade-in { animation: fadeIn 0.5s; }
-        .score-display {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 10px 15px;
-            text-align: center;
-            min-width: 180px;
+        :root {
+            --primary-color: #0d6efd;
+            --primary-hover-color: #0b5ed7;
+            --primary-active-color: #0a58ca;
+            --secondary-color: #6c757d;
+            --secondary-hover-color: #5c636a;
+            --secondary-active-color: #565e64;
+            --success-color: #198754; 
+            --danger-color: #dc3545;
+            --danger-hover-color: #bb2d3b; 
+            --danger-active-color: #b02a37; 
+            --info-color: #0dcaf0;
+            --info-hover-color: #0aa7c4;
+            --info-active-color: #0996b3;
+            --light-bg: #f8f9fa;
+            --dark-text: #212529;
+            --medium-text: #495057;
+            --border-radius: 0.375rem;
+            --correct-bg: #d1e7dd; 
+            --incorrect-bg: #f8d7da;
+            --bs-body-font-family: 'Inter', sans-serif;
         }
-        .progress-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+        body {
+            background-color: var(--light-bg);
+            font-family: var(--bs-body-font-family);
+            color: var(--dark-text);
+            line-height: 1.6;
         }
-        .progress-label {
-            font-weight: 500;
-            color: #495057;
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
         }
-        .explanation-box {
-            background-color: #e9ecef;
-            border-radius: 8px;
-            padding: 15px;
-            margin-top: 20px;
-            animation: fadeIn 0.5s;
+
+        .card {
+            transition: box-shadow 0.3s ease;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .card:hover {
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .choice-btn {
+            transition: transform 0.2s, background-color 0.3s, border-color 0.3s;
+            border-radius: var(--border-radius);
+            text-align: left !important; 
+            padding: 0.75rem 1rem !important; 
+        }
+        .choice-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            background-color: #e9ecef; 
+        }
+        .choice-btn:focus-visible { 
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        .btn-primary:active {
+             background-color: var(--primary-active-color);
+             border-color: var(--primary-active-color);
+        }
+        .btn-info:active {
+            background-color: var(--info-active-color);
+            border-color: var(--info-active-color);
+        }
+        .btn-secondary:active {
+            background-color: var(--secondary-active-color);
+            border-color: var(--secondary-active-color);
+        }
+        .btn-danger:active { 
+            background-color: var(--danger-active-color); 
+            border-color: var(--danger-active-color);
+        }
+        .btn-success:active { 
+            background-color: #157347; 
+            border-color: #146c43;
+        }
+
+        /* Style for reset button confirmation state */
+        .btn-danger.confirm-reset {
+            background-color: #ff4d4d; /* Brighter red */
+            border-color: #ff3333;
+        }
+        .btn-danger.confirm-reset:hover {
+            background-color: #ff1a1a; 
+            border-color: #e60000;
+        }
+
+
+        .choice-btn.correct-answer { background-color: var(--correct-bg); border-color: var(--success-color); color: var(--dark-text); }
+        .choice-btn.incorrect-answer { background-color: var(--incorrect-bg); border-color: var(--danger-color); color: var(--dark-text); }
+        .choice-btn.user-selected.incorrect-answer { opacity: 0.7; }
+
+        .progress-bar { transition: width 0.5s ease; background-color: var(--primary-color); }
+        .fade-in { animation: fadeInAnimation 0.5s ease-in-out; }
+        @keyframes fadeInAnimation { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .score-display { background: #ffffff; border-radius: var(--border-radius); padding: 10px 15px; text-align: center; min-width: 220px; border: 1px solid #dee2e6; }
+        .progress-container { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .progress-label { font-weight: 500; color: var(--medium-text); }
+        .explanation-box { background-color: #e9ecef; border-radius: var(--border-radius); padding: 15px; margin-top: 20px; animation: fadeInAnimation 0.5s; }
+        
+        .btn-primary { background-color: var(--primary-color); border-color: var(--primary-color); }
+        .btn-primary:hover { background-color: var(--primary-hover-color); border-color: var(--primary-hover-color); }
+        .btn-info { background-color: var(--info-color); border-color: var(--info-color); }
+        .btn-info:hover { background-color: var(--info-hover-color); border-color: var(--info-hover-color); }
+        .btn-secondary { background-color: var(--secondary-color); border-color: var(--secondary-color); }
+        .btn-secondary:hover { background-color: var(--secondary-hover-color); border-color: var(--secondary-hover-color); }
+        .btn-success { background-color: var(--success-color); border-color: var(--success-color); } 
+        .btn-success:hover { background-color: #157347; border-color: #146c43; }
+        .btn-danger { background-color: var(--danger-color); border-color: var(--danger-color); } 
+        .btn-danger:hover { background-color: var(--danger-hover-color); border-color: var(--danger-hover-color); }
+
+
+        .loading-spinner { border: 4px solid #f3f3f3; border-top: 4px solid var(--primary-color); border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 20px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        .d-none { display: none !important; }
+        .divider-text { text-align: center; margin: 1rem 0; font-weight: 500; color: var(--medium-text); }
+        
     </style>
 </head>
 <body class="bg-light">
-    <div class="container py-4">
-        <!-- File Upload Section -->
-        <div id="uploadSection" class="text-center">
-            <h2 class="mb-4">Load Quiz Questions</h2>
-            <input type="file" id="jsonFile" class="form-control mb-3" accept=".json">
-            <div id="fileError" class="text-danger"></div>
-        </div>
+    <main class="container py-4 quiz-container">
+        <section id="uploadSection" class="card p-4 mb-4 fade-in">
+            <h2 class="mb-4 text-center">Load Quiz Questions</h2>
 
-        <!-- Quiz Interface -->
-        <div id="quizInterface" class="d-none">
+            <form id="selectBankForm" aria-labelledby="selectBankFormHeading" class="mb-3">
+                <h3 id="selectBankFormHeading" class="visually-hidden">Select Question Bank Form</h3>
+                <div class="mb-3">
+                    <label for="questionBankSelect" class="form-label">Option 1: Select Question Bank</label>
+                    <select id="questionBankSelect" class="form-select" aria-describedby="selectHelp">
+                        </select>
+                    <div id="selectHelp" class="form-text">Choose a predefined question bank.</div>
+                </div>
+                <button type="submit" id="startFromSelectBtn" class="btn btn-success w-100">Start Quiz from Selection</button>
+            </form>
+
+            <div class="divider-text">OR</div>
+            
+            <form id="uploadForm" aria-labelledby="uploadFormHeadingFile" class="mb-3">
+                 <h3 id="uploadFormHeadingFile" class="visually-hidden">Quiz File Upload Form</h3>
+                <div class="mb-3">
+                    <label for="jsonFile" class="form-label">Option 2: Upload JSON File</label>
+                    <input type="file" id="jsonFile" class="form-control" accept=".json" aria-describedby="fileHelp">
+                    <div id="fileHelp" class="form-text">Select a quiz file in JSON format from your device.</div>
+                </div>
+                <button type="submit" id="startFromFileBtn" class="btn btn-primary w-100">Start Quiz from File</button>
+            </form>
+
+            <div class="divider-text">OR</div>
+
+            <form id="urlForm" aria-labelledby="urlFormHeadingUrl">
+                <h3 id="urlFormHeadingUrl" class="visually-hidden">Quiz URL Form</h3>
+                <div class="mb-3">
+                    <label for="jsonUrl" class="form-label">Option 3: Load from GitHub URL</label>
+                    <input type="url" id="jsonUrl" class="form-control" placeholder="https://raw.githubusercontent.com/..." aria-describedby="urlHelp">
+                    <div id="urlHelp" class="form-text">Enter a direct link to a raw JSON file (e.g., from GitHub).</div>
+                </div>
+                <button type="submit" id="startFromUrlBtn" class="btn btn-secondary w-100">Start Quiz from URL</button>
+            </form>
+            
+            <div id="jsonLoadError" class="text-danger mt-3" role="alert" aria-live="assertive"></div>
+            <div id="loadingIndicator" class="d-none text-center mt-3">
+                <div class="loading-spinner" aria-hidden="true"></div>
+                <p>Loading quiz...</p>
+            </div>
+        </section>
+
+        <section id="quizInterface" class="d-none fade-in" aria-labelledby="quizTopic">
             <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
-                <h3 id="quizTopic" class="mb-0"></h3>
-                <div class="score-display">
+                <h3 id="quizTopic" class="mb-0 h4"></h3>
+                <div class="score-display" aria-live="polite">
                     <div class="d-flex justify-content-between">
                         <span class="progress-label">Score:</span>
-                        <span><strong id="currentScore">0</strong>/<span id="totalQuestions">0</span></span>
-                    </div>
-                    <div class="d-flex justify-content-between mt-1">
-                        <span class="progress-label">Quiz Progress:</span>
-                        <span><strong id="percentageScore">0</strong>%</span>
+                        <span>
+                            <strong id="currentScoreValue">0</strong>/<span id="totalQuestions">0</span>
+                            (<strong id="currentScorePercentage">0</strong>%)
+                        </span>
                     </div>
                 </div>
             </div>
             
-            <div class="progress-container">
+            <div class="progress-container" aria-label="Quiz Progress">
                 <div class="flex-grow-1">
-                    <div class="progress mb-1">
-                        <div id="progressBar" class="progress-bar" role="progressbar"></div>
+                    <div class="progress mb-1" style="height: 10px;">
+                        <div id="progressBar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                             <span class="visually-hidden">Quiz progress</span>
+                        </div>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <small>Question <span id="currentQuestionNum">1</span> of <span id="totalQuestionsDisplay">0</span></small>
-                        <small id="timer" class="text-muted">Time left: 0s</small>
+                        <small id="questionProgressText">Question <span id="currentQuestionNum">0</span> of <span id="totalQuestionsDisplay">0</span></small>
+                        <small id="timer" class="text-muted" aria-live="polite">Time left: 0s</small>
                     </div>
                 </div>
             </div>
             
-            <div id="questionContainer" class="question-card card p-4 mb-4"></div>
-            <div id="explanationContainer" class="explanation-box d-none"></div>
-        </div>
-
-        <!-- Results Section -->
-        <div id="resultsSection" class="d-none">
-            <div class="card p-4">
-                <h2 class="mb-4">Quiz Results</h2>
-                <div class="mb-4">
-                    <div class="d-flex justify-content-between mb-2">
-                        <h4 class="mb-0">Score:</h4>
-                        <h4 class="mb-0"><strong id="finalScore">0</strong>/<span id="finalTotalQuestions">0</span></h4>
-                    </div>
-                    <div class="d-flex justify-content-between mb-2">
-                        <h4 class="mb-0">Quiz Progress:</h4>
-                        <h4 class="mb-0"><strong id="finalPercentage">0</strong>%</h4>
-                    </div>
-                    <div class="progress mt-3" style="height: 25px;">
-                        <div id="finalPercentageBar" class="progress-bar" role="progressbar" style="width: 0%"></div>
-                    </div>
+            <div id="questionContainer" class="card p-4 mb-4" aria-live="polite" aria-atomic="true">
                 </div>
-                <button id="reviewBtn" class="btn btn-info mb-3 w-100">Review Questions</button>
-                <button class="btn btn-primary w-100" onclick="location.reload()">Restart Quiz</button>
-            </div>
-        </div>
+            <div id="explanationContainer" class="explanation-box d-none" aria-live="polite" aria-atomic="true">
+                </div>
 
-        <!-- Review Section -->
-        <div id="reviewSection" class="d-none">
+            <button id="resetQuizDuringQuizBtn" class="btn btn-danger w-100 mt-4" aria-live="polite">Reset Quiz & Load New</button>
+
+        </section>
+
+        <section id="resultsSection" class="d-none card p-4 fade-in" aria-labelledby="resultsHeading">
+            <h2 id="resultsHeading" class="mb-4 text-center">Quiz Results</h2>
+            <div class="mb-4" aria-live="polite">
+                <div class="d-flex justify-content-between mb-2">
+                    <h4 class="mb-0 h5">Final Score:</h4>
+                    <h4 class="mb-0 h5">
+                        <strong id="finalScoreValue">0</strong>/<span id="finalTotalQuestions">0</span>
+                        (<strong id="finalScorePercentage">0</strong>%)
+                    </h4>
+                </div>
+                <div class="progress mt-3" style="height: 25px;" aria-label="Final score percentage">
+                    <div id="finalPercentageBar" class="progress-bar" role="progressbar" style="width: 0%;">0%</div>
+                </div>
+            </div>
+            <button id="reviewBtn" class="btn btn-info mb-3 w-100">Review Answers</button>
+            <button id="restartQuizBtnResults" class="btn btn-primary w-100">Take New Quiz</button> </section>
+
+        <section id="reviewSection" class="d-none card p-4 fade-in" aria-labelledby="reviewHeading">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="mb-0">Question Review</h2>
+                <h2 id="reviewHeading" class="mb-0 h3">Answer Review</h2>
                 <div class="score-display">
                     <div class="d-flex justify-content-between">
                         <span class="progress-label">Final Score:</span>
-                        <span><strong id="reviewFinalScore">0</strong>/<span id="reviewTotalQuestions">0</span></span>
+                        <span>
+                            <strong id="reviewScoreValue">0</strong>/<span id="reviewTotalQuestions">0</span>
+                            (<strong id="reviewScorePercentage">0</strong>%)
+                        </span>
                     </div>
                 </div>
             </div>
-            <div id="reviewQuestions"></div>
-            <button class="btn btn-primary mt-3 w-100" onclick="location.reload()">Restart Quiz</button>
-        </div>
-    </div>
+            <div id="reviewQuestionsContainer" aria-live="polite">
+                </div>
+            <button id="restartQuizBtnReview" class="btn btn-primary mt-4 w-100">Take New Quiz</button> </section>
+    </main>
 
     <script>
+        // --- Configuration Object ---
+        const QUIZ_CONFIG = Object.freeze({
+            CSS_CLASSES: {
+                HIDDEN: 'd-none',
+                CORRECT_ANSWER: 'correct-answer',
+                INCORRECT_ANSWER: 'incorrect-answer',
+                USER_SELECTED: 'user-selected',
+                FADE_IN: 'fade-in',
+                CONFIRM_RESET: 'confirm-reset', 
+            },
+            DEFAULT_QUESTION_TIME: 60, 
+            CHAR_CODE_A: 65, 
+            TIMER_INTERVAL: 1000, 
+            MIN_CHOICES_PER_QUESTION: 2,
+            ALLOWED_URL_HOSTS: ['raw.githubusercontent.com'],
+            RESET_CONFIRM_TIMEOUT: 5000, 
+            QUESTION_BANKS: [ 
+                {
+                    name: "Stakeholder Performance Domain",
+                    url: "https://raw.githubusercontent.com/shfqrkhn/SelfQuiz/refs/heads/main/QuestionBanks/PMP_1_StakeholderPerformance.json"
+                },
+                {
+                    name: "Team Performance Domain",
+                    url: "https://raw.githubusercontent.com/shfqrkhn/SelfQuiz/refs/heads/main/QuestionBanks/PMP_2_TeamPerformance.json"
+                },
+                {
+                    name: "Development Approach & Life Cycle",
+                    url: "https://raw.githubusercontent.com/shfqrkhn/SelfQuiz/refs/heads/main/QuestionBanks/PMP_3_DevelopmentApproach_and_LifeCyclePerformance.json"
+                },
+                {
+                    name: "Planning Performance Domain",
+                    url: "https://raw.githubusercontent.com/shfqrkhn/SelfQuiz/refs/heads/main/QuestionBanks/PMP_4_PlanningPerformance.json"
+                },
+                {
+                    name: "Project Work Performance Domain",
+                    url: "https://raw.githubusercontent.com/shfqrkhn/SelfQuiz/refs/heads/main/QuestionBanks/PMP_5_ProjectWorkPerformance.json"
+                },
+                {
+                    name: "Delivery Performance Domain",
+                    url: "https://raw.githubusercontent.com/shfqrkhn/SelfQuiz/refs/heads/main/QuestionBanks/PMP_6_DeliveryPerformance.json"
+                },
+                {
+                    name: "Measurement Performance Domain",
+                    url: "https://raw.githubusercontent.com/shfqrkhn/SelfQuiz/refs/heads/main/QuestionBanks/PMP_7_MeasurementPerformance.json"
+                },
+                {
+                    name: "Uncertainty Performance Domain",
+                    url: "https://raw.githubusercontent.com/shfqrkhn/SelfQuiz/refs/heads/main/QuestionBanks/PMP_8_UncertaintyPerformance.json"
+                }
+            ]
+        });
+
+        // --- QuizManager Class ---
         class QuizManager {
             constructor() {
+                // Initialize state variables
                 this.questions = [];
                 this.currentQuestionIndex = 0;
                 this.score = 0;
-                this.timer = null;
+                this.timerInterval = null; 
                 this.timeLeft = 0;
-                this.userAnswers = [];
-                this.quizTopic = '';
+                this.userAnswers = []; 
+                this.quizTopic = ''; 
+                this.isTimerPaused = false;
+                this.isResetPending = false; 
+                this.resetConfirmTimer = null; 
+
+                this._cacheDOMElements();
+                this._populateQuestionBankDropdown(); 
+                this._bindEvents();
             }
 
-            loadQuestions(jsonData) {
-                try {
-                    this.quizTopic = jsonData.topic;
-                    this.questions = jsonData.questions.sort(() => Math.random() - 0.5);
-                    this.updateTotalQuestionsDisplay();
-                } catch (error) {
-                    throw new Error('Invalid JSON format');
+            /**
+             * Caches frequently accessed DOM elements.
+             */
+            _cacheDOMElements() {
+                this.dom = {
+                    uploadSection: document.getElementById('uploadSection'),
+                    quizInterface: document.getElementById('quizInterface'),
+                    resultsSection: document.getElementById('resultsSection'),
+                    reviewSection: document.getElementById('reviewSection'),
+                    
+                    selectBankForm: document.getElementById('selectBankForm'), 
+                    questionBankSelect: document.getElementById('questionBankSelect'), 
+                    startFromSelectBtn: document.getElementById('startFromSelectBtn'), 
+                    selectHelp: document.getElementById('selectHelp'), 
+
+                    uploadForm: document.getElementById('uploadForm'),
+                    jsonFile: document.getElementById('jsonFile'),
+                    startFromFileBtn: document.getElementById('startFromFileBtn'),
+                    
+                    urlForm: document.getElementById('urlForm'),
+                    jsonUrl: document.getElementById('jsonUrl'),
+                    startFromUrlBtn: document.getElementById('startFromUrlBtn'),
+                    
+                    loadError: document.getElementById('jsonLoadError'),
+                    loadingIndicator: document.getElementById('loadingIndicator'),
+                    
+                    quizTopic: document.getElementById('quizTopic'),
+                    currentScoreValue: document.getElementById('currentScoreValue'),
+                    totalQuestions: document.getElementById('totalQuestions'),
+                    currentScorePercentage: document.getElementById('currentScorePercentage'),
+                    progressBar: document.getElementById('progressBar'),
+                    currentQuestionNum: document.getElementById('currentQuestionNum'),
+                    totalQuestionsDisplay: document.getElementById('totalQuestionsDisplay'),
+                    questionProgressText: document.getElementById('questionProgressText'),
+                    timer: document.getElementById('timer'),
+
+                    resetQuizDuringQuizBtn: document.getElementById('resetQuizDuringQuizBtn'), 
+
+                    questionContainer: document.getElementById('questionContainer'),
+                    explanationContainer: document.getElementById('explanationContainer'),
+                    finalScoreValue: document.getElementById('finalScoreValue'),
+                    finalTotalQuestions: document.getElementById('finalTotalQuestions'),
+                    finalScorePercentage: document.getElementById('finalScorePercentage'),
+                    finalPercentageBar: document.getElementById('finalPercentageBar'),
+                    reviewBtn: document.getElementById('reviewBtn'),
+                    reviewScoreValue: document.getElementById('reviewScoreValue'),
+                    reviewTotalQuestions: document.getElementById('reviewTotalQuestions'),
+                    reviewScorePercentage: document.getElementById('reviewScorePercentage'),
+                    reviewQuestionsContainer: document.getElementById('reviewQuestionsContainer'),
+                    restartQuizBtnResults: document.getElementById('restartQuizBtnResults'),
+                    restartQuizBtnReview: document.getElementById('restartQuizBtnReview'),
+                };
+            }
+
+            /**
+             * Populates the question bank dropdown from the predefined list in QUIZ_CONFIG.
+             */
+            _populateQuestionBankDropdown() {
+                if (!this.dom.questionBankSelect) return;
+                
+                this.dom.questionBankSelect.innerHTML = ''; 
+
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "-- Select a Question Bank --";
+                defaultOption.disabled = true;
+                defaultOption.selected = true;
+                this.dom.questionBankSelect.appendChild(defaultOption);
+
+                if (QUIZ_CONFIG.QUESTION_BANKS && QUIZ_CONFIG.QUESTION_BANKS.length > 0) {
+                    QUIZ_CONFIG.QUESTION_BANKS.forEach(bank => {
+                        const option = document.createElement('option');
+                        option.value = bank.url;
+                        option.textContent = bank.name;
+                        this.dom.questionBankSelect.appendChild(option);
+                    });
+                    this.dom.questionBankSelect.disabled = false;
+                    if (this.dom.startFromSelectBtn) this.dom.startFromSelectBtn.disabled = false;
+                    if (this.dom.selectHelp) this.dom.selectHelp.textContent = "Choose a predefined question bank.";
+
+                } else {
+                     if (this.dom.selectHelp) this.dom.selectHelp.textContent = "No predefined question banks available.";
+                     this.dom.questionBankSelect.disabled = true;
+                     if (this.dom.startFromSelectBtn) this.dom.startFromSelectBtn.disabled = true;
                 }
             }
 
-            updateTotalQuestionsDisplay() {
-                const total = this.questions.length;
-                document.getElementById('totalQuestions').textContent = total;
-                document.getElementById('totalQuestionsDisplay').textContent = total;
-                document.getElementById('finalTotalQuestions').textContent = total;
-                document.getElementById('reviewTotalQuestions').textContent = total;
+            /**
+             * Binds event listeners to DOM elements.
+             */
+            _bindEvents() {
+                if (this.dom.selectBankForm) this.dom.selectBankForm.addEventListener('submit', this._handleSelectSubmit.bind(this)); 
+                if (this.dom.uploadForm) this.dom.uploadForm.addEventListener('submit', this._handleFileSubmit.bind(this));
+                if (this.dom.urlForm) this.dom.urlForm.addEventListener('submit', this._handleUrlSubmit.bind(this));
+                
+                if (this.dom.resetQuizDuringQuizBtn) this.dom.resetQuizDuringQuizBtn.addEventListener('click', this._handleResetRequest.bind(this)); 
+
+                if (this.dom.reviewBtn) this.dom.reviewBtn.addEventListener('click', this.showReview.bind(this));
+                if (this.dom.restartQuizBtnResults) this.dom.restartQuizBtnResults.addEventListener('click', this.confirmAndResetQuiz.bind(this)); 
+                if (this.dom.restartQuizBtnReview) this.dom.restartQuizBtnReview.addEventListener('click', this.confirmAndResetQuiz.bind(this)); 
+                
+                window.addEventListener('blur', this._pauseTimer.bind(this));
+                window.addEventListener('focus', this._resumeTimer.bind(this));
+                document.body.addEventListener('click', this._handleBodyClickForResetCancel.bind(this), true); 
+            }
+            
+            /**
+             * Handles the two-click confirmation for the in-quiz reset button.
+             * @param {Event} event - The click event.
+             */
+            _handleResetRequest(event) {
+                 event.stopPropagation(); 
+
+                if (this.isResetPending) {
+                    clearTimeout(this.resetConfirmTimer); 
+                    this.isResetPending = false;
+                    this.resetQuiz(); 
+                } else {
+                    this.isResetPending = true;
+                    const button = this.dom.resetQuizDuringQuizBtn;
+                    button.textContent = "Confirm Reset?"; // Change text
+                    button.classList.add(QUIZ_CONFIG.CSS_CLASSES.CONFIRM_RESET); // Change style
+                    
+                    this.resetConfirmTimer = setTimeout(() => {
+                        this._cancelResetRequest();
+                    }, QUIZ_CONFIG.RESET_CONFIRM_TIMEOUT);
+                }
             }
 
-            startQuiz() {
+            /**
+             * Cancels the pending reset confirmation state, reverting button style and text.
+             */
+            _cancelResetRequest() {
+                 if (!this.isResetPending) return; 
+
+                clearTimeout(this.resetConfirmTimer); 
+                this.isResetPending = false;
+                const button = this.dom.resetQuizDuringQuizBtn;
+                if (button) { 
+                    button.textContent = "Reset Quiz & Load New"; // Revert text
+                    button.classList.remove(QUIZ_CONFIG.CSS_CLASSES.CONFIRM_RESET); // Revert style
+                }
+            }
+
+            /**
+             * Handles clicks on the body to cancel reset confirmation if clicked outside the button.
+             * @param {Event} event - The click event.
+             */
+             _handleBodyClickForResetCancel(event) {
+                if (this.isResetPending && event.target !== this.dom.resetQuizDuringQuizBtn) {
+                    this._cancelResetRequest();
+                }
+             }
+
+            /**
+             * Handles quiz start from dropdown selection.
+             * @param {Event} event - The form submission event.
+             */
+            async _handleSelectSubmit(event) { 
+                event.preventDefault();
+                this._cancelResetRequest(); 
+                const selectedUrl = this.dom.questionBankSelect.value;
+                this._setLoadError('');
+
+                if (!selectedUrl) {
+                    this._setLoadError('Please select a question bank from the dropdown.');
+                    return;
+                }
+                await this._fetchAndProcessQuizData(selectedUrl, "dropdown selection");
+            }
+
+            /**
+             * Handles quiz start from file upload.
+             * @param {Event} event - The form submission event.
+             */
+            async _handleFileSubmit(event) {
+                event.preventDefault(); 
+                this._cancelResetRequest(); 
+                const file = this.dom.jsonFile.files[0];
+                this._setLoadError(''); 
+
+                if (!file) {
+                    this._setLoadError('Please select a JSON file to upload.');
+                    return;
+                }
+
+                this._toggleLoadingIndicator(true);
+                try {
+                    const fileContent = await this._readFileContent(file);
+                    this._processAndStartQuiz(fileContent, "file upload");
+                } catch (error) {
+                    this._setLoadError(`Error reading file: ${error.message}`);
+                    console.error("File Reading Error:", error);
+                } finally {
+                    this._toggleLoadingIndicator(false);
+                    if (this.dom.uploadForm) this.dom.uploadForm.reset(); 
+                }
+            }
+
+            /**
+             * Handles quiz start from URL input.
+             * @param {Event} event - The form submission event.
+             */
+            async _handleUrlSubmit(event) {
+                event.preventDefault();
+                this._cancelResetRequest(); 
+                const url = this.dom.jsonUrl.value.trim();
+                this._setLoadError('');
+
+                if (!url) {
+                    this._setLoadError('Please enter a valid URL for the JSON file.');
+                    return;
+                }
+                try {
+                    const parsedUrl = new URL(url); 
+                    if (!QUIZ_CONFIG.ALLOWED_URL_HOSTS.includes(parsedUrl.hostname)) {
+                        this._setLoadError(`Error: URL must be from an allowed domain (e.g., ${QUIZ_CONFIG.ALLOWED_URL_HOSTS.join(', ')}).`);
+                        return;
+                    }
+                } catch (e) {
+                    this._setLoadError('Invalid URL format.');
+                    return;
+                }
+                
+                await this._fetchAndProcessQuizData(url, "URL input");
+            }
+
+            /**
+             * Fetches JSON data from a URL and processes it.
+             * @param {string} sourceUrl - The URL to fetch JSON from.
+             * @param {string} sourceType - A description of the source for error messages.
+             */
+            async _fetchAndProcessQuizData(sourceUrl, sourceType = "unknown") {
+                this._toggleLoadingIndicator(true);
+                this._setLoadError(''); 
+                try {
+                    const response = await fetch(sourceUrl);
+                    if (!response.ok) {
+                        throw new Error(`Failed to fetch from ${sourceType}: ${response.status} ${response.statusText}`);
+                    }
+                    const jsonDataString = await response.text();
+                    this._processAndStartQuiz(jsonDataString, sourceType);
+                } catch (error) {
+                    this._setLoadError(`Error fetching or processing from ${sourceType}: ${error.message}`);
+                    console.error(`Error with ${sourceType}:`, error);
+                     this._showSection(this.dom.uploadSection); // Go back to upload on fetch error
+                } finally {
+                    this._toggleLoadingIndicator(false);
+                }
+            }
+            
+            /**
+             * Parses JSON data, loads questions, and starts the quiz.
+             * @param {string} jsonDataString - The JSON string to parse.
+             * @param {string} sourceType - Description of the source for error/topic context.
+             */
+            _processAndStartQuiz(jsonDataString, sourceType) { 
+                try {
+                    const jsonData = JSON.parse(jsonDataString);
+                    this.loadQuestions(jsonData); 
+                    
+                    this._showSection(this.dom.quizInterface);
+                    this.dom.quizTopic.textContent = this.quizTopic || `Quiz: ${sourceType}`; 
+                    if (this.dom.quizInterface) this.dom.quizInterface.focus(); 
+                    this.startQuiz(); 
+                } catch (error) { 
+                    this._setLoadError(`Error processing quiz data (from ${sourceType}): ${error.message}`);
+                    console.error(`Quiz Data Processing Error (from ${sourceType}):`, error);
+                     this._showSection(this.dom.uploadSection); 
+                }
+            }
+
+            /**
+             * Reads file content as text.
+             * @param {File} file - The file object to read.
+             * @returns {Promise<string>} A promise that resolves with the file content.
+             */
+            _readFileContent(file) { 
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = (e) => resolve(e.target.result);
+                    reader.onerror = (e) => reject(new Error('Failed to read file.'));
+                    reader.readAsText(file);
+                });
+            }
+
+            /**
+             * Sets the error message for loading.
+             * @param {string} message - The error message to display.
+             */
+            _setLoadError(message) { 
+                if (this.dom.loadError) { 
+                    this.dom.loadError.textContent = message;
+                }
+            }
+
+            /**
+             * Toggles the visibility of the loading indicator.
+             * @param {boolean} show - True to show, false to hide.
+             */
+            _toggleLoadingIndicator(show) { 
+                if (this.dom.loadingIndicator) {
+                    this.dom.loadingIndicator.classList.toggle(QUIZ_CONFIG.CSS_CLASSES.HIDDEN, !show);
+                }
+            }
+
+            /**
+             * Shows a specific quiz section and hides others.
+             * @param {HTMLElement} sectionToShow - The section element to display.
+             */
+            _showSection(sectionToShow) { 
+                this._cancelResetRequest(); // Cancel pending reset when changing sections
+                const sections = [
+                    this.dom.uploadSection, 
+                    this.dom.quizInterface, 
+                    this.dom.resultsSection, 
+                    this.dom.reviewSection
+                ];
+                sections.forEach(section => {
+                    if (section) section.classList.add(QUIZ_CONFIG.CSS_CLASSES.HIDDEN);
+                });
+                if (sectionToShow) {
+                    sectionToShow.classList.remove(QUIZ_CONFIG.CSS_CLASSES.HIDDEN);
+                    sectionToShow.classList.add(QUIZ_CONFIG.CSS_CLASSES.FADE_IN); 
+                }
+            }
+
+            /**
+             * Shuffles an array in place using Fisher-Yates algorithm.
+             * @param {Array} array - The array to shuffle.
+             */
+            _shuffleArray(array) { 
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+            }
+
+            /**
+             * Loads and validates questions from JSON data.
+             * @param {object} jsonData - The parsed JSON object.
+             */
+            loadQuestions(jsonData) { 
+                this._validateQuizData(jsonData); 
+                this.quizTopic = jsonData.topic || "Quiz Questions"; 
+                this.questions = [...jsonData.questions]; 
+                this._shuffleArray(this.questions); 
+                this._updateTotalQuestionsDisplay();
+            }
+
+            /**
+             * Validates the structure of the quiz JSON data.
+             * @param {object} jsonData - The JSON data to validate.
+             * @throws {Error} If validation fails.
+             */
+            _validateQuizData(jsonData) { 
+                if (!jsonData || typeof jsonData !== 'object') {
+                    throw new Error('Invalid JSON: Data must be an object.');
+                }
+                if (jsonData.hasOwnProperty('topic') && typeof jsonData.topic !== 'string') {
+                    throw new Error('Invalid JSON: If "topic" is present, it must be a string.');
+                }
+                if (!Array.isArray(jsonData.questions)) {
+                    throw new Error('Invalid JSON: "questions" must be an array.');
+                }
+                if (jsonData.questions.length === 0) {
+                    throw new Error('Invalid JSON: "questions" array cannot be empty.');
+                }
+
+                for (const [index, q] of jsonData.questions.entries()) {
+                    const qNum = index + 1;
+                    if (typeof q.questionText !== 'string' || !q.questionText.trim()) {
+                        throw new Error(`Question ${qNum}: "questionText" must be a non-empty string.`);
+                    }
+                    if (!Array.isArray(q.choices) || q.choices.length < QUIZ_CONFIG.MIN_CHOICES_PER_QUESTION) {
+                        throw new Error(`Question ${qNum}: Must have at least ${QUIZ_CONFIG.MIN_CHOICES_PER_QUESTION} choices.`);
+                    }
+                    if (q.choices.some(choice => typeof choice !== 'string' || !choice.trim())) {
+                         throw new Error(`Question ${qNum}: All choices must be non-empty strings.`);
+                    }
+                    if (typeof q.correctAnswer !== 'number' || q.correctAnswer < 0 || q.correctAnswer >= q.choices.length) {
+                        throw new Error(`Question ${qNum}: "correctAnswer" index is invalid or out of bounds.`);
+                    }
+                    if (typeof q.explanation !== 'string' || !q.explanation.trim()) { 
+                        throw new Error(`Question ${qNum}: "explanation" must be a non-empty string.`);
+                    }
+                    if (q.hasOwnProperty('time') && (typeof q.time !== 'number' || q.time <= 0)) {
+                        throw new Error(`Question ${qNum}: If "time" is present, it must be a positive number.`);
+                    }
+                }
+            }
+
+            /**
+             * Updates all displays of total question count.
+             */
+            _updateTotalQuestionsDisplay() { 
+                const total = this.questions.length;
+                const elementsToUpdate = [
+                    this.dom.totalQuestions, 
+                    this.dom.totalQuestionsDisplay, 
+                    this.dom.finalTotalQuestions, 
+                    this.dom.reviewTotalQuestions
+                ];
+                elementsToUpdate.forEach(el => { if (el) el.textContent = total; });
+                if (this.dom.progressBar) this.dom.progressBar.setAttribute('aria-valuemax', total || 100); 
+            }
+
+            /**
+             * Starts the quiz after questions are loaded.
+             */
+            startQuiz() { 
                 this.currentQuestionIndex = 0;
                 this.score = 0;
                 this.userAnswers = [];
-                document.getElementById('currentScore').textContent = 0;
-                this.updatePercentageScore();
-                this.showQuestion();
+                this.isTimerPaused = false;
+                this._updateCurrentScoreDisplay(); 
+                this._showQuestion();
             }
 
-            showQuestion() {
+            /**
+             * Displays the current question.
+             */
+            _showQuestion() { 
+                this._cancelResetRequest(); 
+                if (this.currentQuestionIndex >= this.questions.length) {
+                    this.endQuiz();
+                    return;
+                }
                 const question = this.questions[this.currentQuestionIndex];
-                this.timeLeft = question.time || 30;
-                this.startTimer();
-                this.updateProgress();
-                this.renderQuestion(question);
-                document.getElementById('currentQuestionNum').textContent = this.currentQuestionIndex + 1;
-                document.getElementById('explanationContainer').classList.add('d-none');
+                this.timeLeft = question.time || QUIZ_CONFIG.DEFAULT_QUESTION_TIME; 
+
+                this._startTimer(); 
+                this._updateProgress();
+                this._renderQuestion(question);
+                if (this.dom.currentQuestionNum) this.dom.currentQuestionNum.textContent = this.currentQuestionIndex + 1;
+                if (this.dom.explanationContainer) {
+                    this.dom.explanationContainer.classList.add(QUIZ_CONFIG.CSS_CLASSES.HIDDEN);
+                    this.dom.explanationContainer.innerHTML = ''; 
+                }
+
+                const firstChoiceButton = this.dom.questionContainer ? this.dom.questionContainer.querySelector('.choice-btn') : null;
+                if (firstChoiceButton) {
+                    firstChoiceButton.focus();
+                }
             }
 
-            startTimer() {
-                if (this.timer) clearInterval(this.timer);
-                this.timer = setInterval(() => {
+            /**
+             * Starts the timer for the current question.
+             */
+            _startTimer() { 
+                if (this.timerInterval) clearInterval(this.timerInterval);
+                if (this.dom.timer) this.dom.timer.textContent = `Time left: ${this.timeLeft}s`;
+                this.timerInterval = setInterval(() => {
+                    if (this.isTimerPaused) return; 
+
                     this.timeLeft--;
-                    document.getElementById('timer').textContent = `Time left: ${this.timeLeft}s`;
-                    if (this.timeLeft <= 0) this.handleTimeExpired();
-                }, 1000);
+                    if (this.dom.timer) this.dom.timer.textContent = `Time left: ${this.timeLeft}s`;
+                    if (this.timeLeft <= 0) {
+                        clearInterval(this.timerInterval);
+                        this._handleTimeExpired();
+                    }
+                }, QUIZ_CONFIG.TIMER_INTERVAL);
             }
 
-            handleAnswer(selectedIndex) {
+            _pauseTimer() { 
+                if (this.timerInterval && !this.isTimerPaused) {
+                    this.isTimerPaused = true;
+                }
+            }
+            _resumeTimer() { 
+                if (this.isTimerPaused) {
+                    this.isTimerPaused = false;
+                }
+            }
+            _handleTimeExpired() { 
+                this.handleAnswer(-1); 
+            }
+
+            /**
+             * Handles a user's answer selection.
+             * @param {number} selectedIndex - The index of the selected choice.
+             */
+            handleAnswer(selectedIndex) { 
+                this._cancelResetRequest(); 
+                if (this.timerInterval) clearInterval(this.timerInterval); 
                 const question = this.questions[this.currentQuestionIndex];
                 const isCorrect = selectedIndex === question.correctAnswer;
                 
                 this.userAnswers.push({
-                    question: question.questionText,
+                    questionText: question.questionText,
+                    choices: [...question.choices], 
                     selected: selectedIndex,
                     correct: question.correctAnswer,
-                    explanation: question.explanation
+                    explanation: question.explanation,
+                    isCorrect: isCorrect
                 });
 
                 if (isCorrect) {
-                    this.score += 1;
-                    document.getElementById('currentScore').textContent = this.score;
-                    this.updatePercentageScore();
+                    this.score++;
                 }
-
-                clearInterval(this.timer);
-                this.showFeedback(isCorrect, question.explanation);
+                this._updateCurrentScoreDisplay(); 
+                this._showFeedback(selectedIndex, isCorrect, question);
             }
 
-            showFeedback(isCorrect, explanation) {
-                const buttons = document.querySelectorAll('.choice-btn');
-                buttons.forEach(btn => {
-                    btn.disabled = true;
-                    const index = Array.from(buttons).indexOf(btn);
-                    btn.classList.add(index === this.questions[this.currentQuestionIndex].correctAnswer ? 'correct' : 'incorrect');
+            /**
+             * Shows feedback (correct/incorrect) and explanation.
+             * @param {number} selectedIndex - The user's selected answer index.
+             * @param {boolean} isCorrect - Whether the answer was correct.
+             * @param {object} question - The current question object.
+             */
+            _showFeedback(selectedIndex, isCorrect, question) { 
+                const buttons = this.dom.questionContainer ? this.dom.questionContainer.querySelectorAll('.choice-btn') : [];
+                buttons.forEach((btn, index) => {
+                    btn.disabled = true; 
+                    if (index === question.correctAnswer) {
+                        btn.classList.add(QUIZ_CONFIG.CSS_CLASSES.CORRECT_ANSWER);
+                    } else {
+                        btn.classList.add(QUIZ_CONFIG.CSS_CLASSES.INCORRECT_ANSWER);
+                        if (index === selectedIndex) { 
+                            btn.classList.add(QUIZ_CONFIG.CSS_CLASSES.USER_SELECTED);
+                        }
+                    }
                 });
 
-                // Show explanation
-                const explanationContainer = document.getElementById('explanationContainer');
-                explanationContainer.innerHTML = `
-                    <h5>Explanation:</h5>
-                    <p>${explanation}</p>
-                    <button class="btn btn-primary mt-2" onclick="quiz.nextQuestion()">Continue</button>
-                `;
-                explanationContainer.classList.remove('d-none');
+                let feedbackHeading = '';
+                if (selectedIndex === -1) feedbackHeading = 'Time Expired!';
+                else if (isCorrect) feedbackHeading = 'Correct!';
+                else feedbackHeading = 'Incorrect.';
+
+                if (this.dom.explanationContainer) {
+                    this.dom.explanationContainer.innerHTML = `
+                        <h5 class="h6">${feedbackHeading}</h5>
+                        <p>${this._sanitizeHTML(question.explanation)}</p>
+                        <button id="continueBtn" class="btn btn-primary mt-2">Continue</button>
+                    `;
+                    this.dom.explanationContainer.classList.remove(QUIZ_CONFIG.CSS_CLASSES.HIDDEN);
+                }
+                
+                const continueBtn = document.getElementById('continueBtn');
+                if(continueBtn) {
+                    continueBtn.onclick = () => this.nextQuestion(); 
+                    continueBtn.focus(); 
+                }
             }
 
-            updatePercentageScore() {
-                const percentage = Math.round((this.score / this.questions.length) * 100);
-                document.getElementById('percentageScore').textContent = percentage;
+            /**
+             * Updates the current score and percentage display.
+             */
+            _updateCurrentScoreDisplay() { 
+                const totalQuestions = this.questions.length;
+                const percentage = totalQuestions > 0 ? Math.round((this.score / totalQuestions) * 100) : 0;
+                if (this.dom.currentScoreValue) this.dom.currentScoreValue.textContent = this.score;
+                if (this.dom.currentScorePercentage) this.dom.currentScorePercentage.textContent = percentage;
             }
 
-            nextQuestion() {
-                if (this.currentQuestionIndex < this.questions.length - 1) {
-                    this.currentQuestionIndex++;
-                    this.showQuestion();
+            /**
+             * Moves to the next question or ends the quiz.
+             */
+            nextQuestion() { 
+                this.currentQuestionIndex++;
+                if (this.currentQuestionIndex < this.questions.length) {
+                    this._showQuestion();
                 } else {
                     this.endQuiz();
                 }
             }
 
+            /**
+             * Ends the current quiz and shows results.
+             */
             endQuiz() {
-                document.getElementById('quizInterface').classList.add('d-none');
-                document.getElementById('resultsSection').classList.remove('d-none');
+                this._cancelResetRequest(); 
+                if (this.timerInterval) clearInterval(this.timerInterval); 
+                this._showSection(this.dom.resultsSection);
+                if (this.dom.resultsSection) this.dom.resultsSection.focus(); 
                 
-                const totalQuestions = this.questions.length;
-                const percentage = Math.round((this.score / totalQuestions) * 100);
+                const total = this.questions.length;
+                const percentage = total > 0 ? Math.round((this.score / total) * 100) : 0;
                 
-                document.getElementById('finalScore').textContent = this.score;
-                document.getElementById('reviewFinalScore').textContent = this.score;
-                document.getElementById('finalPercentage').textContent = percentage;
-                document.getElementById('finalPercentageBar').style.width = `${percentage}%`;
+                if (this.dom.finalScoreValue) this.dom.finalScoreValue.textContent = this.score;
+                if (this.dom.finalScorePercentage) this.dom.finalScorePercentage.textContent = percentage;
+                
+                if (this.dom.finalPercentageBar) {
+                    this.dom.finalPercentageBar.style.width = `${percentage}%`;
+                    this.dom.finalPercentageBar.textContent = `${percentage}%`; 
+                    this.dom.finalPercentageBar.setAttribute('aria-valuenow', percentage);
+                }
             }
 
-            renderQuestion(question) {
-                const container = document.getElementById('questionContainer');
-                container.innerHTML = `
-                    <h4 class="mb-4">${question.questionText}</h4>
-                    <div class="row g-3">
-                        ${question.choices.map((choice, index) => `
-                            <div class="col-md-6">
-                                <button onclick="quiz.handleAnswer(${index})" 
-                                    class="choice-btn btn btn-outline-primary w-100 text-start p-3">
-                                    ${String.fromCharCode(65 + index)}. ${choice}
-                                </button>
-                            </div>
-                        `).join('')}
+            /**
+             * Renders the current question and its choices.
+             * @param {object} question - The question object to render.
+             */
+            _renderQuestion(question) { 
+                 if (!question || !question.choices) { 
+                    console.error("Attempted to render invalid question:", question);
+                    if (this.dom.questionContainer) this.dom.questionContainer.innerHTML = "<p class='text-danger'>Error: Could not load question.</p>";
+                    return;
+                }
+                const choicesHtml = question.choices.map((choice, index) => `
+                    <div class="col-md-6">
+                        <button 
+                            data-index="${index}" 
+                            class="choice-btn btn btn-outline-primary w-100 p-3 mb-2">
+                            ${String.fromCharCode(QUIZ_CONFIG.CHAR_CODE_A + index)}. ${this._sanitizeHTML(choice)}
+                        </button>
                     </div>
+                `).join('');
+
+                if (this.dom.questionContainer) {
+                    this.dom.questionContainer.innerHTML = `
+                        <h4 class="mb-4 h5" id="questionTextLabel">${this._sanitizeHTML(question.questionText)}</h4>
+                        <div class="row g-3" role="group" aria-labelledby="questionTextLabel">
+                            ${choicesHtml}
+                        </div>
+                    `;
+                    // Add event listeners to newly created choice buttons
+                    this.dom.questionContainer.querySelectorAll('.choice-btn').forEach(button => {
+                        button.addEventListener('click', (e) => this.handleAnswer(parseInt(e.currentTarget.dataset.index)));
+                    });
+                }
+            }
+
+            /**
+             * Basic HTML sanitizer.
+             * @param {string} str - The string to sanitize.
+             * @returns {string} Sanitized HTML string.
+             */
+             _sanitizeHTML(str) { 
+                const temp = document.createElement('div');
+                temp.textContent = str; 
+                return temp.innerHTML;
+            }
+
+            /**
+             * Updates the progress bar and text.
+             */
+            _updateProgress() { 
+                const totalQuestions = this.questions.length;
+                const currentQNum = this.currentQuestionIndex + 1;
+                const progressPercentage = totalQuestions > 0 ? (currentQNum / totalQuestions) * 100 : 0;
+                
+                if (this.dom.progressBar) {
+                    this.dom.progressBar.style.width = `${progressPercentage}%`;
+                    this.dom.progressBar.setAttribute('aria-valuenow', currentQNum);
+                    if (this.dom.questionProgressText && this.dom.questionProgressText.textContent) { 
+                         this.dom.progressBar.setAttribute('aria-valuetext', this.dom.questionProgressText.textContent);
+                    } else {
+                        this.dom.progressBar.setAttribute('aria-valuetext', `Question ${currentQNum} of ${totalQuestions}`);
+                    }
+                }
+            }
+
+            /**
+             * Shows the review section with all answered questions.
+             */
+            showReview() { 
+                this._showSection(this.dom.reviewSection);
+                if (this.dom.reviewSection) this.dom.reviewSection.focus(); 
+
+                const total = this.questions.length;
+                const percentage = total > 0 ? Math.round((this.score / total) * 100) : 0;
+
+                if (this.dom.reviewScoreValue) this.dom.reviewScoreValue.textContent = this.score;
+                if (this.dom.reviewScorePercentage) this.dom.reviewScorePercentage.textContent = percentage;
+
+                if (this.dom.reviewQuestionsContainer) {
+                    this.dom.reviewQuestionsContainer.innerHTML = this.userAnswers
+                        .map((answerData, index) => this._buildReviewQuestionHtml(answerData, index))
+                        .join('');
+                }
+            }
+
+            /**
+             * Builds HTML for a single question in the review section.
+             * @param {object} answerData - The user's answer data for a question.
+             * @param {number} index - The index of the question.
+             * @returns {string} HTML string for the review question.
+             */
+            _buildReviewQuestionHtml(answerData, index) { 
+                const originalQuestion = this.questions.find(q => q.questionText === answerData.questionText) || answerData;
+                 if (!originalQuestion || !originalQuestion.choices) { 
+                    return `<article class="card mb-3 fade-in"><div class="card-body"><p class="text-danger">Error: Review data for question ${index + 1} is incomplete.</p></div></article>`;
+                }
+
+                const selectedChoiceText = answerData.selected !== -1 
+                    ? (originalQuestion.choices[answerData.selected] || "Invalid selection index") 
+                    : "Not answered (Time out)";
+                const correctChoiceText = originalQuestion.choices[answerData.correct] || "Invalid correct index";
+
+                let answerStatusClass = 'text-danger';
+                let answerStatusText = `Your answer: ${String.fromCharCode(QUIZ_CONFIG.CHAR_CODE_A + answerData.selected)}. ${this._sanitizeHTML(selectedChoiceText)}`;
+                
+                if (answerData.selected === -1) { 
+                     answerStatusText = "You ran out of time.";
+                } else if (answerData.isCorrect) {
+                    answerStatusClass = 'text-success';
+                }
+
+                const correctAnswerDisplay = (!answerData.isCorrect && answerData.selected !== -1) || answerData.isCorrect || answerData.selected === -1
+                    ? `<p class="${answerData.isCorrect ? 'text-success' : 'text-info'}">Correct answer: ${String.fromCharCode(QUIZ_CONFIG.CHAR_CODE_A + answerData.correct)}. ${this._sanitizeHTML(correctChoiceText)}</p>`
+                    : '';
+
+                return `
+                <article class="card mb-3 ${QUIZ_CONFIG.CSS_CLASSES.FADE_IN}">
+                    <div class="card-body">
+                        <h5 class="card-title h6">Question ${index + 1}</h5>
+                        <p class="card-text">${this._sanitizeHTML(answerData.questionText)}</p>
+                        <p class="${answerStatusClass}">
+                            ${answerStatusText}
+                        </p>
+                        ${correctAnswerDisplay}
+                        <p class="text-muted small mt-2"><em>Explanation: ${this._sanitizeHTML(answerData.explanation)}</em></p>
+                    </div>
+                </article>
                 `;
             }
 
-            updateProgress() {
-                const progress = ((this.currentQuestionIndex + 1) / this.questions.length) * 100;
-                document.getElementById('progressBar').style.width = `${progress}%`;
+            /**
+             * Confirms and then resets the quiz (used by end-of-quiz buttons).
+             */
+            confirmAndResetQuiz() { 
+                if (window.confirm("Are you sure you want to start a new quiz? Your current results will be lost.")) {
+                    this.resetQuiz();
+                }
             }
 
-            showReview() {
-                document.getElementById('resultsSection').classList.add('d-none');
-                document.getElementById('reviewSection').classList.remove('d-none');
-                document.getElementById('reviewQuestions').innerHTML = this.userAnswers
-                    .map((answer, index) => `
-                        <div class="card mb-3 fade-in">
-                            <div class="card-body">
-                                <h5>Question ${index + 1}</h5>
-                                <p>${this.questions[index].questionText}</p>
-                                <p class="${answer.selected === answer.correct ? 'text-success' : 'text-danger'}">
-                                    Your answer: ${String.fromCharCode(65 + answer.selected)}<br>
-                                    Correct answer: ${String.fromCharCode(65 + answer.correct)}
-                                </p>
-                                <p class="text-muted">Explanation: ${answer.explanation}</p>
-                            </div>
-                        </div>
-                    `).join('');
+            /**
+             * Resets the entire quiz application to its initial state.
+             */
+            resetQuiz() { 
+                this._cancelResetRequest(); // Ensure confirmation state is cleared
+
+                if (this.timerInterval) {
+                    clearInterval(this.timerInterval);
+                    this.timerInterval = null;
+                }
+                this.isTimerPaused = false;
+
+                // Reset all state variables
+                this.questions = [];
+                this.currentQuestionIndex = 0;
+                this.score = 0;
+                this.userAnswers = [];
+                this.quizTopic = '';
+                this.timeLeft = 0;
+
+                // Reset UI elements
+                this._updateCurrentScoreDisplay(); 
+                if (this.dom.progressBar) {
+                    this.dom.progressBar.style.width = '0%';
+                    this.dom.progressBar.setAttribute('aria-valuenow', '0');
+                }
+                if (this.dom.currentQuestionNum) this.dom.currentQuestionNum.textContent = '0';
+                this._updateTotalQuestionsDisplay(); 
+                if (this.dom.timer) this.dom.timer.textContent = 'Time left: 0s';
+                
+                if (this.dom.questionContainer) this.dom.questionContainer.innerHTML = '';
+                if (this.dom.explanationContainer) {
+                    this.dom.explanationContainer.innerHTML = '';
+                    this.dom.explanationContainer.classList.add(QUIZ_CONFIG.CSS_CLASSES.HIDDEN);
+                }
+                if (this.dom.reviewQuestionsContainer) this.dom.reviewQuestionsContainer.innerHTML = '';
+
+                this._setLoadError(''); 
+                // Reset all forms
+                if (this.dom.uploadForm) this.dom.uploadForm.reset(); 
+                if (this.dom.urlForm) this.dom.urlForm.reset();
+                if (this.dom.questionBankSelect) this.dom.questionBankSelect.selectedIndex = 0; 
+
+                // Explicitly reset the in-quiz reset button's appearance (redundant with _cancelResetRequest, but safe)
+                const resetButton = this.dom.resetQuizDuringQuizBtn;
+                if(resetButton) {
+                    resetButton.textContent = "Reset Quiz & Load New";
+                    resetButton.classList.remove(QUIZ_CONFIG.CSS_CLASSES.CONFIRM_RESET);
+                }
+
+                this._showSection(this.dom.uploadSection); 
+                if (this.dom.uploadSection) this.dom.uploadSection.focus(); 
             }
         }
 
-        const quiz = new QuizManager();
-
-        // Event Listeners
-        document.getElementById('jsonFile').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            const reader = new FileReader();
-            
-            reader.onload = function(e) {
-                try {
-                    const jsonData = JSON.parse(e.target.result);
-                    quiz.loadQuestions(jsonData);
-                    
-                    document.getElementById('uploadSection').classList.add('d-none');
-                    document.getElementById('quizInterface').classList.remove('d-none');
-                    document.getElementById('quizTopic').textContent = jsonData.topic;
-                    quiz.startQuiz();
-                } catch (error) {
-                    document.getElementById('fileError').textContent = 'Error loading JSON file: ' + error.message;
-                }
-            };
-            
-            reader.readAsText(file);
-        });
-
-        document.getElementById('reviewBtn').addEventListener('click', () => {
-            quiz.showReview();
+        // --- Initialize the Quiz ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const quiz = new QuizManager();
         });
     </script>
 </body>
