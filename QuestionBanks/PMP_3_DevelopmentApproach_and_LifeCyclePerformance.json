@@ -2,7 +2,7 @@
   "topic": "Development Approach and Life Cycle Performance Domain Quiz",
   "questions": [
     {
-      "questionText": "According to the sources, how are predictive, agile, and hybrid approaches integrated into the PMP examination content?",
+      "questionText": "How are predictive, agile, and hybrid approaches integrated into the PMP examination content?",
       "choices": [
         "They are confined to specific domain areas.",
         "They are integrated across all three domain areas and not confined to any specific domain or task.",
@@ -10,11 +10,11 @@
         "They are only assessed in the Execution domain."
       ],
       "correctAnswer": 1,
-      "explanation": "Source explicitly states that predictive, agile, and hybrid approaches will be integrated across all three domain areas and will not be confined to any specific domain or task.",
+      "explanation": "The PMP Examination Content Outline explicitly states that predictive, agile, and hybrid approaches are integrated across all three domain areas (People, Process, Business Environment) and are not confined to any specific domain or task.",
       "time": 75
     },
     {
-      "questionText": "Based on the sources, which development methodology is appropriate for a project with fixed and stable requirements and where multiple deliveries are not needed?",
+      "questionText": "Which development methodology is most appropriate for a project with fixed and stable requirements where multiple deliveries are not needed?",
       "choices": [
         "Iterative",
         "Agile",
@@ -22,11 +22,11 @@
         "Predictive"
       ],
       "correctAnswer": 3,
-      "explanation": "Source indicates that if project requirements are fixed and stable, and multiple deliveries are not needed, the predictive approach is appropriate.",
+      "explanation": "Predictive (or Waterfall) approaches are best suited for projects where the requirements are well-understood, fixed, and stable from the outset, and a single final delivery is expected.",
       "time": 75
     },
     {
-      "questionText": "What is the primary influence on the amount of upfront project planning needed for a project, according to the provided texts?",
+      "questionText": "What is a primary factor influencing the amount of upfront project planning needed for a project?",
       "choices": [
         "Team's ground rules",
         "Risk reports",
@@ -34,11 +34,11 @@
         "Development approach"
       ],
       "correctAnswer": 3,
-      "explanation": "Source states that the characteristics of the project can significantly influence the project planning, and one of the factors that impacts the project planning effort is the development approach. Predictive approaches are more suitable for upfront planning, while agile uses iterative planning.",
+      "explanation": "The chosen development approach significantly impacts the project planning effort. Predictive approaches require extensive upfront planning, whereas adaptive or agile approaches utilize iterative and progressive planning throughout the project lifecycle.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, what distinguishes a program from a project?",
+      "questionText": "What is the primary distinction between a program and a project?",
       "choices": [
         "A project involves multiple related programs, while a program is a single endeavor.",
         "A program encompasses multiple, typically related projects managed as a single package to achieve benefits not available from managing projects individually.",
@@ -46,11 +46,11 @@
         "A project focuses on long-term goals, while a program focuses on short-term goals."
       ],
       "correctAnswer": 1,
-      "explanation": "Source and explain that a project is a specific, singular endeavor, while a program encompasses multiple, typically related projects managed in a coordinated fashion to yield benefits not available when managing projects individually.",
+      "explanation": "A project is a temporary endeavor to create a unique product, service, or result. A program is a group of related projects, subsidiary programs, and program activities managed in a coordinated way to obtain benefits not available from managing them individually.",
       "time": 75
     },
     {
-      "questionText": "What is the main difference between portfolio management and project management?",
+      "questionText": "What is a key difference between portfolio management and project management?",
       "choices": [
         "Portfolios manage temporary endeavors, while projects focus on strategic objectives.",
         "Projects focus on unique, short-term goals, while portfolios concentrate on long-term goals and strategic, cohesive objectives.",
@@ -58,7 +58,7 @@
         "Project management involves managing a group of programs, while portfolio management is a single project."
       ],
       "correctAnswer": 1,
-      "explanation": "Source differentiates portfolio and project management by stating that projects focus on unique, short-term goals and are temporary, while portfolios concentrate on long-term goals and involve strategic, cohesive objectives.",
+      "explanation": "Projects are temporary endeavors focused on creating unique products or services with specific, short-term goals. Portfolios, on the other hand, are a collection of projects, programs, and operational work managed as a group to achieve long-term strategic business objectives.",
       "time": 75
     },
     {
@@ -70,11 +70,11 @@
         "To write technical specifications for user stories."
       ],
       "correctAnswer": 1,
-      "explanation": "Source states that the product owner is responsible for managing and optimizing the product backlog to maximize the business value of the product.",
+      "explanation": "The Scrum framework defines the Product Owner's primary responsibility as managing and optimizing the product backlog to maximize the business value delivered by the development team.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, which role is responsible for removing obstacles or impediments faced by the project team during a sprint in the Scrum framework?",
+      "questionText": "In the Scrum framework, which role is responsible for removing obstacles or impediments faced by the development team during a sprint?",
       "choices": [
         "The Product Owner",
         "The Scrum Master",
@@ -82,7 +82,7 @@
         "The Project Sponsor"
       ],
       "correctAnswer": 1,
-      "explanation": "Source and identify the Scrum Master's role as crucial in Scrum, and one of their responsibilities is to remove obstacles or impediments faced by the project team during the sprint.",
+      "explanation": "A key responsibility of the Scrum Master is to serve the team by removing impediments to their progress, ensuring they can work efficiently and effectively.",
       "time": 75
     },
     {
@@ -94,11 +94,11 @@
         "The Team itself"
       ],
       "correctAnswer": 3,
-      "explanation": "Source explicitly states that the team itself should run their stand-ups, although the Scrum Master may facilitate the arrangement.",
+      "explanation": "While the Scrum Master ensures the daily standup meeting takes place and teaches the team to keep it within the 15-minute timebox, the meeting is for the development team. Therefore, the team itself is responsible for conducting the meeting.",
       "time": 75
     },
     {
-      "questionText": "According to Scrum principles mentioned in the sources, what is the ideal duration for a daily standup meeting?",
+      "questionText": "According to Scrum principles, what is the timebox for a daily standup meeting?",
       "choices": [
         "30 minutes",
         "60 minutes",
@@ -106,7 +106,7 @@
         "15 minutes"
       ],
       "correctAnswer": 3,
-      "explanation": "Source describes the Daily Scrum or Daily Standup as a 15-minute time-boxed event.",
+      "explanation": "The Scrum Guide defines the Daily Scrum (or Daily Standup) as a 15-minute time-boxed event for the development team to synchronize activities and create a plan for the next 24 hours.",
       "time": 75
     },
     {
@@ -118,11 +118,11 @@
         "To discuss and resolve technical solutions to problems."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that the real reason why Agile/Scrum teams meet daily is to uncover problems. Source clarifies that the daily stand-up should not become a status meeting but should be used to discuss what was done, what will be done, and any impediments.",
+      "explanation": "The primary purpose of the daily standup is for the development team to inspect progress toward the Sprint Goal and adapt the Sprint Backlog as necessary. It serves to improve communication, identify impediments, promote quick decision-making, and synchronize team efforts.",
       "time": 75
     },
     {
-      "questionText": "If a Scrum team stops doing daily standups, what is a likely negative impact based on the sources?",
+      "questionText": "If a Scrum team stops holding daily standups, what is a likely negative impact?",
       "choices": [
         "The team will not be able to estimate future work.",
         "The team members will not be able to communicate their work status.",
@@ -130,11 +130,11 @@
         "The Product Owner will not know the project progress."
       ],
       "correctAnswer": 2,
-      "explanation": "Source explains that if a team is not conducting the Daily Standup, they will not be able to identify the problems they are facing, which negatively impacts project delivery.",
+      "explanation": "The daily standup is a key synchronization and planning event. Without it, the team's ability to quickly identify and address problems (impediments) is significantly reduced, which can jeopardize the sprint goal and hinder progress.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, which Scrum artifact contains the details of the work the team should focus on in the upcoming Sprint?",
+      "questionText": "Which Scrum artifact contains the plan for the work the development team will perform during a Sprint?",
       "choices": [
         "Product Backlog",
         "Sprint Backlog",
@@ -142,11 +142,11 @@
         "Sprint Retrospective Minutes"
       ],
       "correctAnswer": 1,
-      "explanation": "Source states that in a Sprint planning meeting, the project team decides what the team should focus on in the upcoming Sprint. The Sprint Backlog is one of the Scrum artifacts listed in and which contains the selected items for the Sprint.",
+      "explanation": "The Sprint Backlog is the set of Product Backlog items selected for the Sprint, plus a plan for delivering the product Increment and realizing the Sprint Goal. It is created during Sprint Planning and serves as the team's plan for the upcoming Sprint.",
       "time": 75
     },
     {
-      "questionText": "Who is primarily responsible for writing acceptance criteria for user stories in Scrum, according to the sources?",
+      "questionText": "In Scrum, who is primarily responsible for defining and clarifying the acceptance criteria for user stories?",
       "choices": [
         "The Scrum Master",
         "The Development Team",
@@ -154,11 +154,11 @@
         "The Project Sponsor"
       ],
       "correctAnswer": 2,
-      "explanation": "Source explicitly states that in Scrum, the Product Owner is responsible for developing the user stories, and clear acceptance criteria are a part of a well-written user story.",
+      "explanation": "The Product Owner is responsible for representing the stakeholders and defining the features of the product. This includes creating user stories and ensuring they have clear, testable acceptance criteria to define what 'done' means for each item.",
       "time": 75
     },
     {
-      "questionText": "What is the purpose of acceptance criteria in a user story, according to the sources?",
+      "questionText": "What is the primary purpose of acceptance criteria in a user story?",
       "choices": [
         "To assign tasks to team members.",
         "To define the technical solution.",
@@ -166,11 +166,11 @@
         "To define the boundaries and provide details on functionality to help the team understand completion."
       ],
       "correctAnswer": 3,
-      "explanation": "Source states that acceptance criteria define the boundaries of user stories and provide precise details on functionality to help the team understand whether the story is completed and works as expected.",
+      "explanation": "Acceptance criteria define the specific conditions a user story must meet to be considered complete and accepted. They remove ambiguity, provide a clear definition of 'done' for the story, and ensure the delivered functionality meets stakeholder expectations.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, what is 'mobbing' in agile software development?",
+      "questionText": "In the context of agile software development, what is 'mobbing' (or mob programming)?",
       "choices": [
         "A situation where team members are blocked by impediments.",
         "A practice where the entire team works on the same story or task at the same time.",
@@ -178,7 +178,7 @@
         "Crowdsourcing work to external teams."
       ],
       "correctAnswer": 1,
-      "explanation": "Source defines mobbing as a software development approach where the entire team works on the same story or task at the same time.",
+      "explanation": "Mobbing, or mob programming, is a software development practice where the entire team (developers, testers, product owner, etc.) works together on the same thing, at the same time, in the same space, and at the same computer.",
       "time": 75
     },
     {
@@ -190,11 +190,11 @@
         "Having only foundational knowledge across all project areas."
       ],
       "correctAnswer": 2,
-      "explanation": "Source describes T-shaped skills as a skillset where a team member has deep expertise in one area (the vertical part of the T) and broad knowledge in other areas (the horizontal part of the T).",
+      "explanation": "A person with T-shaped skills has deep expertise in one functional area (the vertical bar of the T) and a broad, general ability to collaborate and contribute across other disciplines (the horizontal bar of the T).",
       "time": 75
     },
     {
-      "questionText": "What is a benefit of having team members with T-shaped skills in an agile project, according to the sources?",
+      "questionText": "What is a key benefit of having team members with T-shaped skills in an agile project?",
       "choices": [
         "It confines team members to a single role.",
         "It reduces collaboration within the team.",
@@ -202,11 +202,11 @@
         "It eliminates the need for specialists."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that T-shaped, generalized specialists can help reduce handoffs and also help reduce bottlenecks by taking on work from other team members.",
+      "explanation": "Team members with T-shaped skills increase the team's flexibility. They can help with tasks outside their primary specialty, which reduces bottlenecks, minimizes handoffs, and improves the overall flow of work.",
       "time": 75
     },
     {
-      "questionText": "When an agile team is novice to a technology stack, what should they seek to balance in their backlog, according to the sources?",
+      "questionText": "When an agile team is new to a technology stack, what should they seek to balance in their backlog?",
       "choices": [
         "Balance development of non-deliverable units and risk reduction.",
         "Balance development of deliverable units and risk reduction by incorporating both value producing and risk reducing work.",
@@ -214,11 +214,11 @@
         "Focus solely on developing deliverable units first."
       ],
       "correctAnswer": 1,
-      "explanation": "Source advises that when the team is novice to a technology stack, they should look to balance the development of deliverable units and risk reduction efforts by incorporating both value-producing and risk-reducing work into the backlog.",
+      "explanation": "When a team is unfamiliar with a technology, there is inherent risk. To manage this, the backlog should include a balance of work: items that deliver direct business value and items that reduce risk, such as technical spikes, research, or building foundational components.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, what is 'Continuous delivery' in agile practices?",
+      "questionText": "What does the agile practice of 'Continuous Delivery' entail?",
       "choices": [
         "The practice of frequently integrating team members' work products.",
         "The practice of delivering feature increments immediately to the customer.",
@@ -226,11 +226,11 @@
         "Copying features from an existing application."
       ],
       "correctAnswer": 1,
-      "explanation": "Source defines Continuous delivery as the practice of delivering feature increments immediately to the customer.",
+      "explanation": "Continuous Delivery is an agile engineering practice where software is built, tested, and released to production in short, frequent cycles. It ensures that software can be reliably released to users at any time, though the actual deployment may be a manual business decision.",
       "time": 75
     },
     {
-      "questionText": "What is 'Continuous integration', according to the sources?",
+      "questionText": "What is the agile practice of 'Continuous Integration'?",
       "choices": [
         "Delivering feature increments immediately to the customer.",
         "A practice in which each team member's work products are frequently integrated and validated with one another.",
@@ -238,7 +238,7 @@
         "Automating the testing process entirely."
       ],
       "correctAnswer": 1,
-      "explanation": "Source defines Continuous integration as a practice in which each team member's work products are frequently integrated and validated with one another.",
+      "explanation": "Continuous Integration (CI) is a development practice where developers frequently merge their code changes into a central repository, after which automated builds and tests are run. The goal is to find and address integration bugs quickly.",
       "time": 75
     },
     {
@@ -250,11 +250,11 @@
         "Continuous integration"
       ],
       "correctAnswer": 3,
-      "explanation": "Source mentions Continuous integration as a practice specific to software development that can help teams avoid problems found when merging code from multiple developers.",
+      "explanation": "Continuous Integration (CI) is designed specifically to address this problem. By integrating code frequently (often multiple times a day) into a shared repository, teams can detect and resolve integration conflicts early and often, avoiding the 'merge hell' of long-lived branches.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, which agile methodology bases project selection and methodological rigor on team size and criticality?",
+      "questionText": "Which agile methodology family is known for tailoring its practices and rigor based on team size and project criticality?",
       "choices": [
         "Scrum",
         "TDD",
@@ -262,11 +262,11 @@
         "Crystal"
       ],
       "correctAnswer": 3,
-      "explanation": "Source explains that the main idea behind Crystal is that project selection should be based on the size of the team and the project's level of criticality.",
+      "explanation": "The Crystal family of methodologies, developed by Alistair Cockburn, is based on the principle that processes should be tailored to the specific context of the project. It uses team size and project criticality as key dimensions for selecting the appropriate level of ceremony and rigor.",
       "time": 75
     },
     {
-      "questionText": "Which agile framework is described as being typically used for single-team product development and is less prescriptive compared to other agile approaches, making it easier to adapt?",
+      "questionText": "Which agile framework is described as being less prescriptive, allowing for a continuous flow of work, and is often considered easier for an existing team to adapt to?",
       "choices": [
         "SCRUM",
         "Kanban",
@@ -274,7 +274,7 @@
         "Crystal"
       ],
       "correctAnswer": 1,
-      "explanation": "Source states that Kanban is applicable in many project settings and allows for a continuous flow of work, and it is easy to adapt to Kanban as it is less prescriptive compared to other agile approaches. Source and describe Scrum as typically used for single-team product development.",
+      "explanation": "Kanban is a method for managing knowledge work with an emphasis on just-in-time delivery while not overloading the team members. It is less prescriptive than frameworks like Scrum; for example, it doesn't require specific roles or time-boxed iterations. This makes it a flexible choice that can be overlaid on existing processes.",
       "time": 75
     },
     {
@@ -286,23 +286,23 @@
         "Extreme Programming (XP)"
       ],
       "correctAnswer": 1,
-      "explanation": "Source suggests Kanban as suitable when no periodic releases are needed and changes can be integrated continuously. It also notes Kanban is easy to adapt and less prescriptive, making it suitable for teams new to agile.",
+      "explanation": "Kanban is an excellent choice for this scenario. Its focus on continuous flow (rather than fixed iterations like Scrum) is ideal for maintenance or operational work where changes are integrated as they are completed. Its less prescriptive nature makes it easier for teams to adopt.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, is it true or false that Agile frameworks are customized for the team?",
+      "questionText": "Which statement is more accurate regarding agile frameworks and teams?",
       "choices": [
-        "True, agile frameworks are designed to be tailor-made for each team.",
-        "False, agile frameworks are NOT customized for the team; rather, the team customizes or tailors the framework.",
-        "True, the framework automatically adjusts based on team dynamics.",
-        "False, agile frameworks are rigid and cannot be customized."
+        "Agile frameworks are designed to be tailor-made for each team.",
+        "Teams should tailor the agile framework to fit their specific context and needs.",
+        "Agile frameworks are rigid and cannot be customized.",
+        "Only the project manager can customize the agile framework."
       ],
       "correctAnswer": 1,
-      "explanation": "Source explicitly states that the only false statement presented is that Agile frameworks are customized for the team. It clarifies that teams should customize or tailor the Agile framework to suit their needs or the project's needs.",
+      "explanation": "A core principle of agile is that the team inspects and adapts its process. This means that while teams start with a standard framework (like Scrum), they are expected to tailor and customize it over time to best suit their project, organization, and team dynamics.",
       "time": 75
     },
     {
-      "questionText": "What is a likely challenge for organizations transitioning from predictive/waterfall to agile delivery, according to the sources?",
+      "questionText": "What is a common challenge for organizations transitioning from a predictive to an agile delivery model?",
       "choices": [
         "Experiencing a high degree of team collaboration.",
         "Experiencing a high degree of cost expenditure.",
@@ -310,11 +310,11 @@
         "Experiencing a high degree of employee attrition."
       ],
       "correctAnswer": 2,
-      "explanation": "Source suggests that organizations beginning to use an agile approach are most likely to encounter a high degree of changes.",
+      "explanation": "Transitioning to agile requires a significant cultural and procedural shift. One of the biggest challenges is adapting to a high degree of change, as agile embraces changing requirements, which can be difficult for organizations accustomed to the fixed scope and detailed upfront planning of predictive models.",
       "time": 75
     },
     {
-      "questionText": "When managing a complex issue on a website with a mixed backend and frontend development team, what form of communication is recommended for resolving the issue effectively?",
+      "questionText": "For resolving a complex technical issue involving multiple developers, which form of communication is generally most effective?",
       "choices": [
         "Sending texts using Google Chat.",
         "Sending texts using Slack.",
@@ -322,7 +322,7 @@
         "Face to face communication."
       ],
       "correctAnswer": 3,
-      "explanation": "Source states that for complex issues, 'richness' in communication is needed, enabling rapid exchange of information. Face-to-face communication is given as an example of such rich communication and the best choice for resolving complex issues.",
+      "explanation": "Complex problems benefit from high-bandwidth, 'rich' communication that allows for rapid, interactive exchange of information, immediate feedback, and observation of non-verbal cues. Face-to-face communication is the richest form, followed by video conferencing.",
       "time": 75
     },
     {
@@ -334,11 +334,11 @@
         "Selecting only I-shaped skilled team members."
       ],
       "correctAnswer": 1,
-      "explanation": "Source advises that for a geographically distributed team, the PM should first focus on cultural awareness as cultural differences can influence decision-making, work speed, and potentially cause conflict and stress.",
+      "explanation": "When a team is geographically distributed, members come from different cultural backgrounds. These differences can impact communication styles, decision-making, and workplace norms. Addressing cultural awareness first helps build a foundation of understanding and respect, which is crucial for effective collaboration.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, what does the velocity of a development team in agile refer to?",
+      "questionText": "In agile project management, what does a development team's 'velocity' refer to?",
       "choices": [
         "The speed at which individual tasks are completed.",
         "The total hours worked by the team in an iteration.",
@@ -346,11 +346,11 @@
         "The estimated time to complete the entire project."
       ],
       "correctAnswer": 2,
-      "explanation": "Source explains that team velocity essentially refers to the average number of stories or story points completed per iteration.",
+      "explanation": "Velocity is a measure of the amount of work a team can tackle during a single Sprint or iteration. It is typically expressed as the average number of story points (or other estimation units) completed per iteration and is used for future planning.",
       "time": 75
     },
     {
-      "questionText": "How can team velocity be used in agile projects, according to the sources?",
+      "questionText": "What is a primary use of team velocity in agile projects?",
       "choices": [
         "To measure individual performance.",
         "To predict how much longer the project will take.",
@@ -358,7 +358,7 @@
         "To justify scope changes to the customer."
       ],
       "correctAnswer": 1,
-      "explanation": "Source states that once a team establishes a reliable velocity, they can predict how much longer the project will take, which helps in sharing the project completion date with leadership.",
+      "explanation": "Once a team establishes a relatively stable velocity over several iterations, it can be used for forecasting. By dividing the total size of the remaining backlog by the average velocity, the team can predict how many iterations will be needed to complete the work.",
       "time": 75
     },
     {
@@ -370,7 +370,7 @@
         "Cannot estimate based on the given information."
       ],
       "correctAnswer": 1,
-      "explanation": "Source provides an example calculation: if the velocity is 30 story points per iteration, 180 remaining points will take 180 / 30 = 6 iterations, assuming the velocity is maintained.",
+      "explanation": "To estimate the number of iterations, divide the remaining work by the team's average velocity. In this case: 180 story points / 30 story points per iteration = 6 iterations.",
       "time": 75
     },
     {
@@ -382,11 +382,11 @@
         "Loose definition of done"
       ],
       "correctAnswer": 3,
-      "explanation": "Source lists collective product/code ownership, pervasive testing (ATDD or TDD), and pair work as recommended practices in agile projects. A loose Definition of Done is identified as a possible cause of high defect rates because it can lead to confusion and different interpretations of completion.",
+      "explanation": "Collective ownership, pervasive testing, and pair work are all agile practices that tend to improve quality. A loose or ambiguous Definition of Done can lead to misunderstandings about what is required for a story to be complete, resulting in inconsistencies and a higher defect rate.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, how should a hybrid project with elements of both predictive and adaptive work handle contracting?",
+      "questionText": "How should a hybrid project with elements of both predictive and adaptive work handle contracting?",
       "choices": [
         "Agile methods don't have contracts; focus on value-add delivery.",
         "Split the project into two, one predictive and one adaptive, with separate contracts.",
@@ -394,7 +394,7 @@
         "Use a fixed-price contract for the entire project."
       ],
       "correctAnswer": 2,
-      "explanation": "Source recommends developing a Master Service Agreement (MSA) for the overall engagement in hybrid projects, placing adaptive work elements in an appendix or supplement to allow changes without impacting the overall contract.",
+      "explanation": "For hybrid projects, a common and effective approach is to use a Master Services Agreement (MSA) to govern the overall relationship. The well-defined, predictive work can be detailed in a Statement of Work (SOW), while the adaptive, evolving work can be handled in a flexible appendix or supplement, allowing for changes without renegotiating the entire contract.",
       "time": 75
     },
     {
@@ -406,7 +406,7 @@
         "Prefer prevention over inspection; design quality into deliverables."
       ],
       "correctAnswer": 3,
-      "explanation": "Source states that the project team should Prefer prevention over inspection and Design the quality into deliverables when aiming for high-quality outcomes.",
+      "explanation": "Modern quality management emphasizes prevention over inspection. It is more effective and less costly to prevent defects by designing quality into the deliverables from the start, rather than trying to find and fix defects after the work is done.",
       "time": 75
     },
     {
@@ -418,7 +418,7 @@
         "A set of technical guidelines applied during design to optimize specific aspects like reliability."
       ],
       "correctAnswer": 3,
-      "explanation": "Source defines Design for X as a set of technical guidelines applied during the design of a product to optimize specific aspects, such as reliability, potentially resulting in quality improvement and better performance.",
+      "explanation": "Design for X (DfX) is a methodology where 'X' can be a specific objective, such as manufacturability, cost, serviceability, or reliability. It involves applying a set of design guidelines to optimize the product for that specific objective, thereby improving overall quality and performance.",
       "time": 75
     },
     {
@@ -430,7 +430,7 @@
         "Relying solely on quality assurance personnel."
       ],
       "correctAnswer": 1,
-      "explanation": "Source highlights 'Build Quality In' as a key aspect of quality management, emphasizing that project should ensure quality is built in when deliverables are developed, rather than just testing and verifying afterward.",
+      "explanation": "'Build Quality In' is a core principle of modern quality management. It means focusing on processes, materials, and design to ensure that deliverables are created correctly from the start, rather than relying on inspection to catch defects later.",
       "time": 75
     },
     {
@@ -442,7 +442,7 @@
         "Predictive"
       ],
       "correctAnswer": 3,
-      "explanation": "Source clearly states that if project requirements are fixed and stable and multiple deliveries are not needed, the predictive approach is appropriate.",
+      "explanation": "A predictive (or waterfall) approach is most suitable for this scenario. It is designed for projects where the scope is clearly defined upfront, requirements are stable, and the work proceeds sequentially through phases to a single, final delivery.",
       "time": 75
     },
     {
@@ -454,7 +454,7 @@
         "They should be handled by the most experienced team members last."
       ],
       "correctAnswer": 2,
-      "explanation": "Source suggests that work that is unique, risky, or novel always entails a significant level of ambiguity. Such work should be prioritized early to reduce uncertainty associated with the project's scope before substantial investments are made.",
+      "explanation": "Agile approaches advocate for tackling high-risk, high-uncertainty, or novel work items early in the project. This allows the team to learn quickly, resolve key uncertainties, and validate assumptions before significant time and resources have been invested.",
       "time": 75
     },
     {
@@ -466,11 +466,11 @@
         "Only by the project manager during project initiation."
       ],
       "correctAnswer": 1,
-      "explanation": "Source emphasizes that risk identification should occur throughout the project, not just during the planning phase, because the risk profile evolves.",
+      "explanation": "Risk management is an iterative process. New risks can emerge and existing risks can change at any point in the project. Therefore, risk identification and analysis must be performed continuously throughout the entire project lifecycle.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, who should participate in the risk identification process?",
+      "questionText": "Who should participate in the risk identification process?",
       "choices": [
         "Only the project manager.",
         "Only the project team.",
@@ -478,7 +478,7 @@
         "Only risk experts hired for the project."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that both the project team and the project manager should participate in the risk identification process.",
+      "explanation": "Risk identification is most effective when it involves a broad range of participants. Both the project manager and the project team members should be involved, and it is often beneficial to include other stakeholders and subject matter experts as well.",
       "time": 75
     },
     {
@@ -490,7 +490,7 @@
         "Assign an owner to each identified risk."
       ],
       "correctAnswer": 2,
-      "explanation": "Source explains that after identifying risks, the next logical step is to prioritize them to determine which ones are worth focusing on, typically by performing a qualitative risk analysis using a probability and impact matrix.",
+      "explanation": "After identifying a large volume of risks, it is not feasible to address all of them. The next step is to perform a qualitative risk analysis, typically using a probability and impact matrix, to prioritize the risks and determine which ones require further analysis and response planning.",
       "time": 75
     },
     {
@@ -502,7 +502,7 @@
         "Review risks regularly, prioritizing based only on likelihood."
       ],
       "correctAnswer": 1,
-      "explanation": "Source advises that the project team must regularly review the risks and prioritize them based on both their likelihood and impact, rather than reviewing only at the end of planning or based on just one factor.",
+      "explanation": "In a high-stakes environment like healthcare, a robust and continuous risk management process is critical. The team must regularly review risks throughout the project, and prioritization should be based on both the probability (likelihood) of occurrence and the potential impact on project objectives.",
       "time": 75
     },
     {
@@ -514,7 +514,7 @@
         "Tracking the status of identified risks."
       ],
       "correctAnswer": 1,
-      "explanation": "Source indicates that a Risk Breakdown Structure or RBS can be used by the project team for risk categorization.",
+      "explanation": "A Risk Breakdown Structure (RBS) is a hierarchical representation of potential risk sources. It helps the project team organize and categorize identified risks, ensuring a more systematic and comprehensive approach to risk identification and analysis.",
       "time": 75
     },
     {
@@ -526,7 +526,7 @@
         "Project baseline"
       ],
       "correctAnswer": 2,
-      "explanation": "Source explains that when managing project issues, it is important to assign an issue owner, a person who needs to fix the issue, clearly so there is no ambiguity.",
+      "explanation": "For an issue to be resolved, there must be clear accountability. Assigning an 'issue owner' ensures that a specific person is responsible for tracking the issue, coordinating the resolution efforts, and seeing it through to completion.",
       "time": 75
     },
     {
@@ -538,11 +538,11 @@
         "Ask the team to develop internal software instead."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that the appropriate choice is to let the team do their own research and come up with the appropriate selection, trusting the team to get the job done as per agile principles.",
+      "explanation": "Agile principles emphasize self-organizing teams. The project manager's role is to empower the team, not to make technical decisions for them. The best approach is to trust the team to perform the necessary research and select the most appropriate solution.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, what is the primary focus for a project team to support value realization from a project?",
+      "questionText": "What is the primary focus for a project team to support value realization from a project?",
       "choices": [
         "Delivering the project on-time and within budget.",
         "Focusing on the deliverables of the project.",
@@ -550,7 +550,7 @@
         "Focusing on the quality of the product."
       ],
       "correctAnswer": 2,
-      "explanation": "Source distinguishes between deliverables and outcomes, stating that project teams should focus on the intended outcome of the project to support value realization.",
+      "explanation": "While deliverables are the tangible outputs of a project, value is realized when those deliverables lead to the desired business outcomes. Effective project teams understand this distinction and focus on ensuring their work contributes to the intended outcomes, not just producing outputs.",
       "time": 75
     },
     {
@@ -562,7 +562,7 @@
         "Extend the daily standup duration to 60 minutes."
       ],
       "correctAnswer": 2,
-      "explanation": "Source suggests that the best approach for an agile team is to add the issue to a parking lot and then create another meeting right after the standup with relevant parties to address the problem, rather than discussing it during the standup or delaying resolution.",
+      "explanation": "The daily standup is for quick synchronization, not deep problem-solving. The best practice is to identify the issue, 'park' it to maintain the meeting's timebox, and then hold a separate, focused follow-up meeting immediately after with only the necessary team members to resolve it.",
       "time": 75
     },
     {
@@ -574,7 +574,7 @@
         "Resource management plan"
       ],
       "correctAnswer": 1,
-      "explanation": "Source explains that the project charter usually contains a list of pre-approved financial and other resources that project managers can use during the planning phase.",
+      "explanation": "The project charter is the document that formally authorizes the project. It often includes high-level information such as a summary budget and a list of pre-approved resources that the project manager is authorized to use.",
       "time": 75
     },
     {
@@ -586,11 +586,11 @@
         "Physical resource planning is always done just-in-time."
       ],
       "correctAnswer": 1,
-      "explanation": "Source states that when doing physical resource planning, the project team has to consider factors such as the storage and movement of the physical resources to the project location.",
+      "explanation": "Planning for physical resources goes beyond just identifying what is needed. The team must also consider the logistics, including how the resources will be transported to the site, where they will be stored securely, and how they will be distributed as needed.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, what is a key characteristic of agile teams regarding task assignment?",
+      "questionText": "What is a key characteristic of agile teams regarding task assignment?",
       "choices": [
         "Senior leadership decides who does which task.",
         "The project manager assigns tasks.",
@@ -598,11 +598,11 @@
         "The team members decide which task will be done by whom."
       ],
       "correctAnswer": 3,
-      "explanation": "Source states that one of the characteristics of agile teams is that team members decide which task will be done by whom.",
+      "explanation": "Agile teams are self-organizing and self-managing. This means that after committing to the work in the sprint backlog, the development team members themselves decide how to best accomplish the work, including which individuals will take on which tasks.",
       "time": 75
     },
     {
-      "questionText": "What is a primary focus of an Agile project manager in an Agile project setting, according to the sources?",
+      "questionText": "What is a primary focus of an Agile project manager in an Agile project setting?",
       "choices": [
         "Assigning work items to team members.",
         "Creating detailed project schedules.",
@@ -610,7 +610,7 @@
         "Controlling scope through strict change control."
       ],
       "correctAnswer": 2,
-      "explanation": "Source indicates that the focus of an Agile project manager should be on building a collaborative decision-making environment and ensuring the team can respond to changes, rather than assigning work or creating detailed schedules.",
+      "explanation": "In an agile environment, the project manager's role shifts from command-and-control to that of a facilitator and coach. A key focus is to foster a collaborative environment where the team is empowered to make decisions and adapt to changes effectively.",
       "time": 75
     },
     {
@@ -622,7 +622,7 @@
         "The Agile Coach"
       ],
       "correctAnswer": 1,
-      "explanation": "Source states that it is the responsibility of the Scrum Master to coach the development team about the correct process to follow in the Scrum framework.",
+      "explanation": "A primary responsibility of the Scrum Master is to act as a coach and teacher for the Scrum framework. This includes ensuring that the team understands the purpose of each Scrum event and is using them correctly to maximize their value.",
       "time": 75
     },
     {
@@ -634,7 +634,7 @@
         "A meeting to capture learnings from the past iteration and make improvements."
       ],
       "correctAnswer": 3,
-      "explanation": "Source describes the essence of a retrospective as capturing the learnings from the past iteration and making improvements.",
+      "explanation": "The Sprint Retrospective is a regular event in Scrum where the team reflects on the past sprint. The goal is to inspect how the last sprint went with regards to people, relationships, process, and tools, and to create a plan for implementing improvements in the next sprint.",
       "time": 75
     },
     {
@@ -646,7 +646,7 @@
         "Stop using simple tools like spreadsheets for documentation."
       ],
       "correctAnswer": 1,
-      "explanation": "Source suggests that if a team is capturing too many things during retrospectives and not showing improvement, the best way is to only decide on 2 or 3 work items for each retro and try to complete them in upcoming iterations to show progress.",
+      "explanation": "A common pitfall in retrospectives is identifying too many areas for improvement, which can be overwhelming and lead to no action. A more effective approach is to prioritize and select only a few (2-3) high-impact items to focus on in the next iteration, ensuring they are actually implemented.",
       "time": 75
     },
     {
@@ -658,7 +658,7 @@
         "Crystal"
       ],
       "correctAnswer": 1,
-      "explanation": "Source describes Kanban as applicable in many project settings, allowing continuous flow, and being less prescriptive, making it suitable for teams new to agile.",
+      "explanation": "Kanban is a highly adaptable method that focuses on visualizing work, limiting work in progress, and managing flow. It is less prescriptive than Scrum (it has no required roles or events), which makes it a good starting point for teams new to agile as it can be applied to their existing workflow.",
       "time": 75
     },
     {
@@ -670,19 +670,7 @@
         "Assigning tasks based on the meeting outcome."
       ],
       "correctAnswer": 2,
-      "explanation": "Source explains that facilitators should not make decisions or offer opinions, but rather help the group make decisions by providing structure and guidance and helping them explore their own ideas.",
-      "time": 75
-    },
-    {
-      "questionText": "According to the sources, which of the following is NOT a typical characteristic of agile teams?",
-      "choices": [
-        "They do not provide tailor-made solutions.",
-        "They focus on individual team member skills and performance.",
-        "They do not provide a clear understanding of individual motivation.",
-        "They can begin to work together more effectively over time."
-      ],
-      "correctAnswer": 1,
-      "explanation": "Source lists points that models facilitating group effectiveness do NOT focus on: individual team member skills/performance, providing tailor-made solutions, or providing a clear understanding of individual motivation. The question asks which is NOT a characteristic *of agile teams* as described in relation to these models. agile teams are composed of individuals and their performance and motivation are relevant, but the *models* discussed in don't provide this. Re-reading, it's discussing what *models* helping groups work effectively *don't* do. agile teams themselves *do* focus on performance. Therefore, 'They focus on individual team member skills and performance' *is* a characteristic or area of focus related to agile teams/practices (e.g., skill development is encouraged). The *false* statement from the choices, relative to the source's discussion of agile/team practices, is that they do not provide tailor-made solutions - teams tailor the framework. Let's go with A being NOT true about agile teams because the team *does* tailor the framework.",
+      "explanation": "A facilitator is a neutral party whose role is to guide the process of the meeting, not to contribute to the content. They provide structure, ensure everyone participates, manage time, and help the group reach its own conclusions and decisions without imposing their own opinions.",
       "time": 75
     },
     {
@@ -694,11 +682,11 @@
         "Product roadmap"
       ],
       "correctAnswer": 3,
-      "explanation": "Source states that a product roadmap is usually developed by the product owner or value team and is used to display the details of the anticipated sequence of deliverables over time.",
+      "explanation": "A product roadmap is a high-level visual summary that maps out the vision and direction of a product offering over time. It communicates the 'why' and 'what' behind what you're building and is used to show the sequence and timing of major features or deliverables.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, how can project teams ensure valuable learnings and project results are shared across the organization?",
+      "questionText": "How can project teams ensure valuable learnings and project results are shared across the organization?",
       "choices": [
         "Set up a murder board.",
         "Hire an external consultancy.",
@@ -706,7 +694,7 @@
         "Set up a PMO or Project management office."
       ],
       "correctAnswer": 3,
-      "explanation": "Source states that it is the PMO whose one of the roles is to share project learnings and results across the organization.",
+      "explanation": "One of the key functions of a Project Management Office (PMO) is to act as a central repository for project management knowledge. This includes collecting lessons learned, best practices, and project results and disseminating them throughout the organization to improve future project performance.",
       "time": 75
     },
     {
@@ -718,7 +706,7 @@
         "The Product Owner"
       ],
       "correctAnswer": 3,
-      "explanation": "Source and  explicitly state that the product owner is responsible for managing and optimizing the product backlog to maximize the business value of the product.",
+      "explanation": "The Product Owner is the sole person responsible for managing the Product Backlog. This includes ordering the items in the Product Backlog to best achieve goals and missions, thereby maximizing the value of the work the Development Team performs.",
       "time": 75
     },
     {
@@ -730,7 +718,7 @@
         "Earned value measurements information"
       ],
       "correctAnswer": 3,
-      "explanation": "Source states that work performance reports are physical or electronic representations of performance information, and one of the ways a PM can send details of project performance (cost, schedule, scope) is by using earned value measurements.",
+      "explanation": "Work performance reports represent the status of the project. Earned Value Management (EVM) provides key objective measurements, such as the Schedule Performance Index (SPI) and Cost Performance Index (CPI), which clearly communicate project performance against schedule and budget baselines.",
       "time": 75
     },
     {
@@ -742,11 +730,11 @@
         "What will the Product Owner do today?"
       ],
       "correctAnswer": 0,
-      "explanation": "Source lists the three questions discussed: What did you do yesterday? What will you do today? Is there anything blocking your progress? The first choice is a rephrasing of 'Is there anything blocking your progress?' or impediments.",
+      "explanation": "The classic three questions for a daily standup are: 1) What did you do yesterday to help the team meet the Sprint Goal? 2) What will you do today to help the team meet the Sprint Goal? and 3) Do you see any impediments that prevent you or the team from meeting the Sprint Goal? 'Impediments' is the key concept in the correct choice.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, what is a key responsibility of a portfolio manager?",
+      "questionText": "What is a key responsibility of a portfolio manager?",
       "choices": [
         "Ensuring projects deliver their intended output within a defined time frame.",
         "Overseeing multiple related projects as a single package.",
@@ -754,11 +742,11 @@
         "Managing day-to-day operations."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that the primary responsibility of a portfolio manager is to ensure that the right projects are selected for their specific portfolio, involving inspecting each project to determine if it aligns with the company's long-term goals.",
+      "explanation": "Portfolio management is concerned with strategic alignment. The portfolio manager's primary responsibility is to select and prioritize projects, programs, and other work to ensure the organization's investments are aligned with its long-term strategic goals.",
       "time": 75
     },
     {
-      "questionText": "Projects can operate in various ways within an organization. According to the sources, how can projects operate?",
+      "questionText": "Projects can operate in various ways within an organization. How can projects operate?",
       "choices": [
         "Only as a stand-alone activity.",
         "Only within a program or portfolio.",
@@ -766,11 +754,11 @@
         "Only within a portfolio or as a stand-alone activity."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that projects can operate within a program or portfolio or as a stand-alone activity.",
+      "explanation": "Projects have a flexible organizational structure. A project can be a stand-alone endeavor, or it can be managed as part of a larger program (a group of related projects) or a portfolio (a collection of projects and programs aligned with strategic objectives).",
       "time": 75
     },
     {
-      "questionText": "When a team is transitioning from predictive to agile, and they are using Scrum, they plan to decompose bigger units of work into smaller units. According to the sources, which is the correct order of decomposition from larger to smaller units?",
+      "questionText": "When a team is transitioning from predictive to agile, and they are using Scrum, they plan to decompose bigger units of work into smaller units. Which is the correct order of decomposition from larger to smaller units?",
       "choices": [
         "Epics > Tasks > User Stories",
         "Epics > Features > User Stories",
@@ -778,7 +766,7 @@
         "Epics > User Stories > Features"
       ],
       "correctAnswer": 1,
-      "explanation": "Source provides the correct decomposition order in Scrum as Epics are larger than user stories, and Epics are decomposed into features, which are further decomposed into user stories.",
+      "explanation": "In agile, work is often broken down hierarchically. A large body of work is an 'Epic.' An Epic is decomposed into smaller, deliverable 'Features.' Each Feature is then broken down into implementable 'User Stories' for the development team.",
       "time": 75
     },
     {
@@ -790,11 +778,11 @@
         "Cause-and-effect diagrams"
       ],
       "correctAnswer": 3,
-      "explanation": "Source recommends using a Cause-and-effect diagram (fishbone or Ishikawa) to identify the various factors leading to a problem, such as a high number of defects.",
+      "explanation": "A Cause-and-Effect diagram (also known as a Fishbone or Ishikawa diagram) is a tool used to brainstorm and categorize the potential causes of a specific problem or effect. It is ideal for exploring the various factors that could be contributing to the high defect rate in specific modules.",
       "time": 75
     },
     {
-      "questionText": "What is a valid way to measure project business value, according to the sources?",
+      "questionText": "What is a valid way to measure project business value?",
       "choices": [
         "Number of defects",
         "Cost variance",
@@ -802,7 +790,7 @@
         "Employee satisfaction"
       ],
       "correctAnswer": 2,
-      "explanation": "Source lists Market share, along with other metrics not listed as options, as a valid way to measure project business value. Cost variance and number of defects are project performance metrics, and employee satisfaction is related to team dynamics.",
+      "explanation": "Business value is measured by the benefit the project provides to the organization. While metrics like defect count and cost variance measure project performance, market share is a direct indicator of business success and value generated by the project's outcome.",
       "time": 75
     },
     {
@@ -814,11 +802,11 @@
         "Business case and Vision statement"
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that if the project is in the initiation phase and planning is about to start, the project management plan and scope management plan are the outcomes *after* planning is done, and hence are least useful *during* planning. The vision statement, project charter, and business case are initial documents elaborated during initiation and high-level planning.",
+      "explanation": "The Project Management Plan and its subsidiary plans (like the Scope Management Plan) are outputs of the planning process. During the initiation phase, when planning is just beginning, these documents do not yet exist. The business case, project charter, and vision statement are inputs to the planning process.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, which project artifact is the description of the project scope, major deliverables, and includes exclusions?",
+      "questionText": "Which project artifact is the description of the project scope, major deliverables, and includes exclusions?",
       "choices": [
         "Work Breakdown Structure (WBS)",
         "Requirements traceability matrix",
@@ -826,7 +814,7 @@
         "Scope management plan"
       ],
       "correctAnswer": 2,
-      "explanation": "Source defines the project scope statement as the description of the scope, including project scope, product scope, major project deliverables, and exclusions.",
+      "explanation": "The project scope statement provides a detailed description of the project's scope. It defines what is and is not included in the project by documenting the project and product scope, major deliverables, assumptions, constraints, and exclusions.",
       "time": 75
     },
     {
@@ -838,11 +826,11 @@
         "To reduce the number of project deliverables."
       ],
       "correctAnswer": 2,
-      "explanation": "Source mentions that besides containing what is included, the project scope statement may contain explicit scope exclusions that can assist in managing stakeholder expectations.",
+      "explanation": "By explicitly stating what is out of scope for the project, the project scope statement helps to manage stakeholder expectations. It prevents misunderstandings and assumptions about what will be delivered, reducing the risk of scope creep.",
       "time": 75
     },
     {
-      "questionText": "After creating an activity list for a project, what is the next step when creating a schedule, according to the PMBoK Guide process described in the sources?",
+      "questionText": "After creating an activity list for a project, what is the next step when creating a schedule, according to standard project management processes?",
       "choices": [
         "Estimate each activity using 3-point estimation.",
         "Sequence the activities in the order the work will be performed.",
@@ -850,7 +838,7 @@
         "Estimate each activity using 1-point estimation."
       ],
       "correctAnswer": 1,
-      "explanation": "Source explains that right after the activity list is created, the next step in creating a schedule is to take all the activities and sequence them in the order in which the project work will be performed.",
+      "explanation": "According to the PMBOK Guide processes for schedule management, after identifying the activities (Define Activities), the next step is to identify and document the relationships among them (Sequence Activities). This involves placing the activities in the logical order in which they will be performed.",
       "time": 75
     },
     {
@@ -862,7 +850,7 @@
         "Control Quality"
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that 'Validate Scope' is the process of formalizing acceptance of the completed project deliverables.",
+      "explanation": "The Validate Scope process is the formal process of obtaining stakeholders' (usually the customer or sponsor's) formal acceptance of the completed and verified project deliverables. It is a key part of the Monitoring and Controlling Process Group.",
       "time": 75
     },
     {
@@ -874,11 +862,11 @@
         "A constraint"
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that the verified deliverables from the 'Control Quality' process are an input to the 'Validate Scope' process.",
+      "explanation": "The Control Quality process checks that deliverables are correct and meet quality standards, resulting in 'verified deliverables'. These verified deliverables are then used as a key input to the Validate Scope process, where they are presented to the customer or sponsor for formal acceptance.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, which project role is best suited to help a project team better understand the project vision?",
+      "questionText": "Which project role is best suited to help a project team better understand the project vision?",
       "choices": [
         "Project manager",
         "QA manager",
@@ -886,11 +874,11 @@
         "Functional manager"
       ],
       "correctAnswer": 2,
-      "explanation": "Source and  state that the project sponsor is often considered the best suited role to help the team understand the project vision, as they approve the project charter which contains the vision.",
+      "explanation": "The project sponsor is the champion of the project. They are typically a senior manager who understands the business need and strategic alignment of the project. As the one who authorizes the project charter, they are the ultimate source for clarifying the project's vision and objectives.",
       "time": 75
     },
     {
-      "questionText": "What is the purpose of a project vision statement, as described in the sources?",
+      "questionText": "What is the purpose of a project vision statement?",
       "choices": [
         "To detail all project requirements.",
         "To list project stakeholders.",
@@ -898,11 +886,11 @@
         "To describe the technical solution."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that the purpose of a project vision statement is to show the direction of the project and define the criteria for success.",
+      "explanation": "A project vision statement is a concise, high-level description of the project's long-term goals and aspirations. It provides a clear direction for the project team and serves as a touchstone for decision-making, helping to define what success looks like.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, which project artifact contains the project vision?",
+      "questionText": "Which project artifact contains the project vision?",
       "choices": [
         "Team charter",
         "Product backlog",
@@ -910,7 +898,7 @@
         "Project charter"
       ],
       "correctAnswer": 3,
-      "explanation": "Source explicitly states that a team charter, product backlog, or product roadmap do not contain the project vision - the project charter does.",
+      "explanation": "The project charter is the document that formally authorizes the project. It typically includes the project's purpose, high-level objectives, and the vision statement that provides the overall direction and inspiration for the project.",
       "time": 75
     },
     {
@@ -922,11 +910,11 @@
         "Laissez-faire"
       ],
       "correctAnswer": 1,
-      "explanation": "Source suggests that in a moment of chaos, such as mentioned in the scenario, Directive action can create more clarity. Hence a project manager should adapt a directive leadership style.",
+      "explanation": "In situations of high uncertainty, confusion, or chaos, a directive leadership style can be most effective in the short term. The project manager provides clear instructions and direction to guide the team out of the ambiguity and establish a clear path forward.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, what analysis can help a team decide whether to develop a component internally or outsource it?",
+      "questionText": "What analysis can help a team decide whether to develop a component internally or outsource it?",
       "choices": [
         "Trend analysis",
         "Cost-benefit analysis",
@@ -934,7 +922,7 @@
         "Make-or-buy analysis"
       ],
       "correctAnswer": 3,
-      "explanation": "Source identifies 'Make-or-buy analysis' as the analysis that can help the team in decision making for scenarios involving developing something internally versus outsourcing it, relating it to the procurement process.",
+      "explanation": "Make-or-buy analysis is a technique used to determine whether a particular product or service should be created in-house by the project team or procured from an external supplier. It involves comparing the costs, risks, and benefits of both options.",
       "time": 75
     },
     {
@@ -946,7 +934,7 @@
         "Project management information system (PMIS)"
       ],
       "correctAnswer": 1,
-      "explanation": "Source defines Enterprise environmental factors (EEF) as encompassing all the conditions and systems that are not under the control of the project team and that influence, constrain, or direct the work of the project.",
+      "explanation": "Enterprise Environmental Factors (EEFs) are the conditions, not under the immediate control of the team, that influence, constrain, or direct the project. They can be internal (e.g., company culture, infrastructure) or external (e.g., market conditions, government regulations).",
       "time": 75
     },
     {
@@ -958,11 +946,11 @@
         "Both EEF and OPA are under the direct control of the project team."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that Organizational process assets (OPA) are internal to the organization, and Enterprise environmental factors (EEF) encompass conditions and systems not under the project team's control and can originate outside of both projects and organizations.",
+      "explanation": "Organizational Process Assets (OPAs) are the plans, processes, policies, procedures, and knowledge bases specific to and used by the performing organization. Enterprise Environmental Factors (EEFs) can be either internal (e.g., culture) or external (e.g., regulations) to the organization.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, what type of project knowledge can be shared or captured via documentation?",
+      "questionText": "What type of project knowledge can be shared or captured via documentation?",
       "choices": [
         "Tacit knowledge",
         "Codified explicit knowledge",
@@ -970,7 +958,7 @@
         "Informal knowledge"
       ],
       "correctAnswer": 1,
-      "explanation": "Source states that it is the codified explicit project knowledge that can be documented.",
+      "explanation": "Explicit knowledge is knowledge that can be readily articulated, codified, and stored in documents, databases, or other media. Codified explicit knowledge is the formal documentation of this knowledge, making it accessible for others to learn and share.",
       "time": 75
     },
     {
@@ -982,11 +970,11 @@
         "The Project Sponsor"
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that the Product Owner is responsible for developing user stories, and clear acceptance criteria are part of a well-written user story. Therefore, the Product Owner must ensure they have clear acceptance criteria.",
+      "explanation": "The Product Owner is responsible for the Product Backlog and ensuring that each item is clearly understood. This includes defining user stories and their associated acceptance criteria to ensure there is a shared understanding of what needs to be delivered.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, when is a fixed-price contract most suitable?",
+      "questionText": "When is a fixed-price contract most suitable?",
       "choices": [
         "When the scope of work is unclear.",
         "When frequent changes are expected.",
@@ -994,7 +982,7 @@
         "For agile projects with adaptive requirements."
       ],
       "correctAnswer": 2,
-      "explanation": "Source mentions that fixed-price contracts are most suitable when the scope of work is clearly defined, and the requirements are well understood.",
+      "explanation": "Fixed-price contracts are used when the requirements and scope of work are very well defined and stable. This allows the seller to accurately estimate the cost and agree to a fixed price for delivering that specific scope.",
       "time": 75
     },
     {
@@ -1006,11 +994,11 @@
         "Auditing the project processes for quality compliance."
       ],
       "correctAnswer": 2,
-      "explanation": "Source defines 'Validate Scope' as the process of formalizing acceptance of the completed project deliverables.",
+      "explanation": "The 'Validate Scope' process involves meeting with the customer or sponsor to gain their formal acceptance of the verified deliverables. It is the process that confirms the project has delivered what was agreed upon.",
       "time": 75
     },
     {
-      "questionText": "What is the definition of 'Work Performance Reports' as per the sources?",
+      "questionText": "What is the definition of 'Work Performance Reports'?",
       "choices": [
         "Raw data collected from project activities.",
         "Performance information organized and summarized.",
@@ -1018,7 +1006,7 @@
         "Forecasts of future project performance."
       ],
       "correctAnswer": 2,
-      "explanation": "Source defines work performance reports as the physical or electronic representation of performance information intended to generate decisions, actions, or awareness within the project stakeholder community.",
+      "explanation": "Work performance data (raw observations) is analyzed to become work performance information (contextualized status). This information is then compiled into work performance reports, which are tangible artifacts (documents, dashboards) used to communicate project status to stakeholders and facilitate decision-making.",
       "time": 75
     },
     {
@@ -1030,7 +1018,7 @@
         "Development approach"
       ],
       "correctAnswer": 3,
-      "explanation": "Source states that the type of project planning varies and the development approach is one of the multiple factors that can significantly influence the project planning effort.",
+      "explanation": "The chosen development approach is a key determinant of the planning strategy. A predictive approach necessitates extensive upfront planning, while an agile approach relies on iterative planning and progressive elaboration throughout the project.",
       "time": 75
     },
     {
@@ -1042,7 +1030,7 @@
         "It provides a baseline for evaluating change requests."
       ],
       "correctAnswer": 1,
-      "explanation": "Source explicitly states that the project scope statement includes the project scope, product scope, major project deliverables, and exclusions. Therefore, the statement that it does not include exclusions is incorrect.",
+      "explanation": "A comprehensive project scope statement clearly defines the project boundaries. It must include what is in scope (deliverables) and what is out of scope (exclusions) to prevent ambiguity and manage stakeholder expectations. Stating that it does not include exclusions is incorrect.",
       "time": 75
     },
     {
@@ -1054,7 +1042,7 @@
         "Requirement traceability matrix"
       ],
       "correctAnswer": 2,
-      "explanation": "Source explains that the project schedule contains all the details of the timelines of the project activities, their sequence, and estimations, which is essential for knowing 'when' resources are needed.",
+      "explanation": "The project schedule provides the timeline for the project. It details when each activity is planned to start and finish, which is essential information for determining 'when' specific resources will be needed to perform that work.",
       "time": 75
     },
     {
@@ -1066,11 +1054,11 @@
         "Vendor selection"
       ],
       "correctAnswer": 1,
-      "explanation": "Source defines project procurement as the process of obtaining goods, supplies, services which are required for the successful completion of the project.",
+      "explanation": "Project procurement management includes the processes necessary to purchase or acquire products, services, or results needed from outside the project team. Its primary purpose is to obtain the necessary external resources for the project.",
       "time": 75
     },
     {
-      "questionText": "When managing project artifacts, what is a project manager's responsibility, as described in the sources?",
+      "questionText": "When managing project artifacts, what is a project manager's responsibility?",
       "choices": [
         "Ignoring defect counts reported by the testing team.",
         "Hiring T-shaped skilled people to manage artifacts.",
@@ -1078,11 +1066,11 @@
         "Sharing only accurate information, even if it's outdated."
       ],
       "correctAnswer": 2,
-      "explanation": "Source lists responsibilities of a project manager related to project artifacts, including continually assessing the effectiveness of management and validating that information is kept up to date and accessible to all stakeholders.",
+      "explanation": "Effective information management is crucial. The project manager is responsible for establishing and maintaining systems to ensure that project artifacts are managed effectively, kept current (e.g., with version control), and are readily accessible to all relevant stakeholders.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, what is the typical approach for creating a Project Charter?",
+      "questionText": "What is the typical approach for creating a Project Charter?",
       "choices": [
         "Created solely by the project manager.",
         "Created solely by the project sponsor.",
@@ -1090,7 +1078,7 @@
         "Created by the PMO to standardize project management practices."
       ],
       "correctAnswer": 2,
-      "explanation": "Source and state that the Project Charter is created by the project sponsor or by the project manager in collaboration with the project initiating entity.",
+      "explanation": "The project charter is issued by the project initiator or sponsor. While the project manager may assist in its development, the charter is formally created and authorized by the sponsoring entity, as it provides the project manager with the authority to apply resources to project activities.",
       "time": 75
     },
     {
@@ -1102,19 +1090,19 @@
         "The PMO"
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that the project charter is typically approved by the project sponsor or a person with similar authority who has the power to authorize and provide resources for the project.",
+      "explanation": "The project charter is approved and signed by the project sponsor (or a similar role). This signature formally authorizes the existence of the project and provides the project manager with the authority and resources to proceed.",
       "time": 75
     },
     {
-      "questionText": "According to the PMBoK Guide perspective presented in the sources, which activity should Andrew, from the PMO defining project manager 'won't do' activities, include?",
+      "questionText": "From a PMP exam perspective, which of the following activities is a project manager typically NOT authorized to do?",
       "choices": [
-        "Project manager never participates in follow-on activities related to realizing business benefits.",
-        "Project manager never assists in business case development.",
-        "Project manager should not approve the project charter.",
-        "Project manager should not assist in business analysis work."
+        "Participate in follow-on activities related to realizing business benefits.",
+        "Assist in business case development.",
+        "Approve the project charter.",
+        "Assist in business analysis work."
       ],
       "correctAnswer": 2,
-      "explanation": "Source clarifies that for the PMP Exam perspective, project managers can assist in business analysis, participate in follow-on activities for benefits realization, and assist in business case development. Approving the project charter is typically done by the project sponsor.",
+      "explanation": "While project managers are heavily involved in planning and execution, and may assist in developing the business case and benefits management plan, the formal approval of the project charter is the responsibility of the project sponsor. This approval officially authorizes the project and the project manager's authority.",
       "time": 75
     },
     {
@@ -1126,11 +1114,11 @@
         "-10 to +25%"
       ],
       "correctAnswer": 1,
-      "explanation": "Source indicates that early in the project, when uncertainty is high due to lack of information, the estimation range is likely broad, suggesting -25 to +75%. Source supports this by noting that a narrow range like -5% to +10% is suitable when the project is fairly certain with stable requirements and experienced team.",
+      "explanation": "Early in the project lifecycle, when information is limited and uncertainty is high, estimates are less accurate. This is known as a Rough Order of Magnitude (ROM) estimate, which typically has a wide range, such as -25% to +75%. As the project progresses and more is known, the estimate range narrows.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, what is a critical aspect of effective communication in project management that ensures the message has been accurately received and understood?",
+      "questionText": "What is a critical aspect of effective communication in project management that ensures the message has been accurately received and understood?",
       "choices": [
         "Using only formal communication channels.",
         "Minimizing 'noise' in the communication process.",
@@ -1138,7 +1126,7 @@
         "Relying solely on linear communication models."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that confirming communication is understood and receiving feedback is an essential part of effective communication in project management, ensuring accuracy and addressing misunderstandings.",
+      "explanation": "Effective communication is a two-way process. It's not enough to simply send a message; the sender must also ensure it was received and understood as intended. Seeking and receiving feedback closes the communication loop and helps identify and correct misunderstandings.",
       "time": 75
     },
     {
@@ -1150,11 +1138,11 @@
         "Communication that lacks a clear purpose."
       ],
       "correctAnswer": 1,
-      "explanation": "Source defines 'Noise' as any interference or barriers that might compromise the understanding of the message, listing examples like distraction or lack of knowledge/interest.",
+      "explanation": "In communication theory, 'noise' refers to any factor that interferes with the transmission or interpretation of a message. This can include physical noise, language barriers, cultural differences, lack of attention, or any other distraction that hinders understanding.",
       "time": 75
     },
     {
-      "questionText": "Which of the following is NOT a best practice for written communication, according to the sources' discussion of the 5 Cs?",
+      "questionText": "Which of the following is NOT a best practice for written communication, according to the 5 Cs of communication?",
       "choices": [
         "Correct grammar and spelling.",
         "Clear purpose and expressions directed to the needs of the writer.",
@@ -1162,7 +1150,7 @@
         "Coherent, logical flow of ideas."
       ],
       "correctAnswer": 1,
-      "explanation": "Source highlights that a best practice is 'Clear purpose and expressions directed to the needs of the reader,' not the writer. The other options are listed as best practices.",
+      "explanation": "The 5 Cs of effective communication include being Clear, Concise, Coherent, Correct, and Courteous (or audience-aware). Effective communication should be directed to the needs of the *reader* or audience, not the writer, to ensure the message is received and understood effectively.",
       "time": 75
     },
     {
@@ -1174,11 +1162,11 @@
         "OSCAR"
       ],
       "correctAnswer": 3,
-      "explanation": "Source identifies OSCAR as a coaching and mentoring model, while VUCA, INVEST, and MoSCoW are not.",
+      "explanation": "OSCAR (Outcome, Situation, Choices, Actions, Review) is a well-known coaching and mentoring model. It provides a structured framework for conversations aimed at professional development. VUCA describes environments, INVEST defines user story quality, and MoSCoW is a prioritization technique.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, what is one key characteristic of predictive project management?",
+      "questionText": "What is one key characteristic of predictive project management?",
       "choices": [
         "High degree of change.",
         "Requirements are fixed and stable.",
@@ -1186,7 +1174,7 @@
         "Value delivery is prioritized over upfront planning."
       ],
       "correctAnswer": 1,
-      "explanation": "Source associates predictive methodology with fixed and stable project requirements.",
+      "explanation": "Predictive (or waterfall) project management is predicated on the idea that project requirements can be defined in detail upfront and will remain fixed and stable throughout the project's lifecycle.",
       "time": 75
     },
     {
@@ -1198,7 +1186,7 @@
         "A process for identifying project risks."
       ],
       "correctAnswer": 1,
-      "explanation": "Source mentions 'Refactoring' as a technique that can be used by a team to reduce the technical debt in code.",
+      "explanation": "Refactoring is the process of restructuring existing computer code—changing the factoring—without changing its external behavior. It is a disciplined technique for cleaning up code that minimizes the chances of introducing bugs and helps reduce technical debt.",
       "time": 75
     },
     {
@@ -1210,11 +1198,11 @@
         "Projects, programs, and portfolios are managed independently."
       ],
       "correctAnswer": 1,
-      "explanation": "Source and explain that a program encompasses multiple projects, and portfolio management involves the management of projects, programs, and operations as a group.",
+      "explanation": "The standard hierarchy is that projects can be stand-alone or grouped into programs. Both individual projects and programs can then be grouped into portfolios, which are aligned with the organization's strategic objectives.",
       "time": 75
     },
     {
-      "questionText": "What is the primary goal of a portfolio manager, according to the sources?",
+      "questionText": "What is the primary goal of a portfolio manager?",
       "choices": [
         "To ensure projects are completed on time and within budget.",
         "To oversee the delivery of related projects.",
@@ -1222,7 +1210,7 @@
         "To manage daily operations."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that the primary responsibility of a portfolio manager is to ensure that the right projects are selected for their specific portfolio, aligning with the company's long-term goals.",
+      "explanation": "The primary goal of portfolio management is strategic alignment. The portfolio manager focuses on selecting and managing a collection of projects and programs to maximize their contribution to the organization's overall business objectives.",
       "time": 75
     },
     {
@@ -1234,7 +1222,7 @@
         "MoSCoW"
       ],
       "correctAnswer": 2,
-      "explanation": "Source and state that VUCA stands for volatility, uncertainty, complexity, and ambiguity, and is used to describe general conditions and situations.",
+      "explanation": "VUCA is an acronym that stands for Volatility, Uncertainty, Complexity, and Ambiguity. It is a framework used to describe and understand challenging and unpredictable business environments.",
       "time": 75
     },
     {
@@ -1246,7 +1234,7 @@
         "Prioritization technique."
       ],
       "correctAnswer": 2,
-      "explanation": "Source and state that INVEST is related to user stories in an agile context.",
+      "explanation": "INVEST is an acronym that serves as a checklist for creating high-quality user stories. It stands for Independent, Negotiable, Valuable, Estimable, Small, and Testable.",
       "time": 75
     },
     {
@@ -1258,7 +1246,7 @@
         "Refactoring"
       ],
       "correctAnswer": 2,
-      "explanation": "Source defines continuous integration as a practice in which each team member's work products are frequently integrated and validated with one another.",
+      "explanation": "Continuous Integration (CI) is a software development practice where developers regularly merge their code changes into a central repository, after which automated builds and tests are run. This practice helps to find and resolve integration issues quickly.",
       "time": 75
     },
     {
@@ -1270,11 +1258,11 @@
         "Sprint review"
       ],
       "correctAnswer": 1,
-      "explanation": "Source defines continuous delivery as the practice of delivering feature increments immediately to the customer.",
+      "explanation": "Continuous Delivery is the practice of building, testing, and releasing software in short cycles, ensuring that software can be reliably released to users at any time. This often means delivering completed features to customers frequently.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, which of the following describes a project?",
+      "questionText": "Which of the following describes a project?",
       "choices": [
         "Multiple related projects managed as a single package.",
         "Management of projects, programs, and operations as a group.",
@@ -1282,11 +1270,11 @@
         "An ongoing operational activity."
       ],
       "correctAnswer": 2,
-      "explanation": "Source and define a 'project' as a specific, singular endeavor aimed at delivering a tangible output.",
+      "explanation": "A project is formally defined as a temporary endeavor undertaken to create a unique product, service, or result. It is a specific, singular effort with a defined beginning and end.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, why do organizations run multiple projects in a coordinated fashion as a program?",
+      "questionText": "Why do organizations run multiple projects in a coordinated fashion as a program?",
       "choices": [
         "To simplify management.",
         "To achieve benefits not available when managing the projects individually.",
@@ -1294,7 +1282,7 @@
         "To assign a single project manager to multiple projects."
       ],
       "correctAnswer": 1,
-      "explanation": "Source and state that program activities managed in a coordinated manner have the potential to yield benefits not available when managing the projects individually.",
+      "explanation": "A program is a group of related projects managed in a coordinated manner to obtain benefits and control not available from managing them individually. This coordination allows for optimizing resources, managing interdependencies, and achieving a collective outcome.",
       "time": 75
     },
     {
@@ -1306,11 +1294,11 @@
         "The cost of hardware needed for development."
       ],
       "correctAnswer": 2,
-      "explanation": "Source mentions 'technical debt' in the context of software, implying it's something that needs to be reduced, typically referring to code quality or design issues that hinder future work.",
+      "explanation": "Technical debt is a metaphor for the implied cost of rework caused by choosing an easy (limited) solution now instead of using a better approach that would take longer. Poor design choices, like poor quality code, create a 'debt' that must be 'repaid' later with extra effort to make changes.",
       "time": 75
     },
     {
-      "questionText": "If a team is using Scrum and finds technical debt increasing, what technique is suggested in the sources to reduce it?",
+      "questionText": "If a team is using Scrum and finds technical debt increasing, what technique is suggested to reduce it?",
       "choices": [
         "Sailboat",
         "Prune the product tree",
@@ -1318,7 +1306,7 @@
         "Fist of five"
       ],
       "correctAnswer": 2,
-      "explanation": "Source suggests 'Refactoring' as a technique the team can use to reduce technical debt in code.",
+      "explanation": "Refactoring is a key technique for managing and reducing technical debt. It involves improving the internal structure of the code without changing its external behavior, making it cleaner, more efficient, and easier to maintain or enhance in the future.",
       "time": 75
     },
     {
@@ -1330,11 +1318,11 @@
         "Better team collaboration."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that if the Definition of Done is loose, it can lead to confusion, misunderstandings, and delays, resulting in rework and higher defect rates.",
+      "explanation": "A clear and robust Definition of Done (DoD) is critical for quality. A loose DoD leads to ambiguity about when work is truly complete, resulting in inconsistent quality, missed requirements, and a higher number of defects discovered after delivery.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, how should a project team address a loose Definition of Done?",
+      "questionText": "How should a project team address a loose Definition of Done?",
       "choices": [
         "Ignore it and focus on delivery speed.",
         "Increase the frequency of testing.",
@@ -1342,7 +1330,7 @@
         "Let the Scrum Master define it alone."
       ],
       "correctAnswer": 2,
-      "explanation": "Source advises that to overcome a loose Definition of Done, the project team should work with the product owner and prepare a robust Definition of Done.",
+      "explanation": "The Definition of Done is a shared understanding of what it means for work to be complete. It should be created collaboratively by the entire Scrum team (Development Team, Scrum Master, and Product Owner) to ensure everyone is aligned on quality standards and completeness criteria.",
       "time": 75
     },
     {
@@ -1354,7 +1342,7 @@
         "Communication that involves a central person relaying information."
       ],
       "correctAnswer": 1,
-      "explanation": "Source  mentions 'Osmotic communication' in the context of addressing communication gaps, which typically refers to information flowing passively within a collocated team environment.",
+      "explanation": "Osmotic communication describes the unconscious absorption of information that occurs when team members work in a shared physical space. By overhearing conversations in the background, team members can stay informed about the project without formal meetings.",
       "time": 75
     },
     {
@@ -1366,7 +1354,7 @@
         "Fishbowl window"
       ],
       "correctAnswer": 3,
-      "explanation": "Source  suggests 'Fishbowl window' as a tool or technique that can help bridge communication gaps in geographically distributed teams, in contrast to colocation or caves and commons which are physical space arrangements.",
+      "explanation": "A 'fishbowl window' is a technique using a persistent video and/or audio link between two or more distributed team locations. It creates a virtual shared space, helping to replicate the benefits of colocation and osmotic communication for remote teams.",
       "time": 75
     },
     {
@@ -1378,7 +1366,7 @@
         "To outline the process for acquiring resources."
       ],
       "correctAnswer": 1,
-      "explanation": "Source explains that a Resource calendar specifies when and for how long a certain resource, such as an LED Projector (physical) or human resource, will be available during the project.",
+      "explanation": "A resource calendar identifies the working days, shifts, start and end of normal business hours, weekends, and public holidays for each project resource. It specifies when and for how long specific resources (both human and physical) will be available for project work.",
       "time": 75
     },
     {
@@ -1390,11 +1378,11 @@
         "Project schedule"
       ],
       "correctAnswer": 3,
-      "explanation": "Source states that the project schedule contains all the details of the timelines of the project activities, their sequence, and estimations, which indicates 'when' resources are needed.",
+      "explanation": "The project schedule contains the planned start and finish dates for all project activities. This timeline is the primary source for determining when specific resources will be required to perform their assigned work.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, what is the expected outcome when incorporating practice questions into PMP exam preparation?",
+      "questionText": "What is the expected outcome when incorporating practice questions into PMP exam preparation?",
       "choices": [
         "Guaranteed passing score of 75%.",
         "Rote memorization of all exam content.",
@@ -1402,7 +1390,7 @@
         "Identifying questions that will appear on the real exam."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that practice questions help reinforce knowledge, build confidence, improve critical thinking skills, and familiarize candidates with the exam format.",
+      "explanation": "Using practice questions is a key study technique. It helps to reinforce learned concepts, build confidence in answering scenario-based questions, improve critical thinking and time management, and familiarize the candidate with the format and style of the real exam.",
       "time": 75
     },
     {
@@ -1414,7 +1402,7 @@
         "Only the leadership aspects of project management."
       ],
       "correctAnswer": 1,
-      "explanation": "Source describes the Exam Content Outline as the ultimate study guide detailing everything to focus on to ace the exam, breaking down structure and content and covering the certification process/requirements.",
+      "explanation": "The PMP Examination Content Outline (ECO) is the blueprint for the exam. It details the domains (People, Process, Business Environment), tasks, and enablers that will be tested, providing a comprehensive guide for what candidates need to study.",
       "time": 75
     },
     {
@@ -1426,11 +1414,11 @@
         "True/False questions testing basic concepts."
       ],
       "correctAnswer": 1,
-      "explanation": "Source states that the PMP Exam is almost entirely a scenario-based exam.",
+      "explanation": "The vast majority of PMP exam questions are scenario-based. They present a real-world project situation and require the candidate to analyze the context and choose the best course of action based on PMI's principles and best practices.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, which of the following is NOT a Scrum artifact?",
+      "questionText": "Which of the following is NOT a Scrum artifact?",
       "choices": [
         "Sprint Backlog",
         "Product Backlog",
@@ -1438,7 +1426,7 @@
         "Release Notes"
       ],
       "correctAnswer": 3,
-      "explanation": "Source,, and list the Scrum artifacts as Sprint Backlog, Product Backlog, and Product Increment. Release Notes are not listed as a core Scrum artifact in these sources.",
+      "explanation": "The three official artifacts of the Scrum framework are the Product Backlog, the Sprint Backlog, and the Increment. While Release Notes are a common and useful document in software development, they are not a formal Scrum artifact.",
       "time": 75
     },
     {
@@ -1450,11 +1438,11 @@
         "Face to face communication."
       ],
       "correctAnswer": 3,
-      "explanation": "Source recommends face-to-face communication for situations involving complex, intricate, and personal information because it benefits from more robust communication channels.",
+      "explanation": "For sensitive, complex, or personal conversations, high-bandwidth communication is essential. Face-to-face communication allows for immediate feedback, observation of non-verbal cues (body language, tone of voice), and building rapport, which is crucial for handling such situations effectively.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, what is the definition of 'authority' in a project environment?",
+      "questionText": "What is the definition of 'authority' in a project environment?",
       "choices": [
         "The ability to influence others without formal power.",
         "The position of control given to certain individuals within an organization, representing the right to exercise power.",
@@ -1462,11 +1450,11 @@
         "The ability to make decisions on behalf of stakeholders."
       ],
       "correctAnswer": 1,
-      "explanation": "Source defines authority as the position of control given to certain individuals within an organization, which is the right to exercise power, usually granted through formal means like a charter or title.",
+      "explanation": "Authority refers to the formal, legitimate right to exercise power, make decisions, and give orders. In a project context, it is typically granted to the project manager through the project charter.",
       "time": 75
     },
     {
-      "questionText": "What does 'Leadership' refer to in a project environment, according to the sources?",
+      "questionText": "What does 'Leadership' refer to in a project environment?",
       "choices": [
         "Exclusively the role of the project manager.",
         "The position of control and power.",
@@ -1474,7 +1462,7 @@
         "The formal authority granted by a charter document."
       ],
       "correctAnswer": 2,
-      "explanation": "Source clarifies that leadership should not be confused with authority and is not exclusive to any specific role. Any team member or all team members can engage in 'leadership' activities.",
+      "explanation": "Leadership is distinct from authority. It is the ability to influence, motivate, and guide others toward a common goal. This is a skill and a set of behaviors that can be demonstrated by anyone on the team, not just the person with formal authority.",
       "time": 75
     },
     {
@@ -1486,11 +1474,11 @@
         "Better utilization of resources."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that multitasking reduces the throughput of the team's work and impacts the team's ability to predict delivery and deliver consistently. Switching between tasks is discouraged.",
+      "explanation": "Multitasking, or frequent context-switching between different tasks, is inefficient. It reduces overall throughput because time is lost when switching focus. It also makes it difficult for the team to predict when work will be completed, impacting their delivery consistency.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, which factor should be considered when judging an organization's readiness to adapt agile?",
+      "questionText": "Which factor should be considered when judging an organization's readiness to adapt agile?",
       "choices": [
         "Focus on short-term budgeting.",
         "Work decomposed into departmental silos.",
@@ -1498,7 +1486,7 @@
         "Lack of formal processes."
       ],
       "correctAnswer": 2,
-      "explanation": "Source lists 'Executive management's willingness to change' as a desirable characteristic to find in an organization when judging their readiness to adapt agile.",
+      "explanation": "Agile transformation is a significant organizational change. Its success is heavily dependent on the support and commitment from executive management. A willingness to change culture, processes, and structures from the top is a critical readiness factor.",
       "time": 75
     },
     {
@@ -1510,7 +1498,7 @@
         "WBS dictionary and communication plan."
       ],
       "correctAnswer": 1,
-      "explanation": "Source and mention that when a project manager is planning for project resources, supporting artifacts like the scope baseline (to understand the scope of work) and the project schedule (to know 'when' resources are needed) are likely needed.",
+      "explanation": "To plan resources effectively, a project manager needs to know what work needs to be done (the Scope Baseline, including the WBS) and when it needs to be done (the Project Schedule). These two artifacts are fundamental inputs to resource planning.",
       "time": 75
     },
     {
@@ -1522,11 +1510,11 @@
         "Accept"
       ],
       "correctAnswer": 2,
-      "explanation": "Source lists 'Enhance' as a strategy used for managing opportunities, where the project team increases the probability or impact of the opportunity.",
+      "explanation": "The 'Enhance' strategy is used for positive risks or opportunities. It involves taking proactive actions to increase the probability of the opportunity occurring and/or to increase its positive impact on the project objectives.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, what is one way to ensure quality in project deliverables?",
+      "questionText": "What is one way to ensure quality in project deliverables?",
       "choices": [
         "Focus solely on testing and verification at the end.",
         "Assign a dedicated quality assurance team.",
@@ -1534,7 +1522,7 @@
         "Minimize stakeholder involvement in quality discussions."
       ],
       "correctAnswer": 2,
-      "explanation": "Source emphasizes 'Build Quality In' as a key aspect of quality management, ensuring quality is integrated when deliverables are developed.",
+      "explanation": "A core principle of modern quality management is 'building quality in' rather than 'inspecting it in'. This means focusing on the processes, skills, and materials used to create the deliverables to prevent defects from occurring in the first place.",
       "time": 75
     },
     {
@@ -1546,11 +1534,11 @@
         "The Project Manager"
       ],
       "correctAnswer": 2,
-      "explanation": "Source and state that a key responsibility of the Scrum Master is to coach the development team on the Scrum framework and ensure correct usage of events and artifacts.",
+      "explanation": "A key service the Scrum Master provides to the development team is coaching them in self-organization and cross-functionality, and helping them understand and enact the Scrum framework correctly, including its events, artifacts, and rules.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, what is NOT true about T-shaped, generalized specialists in Agile?",
+      "questionText": "Which statement about T-shaped, generalized specialists in Agile is NOT true?",
       "choices": [
         "They are skilled in all the specialties needed on the project and hence can take any role.",
         "They are more valuable to the team than I-shaped specialists.",
@@ -1558,11 +1546,11 @@
         "They can help reduce handoffs because they have additional skills."
       ],
       "correctAnswer": 0,
-      "explanation": "Source states that while T-shaped specialists have deep expertise in one area and broad knowledge in others, it is unlikely for an individual to have all the skills needed to deliver the project. Therefore, the statement that they are skilled in *all* specialties and can take *any* role is not true.",
+      "explanation": "A T-shaped person has deep expertise in one area and broad knowledge in others. While this makes them highly flexible and valuable, it is unrealistic to expect them to be an expert in all specialties. They contribute across areas but still have a primary specialization.",
       "time": 75
     },
     {
-      "questionText": "What does the PMP Examination Content Outline align with, according to the sources?",
+      "questionText": "What does the PMP Examination Content Outline align with?",
       "choices": [
         "Only the latest industry trends.",
         "The PMP Exam Prep Book structure.",
@@ -1570,7 +1558,7 @@
         "Specific project management software."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that the questions are meticulously crafted to align with the latest PMBOK Guide, 7th Edition, and Source describes the Exam Content Outline as aligned with PMI's standards.",
+      "explanation": "The PMP Examination Content Outline (ECO) serves as the foundation for the exam. The exam questions are developed to align with the ECO, which in turn is aligned with key reference materials, including the PMBOK Guide, 7th Edition.",
       "time": 75
     },
     {
@@ -1582,11 +1570,11 @@
         "They reveal the exact questions that will be on the exam."
       ],
       "correctAnswer": 2,
-      "explanation": "Source and highlight that detailed explanations clarify why an answer is correct, helping candidates understand the underlying concepts and principles, enhancing overall comprehension.",
+      "explanation": "The detailed explanations are crucial. They clarify not only why the correct answer is right, but also why the other options are wrong. This deepens the candidate's understanding of the underlying project management concepts and principles, which is essential for answering scenario-based questions.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, when is it advisable to use questionnaires and surveys to collect project requirements?",
+      "questionText": "When is it advisable to use questionnaires and surveys to collect project requirements?",
       "choices": [
         "When stakeholders are collocated.",
         "When there is limited time and stakeholders are spread across different geographical locations.",
@@ -1594,7 +1582,7 @@
         "When requirements are expected to be unstable."
       ],
       "correctAnswer": 1,
-      "explanation": "Source suggests using questionnaires and surveys as a technique to collect a large amount of data from many individuals in a short period, suitable when time is limited and stakeholders are geographically distributed.",
+      "explanation": "Questionnaires and surveys are an efficient technique for gathering information from a large, geographically dispersed group of stakeholders. They allow for the quick collection of a large amount of data when face-to-face interviews or workshops are not feasible.",
       "time": 75
     },
     {
@@ -1606,7 +1594,7 @@
         "They are replaced with team members experienced in the domain."
       ],
       "correctAnswer": 1,
-      "explanation": "Source states that if the team is entirely new to the project development domain, it is the responsibility of the project manager to ensure and empower the team members by making sure they are adequately trained before they commence work.",
+      "explanation": "Part of a project manager's responsibility in developing the team is to ensure that team members have the necessary skills and knowledge to perform their work. If the team is new to a domain, the project manager must facilitate or arrange for adequate training to build their competency.",
       "time": 75
     },
     {
@@ -1618,7 +1606,7 @@
         "They are focused solely on project formulas."
       ],
       "correctAnswer": 1,
-      "explanation": "Source states that scenario-based questions often include irrelevant information added on purpose to trick you, requiring reading comprehension to discern relevant information.",
+      "explanation": "PMP exam questions are designed to test critical thinking. They often include extra details or 'red herrings' that are not relevant to the core problem. A key skill is to quickly identify the most pertinent information in the scenario to determine the best answer.",
       "time": 75
     },
     {
@@ -1630,7 +1618,7 @@
         "Quality management plan."
       ],
       "correctAnswer": 1,
-      "explanation": "Source identifies the lack of clearly defined escalation paths as a case of missing project governance.",
+      "explanation": "Project governance defines the framework, functions, and processes that guide project management activities. This includes defining roles, responsibilities, and clear escalation paths for issues, ensuring that problems are directed to the right people for resolution.",
       "time": 75
     },
     {
@@ -1642,11 +1630,11 @@
         "They are responsible for administering the exam."
       ],
       "correctAnswer": 1,
-      "explanation": "Source states that all questions on the exam undergo a rigorous process, are meticulously crafted and extensively reviewed by subject matter experts who themselves hold a valid PMP certification.",
+      "explanation": "PMI uses certified PMP holders who are Subject Matter Experts (SMEs) from around the world to write, review, and vet all questions for the exam. This rigorous process ensures the questions are relevant, accurate, and fair.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, what percentage score is a rule of thumb to aim for on practice exams to feel confident about the real PMP exam?",
+      "questionText": "What percentage score is a common rule of thumb to aim for on practice exams to feel confident about the real PMP exam?",
       "choices": [
         "60 percent or better",
         "75 percent or better",
@@ -1654,11 +1642,11 @@
         "100 percent"
       ],
       "correctAnswer": 1,
-      "explanation": "Source provides the rule of thumb: score 75 percent or better on your practice exams and you should do fine on the real exam.",
+      "explanation": "While not an official PMI standard, a widely accepted rule of thumb in the PMP prep community is that consistently scoring 75-80% or better on high-quality practice exams is a strong indicator of readiness for the real exam.",
       "time": 75
     },
     {
-      "questionText": "What is 'refactoring' primarily used for in software development projects, according to the sources?",
+      "questionText": "What is 'refactoring' primarily used for in software development projects?",
       "choices": [
         "Adding new features.",
         "Fixing functional bugs.",
@@ -1666,11 +1654,11 @@
         "Writing technical documentation."
       ],
       "correctAnswer": 2,
-      "explanation": "Source mentions refactoring in the context of reducing technical debt, which aligns with improving the internal structure of code.",
+      "explanation": "The goal of refactoring is to improve the non-functional attributes of the software, such as readability, maintainability, and complexity. It is about cleaning up the internal design of the code to reduce technical debt, without altering what the code actually does for the user.",
       "time": 75
     },
     {
-      "questionText": "What is a key advantage of using Kanban, as mentioned in the sources?",
+      "questionText": "What is a key advantage of using Kanban?",
       "choices": [
         "It is the most prescriptive agile framework.",
         "It requires periodic releases.",
@@ -1678,17 +1666,17 @@
         "It is only suitable for collocated teams."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that Kanban allows for a continuous flow of work and value to customers.",
+      "explanation": "Unlike the time-boxed iterations of Scrum, Kanban is a flow-based system. It focuses on pulling work through the system as capacity becomes available, enabling a continuous flow of value delivery to the customer rather than waiting for a batch release at the end of a sprint.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, is it true or false that authority in an organization is usually granted through formal means?",
+      "questionText": "Is it true or false that authority in an organization is usually granted through formal means?",
       "choices": [
         "True",
         "False"
       ],
       "correctAnswer": 0,
-      "explanation": "Source states that authority is the position of control given to certain individuals and is usually granted through formal means such as a charter document or a designated title.",
+      "explanation": "True. Authority is the formal right to exercise power and make decisions. It is typically granted to an individual through an official organizational mechanism, such as a job title or a formal document like a project charter.",
       "time": 75
     },
     {
@@ -1700,11 +1688,11 @@
         "A project"
       ],
       "correctAnswer": 1,
-      "explanation": "Source explains that a program refers to multiple projects that are related and managed and delivered as a single package because program activities managed in a coordinated manner have the potential to obtain benefits not available from managing projects individually.",
+      "explanation": "This is the definition of a program. A program is a group of related projects and other work managed in a coordinated way to obtain benefits and control that are not available from managing them as individual, separate projects.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, which of the following is NOT a valid acronym representing a change management model?",
+      "questionText": "Which of the following is NOT a valid acronym representing a change management model?",
       "choices": [
         "ADKAR",
         "VUCA",
@@ -1712,11 +1700,11 @@
         "MoSCoW"
       ],
       "correctAnswer": 1,
-      "explanation": "Source identifies ADKAR as a change management model. Sources and identify VUCA as describing general conditions, OSCAR as a coaching/mentoring model, and MoSCoW as a prioritization technique. Therefore, VUCA is not a change management model.",
+      "explanation": "ADKAR is a well-known organizational change management model. VUCA describes environments, OSCAR is a coaching model, and MoSCoW is a prioritization technique. VUCA describes the context *for* change but is not a change management model itself.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, what should project teams avoid doing with models, methods, and artifacts?",
+      "questionText": "What should project teams avoid doing with models, methods, and artifacts?",
       "choices": [
         "Using them to solve problems.",
         "Documenting them.",
@@ -1724,7 +1712,7 @@
         "Using them if they duplicate effort or offer no utility."
       ],
       "correctAnswer": 3,
-      "explanation": "Source and state that project teams should avoid using models, methods, and artifacts that can duplicate or add unnecessary project efforts or offer no utility to the team or stakeholders.",
+      "explanation": "Models, methods, and artifacts are tools to help the project. A key principle of tailoring is to select and use only those tools that add value. If a particular artifact or method offers no utility, creates redundant work, or is overly bureaucratic, the team should avoid using it.",
       "time": 75
     },
     {
@@ -1736,7 +1724,7 @@
         "To formalize acceptance of project deliverables."
       ],
       "correctAnswer": 2,
-      "explanation": "Source and state that a quality audit is typically conducted by an external team to assess whether project activities comply with organizational and project policies, processes, and procedures.",
+      "explanation": "A quality audit is a structured, independent review to determine if project activities comply with established policies, processes, and procedures. Its objective is to identify inefficiencies or non-compliance in the quality management process, not to inspect the product itself.",
       "time": 75
     },
     {
@@ -1748,7 +1736,7 @@
         "Identifying impediments faced by the team."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that in a Sprint planning meeting, the project team is not supposed to discuss technical solutions but is more about deciding what the team should focus on in the upcoming Sprint.",
+      "explanation": "The purpose of the Sprint Planning meeting is to determine the Sprint Goal and select the Product Backlog Items that will be worked on during the upcoming Sprint. The team collaborates to decide what can be delivered and how the work will be done.",
       "time": 75
     },
     {
@@ -1760,11 +1748,11 @@
         "There are no experimental questions on the PMP exam."
       ],
       "correctAnswer": 1,
-      "explanation": "Source states that the PMP Exam consists of 180 questions, of which 5 are experimental questions that do not affect your score and are used to test the validity of future exam questions.",
+      "explanation": "The PMP exam includes a small number of pretest (experimental) questions that are not scored. These questions are randomly distributed throughout the exam and are used by PMI to validate their performance before they are included as scored questions on future exams.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, where can you find information about current item types included in the PMP exam, such as drag-and-drop or hot-area questions?",
+      "questionText": "Where can you find information about current item types included in the PMP exam, such as drag-and-drop or hot-area questions?",
       "choices": [
         "Only in PMP exam prep books.",
         "On the PMI website for exam updates.",
@@ -1772,7 +1760,7 @@
         "From other PMP certified professionals."
       ],
       "correctAnswer": 1,
-      "explanation": "Source advises referring to the PMI website for exam updates for a list of current item types included in the exam.",
+      "explanation": "PMI periodically updates the format and types of questions on its exams. The most reliable and official source for information on current question types is the PMI website, typically in the PMP handbook or exam update sections.",
       "time": 75
     },
     {
@@ -1784,7 +1772,7 @@
         "It is a standard 75% for all exams."
       ],
       "correctAnswer": 1,
-      "explanation": "Source states that the passing score for all PMI exams is determined through psychometric analysis, using subject matter experts to determine the number of questions you must answer correctly to pass.",
+      "explanation": "PMI uses a psychometric method called the Angoff method. Subject matter experts evaluate the difficulty of each question to determine how many questions a minimally qualified candidate should be able to answer correctly. This analysis, not a fixed percentage, determines the passing score for each version of the exam.",
       "time": 75
     },
     {
@@ -1796,7 +1784,7 @@
         "Loose definition of done"
       ],
       "correctAnswer": 3,
-      "explanation": "Source lists Pair work, pervasive testing, and collective product/code ownership as recommended practices in agile projects, while a loose Definition of Done is identified as a potential cause of high defects and is not recommended.",
+      "explanation": "Pair work, pervasive testing (like TDD), and collective ownership are all practices that promote quality and collaboration in agile teams. A loose Definition of Done is a poor practice, as it creates ambiguity and leads to inconsistent quality and rework.",
       "time": 75
     },
     {
@@ -1808,7 +1796,7 @@
         "That only positive feedback is considered."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that confirming communication is understood and receiving feedback ensures that the message has been accurately received and understood by the recipient, and any potential misunderstandings or gaps in knowledge can be addressed in a timely manner.",
+      "explanation": "Communication is a two-way street. The process is not complete until the sender has confirmed that the receiver has understood the message as intended. Seeking and listening to feedback is the mechanism for closing this communication loop and ensuring clarity.",
       "time": 75
     },
     {
@@ -1820,11 +1808,11 @@
         "Push communication"
       ],
       "correctAnswer": 1,
-      "explanation": "Source defines linear communication as one-way communication in which a sender transmits a message to a receiver who reads or listens but doesn't respond. The interactive model recognizes the need for feedback.",
+      "explanation": "The linear communication model describes a one-way process where a sender sends a message and a receiver receives it, but there is no mechanism for feedback. This is in contrast to the interactive model, which includes a feedback loop.",
       "time": 75
     },
     {
-      "questionText": "What is one reason why businesses might use linear communication, according to the sources?",
+      "questionText": "What is one reason why businesses might use linear communication?",
       "choices": [
         "It encourages active participation from the receiver.",
         "It minimizes miscommunication.",
@@ -1832,7 +1820,7 @@
         "It ensures feedback is always received."
       ],
       "correctAnswer": 1,
-      "explanation": "Source states that linear communication minimizes miscommunication, which is why many businesses use it to communicate with their customers.",
+      "explanation": "Linear communication, such as a formal memo or a broadcast announcement, is often used to disseminate information widely and consistently. The one-way nature ensures the message is delivered exactly as crafted by the sender, which can minimize misinterpretation in mass communications.",
       "time": 75
     },
     {
@@ -1844,7 +1832,7 @@
         "Decodes the message."
       ],
       "correctAnswer": 3,
-      "explanation": "Source states that in linear communication, the sender encodes the message, and the receiver decodes the message.",
+      "explanation": "In the linear communication model, the sender encodes a message into a transmittable format. The receiver's role is to receive the transmission and decode it to understand its meaning.",
       "time": 75
     },
     {
@@ -1856,11 +1844,11 @@
         "To contain the project vision."
       ],
       "correctAnswer": 1,
-      "explanation": "Source states that project management plans are to be created by the project manager.",
+      "explanation": "The project management plan is the primary responsibility of the project manager. They lead the project team to develop the plan, which integrates all subsidiary plans and baselines into a comprehensive document for guiding project work.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, what is NOT true regarding project management plans?",
+      "questionText": "Which statement about project management plans is NOT true?",
       "choices": [
         "They are created by the project manager.",
         "They are typically created during the planning phase.",
@@ -1868,11 +1856,11 @@
         "They outline how the project will be executed, monitored, controlled, and closed."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states project management plans are created by the project manager. Source implies they are an outcome of planning. Source explicitly states the project vision is in the project charter, not project management plan.",
+      "explanation": "The project management plan details the 'how' of the project. The project vision, which is the 'why', is a higher-level concept that is typically documented in the project charter, not the detailed project management plan.",
       "time": 75
     },
     {
-      "questionText": "What is the purpose of the PMP Exam, according to the sources?",
+      "questionText": "What is the purpose of the PMP Exam?",
       "choices": [
         "To test candidates' ability for rote memorization.",
         "To accurately reflect the practices and expertise of project managers and provide a valid assessment of a candidate's knowledge and skills.",
@@ -1880,7 +1868,7 @@
         "To determine if candidates have experience in a specific project methodology."
       ],
       "correctAnswer": 1,
-      "explanation": "Source states that the PMP examination plays a crucial role in obtaining certification and is essential that it accurately reflects the practices and expertise of project managers, providing a valid assessment of knowledge and skills.",
+      "explanation": "The goal of the PMP certification is to provide a reliable and valid assessment of a project manager's competence. The exam is designed to reflect the real-world practices and the comprehensive knowledge and skills required to lead projects successfully.",
       "time": 75
     },
     {
@@ -1892,7 +1880,7 @@
         "Subject matter expert opinions only."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that exam questions are carefully aligned with the PMP Examination Content Outline to guarantee that the exam is well-structured and comprehensive.",
+      "explanation": "The PMP Examination Content Outline (ECO) is the blueprint for the exam. All questions are meticulously mapped back to the domains, tasks, and enablers listed in the ECO to ensure comprehensive and fair coverage of the required project management competencies.",
       "time": 75
     },
     {
@@ -1904,11 +1892,11 @@
         "Project management plan"
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that the business case provides justification for undertaking a project, program, or portfolio.",
+      "explanation": "The business case is the document that provides the business justification for a project. It typically includes a cost-benefit analysis and aligns the project with the organization's strategic objectives, demonstrating why the project is worth the investment.",
       "time": 75
     },
     {
-      "questionText": "What does a 'Benefit management plan' primarily focus on, according to the sources?",
+      "questionText": "What does a 'Benefit management plan' primarily focus on?",
       "choices": [
         "Listing project stakeholders.",
         "Measuring and tracking benefits from the start of the project investment until the realization of the last projected benefit.",
@@ -1916,7 +1904,7 @@
         "Managing project costs."
       ],
       "correctAnswer": 1,
-      "explanation": "Source describes a benefit management plan as used for measuring and tracking benefits from the start of the project investment until the realization of the last projected benefit.",
+      "explanation": "The benefit management plan outlines how and when the project's benefits will be delivered and measured. It is a living document used throughout the project lifecycle and beyond to ensure the expected value is actually realized.",
       "time": 75
     },
     {
@@ -1928,7 +1916,7 @@
         "Stakeholder analysis."
       ],
       "correctAnswer": 2,
-      "explanation": "Source defines Project justification as the process of determining whether a project is necessary and worthwhile, involving identifying a business problem or opportunity and assessing if a project is the best way to address it.",
+      "explanation": "Project justification is the process of evaluating a business problem or opportunity to determine if undertaking a project is the best way to address it. It's the foundational step that leads to the creation of the business case.",
       "time": 75
     },
     {
@@ -1940,11 +1928,11 @@
         "Stakeholder list and communication plan."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that project justification typically includes a cost-benefit analysis and assumptions.",
+      "explanation": "The core of project justification involves analyzing the business problem or opportunity. This typically includes a high-level cost-benefit analysis to weigh the expected costs against the potential benefits, along with documenting the key assumptions made in the analysis.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, what describes the participation by various roles in completing tasks or deliverables for a project or business process?",
+      "questionText": "What describes the participation by various roles in completing tasks or deliverables for a project or business process?",
       "choices": [
         "Work Breakdown Structure (WBS).",
         "Organizational Breakdown Structure (OBS).",
@@ -1952,11 +1940,11 @@
         "Resource Breakdown Structure (RBS)."
       ],
       "correctAnswer": 2,
-      "explanation": "Source describes a RACI chart (Responsibility Assignment Matrix) as describing the participation by various roles in completing tasks or deliverables.",
+      "explanation": "A Responsibility Assignment Matrix (RAM), commonly in the form of a RACI chart (Responsible, Accountable, Consulted, Informed), is a tool used to clarify roles and responsibilities. It maps project tasks to the project team members who are involved in completing them.",
       "time": 75
     },
     {
-      "questionText": "What is one of the goals of establishing a PMO, as mentioned in the sources?",
+      "questionText": "What is one of the goals of establishing a PMO?",
       "choices": [
         "To hire external consultants for project work.",
         "To standardize project management best practices.",
@@ -1964,7 +1952,7 @@
         "To conduct quality audits only."
       ],
       "correctAnswer": 1,
-      "explanation": "Source mentions a PMO established with the goal to standardize the project management best practices.",
+      "explanation": "A key function of many Project Management Offices (PMOs) is to standardize project-related governance processes and facilitate the sharing of resources, methodologies, tools, and techniques across the organization to improve overall project management maturity.",
       "time": 75
     },
     {
@@ -1976,11 +1964,11 @@
         "These are artifacts, not roles."
       ],
       "correctAnswer": 3,
-      "explanation": "Source,, and list the Scrum artifacts as Product Backlog, Sprint Backlog, and Product Increment. The question asks who is responsible for them. The Scrum Guide (which the source aligns with) assigns overall accountability for the Product Backlog to the Product Owner, the Sprint Backlog to the Development Team, and the Product Increment to the Development Team. Since none of the single roles are responsible for *all three*, and they are listed as artifacts, option D is the most accurate interpretation based on the structure of the options, highlighting they are artifacts themselves managed by different roles.",
+      "explanation": "Product Backlog, Sprint Backlog, and Product Increment are the three formal artifacts in Scrum. While specific roles have primary accountability for each (Product Owner for the Product Backlog, Development Team for the others), they are fundamentally defined as artifacts within the framework.",
       "time": 75
     },
     {
-      "questionText": "What is the purpose of a 'brain dump' or 'cheat sheet' in PMP exam preparation, according to the sources?",
+      "questionText": "What is the purpose of a 'brain dump' or 'cheat sheet' in PMP exam preparation?",
       "choices": [
         "To memorize every detail from the PMBOK Guide.",
         "To create notes of problem areas for quick reference.",
@@ -1988,7 +1976,7 @@
         "To replace comprehensive study guides."
       ],
       "correctAnswer": 1,
-      "explanation": "Source suggests considering creating cheat sheet notes (brain dumps) of your problem areas during exam prep.",
+      "explanation": "A 'brain dump' sheet is a study aid created by the candidate. It's used to consolidate key formulas, concepts, or process flows that the candidate finds difficult to remember. It helps in quickly recalling personal problem areas during the final stages of study.",
       "time": 75
     },
     {
@@ -2000,11 +1988,11 @@
         "Ability to manage stakeholders politically."
       ],
       "correctAnswer": 1,
-      "explanation": "Source states that the exam is scenario-based and requires reading comprehension to read between the lines and identify relevant information.",
+      "explanation": "Because the PMP exam is heavily scenario-based, strong reading comprehension is essential. Candidates must be able to quickly read and interpret project situations, filter out irrelevant information, and identify the core issue being tested.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, when is the interactive communication model recommended?",
+      "questionText": "When is the interactive communication model recommended?",
       "choices": [
         "When one-way communication is sufficient.",
         "When feedback is not needed.",
@@ -2012,7 +2000,7 @@
         "For communicating simple, factual information."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that the interactive communication model recognizes the need to ensure that messages have been understood, so it is recommended.",
+      "explanation": "The interactive communication model includes a feedback loop, making it a two-way process. It is recommended for most communication as it allows the sender to confirm that the message has been received and understood correctly by the receiver.",
       "time": 75
     },
     {
@@ -2024,11 +2012,11 @@
         "Attempting to bring too many changes in the shortest possible time."
       ],
       "correctAnswer": 3,
-      "explanation": "Source states that the thing to avoid is attempting to bring in too many changes in the shortest possible time, as it can lead to change fatigue and resistance.",
+      "explanation": "Organizations and the people within them can only absorb a certain amount of change at one time. Attempting to implement too many changes too quickly can lead to resistance, confusion, and 'change fatigue', ultimately undermining the success of the initiative.",
       "time": 75
     },
     {
-      "questionText": "What is a key benefit of involving project team members in project planning, according to the sources?",
+      "questionText": "What is a key benefit of involving project team members in project planning?",
       "choices": [
         "It causes project fatigue.",
         "It causes gold plating.",
@@ -2036,7 +2024,7 @@
         "It is a poor utilization of their time."
       ],
       "correctAnswer": 2,
-      "explanation": "Source suggests that participation of project team members during project planning strengthens their commitment to the project.",
+      "explanation": "When team members participate in the planning process, they gain a deeper understanding of the project goals and have a voice in how the work will be done. This involvement fosters a sense of ownership and strengthens their commitment to the project's success.",
       "time": 75
     },
     {
@@ -2048,7 +2036,7 @@
         "They are not using appropriate software tools."
       ],
       "correctAnswer": 1,
-      "explanation": "Source suggests that if a team is capturing too many things during the retro meeting, they may not be able to work on them in a focused manner, hindering improvement.",
+      "explanation": "A common anti-pattern in retrospectives is to generate a long list of potential improvements. This can be overwhelming and lead to inaction. A more effective approach is to focus on a small, manageable number of high-priority items to ensure they are actually implemented.",
       "time": 75
     },
     {
@@ -2060,7 +2048,7 @@
         "To discuss the status of daily tasks."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that the essence of a retrospective is to capture the learnings from the past iteration and make improvements.",
+      "explanation": "The Sprint Retrospective is an opportunity for the Scrum Team to inspect itself and create a plan for improvements to be enacted during the next Sprint. The goal is continuous process improvement.",
       "time": 75
     },
     {
@@ -2072,7 +2060,7 @@
         "Presentations."
       ],
       "correctAnswer": 2,
-      "explanation": "Source  mentions Osmotic communication, which is easier in a collocated environment where team members can passively overhear information, implying it's more challenging for distributed teams.",
+      "explanation": "Osmotic communication, the informal flow of information that occurs when a team is collocated, is lost when teams are geographically distributed. This valuable, passive information sharing must be replaced with more deliberate communication practices.",
       "time": 75
     },
     {
@@ -2084,7 +2072,7 @@
         "Gaining experience in every project domain."
       ],
       "correctAnswer": 1,
-      "explanation": "Source emphasizes that for success with the exam, reading comprehension needs to be sharpened to read between the lines of scenarios.",
+      "explanation": "Success on the PMP exam requires more than just knowing project management concepts. Candidates must be able to read and interpret complex scenarios, identify the key information, and apply their knowledge to select the best course of action. Sharpening reading comprehension is a critical preparation activity.",
       "time": 75
     },
     {
@@ -2096,7 +2084,7 @@
         "ADKAR"
       ],
       "correctAnswer": 2,
-      "explanation": "Source and state that INVEST is related to user stories in an agile context.",
+      "explanation": "INVEST is a popular acronym used as a guideline for writing effective user stories. It stands for Independent, Negotiable, Valuable, Estimable, Small, and Testable.",
       "time": 75
     },
     {
@@ -2108,7 +2096,7 @@
         "Project monitoring and control."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that the purpose of project planning is to proactively develop an approach to create deliverables, and the team progressively elaborates initial documents to identify and define a coordinated path.",
+      "explanation": "Project planning is the process of taking the high-level information from initiation documents (like the charter) and progressively elaborating it to create a detailed, coordinated plan for how the project's objectives will be achieved.",
       "time": 75
     },
     {
@@ -2120,7 +2108,7 @@
         "A committee responsible for project governance."
       ],
       "correctAnswer": 1,
-      "explanation": "Source defines a murder board as a panel of individuals, usually executives or senior managers, who review projects at different stages to determine whether the project should continue or not.",
+      "explanation": "A murder board (or review board) is a committee, typically of senior executives or experts, that rigorously questions and reviews projects at key checkpoints or stage gates. Their purpose is to make a critical go/no-go decision on whether the project should continue to the next phase.",
       "time": 75
     },
     {
@@ -2132,7 +2120,7 @@
         "To conduct make-or-buy analysis."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that project procurement processes focus on obtaining all of the materials and services required for the successful completion of the project.",
+      "explanation": "Project Procurement Management includes the processes necessary to purchase or acquire the products, services, or results needed from outside the project team to perform the work. Its main objective is to secure all necessary external resources.",
       "time": 75
     },
     {
@@ -2144,11 +2132,11 @@
         "Release Planning Meeting"
       ],
       "correctAnswer": 3,
-      "explanation": "Source,, and list the Scrum events/ceremonies as Daily Stand-up, Backlog Refinement Meeting, Sprint Retrospective, and Sprint Review. Release Planning Meeting is not listed as a core Scrum event in these sources.",
+      "explanation": "The formal events in Scrum are the Sprint, Sprint Planning, Daily Scrum, Sprint Review, and Sprint Retrospective. Backlog Refinement is an ongoing activity, not a formal event. Release Planning is a common practice in agile but is not one of the prescribed events in the Scrum framework.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, what is a key responsibility of the Project Sponsor?",
+      "questionText": "What is a key responsibility of the Project Sponsor?",
       "choices": [
         "Creating the detailed project management plans.",
         "Executing project tasks.",
@@ -2156,7 +2144,7 @@
         "Facilitating daily standup meetings."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that the project sponsor is typically the person who approves the project charter and has the power to authorize and provide resources for the project.",
+      "explanation": "The Project Sponsor is a senior management role that champions the project. Key responsibilities include providing the financial resources, advocating for the project, and formally authorizing it by approving the project charter.",
       "time": 75
     },
     {
@@ -2168,7 +2156,7 @@
         "To increase the length of study material."
       ],
       "correctAnswer": 2,
-      "explanation": "Source and emphasize that detailed explanations help candidates understand the underlying concepts and principles, enhancing overall comprehension.",
+      "explanation": "Detailed explanations are a critical learning tool. They go beyond just identifying the correct answer by explaining the rationale and the underlying project management principles being tested, which is key to answering different scenario-based questions on the same topic.",
       "time": 75
     },
     {
@@ -2180,11 +2168,11 @@
         "Focusing only on low-risk projects."
       ],
       "correctAnswer": 2,
-      "explanation": "Source uses this scenario as an example of a phased transition into Agile project delivery.",
+      "explanation": "This is an example of a phased or incremental transition. Rather than attempting a 'big bang' change across the entire organization, the company is starting with a specific area (digital projects) where agile is often a natural fit, allowing them to learn and adapt before a broader rollout.",
       "time": 75
     },
     {
-      "questionText": "What is the definition of 'authority' according to the sources?",
+      "questionText": "What is the definition of 'authority'?",
       "choices": [
         "The ability to influence people.",
         "The right to exercise power, usually granted through formal means.",
@@ -2192,7 +2180,7 @@
         "Having T-shaped skills."
       ],
       "correctAnswer": 1,
-      "explanation": "Source defines authority as the position of control given to certain individuals within an organization, which is the right to exercise power, usually granted through formal means.",
+      "explanation": "Authority is the formal, legitimate right to give commands, make decisions, and enforce obedience, typically granted by one's position within an organizational structure.",
       "time": 75
     },
     {
@@ -2204,7 +2192,7 @@
         "The PMO."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that the project manager and the team should ensure that project information, such as defect reports, is kept up to date and accessible to all stakeholders.",
+      "explanation": "Managing project information is a shared responsibility. The project manager is ultimately accountable for the information management process, but the entire team contributes to creating, updating, and validating the project's artifacts and data.",
       "time": 75
     },
     {
@@ -2216,7 +2204,7 @@
         "Defect count reduction efforts."
       ],
       "correctAnswer": 2,
-      "explanation": "Source attributes the sponsor's unhappiness in this scenario to incorrect or inaccurate information being shared, indicating a lack of project information validation.",
+      "explanation": "Sharing inaccurate information erodes stakeholder trust and confidence. This situation points to a failure in the project's information management processes, specifically a lack of validation to ensure the information being reported is accurate and reliable.",
       "time": 75
     },
     {
@@ -2228,7 +2216,7 @@
         "To report team status to senior leadership."
       ],
       "correctAnswer": 2,
-      "explanation": "Source explains that by choosing servant leadership, the leader serves the project team and team members, working on their development and growth.",
+      "explanation": "The core principle of servant leadership is that the leader's main priority is to serve others. In a project context, this means focusing on the needs of the team, removing obstacles, and providing support for their growth and development to help them achieve their full potential.",
       "time": 75
     },
     {
@@ -2240,7 +2228,7 @@
         "By hiring external help."
       ],
       "correctAnswer": 1,
-      "explanation": "Source states that a servant leader builds strong relationships within the team and across the organization so that if help is needed beyond the team's scope, it will be provided by people from other teams.",
+      "explanation": "A key skill for a servant leader is building relationships and navigating the organization. By fostering strong cross-functional relationships, they can effectively advocate for the team and secure the support and resources needed from other departments.",
       "time": 75
     },
     {
@@ -2252,11 +2240,11 @@
         "By sticking to one methodology for all projects."
       ],
       "correctAnswer": 2,
-      "explanation": "Source confirms that contemporary project management professionals operate within diverse project settings and employ various project methodologies.",
+      "explanation": "Modern project management requires flexibility. Competent professionals understand that no single methodology fits all projects. They must be able to select, tailor, and blend various approaches (predictive, agile, hybrid) to fit the unique characteristics of each project.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, which development approaches will be reflected in the PMP certification?",
+      "questionText": "Which development approaches will be reflected in the PMP certification?",
       "choices": [
         "Only predictive methods.",
         "Only agile and hybrid methods.",
@@ -2264,7 +2252,7 @@
         "Waterfall and Scrum only."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that the PMP certification will reflect the diversity of project settings and encompass a wide range of approaches for delivering value, mentioning predictive, agile, and hybrid.",
+      "explanation": "The PMP certification has evolved to reflect the full spectrum of modern project management. The exam content covers predictive (waterfall), agile, and hybrid approaches, ensuring certified professionals are competent across various delivery methods.",
       "time": 75
     },
     {
@@ -2276,7 +2264,7 @@
         "The majority."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that approximately half of the PMP examination will assess predictive project management methods.",
+      "explanation": "The PMP Examination Content Outline specifies that approximately 50% of the questions will represent predictive project management approaches, with the other 50% representing agile and hybrid approaches.",
       "time": 75
     },
     {
@@ -2288,7 +2276,7 @@
         "They focus solely on technical skills."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that research conducted by the JTA has confirmed that contemporary project management professionals operate within diverse project settings and employ various project methodologies.",
+      "explanation": "PMI's Job Task Analysis, the research that underpins the PMP exam, confirms that today's project managers work in a wide variety of industries and settings. A key finding is that they need to be proficient in a range of methodologies, not just a single approach.",
       "time": 75
     },
     {
@@ -2300,11 +2288,11 @@
         "The Job Task Analysis research."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that to maintain the validity of knowledge and skill assessment, the scoring model is subject to periodic review by scoring experts.",
+      "explanation": "To ensure fairness and validity, PMI subjects its exam scoring model to periodic review. This involves using scoring experts and psychometric analysis to ensure the passing standard accurately reflects the level of competence required for a PMP.",
       "time": 75
     },
     {
-      "questionText": "Which of the following is NOT one of the parameters you should be familiar with to use or apply the Scrum framework, according to the sources?",
+      "questionText": "Which of the following is NOT one of the parameters you should be familiar with to use or apply the Scrum framework?",
       "choices": [
         "Scrum roles.",
         "Scrum budget constraints.",
@@ -2312,11 +2300,11 @@
         "Scrum artifacts."
       ],
       "correctAnswer": 1,
-      "explanation": "Source,, and list Scrum roles, events, and artifacts as parameters to be familiar with. Scrum budget constraints are not listed as a core parameter of the framework itself.",
+      "explanation": "The Scrum framework is defined by its roles (Product Owner, Scrum Master, Development Team), events (e.g., Sprint Planning, Daily Scrum), and artifacts (e.g., Product Backlog). While budget constraints are a reality for any project, they are not a formal component of the Scrum framework itself.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, where can a project manager find the details of the timelines of project activities, their sequence, and estimations?",
+      "questionText": "Where can a project manager find the details of the timelines of project activities, their sequence, and estimations?",
       "choices": [
         "Resource calendar.",
         "Project charter.",
@@ -2324,11 +2312,11 @@
         "Risk register."
       ],
       "correctAnswer": 2,
-      "explanation": "Source states that the project schedule contains all the details of the timelines of the project activities, their sequence, and the estimations for completing the activities.",
+      "explanation": "The project schedule is the primary artifact for time management. It contains the list of project activities, their durations, dependencies, and their planned start and end dates, providing a comprehensive timeline for the project.",
       "time": 75
     },
     {
-      "questionText": "What does 'validating project information' involve, according to the sources?",
+      "questionText": "What does 'validating project information' involve?",
       "choices": [
         "Ensuring information is shared widely.",
         "Keeping information up to date, for example, by using version control.",
@@ -2336,7 +2324,7 @@
         "Only sharing information approved by the sponsor."
       ],
       "correctAnswer": 1,
-      "explanation": "Source lists 'Validate that the project information is kept up to date (by using version control, for example)' as a responsibility of a project manager.",
+      "explanation": "Validating project information means ensuring it is accurate, current, and reliable. A key practice in this is using version control for documents and artifacts to prevent stakeholders from using outdated or incorrect information.",
       "time": 75
     },
     {
@@ -2348,7 +2336,7 @@
         "To avoid discussing difficult issues."
       ],
       "correctAnswer": 2,
-      "explanation": "Source suggests this approach as the best way for a team to show some improvement and make progress in overall teamwork processes by focusing on completing a manageable number of items.",
+      "explanation": "By focusing on a small, achievable number of improvement items, the team is more likely to implement them successfully. This creates a positive feedback loop, demonstrates tangible progress, and builds momentum for continuous improvement.",
       "time": 75
     },
     {
@@ -2360,7 +2348,7 @@
         "Work items with stable requirements."
       ],
       "correctAnswer": 2,
-      "explanation": "Source suggests that work that is unique, risky, or novel, involving new learning and ambiguity, should be prioritized early.",
+      "explanation": "In both predictive and agile approaches, it is wise to address high-risk or high-uncertainty items early. This allows the team to resolve critical unknowns, validate assumptions, and reduce overall project risk before significant resources are committed.",
       "time": 75
     },
     {
@@ -2372,7 +2360,7 @@
         "To demonstrate quick wins to stakeholders."
       ],
       "correctAnswer": 1,
-      "explanation": "Source states that such projects should be prioritized because, as a project manager, your objective should be to reduce the uncertainty associated with the project's scope at the beginning, before substantial investments are made.",
+      "explanation": "Tackling high-risk and high-uncertainty work first is a key risk management strategy. It allows the project team to gain critical knowledge and address potential 'showstoppers' early, thereby reducing the overall uncertainty and increasing the chances of success before making a substantial investment.",
       "time": 75
     },
     {
@@ -2384,7 +2372,7 @@
         "Managing project artifacts effectively."
       ],
       "correctAnswer": 0,
-      "explanation": "Source mentions 'gold plating' as a potential outcome to be avoided (although not in the context of team participation in planning). Based on common project management terminology aligned with the PMP exam focus on delivering value and defined scope, gold plating refers to adding features beyond the agreed-upon requirements.",
+      "explanation": "Gold plating is the practice of adding extra features or functions to the project's deliverables that were not in the original scope. While often well-intentioned, it adds no value from the customer's perspective and can introduce risk, delays, and increased costs.",
       "time": 75
     },
     {
@@ -2396,7 +2384,7 @@
         "Closing."
       ],
       "correctAnswer": 1,
-      "explanation": "Source states that the purpose of project planning is to proactively develop an approach to create the project deliverables.",
+      "explanation": "The primary purpose of the project planning phase (or process group) is to develop a comprehensive, integrated plan that defines how the project will be executed, monitored, controlled, and closed to achieve its objectives.",
       "time": 75
     },
     {
@@ -2408,7 +2396,7 @@
         "Defining project scope."
       ],
       "correctAnswer": 2,
-      "explanation": "Source mentions Earned value analysis as a tool used within a project team, and Source associates it with measuring project performance, specifically stating that earned value measurements like SPI and CPI show how a project is doing in terms of cost and schedule.",
+      "explanation": "Earned Value Analysis (also known as Earned Value Management or EVM) is a powerful technique that integrates scope, schedule, and cost data to provide an objective assessment of project performance and progress.",
       "time": 75
     },
     {
@@ -2420,7 +2408,7 @@
         "The project is on schedule."
       ],
       "correctAnswer": 2,
-      "explanation": "Source explains that a CPI less than 1 clearly indicates that the project's cost is running over budget.",
+      "explanation": "The Cost Performance Index (CPI) is a measure of the cost efficiency of a project. A CPI of less than 1.0 indicates that the project is over budget; for every dollar spent, the project is only earning 20 cents of planned value.",
       "time": 75
     },
     {
@@ -2432,7 +2420,7 @@
         "The project is behind schedule."
       ],
       "correctAnswer": 3,
-      "explanation": "Source states that an SPI of 0.6 hints that the project is not doing well in terms of schedule and may demand actions to bring it on schedule, implying an SPI < 1 means behind schedule.",
+      "explanation": "The Schedule Performance Index (SPI) is a measure of schedule efficiency. An SPI of less than 1.0 indicates that the project has completed less work than was planned, meaning it is behind schedule.",
       "time": 75
     },
     {
@@ -2444,11 +2432,11 @@
         "Sell them to another project."
       ],
       "correctAnswer": 2,
-      "explanation": "Source uses this scenario to explain that if there are pre-approved resources, the project manager can adjust their resource planning based on this extra knowledge, primarily impacting the project's cost or budget.",
+      "explanation": "Pre-approved resources, such as available software licenses, are a valuable asset. The project manager should incorporate this information into the resource and cost planning, as it may reduce the project's budget and procurement needs.",
       "time": 75
     },
     {
-      "questionText": "According to the sources, when are agile frameworks like Scrum or XP typically used?",
+      "questionText": "When are agile frameworks like Scrum or XP typically used?",
       "choices": [
         "For projects with fixed requirements and no uncertainty.",
         "For knowledge work projects which have a degree of uncertainty.",
@@ -2456,7 +2444,7 @@
         "For projects with a large number of external vendors."
       ],
       "correctAnswer": 1,
-      "explanation": "Source lists the statement 'Agile frameworks are suited for knowledge work projects which has degree of uncertainty' as a valid statement regarding agile frameworks.",
+      "explanation": "Agile frameworks are designed to thrive in environments with uncertainty and change, which is characteristic of most knowledge work and product development. They use iterative and incremental delivery to manage risk and adapt to evolving requirements.",
       "time": 75
     }
   ]
