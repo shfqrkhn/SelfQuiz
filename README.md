@@ -6,6 +6,8 @@ Welcome to **SelfQuiz**, your dedicated application for creating, managing, and 
 
 [**Test Your Knowledge Now\!**](https://shfqrkhn.github.io/SelfQuiz/)
 
+![Screenshot](https://raw.githubusercontent.com/shfqrkhn/SelfQuiz/refs/heads/main/%7B77E2489F-08FE-4866-B19A-4C6DD9E58B49%7D.png)
+
 ## The Philosophy: Learn Your Way
 
 SelfQuiz believes that personalized learning is the most effective. Instead of rigid, pre-defined tests, SelfQuiz empowers you to create your own learning journey. It's built on the principle that active recall and spaced repetition, when applied to your own custom content, lead to deeper understanding and lasting retention. It is, and always will be, free and open-source.
