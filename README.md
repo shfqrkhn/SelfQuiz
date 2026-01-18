@@ -8,8 +8,6 @@ Welcome to **PM Certification Quiz**, a free, open-source study tool for project
 
 [**Start Practicing for FREE\!**](https://shfqrkhn.github.io/SelfQuiz/)
 
-![Screenshot](https://raw.githubusercontent.com/shfqrkhn/SelfQuiz/refs/heads/main/%7B77E2489F-08FE-4866-B19A-4C6DD9E58B49%7D.png)
-
 ## Why This Exists: Free Project Management Exam Preparation
 
 Project management certification can be expensive and intimidating. This project exists to democratize exam preparation by providing high-quality practice questions completely free of charge. Built on proven learning principles of active recall and spaced repetition, this tool helps you master all eight performance domains. It is, and always will be, free and open-source.
