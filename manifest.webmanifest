@@ -1,7 +1,7 @@
 {
-  "name": "Free PMP Exam Prep",
-  "short_name": "PMP Prep",
-  "description": "Free PMP Certification Practice Quiz - All 8 Performance Domains",
+  "name": "PM Certification Quiz",
+  "short_name": "PM Quiz",
+  "description": "Free Project Management Certification Practice - All 8 Performance Domains",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#000000",

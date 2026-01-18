@@ -1,6 +1,8 @@
-# Free PMP Exam Prep - Practice Quiz
+# PM Certification Quiz - Free Practice Questions
 
-Welcome to **Free PMP Exam Prep**, your dedicated application for mastering the PMP (Project Management Professional) certification exam. This free, open-source tool provides comprehensive practice quizzes across all PMP performance domains to help you prepare effectively and pass your certification exam with confidence.
+Welcome to **PM Certification Quiz**, a free, open-source study tool for project management certification exam preparation. This application provides comprehensive practice quizzes to help you prepare effectively and build confidence for your certification exam.
+
+**Disclaimer:** This is an independent study tool and is not affiliated with, endorsed by, or sponsored by the Project Management Institute (PMI®). PMP® and PMBOK® are registered marks of the Project Management Institute, Inc.
 
 ## Live Demo
 
@@ -8,32 +10,32 @@ Welcome to **Free PMP Exam Prep**, your dedicated application for mastering the 
 
 ![Screenshot](https://raw.githubusercontent.com/shfqrkhn/SelfQuiz/refs/heads/main/%7B77E2489F-08FE-4866-B19A-4C6DD9E58B49%7D.png)
 
-## Why This Exists: Free PMP Exam Preparation for Everyone
+## Why This Exists: Free Project Management Exam Preparation
 
-PMP certification can be expensive and intimidating. This project exists to democratize PMP exam preparation by providing high-quality practice questions completely free of charge. Built on proven learning principles of active recall and spaced repetition, this tool helps you master all eight PMP performance domains. It is, and always will be, free and open-source.
+Project management certification can be expensive and intimidating. This project exists to democratize exam preparation by providing high-quality practice questions completely free of charge. Built on proven learning principles of active recall and spaced repetition, this tool helps you master all eight performance domains. It is, and always will be, free and open-source.
 
-## The Study Experience: Your PMP Exam Preparation Hub
+## The Study Experience: Your Exam Preparation Hub
 
-This is a lean, intuitive, and offline-first Progressive Web App (PWA) designed specifically for PMP exam preparation. The interface is clean and focused, minimizing distractions so you can concentrate on mastering the eight performance domains. Practice anywhere, anytime - even offline. All your progress is stored privately on your device.
+This is a lean, intuitive, and offline-first Progressive Web App (PWA) designed specifically for project management certification exam preparation. The interface is clean and focused, minimizing distractions so you can concentrate on mastering the eight performance domains. Practice anywhere, anytime - even offline. All your progress is stored privately on your device.
 
-## Features for PMP Exam Success
+## Features for Exam Success
 
   * **All 8 Performance Domains:** Comprehensive question banks covering Stakeholder, Team, Development Approach & Life Cycle, Planning, Project Work, Delivery, Measurement, and Uncertainty performance domains.
-  * **Realistic PMP Questions:** Multiple-choice questions that mirror the actual PMP exam format and difficulty.
+  * **Realistic Practice Questions:** Multiple-choice questions that mirror professional certification exam format and difficulty.
   * **Timed Practice:** Simulate real exam conditions with timed questions to build your test-taking stamina.
   * **Instant Feedback:** Learn immediately with detailed explanations for every question - understand why answers are correct or incorrect.
   * **Offline Study:** As a PWA, this app works seamlessly without internet, allowing you to study anywhere, anytime.
   * **Installable:** Install on your computer or mobile device for quick access, just like a native application.
-  * **Custom Quiz Import:** Want to add your own PMP practice questions? Import custom quizzes via JSON file.
+  * **Custom Quiz Import:** Want to add your own practice questions? Import custom quizzes via JSON file.
 
 ## How to Use
 
 1.  **Open the App:** Click [here](https://shfqrkhn.github.io/SelfQuiz/) to open the app in your web browser.
-2.  **Select a Performance Domain:** Choose from any of the 8 PMP performance domains (Stakeholder, Team, Development Approach, Planning, Project Work, Delivery, Measurement, or Uncertainty).
-3.  **Start Practicing:** Answer timed, multiple-choice questions that simulate the real PMP exam.
+2.  **Select a Performance Domain:** Choose from any of the 8 performance domains (Stakeholder, Team, Development Approach, Planning, Project Work, Delivery, Measurement, or Uncertainty).
+3.  **Start Practicing:** Answer timed, multiple-choice questions that simulate real certification exam conditions.
 4.  **Learn from Explanations:** Review detailed explanations for each question to understand the concepts.
 5.  **Track Your Progress:** Monitor your scores and identify areas where you need more practice.
-6.  **Optional - Add Custom Questions:** Upload your own PMP practice questions in JSON format to supplement the built-in question banks.
+6.  **Optional - Add Custom Questions:** Upload your own practice questions in JSON format to supplement the built-in question banks.
 
 ## Installation (Optional - Study Offline)
 
@@ -51,4 +53,12 @@ For offline access and a more app-like experience, install this on your desktop 
     2.  Tap the "Share" button.
     3.  Select "Add to Home Screen."
 
-Now you can study for your PMP exam directly from your home screen, even without internet\!
+Now you can study for your certification exam directly from your home screen, even without internet\!
+
+## Legal Disclaimer
+
+This is an independent, open-source study tool created to help individuals prepare for project management certification exams. This project is **not affiliated with, endorsed by, or sponsored by the Project Management Institute (PMI®)**.
+
+PMP®, PMBOK®, PMI®, and other marks are registered trademarks of the Project Management Institute, Inc. Any use of these terms in this project is solely for descriptive purposes to indicate the subject matter of the study materials and does not imply any endorsement or affiliation.
+
+This tool is provided "as is" for educational purposes only. Users are responsible for their own exam preparation and should refer to official certification body materials for authoritative guidance.
