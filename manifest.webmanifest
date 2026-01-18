@@ -1,7 +1,7 @@
 {
-  "name": "SelfQuiz",
-  "short_name": "SelfQuiz",
-  "description": "Practice Exams and Self-Assessment Quiz App",
+  "name": "PM Certification Quiz",
+  "short_name": "PM Quiz",
+  "description": "Free Project Management Certification Practice - All 8 Performance Domains",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#000000",
