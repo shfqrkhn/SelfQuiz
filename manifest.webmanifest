@@ -1,7 +1,7 @@
 {
-  "name": "SelfQuiz",
-  "short_name": "SelfQuiz",
-  "description": "Practice Exams and Self-Assessment Quiz App",
+  "name": "Free PMP Exam Prep",
+  "short_name": "PMP Prep",
+  "description": "Free PMP Certification Practice Quiz - All 8 Performance Domains",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#000000",

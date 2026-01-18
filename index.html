@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SelfQuiz - Your Personal Knowledge Trainer</title>
+    <title>Free PMP Exam Prep - Practice Quiz</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
@@ -311,22 +311,24 @@
             box-shadow: 0 0 0 3px var(--focus-ring-color) !important;
         }
     </style>
+    <meta name="description" content="Free PMP exam preparation with practice quizzes covering all 8 performance domains. Study offline with timed questions and detailed explanations.">
     <link rel="manifest" href="./manifest.webmanifest">
     <meta name="theme-color" content="#8E24AA">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="PMP Exam Prep">
     <link rel="apple-touch-icon" sizes="192x192" href="./icons/icon-192.png">
     <link rel="apple-touch-icon" sizes="512x512" href="./icons/icon-512.png">
     <!--
       NOTE: When deploying to GitHub Pages, all asset paths (manifest, icons, service worker)
-      must be relative to the repo root (e.g., /CritPath-Cram/). This ensures correct loading
-      when the site is served from a subdirectory.
+      must be relative to the repo root. This ensures correct loading when the site is
+      served from a subdirectory.
     -->
 </head>
 <body>
     <header class="d-flex align-items-center py-2 px-3" style="background:transparent;">
         <div class="flex-grow-1"></div> <!-- Left spacer -->
-        <h1 class="h4 mb-0">SelfQuiz</h1> <!-- Centered title -->
+        <h1 class="h4 mb-0">Free PMP Exam Prep</h1> <!-- Centered title -->
         <div class="flex-grow-1 d-flex"> <!-- Right spacer with button -->
             <button id="themeToggleBtn" class="btn ms-auto" aria-pressed="false" aria-label="Toggle day/night mode" style="min-width:44px;">
                 <span id="themeToggleIcon" aria-hidden="true">
@@ -1192,7 +1194,7 @@
 
         // --- Theme Toggle Logic ---
         (function() {
-            const THEME_KEY = 'critpath-cram-theme';
+            const THEME_KEY = 'pmp-exam-prep-theme';
             const body = document.body;
             const btn = document.getElementById('themeToggleBtn');
             const iconSun = document.getElementById('iconSun');
