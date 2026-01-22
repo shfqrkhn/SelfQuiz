@@ -6,7 +6,7 @@ Welcome to **PM Certification Quiz**, a free, open-source study tool for project
 
 ## Live Demo
 
-[**Start Practicing for FREE\!**](https://shfqrkhn.github.io/SelfQuiz/)
+[**Start Practicing for FREE\!**](https://shfqrkhn.github.io/PMQuiz/)
 
 ## Why This Exists: Free Project Management Exam Preparation
 
@@ -28,7 +28,7 @@ This is a lean, intuitive, and offline-first Progressive Web App (PWA) designed 
 
 ## How to Use
 
-1.  **Open the App:** Click [here](https://shfqrkhn.github.io/SelfQuiz/) to open the app in your web browser.
+1.  **Open the App:** Click [here](https://shfqrkhn.github.io/PMQuiz/) to open the app in your web browser.
 2.  **Select a Performance Domain:** Choose from any of the 8 performance domains (Stakeholder, Team, Development Approach, Planning, Project Work, Delivery, Measurement, or Uncertainty).
 3.  **Start Practicing:** Answer timed, multiple-choice questions that simulate real certification exam conditions.
 4.  **Learn from Explanations:** Review detailed explanations for each question to understand the concepts.
