@@ -503,6 +503,7 @@
                 this.timeLeft = 0;
                 this.userAnswers = [];
                 this.quizTopic = ''; 
+                this.quizCache = new Map();
 
                 this._cacheDOMElements();
                 this._populateQuestionBankDropdown(); 
@@ -667,12 +668,20 @@
             async _fetchAndProcessQuizData(sourceUrl, sourceType = "unknown") {
                 this._toggleLoadingIndicator(true);
                 this._setLoadError(''); 
+
+                if (this.quizCache.has(sourceUrl)) {
+                    this._processAndStartQuiz(this.quizCache.get(sourceUrl), sourceType);
+                    this._toggleLoadingIndicator(false);
+                    return;
+                }
+
                 try {
                     const response = await fetch(sourceUrl);
                     if (!response.ok) {
                         throw new Error(`Failed to fetch from ${sourceType}: ${response.status} ${response.statusText}`);
                     }
                     const jsonDataString = await response.text();
+                    this.quizCache.set(sourceUrl, jsonDataString);
                     this._processAndStartQuiz(jsonDataString, sourceType);
                 } catch (error) {
                     this._setLoadError(`Error fetching or processing from ${sourceType}: ${error.message}`);
