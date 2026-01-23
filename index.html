@@ -496,6 +496,7 @@
         class QuizManager {
             constructor() {
                 // Initialize state variables
+                this._tempDiv = document.createElement('div');
                 this.questions = [];
                 this.currentQuestionIndex = 0;
                 this.score = 0;
@@ -1045,9 +1046,8 @@
              * @returns {string} Sanitized HTML string.
              */
              _sanitizeHTML(str) { 
-                const temp = document.createElement('div');
-                temp.textContent = str; 
-                return temp.innerHTML;
+                this._tempDiv.textContent = str;
+                return this._tempDiv.innerHTML;
             }
 
             /**
