@@ -892,9 +892,9 @@
                     this.dom.explanationContainer.innerHTML = ''; 
                 }
 
-                const firstChoiceButton = this.dom.questionContainer ? this.dom.questionContainer.querySelector('.choice-btn') : null;
-                if (firstChoiceButton) {
-                    firstChoiceButton.focus();
+                const questionHeading = this.dom.questionContainer ? this.dom.questionContainer.querySelector('h4') : null;
+                if (questionHeading) {
+                    questionHeading.focus();
                 }
             }
 
@@ -1049,7 +1049,7 @@
 
                 if (this.dom.questionContainer) {
                     this.dom.questionContainer.innerHTML = `
-                        <h4 class="mb-4 h5" id="questionTextLabel">${this._sanitizeHTML(question.questionText)}</h4>
+                        <h4 class="mb-4 h5" id="questionTextLabel" tabindex="-1">${this._sanitizeHTML(question.questionText)}</h4>
                         <div class="row g-3" role="group" aria-labelledby="questionTextLabel">
                             ${choicesHtml}
                         </div>
