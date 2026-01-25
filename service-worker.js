@@ -1,4 +1,4 @@
-const CACHE_NAME = 'selfquiz-cache-v1.3.0';
+const CACHE_NAME = 'selfquiz-cache-v1.3.1';
 const ASSETS = [
   './',
   './index.html',
@@ -37,6 +37,23 @@ self.addEventListener('fetch', event => {
             return networkResponse;
           });
           return cachedResponse || fetchPromise;
+        });
+      })
+    );
+    return;
+  }
+
+  // Runtime caching for fonts (Cache First)
+  if (event.request.destination === 'font') {
+    event.respondWith(
+      caches.open('selfquiz-fonts-v1').then(cache => {
+        return cache.match(event.request).then(response => {
+          return response || fetch(event.request).then(networkResponse => {
+            if (networkResponse && networkResponse.status === 200) {
+              cache.put(event.request, networkResponse.clone());
+            }
+            return networkResponse;
+          });
         });
       })
     );

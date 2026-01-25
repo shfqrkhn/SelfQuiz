@@ -21,3 +21,7 @@
 ## 2024-10-26 - [Sentinel] - Dynamic Text Rendering
 **Insight:** Reliance on `innerHTML` and custom sanitization for dynamic content (questions/choices) is fragile and prone to XSS bypasses.
 **Protocol:** Dynamic text rendering must exclusively use `document.createElement` and `textContent` to neutralize XSS vectors.
+
+## 2026-01-25 - [Bolt] - Runtime Font Caching
+**Insight:** Pre-caching stylesheets via `ASSETS` is insufficient for offline support because referenced font files (`.woff2`) are fetched lazily and remain cached only by the HTTP cache, not the Service Worker.
+**Protocol:** Fonts and other lazily-loaded assets essential for offline rendering must use a targeted Runtime Caching strategy (e.g., Cache-First for `destination === 'font'`) in the Service Worker.
