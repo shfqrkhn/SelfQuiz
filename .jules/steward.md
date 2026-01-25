@@ -17,3 +17,7 @@
 ## 2024-10-25 - [Sentinel] - Remote Fetch Size Limit
 **Insight:** Unchecked remote fetches expose the application to DoS attacks via memory exhaustion (OOM).
 **Protocol:** Implemented a 5MB strict limit on all `fetch` operations using `response.body.getReader()` to stream and count bytes before parsing.
+
+## 2024-10-26 - [Sentinel] - Dynamic Text Rendering
+**Insight:** Reliance on `innerHTML` and custom sanitization for dynamic content (questions/choices) is fragile and prone to XSS bypasses.
+**Protocol:** Dynamic text rendering must exclusively use `document.createElement` and `textContent` to neutralize XSS vectors.

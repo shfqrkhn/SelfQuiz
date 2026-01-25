@@ -1079,29 +1079,52 @@
              * Renders the current question and its choices.
              * @param {object} question - The question object to render.
              */
-            _renderQuestion(question) { 
-                 if (!question || !question.choices) { 
+            _renderQuestion(question) {
+                if (!question || !question.choices) {
                     console.error("Attempted to render invalid question:", question);
-                    if (this.dom.questionContainer) this.dom.questionContainer.innerHTML = "<p class='text-danger'>Error: Could not load question.</p>";
+                    if (this.dom.questionContainer) {
+                        this.dom.questionContainer.innerHTML = '';
+                        const errorP = document.createElement('p');
+                        errorP.className = 'text-danger';
+                        errorP.textContent = "Error: Could not load question.";
+                        this.dom.questionContainer.appendChild(errorP);
+                    }
                     return;
                 }
-                const choicesHtml = question.choices.map((choice, index) => `
-                    <div class="col-md-6">
-                        <button 
-                            data-index="${index}" 
-                            class="choice-btn btn btn-outline-primary w-100 p-3 mb-2">
-                            ${String.fromCharCode(QUIZ_CONFIG.CHAR_CODE_A + index)}. ${this._sanitizeHTML(choice)}
-                        </button>
-                    </div>
-                `).join('');
 
                 if (this.dom.questionContainer) {
-                    this.dom.questionContainer.innerHTML = `
-                        <h4 class="mb-4 h5" id="questionTextLabel" tabindex="-1">${this._sanitizeHTML(question.questionText)}</h4>
-                        <div class="row g-3" role="group" aria-labelledby="questionTextLabel">
-                            ${choicesHtml}
-                        </div>
-                    `;
+                    this.dom.questionContainer.innerHTML = ''; // Clear previous content
+
+                    // Create heading
+                    const heading = document.createElement('h4');
+                    heading.className = 'mb-4 h5';
+                    heading.id = 'questionTextLabel';
+                    heading.tabIndex = -1;
+                    heading.textContent = question.questionText;
+                    this.dom.questionContainer.appendChild(heading);
+
+                    // Create choices container
+                    const choicesContainer = document.createElement('div');
+                    choicesContainer.className = 'row g-3';
+                    choicesContainer.setAttribute('role', 'group');
+                    choicesContainer.setAttribute('aria-labelledby', 'questionTextLabel');
+
+                    // Create choice buttons
+                    question.choices.forEach((choice, index) => {
+                        const col = document.createElement('div');
+                        col.className = 'col-md-6';
+
+                        const btn = document.createElement('button');
+                        btn.className = 'choice-btn btn btn-outline-primary w-100 p-3 mb-2';
+                        btn.dataset.index = index;
+                        btn.textContent = `${String.fromCharCode(QUIZ_CONFIG.CHAR_CODE_A + index)}. ${choice}`;
+
+                        col.appendChild(btn);
+                        choicesContainer.appendChild(col);
+                    });
+
+                    this.dom.questionContainer.appendChild(choicesContainer);
+
                     // Add event listeners to newly created choice buttons
                     // Optimized: Using event delegation on questionContainer instead of individual listeners
                 }
