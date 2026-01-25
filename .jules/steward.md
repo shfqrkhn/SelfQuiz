@@ -21,3 +21,15 @@
 ## 2024-10-26 - [Sentinel] - Dynamic Text Rendering
 **Insight:** Reliance on `innerHTML` and custom sanitization for dynamic content (questions/choices) is fragile and prone to XSS bypasses.
 **Protocol:** Dynamic text rendering must exclusively use `document.createElement` and `textContent` to neutralize XSS vectors.
+
+## 2026-01-25 - [Bolt] - Runtime Font Caching
+**Insight:** Service Worker activation events often aggressively prune "unknown" caches. If runtime caches (like ) are not explicitly whitelisted, they are deleted on every app update, defeating the purpose of offline persistence.
+**Protocol:** All Service Worker cache cleanup logic ( handler) must explicitly whitelist known runtime cache prefixes to ensure data persistence across version updates.
+
+## 2026-01-25 - [Bolt] - Persistent Runtime Caches
+**Insight:** Service Worker activation events often aggressively prune "unknown" caches. If runtime caches (like `selfquiz-data-v1`) are not explicitly whitelisted, they are deleted on every app update, defeating the purpose of offline persistence.
+**Protocol:** All Service Worker cache cleanup logic (`activate` handler) must explicitly whitelist known runtime cache prefixes to ensure data persistence across version updates.
+
+## 2026-01-25 - [Palette] - Semantic Loading States
+**Insight:** Loading indicators without ARIA roles are invisible to screen readers, leaving users in silence during async operations.
+**Protocol:** All loading indicators must use `role="status"` (implicit `aria-live="polite"`) to ensure state changes are announced.
