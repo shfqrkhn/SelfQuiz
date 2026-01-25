@@ -7,6 +7,8 @@
     <title>PM Certification Quiz - Free Practice</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" integrity="sha384-XGjxtQfXaH2tnPFa9x+ruJTuLE3Aa6LhHSWRr1XeTyhezb4abCG4ccI5AkVDxqC+" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <style>
         :root {
             --primary-background: #000000;
@@ -339,7 +341,7 @@
             </button>
         </div>
     </header>
-    <main class="container py-4 quiz-container">
+    <main class="container py-4 quiz-container" role="main">
         <section id="uploadSection" class="card p-4 mb-4 fade-in" tabindex="-1">
             <h2 class="mb-4 text-center">Load Quiz Questions</h2>
 
@@ -443,6 +445,8 @@
             <button id="restartQuizBtnReview" class="btn btn-primary mt-4 w-100">Take New Quiz</button> </section>
     </main>
 
+    <footer class="text-center mt-4 mb-4 text-muted small">v1.1.7</footer>
+
     <script>
         // --- Configuration Object ---
         const QUIZ_CONFIG = Object.freeze({
@@ -505,6 +509,7 @@
                 this.userAnswers = [];
                 this.quizTopic = ''; 
                 this.quizCache = new Map();
+                this.isQuizActive = false;
 
                 this._cacheDOMElements();
                 this._populateQuestionBankDropdown(); 
@@ -607,6 +612,13 @@
                 if (this.dom.restartQuizBtnResults) this.dom.restartQuizBtnResults.addEventListener('click', this.confirmAndResetQuiz.bind(this));
                 if (this.dom.restartQuizBtnReview) this.dom.restartQuizBtnReview.addEventListener('click', this.confirmAndResetQuiz.bind(this)); 
 
+                window.addEventListener('beforeunload', (e) => {
+                    if (this.isQuizActive) {
+                        e.preventDefault();
+                        e.returnValue = '';
+                    }
+                });
+
                 // Event delegation for choice buttons
                 if (this.dom.questionContainer) {
                     this.dom.questionContainer.addEventListener('click', (e) => {
@@ -655,6 +667,12 @@
 
                 if (!file) {
                     this._setLoadError('Please select a JSON file to upload.');
+                    return;
+                }
+
+                const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+                if (file.size > MAX_FILE_SIZE) {
+                    this._setLoadError('File is too large. Maximum size is 5MB.');
                     return;
                 }
 
@@ -864,6 +882,7 @@
              * Starts the quiz after questions are loaded.
              */
             startQuiz() { 
+                this.isQuizActive = true;
                 this.currentQuestionIndex = 0;
                 this.score = 0;
                 this.userAnswers = [];
@@ -1010,6 +1029,7 @@
              * Ends the current quiz and shows results.
              */
             endQuiz() {
+                this.isQuizActive = false;
                 if (this.timerInterval) clearInterval(this.timerInterval); 
                 this._showSection(this.dom.resultsSection);
                 if (this.dom.resultsSection) this.dom.resultsSection.focus(); 
@@ -1175,6 +1195,7 @@
              * Resets the entire quiz application to its initial state.
              */
             resetQuiz() {
+                this.isQuizActive = false;
                 if (this.timerInterval) {
                     clearInterval(this.timerInterval);
                     this.timerInterval = null;

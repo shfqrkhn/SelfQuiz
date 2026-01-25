@@ -1,4 +1,4 @@
-const CACHE_NAME = 'selfquiz-cache-v1.1.1';
+const CACHE_NAME = 'selfquiz-cache-v1.1.7';
 const ASSETS = [
   './',
   './index.html',
@@ -25,6 +25,25 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
+  // Runtime caching for quiz data (JSON files)
+  if (event.request.url.endsWith('.json')) {
+    event.respondWith(
+      caches.open('selfquiz-data-v1').then(cache => {
+        return cache.match(event.request).then(cachedResponse => {
+          const fetchPromise = fetch(event.request).then(networkResponse => {
+            if (networkResponse && networkResponse.status === 200) {
+              cache.put(event.request, networkResponse.clone());
+            }
+            return networkResponse;
+          });
+          return cachedResponse || fetchPromise;
+        });
+      })
+    );
+    return;
+  }
+
+  // Default strategy for other assets (Cache First)
   event.respondWith(
     caches.match(event.request).then(response => response || fetch(event.request))
   );
