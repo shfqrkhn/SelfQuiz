@@ -1,5 +1,7 @@
 # PM Certification Quiz - Free Practice Questions
 
+![Version](https://img.shields.io/badge/version-v1.1.0-blue)
+
 Welcome to **PM Certification Quiz**, a free, open-source study tool for project management certification exam preparation. This application provides comprehensive practice quizzes to help you prepare effectively and build confidence for your certification exam.
 
 **Disclaimer:** This is an independent study tool and is not affiliated with, endorsed by, or sponsored by the Project Management Institute (PMI®). PMP® and PMBOK® are registered marks of the Project Management Institute, Inc.
@@ -25,6 +27,8 @@ This is a lean, intuitive, and offline-first Progressive Web App (PWA) designed 
   * **Offline Study:** As a PWA, this app works seamlessly without internet, allowing you to study anywhere, anytime.
   * **Installable:** Install on your computer or mobile device for quick access, just like a native application.
   * **Custom Quiz Import:** Want to add your own practice questions? Import custom quizzes via JSON file.
+  * **Dark/Light Mode:** Toggle between dark and light themes for comfortable reading in any environment.
+  * **Comprehensive Review:** Review all your answers at the end of the quiz with detailed explanations.
 
 ## How to Use
 
