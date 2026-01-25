@@ -671,6 +671,7 @@
                 this._toggleLoadingIndicator(true);
                 this._setLoadError(''); 
 
+                // Check in-memory cache to prevent unnecessary network calls
                 if (this.quizCache.has(sourceUrl)) {
                     this._processAndStartQuiz(this.quizCache.get(sourceUrl), sourceType);
                     this._toggleLoadingIndicator(false);
@@ -683,8 +684,9 @@
                         throw new Error(`Failed to fetch from ${sourceType}: ${response.status} ${response.statusText}`);
                     }
                     const jsonDataString = await response.text();
-                    this.quizCache.set(sourceUrl, jsonDataString);
-                    this._processAndStartQuiz(jsonDataString, sourceType);
+                    const jsonData = JSON.parse(jsonDataString);
+                    this.quizCache.set(sourceUrl, jsonData);
+                    this._processAndStartQuiz(jsonData, sourceType);
                 } catch (error) {
                     this._setLoadError(`Error fetching or processing from ${sourceType}: ${error.message}`);
                     console.error(`Error with ${sourceType}:`, error);
@@ -695,13 +697,13 @@
             }
             
             /**
-             * Parses JSON data, loads questions, and starts the quiz.
-             * @param {string} jsonDataString - The JSON string to parse.
+             * Parses JSON data (if string), loads questions, and starts the quiz.
+             * @param {string|object} quizData - The JSON string or parsed object.
              * @param {string} sourceType - Description of the source for error/topic context.
              */
-            _processAndStartQuiz(jsonDataString, sourceType) { 
+            _processAndStartQuiz(quizData, sourceType) {
                 try {
-                    const jsonData = JSON.parse(jsonDataString);
+                    const jsonData = (typeof quizData === 'string') ? JSON.parse(quizData) : quizData;
                     this.loadQuestions(jsonData); 
                     
                     this._showSection(this.dom.quizInterface);
