@@ -1019,6 +1019,16 @@
                     heading.textContent = feedbackHeadingText;
                     this.dom.explanationContainer.appendChild(heading);
 
+                    if (!isCorrect) {
+                        const correctAnswerText = question.choices[question.correctAnswer];
+                        const correctAnswerLabel = String.fromCharCode(QUIZ_CONFIG.CHAR_CODE_A + question.correctAnswer);
+
+                        const correctP = document.createElement('p');
+                        correctP.className = 'text-success fw-bold mb-2';
+                        correctP.textContent = `Correct Answer: ${correctAnswerLabel}. ${correctAnswerText}`;
+                        this.dom.explanationContainer.appendChild(correctP);
+                    }
+
                     const explanationP = document.createElement('p');
                     explanationP.textContent = question.explanation;
                     this.dom.explanationContainer.appendChild(explanationP);
