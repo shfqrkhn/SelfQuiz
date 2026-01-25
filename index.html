@@ -507,6 +507,7 @@
                 this.userAnswers = [];
                 this.quizTopic = ''; 
                 this.quizCache = new Map();
+                this.isQuizActive = false;
 
                 this._cacheDOMElements();
                 this._populateQuestionBankDropdown(); 
@@ -608,6 +609,13 @@
                 if (this.dom.reviewBtn) this.dom.reviewBtn.addEventListener('click', this.showReview.bind(this));
                 if (this.dom.restartQuizBtnResults) this.dom.restartQuizBtnResults.addEventListener('click', this.confirmAndResetQuiz.bind(this));
                 if (this.dom.restartQuizBtnReview) this.dom.restartQuizBtnReview.addEventListener('click', this.confirmAndResetQuiz.bind(this)); 
+
+                window.addEventListener('beforeunload', (e) => {
+                    if (this.isQuizActive) {
+                        e.preventDefault();
+                        e.returnValue = '';
+                    }
+                });
 
                 // Event delegation for choice buttons
                 if (this.dom.questionContainer) {
@@ -872,6 +880,7 @@
              * Starts the quiz after questions are loaded.
              */
             startQuiz() { 
+                this.isQuizActive = true;
                 this.currentQuestionIndex = 0;
                 this.score = 0;
                 this.userAnswers = [];
@@ -1018,6 +1027,7 @@
              * Ends the current quiz and shows results.
              */
             endQuiz() {
+                this.isQuizActive = false;
                 if (this.timerInterval) clearInterval(this.timerInterval); 
                 this._showSection(this.dom.resultsSection);
                 if (this.dom.resultsSection) this.dom.resultsSection.focus(); 
@@ -1183,6 +1193,7 @@
              * Resets the entire quiz application to its initial state.
              */
             resetQuiz() {
+                this.isQuizActive = false;
                 if (this.timerInterval) {
                     clearInterval(this.timerInterval);
                     this.timerInterval = null;
