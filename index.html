@@ -1177,9 +1177,9 @@
             /**
              * Shows the review section with all answered questions.
              */
-            showReview() { 
+            showReview() {
                 this._showSection(this.dom.reviewSection);
-                if (this.dom.reviewSection) this.dom.reviewSection.focus(); 
+                if (this.dom.reviewSection) this.dom.reviewSection.focus();
 
                 const total = this.questions.length;
                 const percentage = total > 0 ? Math.round((this.score / total) * 100) : 0;
@@ -1188,55 +1188,86 @@
                 if (this.dom.reviewScorePercentage) this.dom.reviewScorePercentage.textContent = percentage;
 
                 if (this.dom.reviewQuestionsContainer) {
-                    this.dom.reviewQuestionsContainer.innerHTML = this.userAnswers
-                        .map((answerData, index) => this._buildReviewQuestionHtml(answerData, index))
-                        .join('');
+                    this.dom.reviewQuestionsContainer.innerHTML = ''; // Clear previous content
+                    this.userAnswers.forEach((answerData, index) => {
+                        const node = this._buildReviewQuestionNode(answerData, index);
+                        this.dom.reviewQuestionsContainer.appendChild(node);
+                    });
                 }
             }
 
             /**
-             * Builds HTML for a single question in the review section.
+             * Builds DOM element for a single question in the review section.
              * @param {object} answerData - The user's answer data for a question.
              * @param {number} index - The index of the question.
-             * @returns {string} HTML string for the review question.
+             * @returns {HTMLElement} The article element for the review question.
              */
-            _buildReviewQuestionHtml(answerData, index) { 
+            _buildReviewQuestionNode(answerData, index) {
+                const article = document.createElement('article');
+                article.className = `card mb-3 ${QUIZ_CONFIG.CSS_CLASSES.FADE_IN}`;
+
+                const cardBody = document.createElement('div');
+                cardBody.className = 'card-body';
+                article.appendChild(cardBody);
+
                 const originalQuestion = this.questions.find(q => q.questionText === answerData.questionText) || answerData;
-                 if (!originalQuestion || !originalQuestion.choices) { 
-                    return `<article class="card mb-3 fade-in"><div class="card-body"><p class="text-danger">Error: Review data for question ${index + 1} is incomplete.</p></div></article>`;
+                if (!originalQuestion || !originalQuestion.choices) {
+                    const errorP = document.createElement('p');
+                    errorP.className = 'text-danger';
+                    errorP.textContent = `Error: Review data for question ${index + 1} is incomplete.`;
+                    cardBody.appendChild(errorP);
+                    return article;
                 }
 
-                const selectedChoiceText = answerData.selected !== -1 
-                    ? (originalQuestion.choices[answerData.selected] || "Invalid selection index") 
+                // Question Heading
+                const heading = document.createElement('h3');
+                heading.className = 'card-title h6';
+                heading.textContent = `Question ${index + 1}`;
+                cardBody.appendChild(heading);
+
+                // Question Text
+                const qText = document.createElement('p');
+                qText.className = 'card-text';
+                qText.textContent = answerData.questionText;
+                cardBody.appendChild(qText);
+
+                // Your Answer Status
+                const selectedChoiceText = answerData.selected !== -1
+                    ? (originalQuestion.choices[answerData.selected] || "Invalid selection index")
                     : "Not answered (Time out)";
-                const correctChoiceText = originalQuestion.choices[answerData.correct] || "Invalid correct index";
-
-                let answerStatusClass = 'text-danger';
-                let answerStatusText = `Your answer: ${String.fromCharCode(QUIZ_CONFIG.CHAR_CODE_A + answerData.selected)}. ${this._sanitizeHTML(selectedChoiceText)}`;
                 
-                if (answerData.selected === -1) { 
-                     answerStatusText = "You ran out of time.";
-                } else if (answerData.isCorrect) {
-                    answerStatusClass = 'text-success';
+                const answerStatusP = document.createElement('p');
+
+                if (answerData.selected === -1) {
+                     answerStatusP.className = 'text-danger';
+                     answerStatusP.textContent = "You ran out of time.";
+                } else {
+                     if (answerData.isCorrect) answerStatusP.className = 'text-success';
+                     else answerStatusP.className = 'text-danger';
+                     answerStatusP.textContent = `Your answer: ${String.fromCharCode(QUIZ_CONFIG.CHAR_CODE_A + answerData.selected)}. ${selectedChoiceText}`;
+                }
+                cardBody.appendChild(answerStatusP);
+
+                // Correct Answer Display
+                if ((!answerData.isCorrect && answerData.selected !== -1) || answerData.isCorrect || answerData.selected === -1) {
+                     const correctChoiceText = originalQuestion.choices[answerData.correct] || "Invalid correct index";
+                     const correctP = document.createElement('p');
+                     correctP.className = answerData.isCorrect ? 'text-success' : 'text-info';
+                     correctP.textContent = `Correct answer: ${String.fromCharCode(QUIZ_CONFIG.CHAR_CODE_A + answerData.correct)}. ${correctChoiceText}`;
+                     cardBody.appendChild(correctP);
                 }
 
-                const correctAnswerDisplay = (!answerData.isCorrect && answerData.selected !== -1) || answerData.isCorrect || answerData.selected === -1
-                    ? `<p class="${answerData.isCorrect ? 'text-success' : 'text-info'}">Correct answer: ${String.fromCharCode(QUIZ_CONFIG.CHAR_CODE_A + answerData.correct)}. ${this._sanitizeHTML(correctChoiceText)}</p>`
-                    : '';
+                // Explanation
+                const explanationP = document.createElement('p');
+                explanationP.className = 'text-muted small mt-2';
 
-                return `
-                <article class="card mb-3 ${QUIZ_CONFIG.CSS_CLASSES.FADE_IN}">
-                    <div class="card-body">
-                        <h3 class="card-title h6">Question ${index + 1}</h3>
-                        <p class="card-text">${this._sanitizeHTML(answerData.questionText)}</p>
-                        <p class="${answerStatusClass}">
-                            ${answerStatusText}
-                        </p>
-                        ${correctAnswerDisplay}
-                        <p class="text-muted small mt-2"><em>Explanation: ${this._sanitizeHTML(answerData.explanation)}</em></p>
-                    </div>
-                </article>
-                `;
+                const em = document.createElement('em');
+                em.textContent = `Explanation: ${answerData.explanation}`;
+                explanationP.appendChild(em);
+
+                cardBody.appendChild(explanationP);
+
+                return article;
             }
 
             /**
