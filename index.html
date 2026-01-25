@@ -18,9 +18,9 @@
             --primary-purple-hover: #7A1F97;
             --primary-purple-active: #6B1B82;
             --primary-purple-text: #F0F0F0;
-            --secondary-emerald-accent: #00897B;
-            --secondary-emerald-hover: #007B6F;
-            --secondary-emerald-active: #006F63;
+            --secondary-emerald-accent: #00695C;
+            --secondary-emerald-hover: #005c50;
+            --secondary-emerald-active: #004d43;
             --secondary-emerald-text: #F0F0F0;
             --highlight-gold-accent: #FFCA28;
             --highlight-gold-text: #1A1A1A;
@@ -340,7 +340,7 @@
         </div>
     </header>
     <main class="container py-4 quiz-container">
-        <section id="uploadSection" class="card p-4 mb-4 fade-in">
+        <section id="uploadSection" class="card p-4 mb-4 fade-in" tabindex="-1">
             <h2 class="mb-4 text-center">Load Quiz Questions</h2>
 
             <form id="selectBankForm" class="mb-3">
@@ -371,7 +371,7 @@
             </div>
         </section>
 
-        <section id="quizInterface" class="d-none fade-in" aria-labelledby="quizTopic">
+        <section id="quizInterface" class="d-none fade-in" aria-labelledby="quizTopic" tabindex="-1">
             <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
                 <h3 id="quizTopic" class="mb-0 h4"></h3>
                 <div class="score-display" aria-live="polite">
@@ -408,7 +408,7 @@
 
         </section>
 
-        <section id="resultsSection" class="d-none card p-4 fade-in" aria-labelledby="resultsHeading">
+        <section id="resultsSection" class="d-none card p-4 fade-in" aria-labelledby="resultsHeading" tabindex="-1">
             <h2 id="resultsHeading" class="mb-4 text-center">Quiz Results</h2>
             <div class="mb-4" aria-live="polite">
                 <div class="d-flex justify-content-between mb-2">
@@ -425,7 +425,7 @@
             <button id="reviewBtn" class="btn btn-info mb-3 w-100">Review Answers</button>
             <button id="restartQuizBtnResults" class="btn btn-primary w-100">Take New Quiz</button> </section>
 
-        <section id="reviewSection" class="d-none card p-4 fade-in" aria-labelledby="reviewHeading">
+        <section id="reviewSection" class="d-none card p-4 fade-in" aria-labelledby="reviewHeading" tabindex="-1">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2 id="reviewHeading" class="mb-0 h3">Answer Review</h2>
                 <div class="score-display">
@@ -892,9 +892,9 @@
                     this.dom.explanationContainer.innerHTML = ''; 
                 }
 
-                const firstChoiceButton = this.dom.questionContainer ? this.dom.questionContainer.querySelector('.choice-btn') : null;
-                if (firstChoiceButton) {
-                    firstChoiceButton.focus();
+                const questionHeading = this.dom.questionContainer ? this.dom.questionContainer.querySelector('h4') : null;
+                if (questionHeading) {
+                    questionHeading.focus();
                 }
             }
 
@@ -1049,7 +1049,7 @@
 
                 if (this.dom.questionContainer) {
                     this.dom.questionContainer.innerHTML = `
-                        <h4 class="mb-4 h5" id="questionTextLabel">${this._sanitizeHTML(question.questionText)}</h4>
+                        <h4 class="mb-4 h5" id="questionTextLabel" tabindex="-1">${this._sanitizeHTML(question.questionText)}</h4>
                         <div class="row g-3" role="group" aria-labelledby="questionTextLabel">
                             ${choicesHtml}
                         </div>
@@ -1150,7 +1150,7 @@
                 return `
                 <article class="card mb-3 ${QUIZ_CONFIG.CSS_CLASSES.FADE_IN}">
                     <div class="card-body">
-                        <h5 class="card-title h6">Question ${index + 1}</h5>
+                        <h3 class="card-title h6">Question ${index + 1}</h3>
                         <p class="card-text">${this._sanitizeHTML(answerData.questionText)}</p>
                         <p class="${answerStatusClass}">
                             ${answerStatusText}
