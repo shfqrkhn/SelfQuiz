@@ -17,9 +17,10 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('activate', event => {
+  const allowedCaches = [CACHE_NAME, 'selfquiz-data-v1', 'selfquiz-fonts-v1'];
   event.waitUntil(
     caches.keys().then(keys => Promise.all(
-      keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
+      keys.filter(key => !allowedCaches.includes(key)).map(key => caches.delete(key))
     ))
   );
 });

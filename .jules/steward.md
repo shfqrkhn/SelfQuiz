@@ -25,3 +25,11 @@
 ## 2026-01-25 - [Bolt] - Runtime Font Caching
 **Insight:** Pre-caching stylesheets via `ASSETS` is insufficient for offline support because referenced font files (`.woff2`) are fetched lazily and remain cached only by the HTTP cache, not the Service Worker.
 **Protocol:** Fonts and other lazily-loaded assets essential for offline rendering must use a targeted Runtime Caching strategy (e.g., Cache-First for `destination === 'font'`) in the Service Worker.
+
+## 2026-01-25 - [Bolt] - Persistent Runtime Caches
+**Insight:** Service Worker activation events often aggressively prune "unknown" caches. If runtime caches (like ) are not explicitly whitelisted, they are deleted on every app update, defeating the purpose of offline persistence.
+**Protocol:** All Service Worker cache cleanup logic ( handler) must explicitly whitelist known runtime cache prefixes to ensure data persistence across version updates.
+
+## 2026-01-25 - [Bolt] - Persistent Runtime Caches
+**Insight:** Service Worker activation events often aggressively prune "unknown" caches. If runtime caches (like `selfquiz-data-v1`) are not explicitly whitelisted, they are deleted on every app update, defeating the purpose of offline persistence.
+**Protocol:** All Service Worker cache cleanup logic (`activate` handler) must explicitly whitelist known runtime cache prefixes to ensure data persistence across version updates.
