@@ -340,7 +340,7 @@
         </div>
     </header>
     <main class="container py-4 quiz-container">
-        <section id="uploadSection" class="card p-4 mb-4 fade-in">
+        <section id="uploadSection" class="card p-4 mb-4 fade-in" tabindex="-1">
             <h2 class="mb-4 text-center">Load Quiz Questions</h2>
 
             <form id="selectBankForm" class="mb-3">
@@ -371,7 +371,7 @@
             </div>
         </section>
 
-        <section id="quizInterface" class="d-none fade-in" aria-labelledby="quizTopic">
+        <section id="quizInterface" class="d-none fade-in" aria-labelledby="quizTopic" tabindex="-1">
             <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
                 <h3 id="quizTopic" class="mb-0 h4"></h3>
                 <div class="score-display" aria-live="polite">
@@ -408,7 +408,7 @@
 
         </section>
 
-        <section id="resultsSection" class="d-none card p-4 fade-in" aria-labelledby="resultsHeading">
+        <section id="resultsSection" class="d-none card p-4 fade-in" aria-labelledby="resultsHeading" tabindex="-1">
             <h2 id="resultsHeading" class="mb-4 text-center">Quiz Results</h2>
             <div class="mb-4" aria-live="polite">
                 <div class="d-flex justify-content-between mb-2">
@@ -425,7 +425,7 @@
             <button id="reviewBtn" class="btn btn-info mb-3 w-100">Review Answers</button>
             <button id="restartQuizBtnResults" class="btn btn-primary w-100">Take New Quiz</button> </section>
 
-        <section id="reviewSection" class="d-none card p-4 fade-in" aria-labelledby="reviewHeading">
+        <section id="reviewSection" class="d-none card p-4 fade-in" aria-labelledby="reviewHeading" tabindex="-1">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2 id="reviewHeading" class="mb-0 h3">Answer Review</h2>
                 <div class="score-display">
