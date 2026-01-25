@@ -607,6 +607,16 @@
                 if (this.dom.reviewBtn) this.dom.reviewBtn.addEventListener('click', this.showReview.bind(this));
                 if (this.dom.restartQuizBtnResults) this.dom.restartQuizBtnResults.addEventListener('click', this.confirmAndResetQuiz.bind(this));
                 if (this.dom.restartQuizBtnReview) this.dom.restartQuizBtnReview.addEventListener('click', this.confirmAndResetQuiz.bind(this)); 
+
+                // Event delegation for choice buttons
+                if (this.dom.questionContainer) {
+                    this.dom.questionContainer.addEventListener('click', (e) => {
+                        const button = e.target.closest('.choice-btn');
+                        if (button && !button.disabled) {
+                            this.handleAnswer(parseInt(button.dataset.index));
+                        }
+                    });
+                }
             }
             
             /**
@@ -1044,9 +1054,7 @@
                         </div>
                     `;
                     // Add event listeners to newly created choice buttons
-                    this.dom.questionContainer.querySelectorAll('.choice-btn').forEach(button => {
-                        button.addEventListener('click', (e) => this.handleAnswer(parseInt(e.currentTarget.dataset.index)));
-                    });
+                    // Optimized: Using event delegation on questionContainer instead of individual listeners
                 }
             }
 
