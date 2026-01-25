@@ -989,17 +989,23 @@
 
                 if (this.dom.explanationContainer) {
                     this.dom.explanationContainer.innerHTML = `
-                        <h5 class="h6">${feedbackHeading}</h5>
+                        <h5 class="h6" id="feedbackHeading" tabindex="-1">${feedbackHeading}</h5>
                         <p>${this._sanitizeHTML(question.explanation)}</p>
                         <button id="continueBtn" class="btn btn-primary mt-2">Continue</button>
                     `;
                     this.dom.explanationContainer.classList.remove(QUIZ_CONFIG.CSS_CLASSES.HIDDEN);
                 }
+
+                // Focus the heading so screen reader users hear the result first,
+                // rather than jumping to the "Continue" button.
+                const feedbackHeadingEl = document.getElementById('feedbackHeading');
+                if (feedbackHeadingEl) {
+                    feedbackHeadingEl.focus();
+                }
                 
                 const continueBtn = document.getElementById('continueBtn');
                 if(continueBtn) {
                     continueBtn.onclick = () => this.nextQuestion(); 
-                    continueBtn.focus(); 
                 }
             }
 

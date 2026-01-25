@@ -9,3 +9,7 @@
 ## 2024-05-22 - [Bolt] - Hollow Offline Promise
 **Insight:** Caching the app shell (HTML/CSS) is insufficient for "Offline" features if content is fetched dynamically.
 **Protocol:** All dynamic content essential for core functionality must use a Runtime Caching strategy (e.g., Stale-While-Revalidate).
+
+## 2024-10-24 - [Sentinel] - Unchecked Remote Fetch
+**Insight:** Fetching remote content (via `fetch().text()`) without size limits allows large malicious files to crash the browser tab (OOM).
+**Protocol:** Use `Response.body.getReader()` to stream and enforce a byte limit (e.g., 5MB) on all external data fetches.
