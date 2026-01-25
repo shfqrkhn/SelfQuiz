@@ -406,7 +406,8 @@
             <div id="explanationContainer" class="explanation-box d-none" aria-live="polite" aria-atomic="true">
                 </div>
 
-            <button id="resetQuizDuringQuizBtn" class="btn btn-danger w-100 mt-4" aria-live="polite">Reset Quiz & Load New</button>
+            <button id="finishQuizBtn" class="btn btn-info w-100 mt-4">Finish Quiz & See Results</button>
+            <button id="resetQuizDuringQuizBtn" class="btn btn-danger w-100 mt-2" aria-live="polite">Reset Quiz & Load New</button>
 
         </section>
 
@@ -445,7 +446,7 @@
             <button id="restartQuizBtnReview" class="btn btn-primary mt-4 w-100">Take New Quiz</button> </section>
     </main>
 
-    <footer class="text-center mt-4 mb-4 text-muted small">v1.1.7</footer>
+    <footer class="text-center mt-4 mb-4 text-muted small">v1.1.9</footer>
 
     <script>
         // --- Configuration Object ---
@@ -548,6 +549,7 @@
                     questionProgressText: document.getElementById('questionProgressText'),
                     timer: document.getElementById('timer'),
 
+                    finishQuizBtn: document.getElementById('finishQuizBtn'),
                     resetQuizDuringQuizBtn: document.getElementById('resetQuizDuringQuizBtn'), 
 
                     questionContainer: document.getElementById('questionContainer'),
@@ -606,6 +608,7 @@
                 if (this.dom.selectBankForm) this.dom.selectBankForm.addEventListener('submit', this._handleSelectSubmit.bind(this));
                 if (this.dom.uploadForm) this.dom.uploadForm.addEventListener('submit', this._handleFileSubmit.bind(this));
                 
+                if (this.dom.finishQuizBtn) this.dom.finishQuizBtn.addEventListener('click', this.confirmAndEndQuiz.bind(this));
                 if (this.dom.resetQuizDuringQuizBtn) this.dom.resetQuizDuringQuizBtn.addEventListener('click', this._handleResetRequest.bind(this)); 
 
                 if (this.dom.reviewBtn) this.dom.reviewBtn.addEventListener('click', this.showReview.bind(this));
@@ -710,7 +713,26 @@
                     if (!response.ok) {
                         throw new Error(`Failed to fetch from ${sourceType}: ${response.status} ${response.statusText}`);
                     }
-                    const jsonDataString = await response.text();
+
+                    // Enforce 5MB limit using streams to prevent DoS (OOM)
+                    const reader = response.body.getReader();
+                    const decoder = new TextDecoder();
+                    let jsonDataString = '';
+                    let receivedLength = 0;
+                    const LIMIT = 5 * 1024 * 1024; // 5MB
+
+                    while(true) {
+                        const {done, value} = await reader.read();
+                        if (done) break;
+                        receivedLength += value.length;
+                        if (receivedLength > LIMIT) {
+                            reader.cancel();
+                            throw new Error('File size exceeds 5MB limit.');
+                        }
+                        jsonDataString += decoder.decode(value, {stream: true});
+                    }
+                    jsonDataString += decoder.decode();
+
                     const jsonData = JSON.parse(jsonDataString);
                     this.quizCache.set(sourceUrl, jsonData);
                     this._processAndStartQuiz(jsonData, sourceType);
@@ -989,17 +1011,23 @@
 
                 if (this.dom.explanationContainer) {
                     this.dom.explanationContainer.innerHTML = `
-                        <h5 class="h6">${feedbackHeading}</h5>
+                        <h5 class="h6" id="feedbackHeading" tabindex="-1">${feedbackHeading}</h5>
                         <p>${this._sanitizeHTML(question.explanation)}</p>
                         <button id="continueBtn" class="btn btn-primary mt-2">Continue</button>
                     `;
                     this.dom.explanationContainer.classList.remove(QUIZ_CONFIG.CSS_CLASSES.HIDDEN);
                 }
+
+                // Focus the heading so screen reader users hear the result first,
+                // rather than jumping to the "Continue" button.
+                const feedbackHeadingEl = document.getElementById('feedbackHeading');
+                if (feedbackHeadingEl) {
+                    feedbackHeadingEl.focus();
+                }
                 
                 const continueBtn = document.getElementById('continueBtn');
                 if(continueBtn) {
                     continueBtn.onclick = () => this.nextQuestion(); 
-                    continueBtn.focus(); 
                 }
             }
 
@@ -1188,6 +1216,15 @@
             confirmAndResetQuiz() { 
                 if (window.confirm("Are you sure you want to start a new quiz? Your current results will be lost.")) {
                     this.resetQuiz();
+                }
+            }
+
+            /**
+             * Confirms and ends the quiz early.
+             */
+            confirmAndEndQuiz() {
+                if (window.confirm("Are you sure you want to finish the quiz now? Unanswered questions will not be scored.")) {
+                    this.endQuiz();
                 }
             }
 
