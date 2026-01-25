@@ -1259,10 +1259,10 @@
                 cardBody.appendChild(answerStatusP);
 
                 // Correct Answer Display
-                if ((!answerData.isCorrect && answerData.selected !== -1) || answerData.isCorrect || answerData.selected === -1) {
+                if (!answerData.isCorrect) {
                      const correctChoiceText = originalQuestion.choices[answerData.correct] || "Invalid correct index";
                      const correctP = document.createElement('p');
-                     correctP.className = answerData.isCorrect ? 'text-success' : 'text-info';
+                     correctP.className = 'text-success';
                      correctP.textContent = `Correct answer: ${String.fromCharCode(QUIZ_CONFIG.CHAR_CODE_A + answerData.correct)}. ${correctChoiceText}`;
                      cardBody.appendChild(correctP);
                 }
