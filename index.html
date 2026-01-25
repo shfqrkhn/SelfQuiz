@@ -658,6 +658,12 @@
                     return;
                 }
 
+                const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+                if (file.size > MAX_FILE_SIZE) {
+                    this._setLoadError('File is too large. Maximum size is 5MB.');
+                    return;
+                }
+
                 this._toggleLoadingIndicator(true);
                 try {
                     const fileContent = await this._readFileContent(file);
