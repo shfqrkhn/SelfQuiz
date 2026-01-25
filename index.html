@@ -990,44 +990,50 @@
              * @param {boolean} isCorrect - Whether the answer was correct.
              * @param {object} question - The current question object.
              */
-            _showFeedback(selectedIndex, isCorrect, question) { 
+            _showFeedback(selectedIndex, isCorrect, question) {
                 const buttons = this.dom.questionContainer ? this.dom.questionContainer.querySelectorAll('.choice-btn') : [];
                 buttons.forEach((btn, index) => {
-                    btn.disabled = true; 
+                    btn.disabled = true;
                     if (index === question.correctAnswer) {
                         btn.classList.add(QUIZ_CONFIG.CSS_CLASSES.CORRECT_ANSWER);
                     } else {
                         btn.classList.add(QUIZ_CONFIG.CSS_CLASSES.INCORRECT_ANSWER);
-                        if (index === selectedIndex) { 
+                        if (index === selectedIndex) {
                             btn.classList.add(QUIZ_CONFIG.CSS_CLASSES.USER_SELECTED);
                         }
                     }
                 });
 
-                let feedbackHeading = '';
-                if (selectedIndex === -1) feedbackHeading = 'Time Expired!';
-                else if (isCorrect) feedbackHeading = 'Correct!';
-                else feedbackHeading = 'Incorrect.';
+                let feedbackHeadingText = '';
+                if (selectedIndex === -1) feedbackHeadingText = 'Time Expired!';
+                else if (isCorrect) feedbackHeadingText = 'Correct!';
+                else feedbackHeadingText = 'Incorrect.';
 
                 if (this.dom.explanationContainer) {
-                    this.dom.explanationContainer.innerHTML = `
-                        <h5 class="h6" id="feedbackHeading" tabindex="-1">${feedbackHeading}</h5>
-                        <p>${this._sanitizeHTML(question.explanation)}</p>
-                        <button id="continueBtn" class="btn btn-primary mt-2">Continue</button>
-                    `;
-                    this.dom.explanationContainer.classList.remove(QUIZ_CONFIG.CSS_CLASSES.HIDDEN);
-                }
+                    this.dom.explanationContainer.innerHTML = ''; // Clear previous content
 
-                // Focus the heading so screen reader users hear the result first,
-                // rather than jumping to the "Continue" button.
-                const feedbackHeadingEl = document.getElementById('feedbackHeading');
-                if (feedbackHeadingEl) {
-                    feedbackHeadingEl.focus();
-                }
-                
-                const continueBtn = document.getElementById('continueBtn');
-                if(continueBtn) {
-                    continueBtn.onclick = () => this.nextQuestion(); 
+                    const heading = document.createElement('h5');
+                    heading.className = 'h6';
+                    heading.id = 'feedbackHeading';
+                    heading.tabIndex = -1;
+                    heading.textContent = feedbackHeadingText;
+                    this.dom.explanationContainer.appendChild(heading);
+
+                    const explanationP = document.createElement('p');
+                    explanationP.textContent = question.explanation;
+                    this.dom.explanationContainer.appendChild(explanationP);
+
+                    const continueBtn = document.createElement('button');
+                    continueBtn.id = 'continueBtn';
+                    continueBtn.className = 'btn btn-primary mt-2';
+                    continueBtn.textContent = 'Continue';
+                    continueBtn.onclick = () => this.nextQuestion();
+                    this.dom.explanationContainer.appendChild(continueBtn);
+
+                    this.dom.explanationContainer.classList.remove(QUIZ_CONFIG.CSS_CLASSES.HIDDEN);
+
+                    // Focus the heading so screen reader users hear the result first
+                    heading.focus();
                 }
             }
 
