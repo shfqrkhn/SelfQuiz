@@ -446,7 +446,7 @@
             <button id="restartQuizBtnReview" class="btn btn-primary mt-4 w-100">Take New Quiz</button> </section>
     </main>
 
-    <footer class="text-center mt-4 mb-4 text-muted small">v1.1.9</footer>
+    <footer class="text-center mt-4 mb-4 text-muted small">v1.2.0</footer>
 
     <script>
         // --- Configuration Object ---
@@ -990,44 +990,50 @@
              * @param {boolean} isCorrect - Whether the answer was correct.
              * @param {object} question - The current question object.
              */
-            _showFeedback(selectedIndex, isCorrect, question) { 
+            _showFeedback(selectedIndex, isCorrect, question) {
                 const buttons = this.dom.questionContainer ? this.dom.questionContainer.querySelectorAll('.choice-btn') : [];
                 buttons.forEach((btn, index) => {
-                    btn.disabled = true; 
+                    btn.disabled = true;
                     if (index === question.correctAnswer) {
                         btn.classList.add(QUIZ_CONFIG.CSS_CLASSES.CORRECT_ANSWER);
                     } else {
                         btn.classList.add(QUIZ_CONFIG.CSS_CLASSES.INCORRECT_ANSWER);
-                        if (index === selectedIndex) { 
+                        if (index === selectedIndex) {
                             btn.classList.add(QUIZ_CONFIG.CSS_CLASSES.USER_SELECTED);
                         }
                     }
                 });
 
-                let feedbackHeading = '';
-                if (selectedIndex === -1) feedbackHeading = 'Time Expired!';
-                else if (isCorrect) feedbackHeading = 'Correct!';
-                else feedbackHeading = 'Incorrect.';
+                let feedbackHeadingText = '';
+                if (selectedIndex === -1) feedbackHeadingText = 'Time Expired!';
+                else if (isCorrect) feedbackHeadingText = 'Correct!';
+                else feedbackHeadingText = 'Incorrect.';
 
                 if (this.dom.explanationContainer) {
-                    this.dom.explanationContainer.innerHTML = `
-                        <h5 class="h6" id="feedbackHeading" tabindex="-1">${feedbackHeading}</h5>
-                        <p>${this._sanitizeHTML(question.explanation)}</p>
-                        <button id="continueBtn" class="btn btn-primary mt-2">Continue</button>
-                    `;
-                    this.dom.explanationContainer.classList.remove(QUIZ_CONFIG.CSS_CLASSES.HIDDEN);
-                }
+                    this.dom.explanationContainer.innerHTML = ''; // Clear previous content
 
-                // Focus the heading so screen reader users hear the result first,
-                // rather than jumping to the "Continue" button.
-                const feedbackHeadingEl = document.getElementById('feedbackHeading');
-                if (feedbackHeadingEl) {
-                    feedbackHeadingEl.focus();
-                }
-                
-                const continueBtn = document.getElementById('continueBtn');
-                if(continueBtn) {
-                    continueBtn.onclick = () => this.nextQuestion(); 
+                    const heading = document.createElement('h5');
+                    heading.className = 'h6';
+                    heading.id = 'feedbackHeading';
+                    heading.tabIndex = -1;
+                    heading.textContent = feedbackHeadingText;
+                    this.dom.explanationContainer.appendChild(heading);
+
+                    const explanationP = document.createElement('p');
+                    explanationP.textContent = question.explanation;
+                    this.dom.explanationContainer.appendChild(explanationP);
+
+                    const continueBtn = document.createElement('button');
+                    continueBtn.id = 'continueBtn';
+                    continueBtn.className = 'btn btn-primary mt-2';
+                    continueBtn.textContent = 'Continue';
+                    continueBtn.onclick = () => this.nextQuestion();
+                    this.dom.explanationContainer.appendChild(continueBtn);
+
+                    this.dom.explanationContainer.classList.remove(QUIZ_CONFIG.CSS_CLASSES.HIDDEN);
+
+                    // Focus the heading so screen reader users hear the result first
+                    heading.focus();
                 }
             }
 
@@ -1079,29 +1085,52 @@
              * Renders the current question and its choices.
              * @param {object} question - The question object to render.
              */
-            _renderQuestion(question) { 
-                 if (!question || !question.choices) { 
+            _renderQuestion(question) {
+                if (!question || !question.choices) {
                     console.error("Attempted to render invalid question:", question);
-                    if (this.dom.questionContainer) this.dom.questionContainer.innerHTML = "<p class='text-danger'>Error: Could not load question.</p>";
+                    if (this.dom.questionContainer) {
+                        this.dom.questionContainer.innerHTML = '';
+                        const errorP = document.createElement('p');
+                        errorP.className = 'text-danger';
+                        errorP.textContent = "Error: Could not load question.";
+                        this.dom.questionContainer.appendChild(errorP);
+                    }
                     return;
                 }
-                const choicesHtml = question.choices.map((choice, index) => `
-                    <div class="col-md-6">
-                        <button 
-                            data-index="${index}" 
-                            class="choice-btn btn btn-outline-primary w-100 p-3 mb-2">
-                            ${String.fromCharCode(QUIZ_CONFIG.CHAR_CODE_A + index)}. ${this._sanitizeHTML(choice)}
-                        </button>
-                    </div>
-                `).join('');
 
                 if (this.dom.questionContainer) {
-                    this.dom.questionContainer.innerHTML = `
-                        <h4 class="mb-4 h5" id="questionTextLabel" tabindex="-1">${this._sanitizeHTML(question.questionText)}</h4>
-                        <div class="row g-3" role="group" aria-labelledby="questionTextLabel">
-                            ${choicesHtml}
-                        </div>
-                    `;
+                    this.dom.questionContainer.innerHTML = ''; // Clear previous content
+
+                    // Create heading
+                    const heading = document.createElement('h4');
+                    heading.className = 'mb-4 h5';
+                    heading.id = 'questionTextLabel';
+                    heading.tabIndex = -1;
+                    heading.textContent = question.questionText;
+                    this.dom.questionContainer.appendChild(heading);
+
+                    // Create choices container
+                    const choicesContainer = document.createElement('div');
+                    choicesContainer.className = 'row g-3';
+                    choicesContainer.setAttribute('role', 'group');
+                    choicesContainer.setAttribute('aria-labelledby', 'questionTextLabel');
+
+                    // Create choice buttons
+                    question.choices.forEach((choice, index) => {
+                        const col = document.createElement('div');
+                        col.className = 'col-md-6';
+
+                        const btn = document.createElement('button');
+                        btn.className = 'choice-btn btn btn-outline-primary w-100 p-3 mb-2';
+                        btn.dataset.index = index;
+                        btn.textContent = `${String.fromCharCode(QUIZ_CONFIG.CHAR_CODE_A + index)}. ${choice}`;
+
+                        col.appendChild(btn);
+                        choicesContainer.appendChild(col);
+                    });
+
+                    this.dom.questionContainer.appendChild(choicesContainer);
+
                     // Add event listeners to newly created choice buttons
                     // Optimized: Using event delegation on questionContainer instead of individual listeners
                 }
@@ -1148,9 +1177,9 @@
             /**
              * Shows the review section with all answered questions.
              */
-            showReview() { 
+            showReview() {
                 this._showSection(this.dom.reviewSection);
-                if (this.dom.reviewSection) this.dom.reviewSection.focus(); 
+                if (this.dom.reviewSection) this.dom.reviewSection.focus();
 
                 const total = this.questions.length;
                 const percentage = total > 0 ? Math.round((this.score / total) * 100) : 0;
@@ -1159,55 +1188,86 @@
                 if (this.dom.reviewScorePercentage) this.dom.reviewScorePercentage.textContent = percentage;
 
                 if (this.dom.reviewQuestionsContainer) {
-                    this.dom.reviewQuestionsContainer.innerHTML = this.userAnswers
-                        .map((answerData, index) => this._buildReviewQuestionHtml(answerData, index))
-                        .join('');
+                    this.dom.reviewQuestionsContainer.innerHTML = ''; // Clear previous content
+                    this.userAnswers.forEach((answerData, index) => {
+                        const node = this._buildReviewQuestionNode(answerData, index);
+                        this.dom.reviewQuestionsContainer.appendChild(node);
+                    });
                 }
             }
 
             /**
-             * Builds HTML for a single question in the review section.
+             * Builds DOM element for a single question in the review section.
              * @param {object} answerData - The user's answer data for a question.
              * @param {number} index - The index of the question.
-             * @returns {string} HTML string for the review question.
+             * @returns {HTMLElement} The article element for the review question.
              */
-            _buildReviewQuestionHtml(answerData, index) { 
+            _buildReviewQuestionNode(answerData, index) {
+                const article = document.createElement('article');
+                article.className = `card mb-3 ${QUIZ_CONFIG.CSS_CLASSES.FADE_IN}`;
+
+                const cardBody = document.createElement('div');
+                cardBody.className = 'card-body';
+                article.appendChild(cardBody);
+
                 const originalQuestion = this.questions.find(q => q.questionText === answerData.questionText) || answerData;
-                 if (!originalQuestion || !originalQuestion.choices) { 
-                    return `<article class="card mb-3 fade-in"><div class="card-body"><p class="text-danger">Error: Review data for question ${index + 1} is incomplete.</p></div></article>`;
+                if (!originalQuestion || !originalQuestion.choices) {
+                    const errorP = document.createElement('p');
+                    errorP.className = 'text-danger';
+                    errorP.textContent = `Error: Review data for question ${index + 1} is incomplete.`;
+                    cardBody.appendChild(errorP);
+                    return article;
                 }
 
-                const selectedChoiceText = answerData.selected !== -1 
-                    ? (originalQuestion.choices[answerData.selected] || "Invalid selection index") 
+                // Question Heading
+                const heading = document.createElement('h3');
+                heading.className = 'card-title h6';
+                heading.textContent = `Question ${index + 1}`;
+                cardBody.appendChild(heading);
+
+                // Question Text
+                const qText = document.createElement('p');
+                qText.className = 'card-text';
+                qText.textContent = answerData.questionText;
+                cardBody.appendChild(qText);
+
+                // Your Answer Status
+                const selectedChoiceText = answerData.selected !== -1
+                    ? (originalQuestion.choices[answerData.selected] || "Invalid selection index")
                     : "Not answered (Time out)";
-                const correctChoiceText = originalQuestion.choices[answerData.correct] || "Invalid correct index";
-
-                let answerStatusClass = 'text-danger';
-                let answerStatusText = `Your answer: ${String.fromCharCode(QUIZ_CONFIG.CHAR_CODE_A + answerData.selected)}. ${this._sanitizeHTML(selectedChoiceText)}`;
                 
-                if (answerData.selected === -1) { 
-                     answerStatusText = "You ran out of time.";
-                } else if (answerData.isCorrect) {
-                    answerStatusClass = 'text-success';
+                const answerStatusP = document.createElement('p');
+
+                if (answerData.selected === -1) {
+                     answerStatusP.className = 'text-danger';
+                     answerStatusP.textContent = "You ran out of time.";
+                } else {
+                     if (answerData.isCorrect) answerStatusP.className = 'text-success';
+                     else answerStatusP.className = 'text-danger';
+                     answerStatusP.textContent = `Your answer: ${String.fromCharCode(QUIZ_CONFIG.CHAR_CODE_A + answerData.selected)}. ${selectedChoiceText}`;
+                }
+                cardBody.appendChild(answerStatusP);
+
+                // Correct Answer Display
+                if ((!answerData.isCorrect && answerData.selected !== -1) || answerData.isCorrect || answerData.selected === -1) {
+                     const correctChoiceText = originalQuestion.choices[answerData.correct] || "Invalid correct index";
+                     const correctP = document.createElement('p');
+                     correctP.className = answerData.isCorrect ? 'text-success' : 'text-info';
+                     correctP.textContent = `Correct answer: ${String.fromCharCode(QUIZ_CONFIG.CHAR_CODE_A + answerData.correct)}. ${correctChoiceText}`;
+                     cardBody.appendChild(correctP);
                 }
 
-                const correctAnswerDisplay = (!answerData.isCorrect && answerData.selected !== -1) || answerData.isCorrect || answerData.selected === -1
-                    ? `<p class="${answerData.isCorrect ? 'text-success' : 'text-info'}">Correct answer: ${String.fromCharCode(QUIZ_CONFIG.CHAR_CODE_A + answerData.correct)}. ${this._sanitizeHTML(correctChoiceText)}</p>`
-                    : '';
+                // Explanation
+                const explanationP = document.createElement('p');
+                explanationP.className = 'text-muted small mt-2';
 
-                return `
-                <article class="card mb-3 ${QUIZ_CONFIG.CSS_CLASSES.FADE_IN}">
-                    <div class="card-body">
-                        <h3 class="card-title h6">Question ${index + 1}</h3>
-                        <p class="card-text">${this._sanitizeHTML(answerData.questionText)}</p>
-                        <p class="${answerStatusClass}">
-                            ${answerStatusText}
-                        </p>
-                        ${correctAnswerDisplay}
-                        <p class="text-muted small mt-2"><em>Explanation: ${this._sanitizeHTML(answerData.explanation)}</em></p>
-                    </div>
-                </article>
-                `;
+                const em = document.createElement('em');
+                em.textContent = `Explanation: ${answerData.explanation}`;
+                explanationP.appendChild(em);
+
+                cardBody.appendChild(explanationP);
+
+                return article;
             }
 
             /**
