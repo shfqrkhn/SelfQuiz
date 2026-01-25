@@ -1,6 +1,6 @@
 # PM Certification Quiz - Free Practice Questions
 
-![Version](https://img.shields.io/badge/version-v1.1.5-blue)
+![Version](https://img.shields.io/badge/version-v1.1.6-blue)
 
 Welcome to **PM Certification Quiz**, a free, open-source study tool for project management certification exam preparation. This application provides comprehensive practice quizzes to help you prepare effectively and build confidence for your certification exam.
 
@@ -24,9 +24,9 @@ This is a lean, intuitive, and offline-first Progressive Web App (PWA) designed 
   * **Realistic Practice Questions:** Multiple-choice questions that mirror professional certification exam format and difficulty.
   * **Timed Practice:** Simulate real exam conditions with timed questions to build your test-taking stamina.
   * **Instant Feedback:** Learn immediately with detailed explanations for every question - understand why answers are correct or incorrect.
-  * **Offline Study:** As a PWA, this app works seamlessly without internet, allowing you to study anywhere, anytime.
+  * **Offline Study:** As a PWA, this app works seamlessly without internet (now with enhanced caching), allowing you to study anywhere, anytime.
   * **Installable:** Install on your computer or mobile device for quick access, just like a native application.
-  * **Custom Quiz Import:** Want to add your own practice questions? Import custom quizzes via JSON file.
+  * **Custom Quiz Import:** Want to add your own practice questions? Import custom quizzes via JSON file (max 5MB).
   * **Dark/Light Mode:** Toggle between dark and light themes for comfortable reading in any environment.
   * **Comprehensive Review:** Review all your answers at the end of the quiz with detailed explanations.
 
