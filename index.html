@@ -710,7 +710,26 @@
                     if (!response.ok) {
                         throw new Error(`Failed to fetch from ${sourceType}: ${response.status} ${response.statusText}`);
                     }
-                    const jsonDataString = await response.text();
+
+                    // Enforce 5MB limit using streams to prevent DoS (OOM)
+                    const reader = response.body.getReader();
+                    const decoder = new TextDecoder();
+                    let jsonDataString = '';
+                    let receivedLength = 0;
+                    const LIMIT = 5 * 1024 * 1024; // 5MB
+
+                    while(true) {
+                        const {done, value} = await reader.read();
+                        if (done) break;
+                        receivedLength += value.length;
+                        if (receivedLength > LIMIT) {
+                            reader.cancel();
+                            throw new Error('File size exceeds 5MB limit.');
+                        }
+                        jsonDataString += decoder.decode(value, {stream: true});
+                    }
+                    jsonDataString += decoder.decode();
+
                     const jsonData = JSON.parse(jsonDataString);
                     this.quizCache.set(sourceUrl, jsonData);
                     this._processAndStartQuiz(jsonData, sourceType);

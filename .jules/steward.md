@@ -13,3 +13,7 @@
 ## 2024-10-24 - [Sentinel] - Unchecked Remote Fetch
 **Insight:** Fetching remote content (via `fetch().text()`) without size limits allows large malicious files to crash the browser tab (OOM).
 **Protocol:** Use `Response.body.getReader()` to stream and enforce a byte limit (e.g., 5MB) on all external data fetches.
+
+## 2024-10-25 - [Sentinel] - Remote Fetch Size Limit
+**Insight:** Unchecked remote fetches expose the application to DoS attacks via memory exhaustion (OOM).
+**Protocol:** Implemented a 5MB strict limit on all `fetch` operations using `response.body.getReader()` to stream and count bytes before parsing.
