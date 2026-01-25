@@ -497,7 +497,6 @@
         class QuizManager {
             constructor() {
                 // Initialize state variables
-                this._tempDiv = document.createElement('div');
                 this.questions = [];
                 this.currentQuestionIndex = 0;
                 this.score = 0;
@@ -1066,8 +1065,17 @@
              * @returns {string} Sanitized HTML string.
              */
              _sanitizeHTML(str) { 
-                this._tempDiv.textContent = str;
-                return this._tempDiv.innerHTML;
+                if (!str) return '';
+                return str.replace(/[&<>"']/g, function(m) {
+                    switch (m) {
+                        case '&': return '&amp;';
+                        case '<': return '&lt;';
+                        case '>': return '&gt;';
+                        case '"': return '&quot;';
+                        case "'": return '&#39;';
+                        default: return m;
+                    }
+                });
             }
 
             /**
