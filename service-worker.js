@@ -31,13 +31,13 @@ self.addEventListener('fetch', event => {
     event.respondWith(
       (async () => {
         const cache = await caches.open('selfquiz-data-v1');
-        const cachedResponse = await cache.match(event.request);
+        const cachedResponse = await cache.match(event.request.url);
         if (cachedResponse) {
           return cachedResponse;
         }
         const networkResponse = await fetch(event.request);
         if (networkResponse && networkResponse.status === 200) {
-          cache.put(event.request, networkResponse.clone());
+          event.waitUntil(cache.put(event.request.url, networkResponse.clone()));
         }
         return networkResponse;
       })()
@@ -50,13 +50,13 @@ self.addEventListener('fetch', event => {
     event.respondWith(
       (async () => {
         const cache = await caches.open('selfquiz-fonts-v1');
-        const cachedResponse = await cache.match(event.request);
+        const cachedResponse = await cache.match(event.request.url);
         if (cachedResponse) {
           return cachedResponse;
         }
         const networkResponse = await fetch(event.request);
         if (networkResponse && networkResponse.status === 200) {
-          cache.put(event.request, networkResponse.clone());
+          event.waitUntil(cache.put(event.request.url, networkResponse.clone()));
         }
         return networkResponse;
       })()
