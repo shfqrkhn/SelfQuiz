@@ -29,16 +29,18 @@ self.addEventListener('fetch', event => {
   // Runtime caching for quiz data (JSON files)
   if (event.request.url.endsWith('.json')) {
     event.respondWith(
-      caches.open('selfquiz-data-v1').then(cache => {
-        return cache.match(event.request).then(cachedResponse => {
-          return cachedResponse || fetch(event.request).then(networkResponse => {
-            if (networkResponse && networkResponse.status === 200) {
-              cache.put(event.request, networkResponse.clone());
-            }
-            return networkResponse;
-          });
-        });
-      })
+      (async () => {
+        const cache = await caches.open('selfquiz-data-v1');
+        const cachedResponse = await cache.match(event.request);
+        if (cachedResponse) {
+          return cachedResponse;
+        }
+        const networkResponse = await fetch(event.request);
+        if (networkResponse && networkResponse.status === 200) {
+          cache.put(event.request, networkResponse.clone());
+        }
+        return networkResponse;
+      })()
     );
     return;
   }
@@ -46,16 +48,18 @@ self.addEventListener('fetch', event => {
   // Runtime caching for fonts (Cache First)
   if (event.request.destination === 'font') {
     event.respondWith(
-      caches.open('selfquiz-fonts-v1').then(cache => {
-        return cache.match(event.request).then(response => {
-          return response || fetch(event.request).then(networkResponse => {
-            if (networkResponse && networkResponse.status === 200) {
-              cache.put(event.request, networkResponse.clone());
-            }
-            return networkResponse;
-          });
-        });
-      })
+      (async () => {
+        const cache = await caches.open('selfquiz-fonts-v1');
+        const cachedResponse = await cache.match(event.request);
+        if (cachedResponse) {
+          return cachedResponse;
+        }
+        const networkResponse = await fetch(event.request);
+        if (networkResponse && networkResponse.status === 200) {
+          cache.put(event.request, networkResponse.clone());
+        }
+        return networkResponse;
+      })()
     );
     return;
   }
