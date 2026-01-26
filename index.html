@@ -1189,8 +1189,12 @@
                 if (this.dom.reviewQuestionsContainer) {
                     this.dom.reviewQuestionsContainer.textContent = ''; // Clear previous content
 
-                    // Optimization: Create Map for O(1) lookup to avoid potential O(N^2) behavior
-                    const questionMap = new Map(this.questions.map(q => [q.questionText, q]));
+                    // Optimization: Create Map for O(1) lookup to avoid potential O(N^2) behavior.
+                    // Using a loop avoids creating intermediate arrays, reducing memory overhead.
+                    const questionMap = new Map();
+                    for (const q of this.questions) {
+                        questionMap.set(q.questionText, q);
+                    }
 
                     const fragment = document.createDocumentFragment();
                     this.userAnswers.forEach((answerData, index) => {

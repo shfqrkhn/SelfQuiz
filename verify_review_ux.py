@@ -74,6 +74,8 @@ def verify_review_ux(page):
         print(f"FAIL: Correct answer has class '{class_attr}' (Expected 'text-success').")
         case_b_passed = False
 
+    # Wait for fade-in animation to complete
+    page.wait_for_timeout(500)
     page.screenshot(path='/home/jules/verification/review_case_b_incorrect.png')
 
     if not case_a_passed or not case_b_passed:
