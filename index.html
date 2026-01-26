@@ -1110,6 +1110,7 @@
 
                 if (this.dom.questionContainer) {
                     this.dom.questionContainer.innerHTML = ''; // Clear previous content
+                    const fragment = document.createDocumentFragment();
 
                     // Create heading
                     const heading = document.createElement('h4');
@@ -1117,7 +1118,7 @@
                     heading.id = 'questionTextLabel';
                     heading.tabIndex = -1;
                     heading.textContent = question.questionText;
-                    this.dom.questionContainer.appendChild(heading);
+                    fragment.appendChild(heading);
 
                     // Create choices container
                     const choicesContainer = document.createElement('div');
@@ -1139,7 +1140,8 @@
                         choicesContainer.appendChild(col);
                     });
 
-                    this.dom.questionContainer.appendChild(choicesContainer);
+                    fragment.appendChild(choicesContainer);
+                    this.dom.questionContainer.appendChild(fragment);
 
                     // Add event listeners to newly created choice buttons
                     // Optimized: Using event delegation on questionContainer instead of individual listeners
