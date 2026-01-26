@@ -574,7 +574,7 @@
             _populateQuestionBankDropdown() {
                 if (!this.dom.questionBankSelect) return;
                 
-                this.dom.questionBankSelect.innerHTML = ''; 
+                this.dom.questionBankSelect.textContent = '';
 
                 const defaultOption = document.createElement('option');
                 defaultOption.value = "";
@@ -932,7 +932,7 @@
                 if (this.dom.currentQuestionNum) this.dom.currentQuestionNum.textContent = this.currentQuestionIndex + 1;
                 if (this.dom.explanationContainer) {
                     this.dom.explanationContainer.classList.add(QUIZ_CONFIG.CSS_CLASSES.HIDDEN);
-                    this.dom.explanationContainer.innerHTML = ''; 
+                    this.dom.explanationContainer.textContent = '';
                 }
 
                 const questionHeading = this.dom.questionContainer ? this.dom.questionContainer.querySelector('h4') : null;
@@ -1012,7 +1012,7 @@
                 else feedbackHeadingText = 'Incorrect.';
 
                 if (this.dom.explanationContainer) {
-                    this.dom.explanationContainer.innerHTML = ''; // Clear previous content
+                    this.dom.explanationContainer.textContent = ''; // Clear previous content
 
                     const heading = document.createElement('h5');
                     heading.className = 'h6';
@@ -1101,7 +1101,7 @@
                 if (!question || !question.choices) {
                     console.error("Attempted to render invalid question:", question);
                     if (this.dom.questionContainer) {
-                        this.dom.questionContainer.innerHTML = '';
+                        this.dom.questionContainer.textContent = '';
                         const errorP = document.createElement('p');
                         errorP.className = 'text-danger';
                         errorP.textContent = "Error: Could not load question.";
@@ -1111,7 +1111,7 @@
                 }
 
                 if (this.dom.questionContainer) {
-                    this.dom.questionContainer.innerHTML = ''; // Clear previous content
+                    this.dom.questionContainer.textContent = ''; // Clear previous content
                     const fragment = document.createDocumentFragment();
 
                     // Create heading
@@ -1184,7 +1184,7 @@
                 if (this.dom.reviewScorePercentage) this.dom.reviewScorePercentage.textContent = percentage;
 
                 if (this.dom.reviewQuestionsContainer) {
-                    this.dom.reviewQuestionsContainer.innerHTML = ''; // Clear previous content
+                    this.dom.reviewQuestionsContainer.textContent = ''; // Clear previous content
                     const fragment = document.createDocumentFragment();
                     this.userAnswers.forEach((answerData, index) => {
                         const node = this._buildReviewQuestionNode(answerData, index);
@@ -1314,12 +1314,12 @@
                 this._updateTotalQuestionsDisplay(); 
                 if (this.dom.timer) this.dom.timer.textContent = 'Time left: 0s';
                 
-                if (this.dom.questionContainer) this.dom.questionContainer.innerHTML = '';
+                if (this.dom.questionContainer) this.dom.questionContainer.textContent = '';
                 if (this.dom.explanationContainer) {
-                    this.dom.explanationContainer.innerHTML = '';
+                    this.dom.explanationContainer.textContent = '';
                     this.dom.explanationContainer.classList.add(QUIZ_CONFIG.CSS_CLASSES.HIDDEN);
                 }
-                if (this.dom.reviewQuestionsContainer) this.dom.reviewQuestionsContainer.innerHTML = '';
+                if (this.dom.reviewQuestionsContainer) this.dom.reviewQuestionsContainer.textContent = '';
 
                 this._setLoadError('');
                 // Reset all forms
