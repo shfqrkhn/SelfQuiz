@@ -1226,7 +1226,7 @@
                 cardBody.className = 'card-body';
                 article.appendChild(cardBody);
 
-                const originalQuestion = this.questions.find(q => q.questionText === answerData.questionText) || answerData;
+                const originalQuestion = this.questions[index] || answerData;
                 if (!originalQuestion || !originalQuestion.choices) {
                     const errorP = document.createElement('p');
                     errorP.className = 'text-danger';
