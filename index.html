@@ -1204,8 +1204,13 @@
                 if (this.dom.reviewQuestionsContainer) {
                     this.dom.reviewQuestionsContainer.innerHTML = ''; // Clear previous content
                     const fragment = document.createDocumentFragment();
+
+                    // Create lookup map for O(1) access to questions
+                    const questionMap = new Map();
+                    this.questions.forEach(q => questionMap.set(q.questionText, q));
+
                     this.userAnswers.forEach((answerData, index) => {
-                        const node = this._buildReviewQuestionNode(answerData, index);
+                        const node = this._buildReviewQuestionNode(answerData, index, questionMap);
                         fragment.appendChild(node);
                     });
                     this.dom.reviewQuestionsContainer.appendChild(fragment);
@@ -1216,9 +1221,10 @@
              * Builds DOM element for a single question in the review section.
              * @param {object} answerData - The user's answer data for a question.
              * @param {number} index - The index of the question.
+             * @param {Map} questionMap - Map of questions for fast lookup.
              * @returns {HTMLElement} The article element for the review question.
              */
-            _buildReviewQuestionNode(answerData, index) {
+            _buildReviewQuestionNode(answerData, index, questionMap) {
                 const article = document.createElement('article');
                 article.className = `card mb-3 ${QUIZ_CONFIG.CSS_CLASSES.FADE_IN}`;
 
@@ -1226,7 +1232,7 @@
                 cardBody.className = 'card-body';
                 article.appendChild(cardBody);
 
-                const originalQuestion = this.questions.find(q => q.questionText === answerData.questionText) || answerData;
+                const originalQuestion = (questionMap && questionMap.get(answerData.questionText)) || answerData;
                 if (!originalQuestion || !originalQuestion.choices) {
                     const errorP = document.createElement('p');
                     errorP.className = 'text-danger';
