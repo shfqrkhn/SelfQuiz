@@ -459,6 +459,7 @@
                 FADE_IN: 'fade-in',
             },
             DEFAULT_QUESTION_TIME: 60, 
+            MAX_FILE_SIZE: 5 * 1024 * 1024, // 5MB
             CHAR_CODE_A: 65, 
             TIMER_INTERVAL: 1000,
             MIN_CHOICES_PER_QUESTION: 2,
@@ -675,8 +676,7 @@
                     return;
                 }
 
-                const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
-                if (file.size > MAX_FILE_SIZE) {
+                if (file.size > QUIZ_CONFIG.MAX_FILE_SIZE) {
                     this._setLoadError('File is too large. Maximum size is 5MB.');
                     return;
                 }
@@ -721,13 +721,12 @@
                     const decoder = new TextDecoder();
                     const chunks = [];
                     let receivedLength = 0;
-                    const LIMIT = 5 * 1024 * 1024; // 5MB
 
                     while(true) {
                         const {done, value} = await reader.read();
                         if (done) break;
                         receivedLength += value.length;
-                        if (receivedLength > LIMIT) {
+                        if (receivedLength > QUIZ_CONFIG.MAX_FILE_SIZE) {
                             reader.cancel();
                             throw new Error('File size exceeds 5MB limit.');
                         }
