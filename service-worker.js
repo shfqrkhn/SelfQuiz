@@ -31,13 +31,12 @@ self.addEventListener('fetch', event => {
     event.respondWith(
       caches.open('selfquiz-data-v1').then(cache => {
         return cache.match(event.request).then(cachedResponse => {
-          const fetchPromise = fetch(event.request).then(networkResponse => {
+          return cachedResponse || fetch(event.request).then(networkResponse => {
             if (networkResponse && networkResponse.status === 200) {
               cache.put(event.request, networkResponse.clone());
             }
             return networkResponse;
           });
-          return cachedResponse || fetchPromise;
         });
       })
     );
