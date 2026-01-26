@@ -584,12 +584,14 @@
                 this.dom.questionBankSelect.appendChild(defaultOption);
 
                 if (QUIZ_CONFIG.QUESTION_BANKS && QUIZ_CONFIG.QUESTION_BANKS.length > 0) {
+                    const fragment = document.createDocumentFragment();
                     QUIZ_CONFIG.QUESTION_BANKS.forEach(bank => {
                         const option = document.createElement('option');
                         option.value = bank.url;
                         option.textContent = bank.name;
-                        this.dom.questionBankSelect.appendChild(option);
+                        fragment.appendChild(option);
                     });
+                    this.dom.questionBankSelect.appendChild(fragment);
                     this.dom.questionBankSelect.disabled = false;
                     if (this.dom.startFromSelectBtn) this.dom.startFromSelectBtn.disabled = false;
                     if (this.dom.selectHelp) this.dom.selectHelp.textContent = "Choose a predefined question bank.";
