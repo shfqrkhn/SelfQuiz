@@ -1199,10 +1199,12 @@
 
                 if (this.dom.reviewQuestionsContainer) {
                     this.dom.reviewQuestionsContainer.innerHTML = ''; // Clear previous content
+                    const fragment = document.createDocumentFragment();
                     this.userAnswers.forEach((answerData, index) => {
                         const node = this._buildReviewQuestionNode(answerData, index);
-                        this.dom.reviewQuestionsContainer.appendChild(node);
+                        fragment.appendChild(node);
                     });
+                    this.dom.reviewQuestionsContainer.appendChild(fragment);
                 }
             }
 
