@@ -1188,9 +1188,13 @@
 
                 if (this.dom.reviewQuestionsContainer) {
                     this.dom.reviewQuestionsContainer.textContent = ''; // Clear previous content
+
+                    // Optimization: Create Map for O(1) lookup to avoid potential O(N^2) behavior
+                    const questionMap = new Map(this.questions.map(q => [q.questionText, q]));
+
                     const fragment = document.createDocumentFragment();
                     this.userAnswers.forEach((answerData, index) => {
-                        const node = this._buildReviewQuestionNode(answerData, index);
+                        const node = this._buildReviewQuestionNode(answerData, index, questionMap);
                         fragment.appendChild(node);
                     });
                     this.dom.reviewQuestionsContainer.appendChild(fragment);
@@ -1201,9 +1205,10 @@
              * Builds DOM element for a single question in the review section.
              * @param {object} answerData - The user's answer data for a question.
              * @param {number} index - The index of the question.
+             * @param {Map} questionMap - Map of questions for O(1) lookup.
              * @returns {HTMLElement} The article element for the review question.
              */
-            _buildReviewQuestionNode(answerData, index) {
+            _buildReviewQuestionNode(answerData, index, questionMap) {
                 const article = document.createElement('article');
                 article.className = `card mb-3 ${QUIZ_CONFIG.CSS_CLASSES.FADE_IN}`;
 
@@ -1211,7 +1216,7 @@
                 cardBody.className = 'card-body';
                 article.appendChild(cardBody);
 
-                const originalQuestion = this.questions[index] || answerData;
+                const originalQuestion = (questionMap && questionMap.get(answerData.questionText)) || this.questions[index] || answerData;
                 if (!originalQuestion || !originalQuestion.choices) {
                     const errorP = document.createElement('p');
                     errorP.className = 'text-danger';
