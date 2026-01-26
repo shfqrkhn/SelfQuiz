@@ -734,6 +734,8 @@
                     }
                     chunks.push(decoder.decode());
 
+                    // OPTIMIZATION: Use array join instead of string concatenation (+=) to avoid
+                    // potential O(N^2) performance issues and memory fragmentation with large strings.
                     const jsonDataString = chunks.join('');
                     const jsonData = JSON.parse(jsonDataString);
                     this.quizCache.set(sourceUrl, jsonData);
