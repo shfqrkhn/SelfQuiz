@@ -313,6 +313,13 @@
             outline-offset: 2px !important;
             box-shadow: 0 0 0 3px var(--focus-ring-color) !important;
         }
+
+        /* Accessibility overrides for text colors to ensure WCAG AA compliance */
+        .text-success { color: #66BB6A !important; } /* Light Green for Dark Mode */
+        .text-danger { color: #EF9A9A !important; } /* Light Red for Dark Mode */
+
+        .light-mode .text-success { color: #146c43 !important; } /* Dark Green for Light Mode */
+        .light-mode .text-danger { color: #b02a37 !important; } /* Dark Red for Light Mode */
     </style>
     <meta name="description" content="Free project management certification exam practice with quizzes covering all 8 performance domains. Study offline with timed questions and detailed explanations.">
     <link rel="manifest" href="./manifest.webmanifest">
