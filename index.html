@@ -452,7 +452,7 @@
             <button id="restartQuizBtnReview" class="btn btn-primary mt-4 w-100">Take New Quiz</button> </section>
     </main>
 
-    <footer class="text-center mt-4 mb-4 text-muted small">v1.3.4</footer>
+    <footer class="text-center mt-4 mb-4 text-muted small">v1.3.5</footer>
 
     <script>
         // --- Configuration Object ---
@@ -747,6 +747,13 @@
                     const jsonDataString = chunks.join('');
                     const jsonData = JSON.parse(jsonDataString);
                     this.quizCache.set(sourceUrl, jsonData);
+
+                    // Sentinel: Limit cache size to prevent memory leaks during long sessions
+                    if (this.quizCache.size > 5) {
+                        const oldestKey = this.quizCache.keys().next().value;
+                        this.quizCache.delete(oldestKey);
+                    }
+
                     this._processAndStartQuiz(jsonData, sourceType);
                 } catch (error) {
                     this._setLoadError(`Error fetching or processing from ${sourceType}: ${error.message}`);
