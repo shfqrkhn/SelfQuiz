@@ -39,11 +39,11 @@
             --tertiary-background: #e9ecef;
             --primary-text-color: #212529;
             --secondary-text-color: #343a40;
-            --primary-purple-accent: #0d6efd;
+            --primary-purple-accent: #0a58ca;
             --primary-purple-hover: #0b5ed7;
             --primary-purple-active: #0a58ca;
             --primary-purple-text: #fff;
-            --secondary-emerald-accent: #198754;
+            --secondary-emerald-accent: #0f5132;
             --secondary-emerald-hover: #157347;
             --secondary-emerald-active: #146c43;
             --secondary-emerald-text: #fff;
@@ -59,7 +59,6 @@
         .light-mode small,
         .light-mode .progress-label,
         .light-mode .card-title,
-        .light-mode .card-text,
         .light-mode label,
         .light-mode .form-label {
             color: var(--secondary-text-color) !important;
@@ -262,7 +261,7 @@
             font-weight: 700;
             letter-spacing: 0.02em;
         }
-        .card-title, .card-text, label, .form-label, .form-text, small, .progress-label {
+        .card-title, label, .form-label, .form-text, small, .progress-label {
             color: var(--secondary-text-color);
         }
         .text-muted, small, .form-text {
@@ -453,7 +452,7 @@
             <button id="restartQuizBtnReview" class="btn btn-primary mt-4 w-100">Take New Quiz</button> </section>
     </main>
 
-    <footer class="text-center mt-4 mb-4 text-muted small">v1.3.4</footer>
+    <footer class="text-center mt-4 mb-4 text-muted small">v1.3.5</footer>
 
     <script>
         // --- Configuration Object ---
@@ -748,6 +747,13 @@
                     const jsonDataString = chunks.join('');
                     const jsonData = JSON.parse(jsonDataString);
                     this.quizCache.set(sourceUrl, jsonData);
+
+                    // Sentinel: Limit cache size to prevent memory leaks during long sessions
+                    if (this.quizCache.size > 5) {
+                        const oldestKey = this.quizCache.keys().next().value;
+                        this.quizCache.delete(oldestKey);
+                    }
+
                     this._processAndStartQuiz(jsonData, sourceType);
                 } catch (error) {
                     this._setLoadError(`Error fetching or processing from ${sourceType}: ${error.message}`);
@@ -1207,12 +1213,19 @@
                     // Using pre-computed this.questionMap for O(1) lookup.
                     // This avoids O(N) map reconstruction on every review access.
 
-                    const fragment = document.createDocumentFragment();
-                    this.userAnswers.forEach((answerData, index) => {
-                        const node = this._buildReviewQuestionNode(answerData, index);
-                        fragment.appendChild(node);
-                    });
-                    this.dom.reviewQuestionsContainer.appendChild(fragment);
+                    if (this.userAnswers.length === 0) {
+                        const emptyMsg = document.createElement('p');
+                        emptyMsg.className = 'text-center text-muted my-4';
+                        emptyMsg.textContent = "No questions were answered.";
+                        this.dom.reviewQuestionsContainer.appendChild(emptyMsg);
+                    } else {
+                        const fragment = document.createDocumentFragment();
+                        this.userAnswers.forEach((answerData, index) => {
+                            const node = this._buildReviewQuestionNode(answerData, index);
+                            fragment.appendChild(node);
+                        });
+                        this.dom.reviewQuestionsContainer.appendChild(fragment);
+                    }
                 }
             }
 
