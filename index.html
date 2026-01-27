@@ -1206,12 +1206,19 @@
                     // Using pre-computed this.questionMap for O(1) lookup.
                     // This avoids O(N) map reconstruction on every review access.
 
-                    const fragment = document.createDocumentFragment();
-                    this.userAnswers.forEach((answerData, index) => {
-                        const node = this._buildReviewQuestionNode(answerData, index);
-                        fragment.appendChild(node);
-                    });
-                    this.dom.reviewQuestionsContainer.appendChild(fragment);
+                    if (this.userAnswers.length === 0) {
+                        const emptyMsg = document.createElement('p');
+                        emptyMsg.className = 'text-center text-muted my-4';
+                        emptyMsg.textContent = "No questions were answered.";
+                        this.dom.reviewQuestionsContainer.appendChild(emptyMsg);
+                    } else {
+                        const fragment = document.createDocumentFragment();
+                        this.userAnswers.forEach((answerData, index) => {
+                            const node = this._buildReviewQuestionNode(answerData, index);
+                            fragment.appendChild(node);
+                        });
+                        this.dom.reviewQuestionsContainer.appendChild(fragment);
+                    }
                 }
             }
 
