@@ -519,6 +519,7 @@
                 this.quizCache = new Map();
                 this.isQuizActive = false;
                 this.questionMap = null;
+                this.currentChoiceButtons = [];
 
                 this._cacheDOMElements();
                 this._populateQuestionBankDropdown(); 
@@ -1017,7 +1018,7 @@
              * @param {object} question - The current question object.
              */
             _showFeedback(selectedIndex, isCorrect, question) {
-                const buttons = this.dom.questionContainer ? this.dom.questionContainer.querySelectorAll('.choice-btn') : [];
+                const buttons = this.currentChoiceButtons || [];
                 buttons.forEach((btn, index) => {
                     btn.disabled = true;
                     if (index === question.correctAnswer) {
@@ -1153,6 +1154,7 @@
                     choicesContainer.setAttribute('aria-labelledby', 'questionTextLabel');
 
                     // Create choice buttons
+                    this.currentChoiceButtons = [];
                     question.choices.forEach((choice, index) => {
                         const col = document.createElement('div');
                         col.className = 'col-md-6';
@@ -1162,6 +1164,7 @@
                         btn.dataset.index = index;
                         btn.textContent = `${String.fromCharCode(QUIZ_CONFIG.CHAR_CODE_A + index)}. ${choice}`;
 
+                        this.currentChoiceButtons.push(btn);
                         col.appendChild(btn);
                         choicesContainer.appendChild(col);
                     });
