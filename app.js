@@ -462,6 +462,12 @@ class QuizManager {
                     if (q.choices.some(choice => typeof choice !== 'string' || !choice.trim())) {
                          throw new Error(`Question ${qNum}: All choices must be non-empty strings.`);
                     }
+                    // Sentinel: Detect duplicate choices which confuse users
+                    const uniqueChoices = new Set(q.choices.map(c => c.trim()));
+                    if (uniqueChoices.size !== q.choices.length) {
+                        throw new Error(`Question ${qNum}: Duplicate choices detected.`);
+                    }
+
                     if (typeof q.correctAnswer !== 'number' || q.correctAnswer < 0 || q.correctAnswer >= q.choices.length) {
                         throw new Error(`Question ${qNum}: "correctAnswer" index is invalid or out of bounds.`);
                     }
@@ -555,6 +561,13 @@ class QuizManager {
             handleAnswer(selectedIndex) {
                 if (this.timerInterval) clearInterval(this.timerInterval);
                 const question = this.questions[this.currentQuestionIndex];
+
+                // Sentinel: Validate index to prevent out-of-bounds errors
+                if (selectedIndex !== -1 && (selectedIndex < 0 || selectedIndex >= question.choices.length)) {
+                    console.error("Invalid choice index:", selectedIndex);
+                    return;
+                }
+
                 const isCorrect = selectedIndex === question.correctAnswer;
 
                 this.userAnswers.push({
