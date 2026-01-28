@@ -961,7 +961,7 @@
                     this.dom.explanationContainer.textContent = '';
                 }
 
-                const questionHeading = this.dom.questionContainer ? this.dom.questionContainer.querySelector('h4') : null;
+                const questionHeading = this.currentQuestionHeading;
                 if (questionHeading) {
                     questionHeading.focus();
                 }
@@ -1124,6 +1124,7 @@
              * @param {object} question - The question object to render.
              */
             _renderQuestion(question) {
+                this.currentQuestionHeading = null;
                 if (!question || !question.choices) {
                     console.error("Attempted to render invalid question:", question);
                     if (this.dom.questionContainer) {
@@ -1146,6 +1147,7 @@
                     heading.id = 'questionTextLabel';
                     heading.tabIndex = -1;
                     heading.textContent = question.questionText;
+                    this.currentQuestionHeading = heading;
                     fragment.appendChild(heading);
 
                     // Create choices container
