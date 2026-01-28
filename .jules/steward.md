@@ -33,3 +33,7 @@
 ## 2026-01-25 - [Palette] - Semantic Loading States
 **Insight:** Loading indicators without ARIA roles are invisible to screen readers, leaving users in silence during async operations.
 **Protocol:** All loading indicators must use `role="status"` (implicit `aria-live="polite"`) to ensure state changes are announced.
+
+## 2026-01-28 - [Palette] - Mobile Physics
+**Insight:** Default touch interactions on mobile browsers often include a 300ms delay to detect double-taps, making rapid UI interactions feel sluggish and causing unintended zooming.
+**Protocol:** All interactive elements (buttons, inputs) must explicitly set `touch-action: manipulation` to disable double-tap zooming and ensure instant response.
