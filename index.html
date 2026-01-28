@@ -75,6 +75,10 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
+        /* Mobile Physics: Prevent double-tap zoom on interactive elements */
+        input, select, textarea, button, label {
+            touch-action: manipulation;
+        }
         body {
             min-height: 100vh;
         }
@@ -457,7 +461,7 @@
             <button id="restartQuizBtnReview" class="btn btn-primary mt-4 w-100">Take New Quiz</button> </section>
     </main>
 
-    <footer class="text-center mt-4 mb-4 text-muted small">v1.3.7</footer>
+    <footer class="text-center mt-4 mb-4 text-muted small">v1.3.8</footer>
 
     <script>
         // --- Configuration Object ---
