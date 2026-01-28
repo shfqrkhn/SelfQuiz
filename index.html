@@ -11,29 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <style>
         :root {
-            --primary-background: #000000;
-            --secondary-background: #121212;
-            --tertiary-background: #222222;
-            --primary-text-color: #F0F0F0;
-            --secondary-text-color: #C0C0C0;
-            --primary-purple-accent: #8E24AA;
-            --primary-purple-hover: #7A1F97;
-            --primary-purple-active: #6B1B82;
-            --primary-purple-text: #F0F0F0;
-            --secondary-emerald-accent: #00695C;
-            --secondary-emerald-hover: #005c50;
-            --secondary-emerald-active: #004d43;
-            --secondary-emerald-text: #F0F0F0;
-            --highlight-gold-accent: #FFCA28;
-            --highlight-gold-text: #1A1A1A;
-            --danger-red-accent: #C62828;
-            --danger-red-text: #F0F0F0;
-            --focus-ring-color: #FFCA28;
-            --card-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            --border-radius: 0.375rem;
-            --bs-body-font-family: 'Inter', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
-        }
-        .light-mode {
+            /* Light Mode Variables (Default) */
             --primary-background: #f8f9fa;
             --secondary-background: #fff;
             --tertiary-background: #e9ecef;
@@ -53,21 +31,45 @@
             --danger-red-text: #fff;
             --focus-ring-color: #0d6efd;
             --card-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            --bs-body-font-family: 'Inter', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
         }
-        .light-mode .text-muted,
-        .light-mode .form-text,
-        .light-mode small,
-        .light-mode .progress-label,
-        .light-mode .card-title,
-        .light-mode label,
-        .light-mode .form-label {
+        .dark-mode {
+            /* Dark Mode Variables (Override) */
+            --primary-background: #000000;
+            --secondary-background: #121212;
+            --tertiary-background: #222222;
+            --primary-text-color: #F0F0F0;
+            --secondary-text-color: #C0C0C0;
+            --primary-purple-accent: #8E24AA;
+            --primary-purple-hover: #7A1F97;
+            --primary-purple-active: #6B1B82;
+            --primary-purple-text: #F0F0F0;
+            --secondary-emerald-accent: #00695C;
+            --secondary-emerald-hover: #005c50;
+            --secondary-emerald-active: #004d43;
+            --secondary-emerald-text: #F0F0F0;
+            --highlight-gold-accent: #FFCA28;
+            --highlight-gold-text: #1A1A1A;
+            --danger-red-accent: #C62828;
+            --danger-red-text: #F0F0F0;
+            --focus-ring-color: #FFCA28;
+            --card-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        /* Specific Dark Mode Overrides */
+        .dark-mode .text-muted,
+        .dark-mode .form-text,
+        .dark-mode small,
+        .dark-mode .progress-label,
+        .dark-mode .card-title,
+        .dark-mode label,
+        .dark-mode .form-label {
             color: var(--secondary-text-color) !important;
             opacity: 1 !important;
         }
 
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
-        html, body, .light-mode html, .light-mode body {
+        html, body, .dark-mode html, .dark-mode body {
             background: var(--primary-background) !important;
             color: var(--primary-text-color);
             font-family: var(--bs-body-font-family);
@@ -291,30 +293,26 @@
         .fade-in { animation: fadeInAnimation 0.2s ease-in; }
         @keyframes fadeInAnimation { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Theme toggle icon color for contrast */
+        /* Theme Toggle Styles */
+        /* Default (Light) */
         #themeToggleBtn .bi {
             color: var(--primary-purple-accent) !important;
             transition: color 0.2s;
         }
-        body:not(.light-mode) #themeToggleBtn .bi {
-            color: var(--highlight-gold-accent) !important;
-        }
-        .light-mode #themeToggleBtn .bi {
-            color: var(--primary-purple-accent) !important;
-        }
-        /* Button background for theme toggle */
         #themeToggleBtn {
             background: var(--secondary-background) !important;
             border: 1.5px solid var(--primary-purple-accent) !important;
         }
-        .light-mode #themeToggleBtn {
-            background: var(--secondary-background) !important;
-            border: 1.5px solid var(--primary-purple-accent) !important;
+
+        /* Dark Mode Override */
+        .dark-mode #themeToggleBtn .bi {
+            color: var(--highlight-gold-accent) !important;
         }
-        body:not(.light-mode) #themeToggleBtn {
+        .dark-mode #themeToggleBtn {
             background: var(--secondary-background) !important;
             border: 1.5px solid var(--highlight-gold-accent) !important;
         }
+
         #themeToggleBtn:focus-visible {
             outline: 2.5px solid var(--focus-ring-color) !important;
             outline-offset: 2px !important;
@@ -322,11 +320,13 @@
         }
 
         /* Accessibility overrides for text colors to ensure WCAG AA compliance */
-        .text-success { color: #66BB6A !important; } /* Light Green for Dark Mode */
-        .text-danger { color: #EF9A9A !important; } /* Light Red for Dark Mode */
+        /* Default (Light Mode) */
+        .text-success { color: #146c43 !important; }
+        .text-danger { color: #b02a37 !important; }
 
-        .light-mode .text-success { color: #146c43 !important; } /* Dark Green for Light Mode */
-        .light-mode .text-danger { color: #b02a37 !important; } /* Dark Red for Light Mode */
+        /* Dark Mode Overrides */
+        .dark-mode .text-success { color: #66BB6A !important; }
+        .dark-mode .text-danger { color: #EF9A9A !important; }
 
         /* Bolt Optimization: Virtualize rendering for long review lists */
         .review-card {
@@ -467,7 +467,7 @@
             <button id="restartQuizBtnReview" class="btn btn-primary mt-4 w-100">Take New Quiz</button> </section>
     </main>
 
-    <footer class="text-center mt-4 mb-4 text-muted small">v1.3.11</footer>
+    <footer class="text-center mt-4 mb-4 text-muted small">v1.3.12</footer>
 
     <script src="app.js"></script>
 </body>

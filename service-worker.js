@@ -1,4 +1,4 @@
-const CACHE_NAME = 'selfquiz-cache-v1.3.11';
+const CACHE_NAME = 'selfquiz-cache-v1.3.12';
 const ASSETS = [
   './',
   './index.html',

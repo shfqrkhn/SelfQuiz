@@ -952,33 +952,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const iconMoon = document.getElementById('iconMoon');
 
     function setTheme(mode, persist = true) {
-        if (mode === 'light') {
-            body.classList.add('light-mode');
-            btn.setAttribute('aria-label', 'Switch to dark mode');
-            btn.setAttribute('aria-pressed', 'false');
-            if (iconSun) iconSun.style.display = 'inline';
-            if (iconMoon) iconMoon.style.display = 'none';
-        } else {
-            body.classList.remove('light-mode');
+        if (mode === 'dark') {
+            body.classList.add('dark-mode');
             btn.setAttribute('aria-label', 'Switch to light mode');
             btn.setAttribute('aria-pressed', 'true');
             if (iconSun) iconSun.style.display = 'none';
             if (iconMoon) iconMoon.style.display = 'inline';
+        } else {
+            body.classList.remove('dark-mode');
+            btn.setAttribute('aria-label', 'Switch to dark mode');
+            btn.setAttribute('aria-pressed', 'false');
+            if (iconSun) iconSun.style.display = 'inline';
+            if (iconMoon) iconMoon.style.display = 'none';
         }
         if (persist) localStorage.setItem(THEME_KEY, mode);
     }
 
-    // On load: default to light mode unless user preference exists
+    // On load: default to light mode (root) unless user preference is 'dark'
     let saved = localStorage.getItem(THEME_KEY);
-    if (!saved) {
-        setTheme('light', false);
+    if (saved === 'dark') {
+        setTheme('dark', false);
     } else {
-        setTheme(saved, false);
+        setTheme('light', false);
     }
 
     btn.addEventListener('click', function() {
-        const isLight = body.classList.contains('light-mode');
-        setTheme(isLight ? 'dark' : 'light');
+        const isDark = body.classList.contains('dark-mode');
+        setTheme(isDark ? 'light' : 'dark');
     });
 })();
 
