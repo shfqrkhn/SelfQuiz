@@ -453,7 +453,7 @@
             <button id="restartQuizBtnReview" class="btn btn-primary mt-4 w-100">Take New Quiz</button> </section>
     </main>
 
-    <footer class="text-center mt-4 mb-4 text-muted small">v1.3.5</footer>
+    <footer class="text-center mt-4 mb-4 text-muted small">v1.3.6</footer>
 
     <script>
         // --- Configuration Object ---
@@ -522,9 +522,59 @@
                 this.questionMap = null;
                 this.currentChoiceButtons = [];
 
+                // Initialize worker for background processing
+                this.worker = new Worker('json-worker.js');
+
                 this._cacheDOMElements();
                 this._populateQuestionBankDropdown(); 
                 this._bindEvents();
+            }
+
+            /**
+             * Processes data using the worker.
+             * @param {ReadableStream} stream - The data stream to process.
+             * @returns {Promise<object>} The reconstructed quiz data object.
+             */
+            _processWithWorker(stream) {
+                return new Promise((resolve, reject) => {
+                    const reconstructed = { questions: [] };
+
+                    const onMessage = (e) => {
+                        const { type, data, message } = e.data;
+                        if (type === 'meta') {
+                            Object.assign(reconstructed, data);
+                        } else if (type === 'chunk') {
+                            if (reconstructed.questions) {
+                                reconstructed.questions.push(...data);
+                            }
+                        } else if (type === 'done') {
+                            cleanup();
+                            resolve(reconstructed);
+                        } else if (type === 'error') {
+                            cleanup();
+                            reject(new Error(message));
+                        }
+                    };
+
+                    const onError = (e) => {
+                        cleanup();
+                        reject(new Error("Worker error: " + e.message));
+                    };
+
+                    const cleanup = () => {
+                        this.worker.removeEventListener('message', onMessage);
+                        this.worker.removeEventListener('error', onError);
+                    };
+
+                    this.worker.addEventListener('message', onMessage);
+                    this.worker.addEventListener('error', onError);
+
+                    this.worker.postMessage({
+                        type: 'processStream',
+                        stream: stream,
+                        limit: QUIZ_CONFIG.MAX_FILE_SIZE
+                    }, [stream]);
+                });
             }
 
             /**
@@ -692,8 +742,9 @@
 
                 this._toggleLoadingIndicator(true);
                 try {
-                    const fileContent = await this._readFileContent(file);
-                    this._processAndStartQuiz(fileContent, "file upload");
+                    // Use worker stream instead of reading all text
+                    const jsonData = await this._processWithWorker(file.stream());
+                    this._processAndStartQuiz(jsonData, "file upload");
                 } catch (error) {
                     this._setLoadError(`Error reading file: ${error.message}`);
                     console.error("File Reading Error:", error);
@@ -725,29 +776,9 @@
                         throw new Error(`Failed to fetch from ${sourceType}: ${response.status} ${response.statusText}`);
                     }
 
-                    // Enforce 5MB limit using streams to prevent DoS (OOM)
-                    const reader = response.body.getReader();
-                    const decoder = new TextDecoder();
-                    const chunks = [];
-                    let receivedLength = 0;
+                    // Use Worker to process stream (handles size limit, parsing, and non-blocking return)
+                    const jsonData = await this._processWithWorker(response.body);
 
-                    while(true) {
-                        const {done, value} = await reader.read();
-                        if (done) break;
-                        receivedLength += value.length;
-                        if (receivedLength > QUIZ_CONFIG.MAX_FILE_SIZE) {
-                            reader.cancel();
-                            throw new Error('File size exceeds 5MB limit.');
-                        }
-                        chunks.push(decoder.decode(value, {stream: true}));
-                    }
-                    chunks.push(decoder.decode());
-
-                    // OPTIMIZATION: Use array join instead of string concatenation (+=) to avoid
-                    // potential O(N^2) performance issues and memory fragmentation with large strings.
-                    // Verified ~50% faster than string concatenation with 5MB JSON data (1KB chunks).
-                    const jsonDataString = chunks.join('');
-                    const jsonData = JSON.parse(jsonDataString);
                     this.quizCache.set(sourceUrl, jsonData);
 
                     // Sentinel: Limit cache size to prevent memory leaks during long sessions

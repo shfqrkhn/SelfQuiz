@@ -1,8 +1,9 @@
-const CACHE_NAME = 'selfquiz-cache-v1.3.5';
+const CACHE_NAME = 'selfquiz-cache-v1.3.6';
 const ASSETS = [
   './',
   './index.html',
   './manifest.webmanifest',
+  './json-worker.js',
   './icons/icon-192.png',
   './icons/icon-512.png',
   'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css',
