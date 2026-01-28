@@ -1,7 +1,8 @@
-const CACHE_NAME = 'selfquiz-cache-v1.3.7';
+const CACHE_NAME = 'selfquiz-cache-v1.3.15';
 const ASSETS = [
   './',
   './index.html',
+  './app.js',
   './manifest.webmanifest',
   './json-worker.js',
   './icons/icon-192.png',
@@ -16,6 +17,16 @@ self.addEventListener('install', event => {
     caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS))
   );
 });
+
+// Helper to limit cache size (LRU)
+async function trimCache(cacheName, maxItems) {
+  const cache = await caches.open(cacheName);
+  const keys = await cache.keys();
+  if (keys.length > maxItems) {
+    await cache.delete(keys[0]);
+    trimCache(cacheName, maxItems);
+  }
+}
 
 self.addEventListener('activate', event => {
   const allowedCaches = [CACHE_NAME, 'selfquiz-data-v1', 'selfquiz-fonts-v1'];
@@ -38,7 +49,11 @@ self.addEventListener('fetch', event => {
         }
         const networkResponse = await fetch(event.request);
         if (networkResponse && networkResponse.status === 200) {
-          event.waitUntil(cache.put(event.request.url, networkResponse.clone()));
+          event.waitUntil(
+            cache.put(event.request.url, networkResponse.clone()).then(() => {
+              trimCache('selfquiz-data-v1', 10);
+            })
+          );
         }
         return networkResponse;
       })()
@@ -57,7 +72,11 @@ self.addEventListener('fetch', event => {
         }
         const networkResponse = await fetch(event.request);
         if (networkResponse && networkResponse.status === 200) {
-          event.waitUntil(cache.put(event.request.url, networkResponse.clone()));
+          event.waitUntil(
+            cache.put(event.request.url, networkResponse.clone()).then(() => {
+              trimCache('selfquiz-fonts-v1', 5);
+            })
+          );
         }
         return networkResponse;
       })()

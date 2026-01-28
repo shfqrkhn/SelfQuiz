@@ -2,11 +2,12 @@
   "name": "PM Certification Quiz",
   "short_name": "PM Quiz",
   "description": "Free Project Management Certification Practice - All 8 Performance Domains",
-  "start_url": ".",
+  "start_url": "./?source=pwa",
   "display": "standalone",
-  "background_color": "#000000",
+  "background_color": "#f8f9fa",
   "theme_color": "#8E24AA",
   "orientation": "portrait",
+  "categories": ["education", "productivity"],
   "icons": [
     {
       "src": "icons/icon-192.png",
