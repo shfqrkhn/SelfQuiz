@@ -428,8 +428,9 @@
                         (<strong id="finalScorePercentage">0</strong>%)
                     </h4>
                 </div>
-                <div class="progress mt-3" style="height: 25px;" aria-label="Final score percentage">
-                    <div id="finalPercentageBar" class="progress-bar" role="progressbar" style="width: 0%; transform: none !important; transition: width 0.5s;">0%</div>
+                <div class="progress mt-3 position-relative" style="height: 25px;" aria-label="Final score percentage">
+                    <div id="finalPercentageBar" class="progress-bar" role="progressbar" style="width: 100%; transform: scaleX(0);"></div>
+                    <div id="finalPercentageText" class="position-absolute w-100 h-100 d-flex justify-content-center align-items-center" style="top: 0; left: 0; font-weight: 600; color: var(--primary-purple-text); pointer-events: none;">0%</div>
                 </div>
             </div>
             <button id="reviewBtn" class="btn btn-info mb-3 w-100">Review Answers</button>
@@ -568,6 +569,7 @@
                     finalTotalQuestions: document.getElementById('finalTotalQuestions'),
                     finalScorePercentage: document.getElementById('finalScorePercentage'),
                     finalPercentageBar: document.getElementById('finalPercentageBar'),
+                    finalPercentageText: document.getElementById('finalPercentageText'),
                     reviewBtn: document.getElementById('reviewBtn'),
                     reviewScoreValue: document.getElementById('reviewScoreValue'),
                     reviewTotalQuestions: document.getElementById('reviewTotalQuestions'),
@@ -1113,9 +1115,11 @@
                 if (this.dom.finalScorePercentage) this.dom.finalScorePercentage.textContent = percentage;
                 
                 if (this.dom.finalPercentageBar) {
-                    this.dom.finalPercentageBar.style.width = `${percentage}%`;
-                    this.dom.finalPercentageBar.textContent = `${percentage}%`; 
+                    this.dom.finalPercentageBar.style.transform = `scaleX(${percentage / 100})`;
                     this.dom.finalPercentageBar.setAttribute('aria-valuenow', percentage);
+                }
+                if (this.dom.finalPercentageText) {
+                    this.dom.finalPercentageText.textContent = `${percentage}%`;
                 }
             }
 
