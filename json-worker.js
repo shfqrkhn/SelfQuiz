@@ -8,31 +8,31 @@ self.onmessage = async (e) => {
 
     if (type === 'processStream') {
         try {
-            const reader = stream.getReader();
-            const decoder = new TextDecoder();
-            const chunks = [];
             let receivedLength = 0;
+            let sizeLimitExceeded = false;
 
-            while (true) {
-                const { done, value } = await reader.read();
-                if (done) break;
-                receivedLength += value.length;
+            const countingStream = new TransformStream({
+                transform(chunk, controller) {
+                    receivedLength += chunk.byteLength;
+                    if (limit && receivedLength > limit) {
+                        sizeLimitExceeded = true;
+                        controller.error(new Error(`File size exceeds limit`));
+                    } else {
+                        controller.enqueue(chunk);
+                    }
+                }
+            });
 
-                if (limit && receivedLength > limit) {
-                    reader.cancel();
+            let data;
+            try {
+                // OPTIMIZATION: Parse directly from stream to avoid large string allocation
+                data = await new Response(stream.pipeThrough(countingStream)).json();
+            } catch (error) {
+                if (sizeLimitExceeded) {
                     throw new Error(`File size exceeds ${Math.floor(limit / 1024 / 1024)}MB limit.`);
                 }
-
-                chunks.push(decoder.decode(value, { stream: true }));
+                throw error;
             }
-            // Flush decoder
-            chunks.push(decoder.decode());
-
-            // OPTIMIZATION: Use array join for performance (verified faster than concatenation)
-            const jsonString = chunks.join('');
-
-            // This parse happens in the worker, so it doesn't block the UI
-            const data = JSON.parse(jsonString);
 
             // Send metadata (excluding questions array)
             const { questions, ...meta } = data;
