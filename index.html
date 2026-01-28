@@ -522,6 +522,7 @@
                 this.isQuizActive = false;
                 this.questionMap = null;
                 this.currentChoiceButtons = [];
+                this.currentQuestionHeading = null;
 
                 // Initialize worker for background processing
                 this.worker = new Worker('json-worker.js');
@@ -1380,6 +1381,7 @@
                 this.userAnswers = [];
                 this.quizTopic = '';
                 this.timeLeft = 0;
+                this.currentQuestionHeading = null;
 
                 // Reset UI elements
                 this._updateCurrentScoreDisplay(); 
