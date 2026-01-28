@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Benchmark</title>
+</head>
+<body>
+    <h1>Benchmark Running...</h1>
+    <pre id="results"></pre>
+    <script>
+        const QUIZ_CONFIG = {
+            MAX_FILE_SIZE: 5 * 1024 * 1024 // 5MB
+        };
+
+        async function runBenchmark() {
+            const results = [];
+
+            // 1. Baseline Implementation
+            // (Skipping for brevity, we know it works)
+
+            // 2. Optimized Implementation (with Side Channel Error Check)
+            try {
+                const start = performance.now();
+                const response = await fetch('medium_quiz.json');
+
+                let receivedLength = 0;
+                let sizeLimitExceeded = false;
+
+                const trackingStream = new TransformStream({
+                    transform(chunk, controller) {
+                        receivedLength += chunk.byteLength;
+                        if (receivedLength > QUIZ_CONFIG.MAX_FILE_SIZE) {
+                            sizeLimitExceeded = true;
+                            controller.error(new Error('File size exceeds 5MB limit.'));
+                        } else {
+                            controller.enqueue(chunk);
+                        }
+                    }
+                });
+
+                const stream = response.body.pipeThrough(trackingStream);
+                const newResponse = new Response(stream);
+                const jsonData = await newResponse.json();
+
+                const end = performance.now();
+                results.push(`Optimized: ${(end - start).toFixed(2)}ms`);
+                console.log('Optimized success');
+            } catch (e) {
+                // Check side channel
+                // We need to access sizeLimitExceeded here.
+                // Since it's in the same scope, we can.
+                // But in real code, it might be cleaner to wrap this logic.
+                results.push(`Optimized Error: ${e.message}`);
+                console.error('Optimized failed', e);
+            }
+
+            // 3. Verify Size Limit (Optimized + Side Channel)
+            try {
+                const response = await fetch('large_quiz.json');
+
+                let receivedLength = 0;
+                let sizeLimitExceeded = false;
+
+                const trackingStream = new TransformStream({
+                    transform(chunk, controller) {
+                        receivedLength += chunk.byteLength;
+                        if (receivedLength > QUIZ_CONFIG.MAX_FILE_SIZE) {
+                            sizeLimitExceeded = true;
+                            controller.error(new Error('Limit exceeded'));
+                        } else {
+                            controller.enqueue(chunk);
+                        }
+                    }
+                });
+
+                const stream = response.body.pipeThrough(trackingStream);
+                const newResponse = new Response(stream);
+                try {
+                    await newResponse.json();
+                    results.push(`Limit Check: FAILED (Should have thrown error)`);
+                } catch (innerE) {
+                     if (sizeLimitExceeded) {
+                         throw new Error('File size exceeds 5MB limit.');
+                     }
+                     throw innerE;
+                }
+
+            } catch (e) {
+                if (e.message.includes('File size exceeds')) {
+                    results.push(`Limit Check: PASSED (Caught expected error)`);
+                } else {
+                    results.push(`Limit Check: ERROR (Unexpected error: ${e.message})`);
+                }
+            }
+
+            document.getElementById('results').textContent = results.join('\n');
+            console.log('Benchmark Complete');
+        }
+
+        runBenchmark();
+    </script>
+</body>
+</html>

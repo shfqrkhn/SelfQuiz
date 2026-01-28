@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+async function test() {
+    try {
+        const stream = new ReadableStream({
+            start(controller) {
+                controller.enqueue(new TextEncoder().encode("hello"));
+                setTimeout(() => {
+                    controller.error(new Error("My Custom Error"));
+                }, 100);
+            }
+        });
+        const response = new Response(stream);
+        await response.json();
+    } catch (e) {
+        console.log("Caught:", e);
+        console.log("Message:", e.message);
+        console.log("Cause:", e.cause);
+    }
+}
+test();
+</script>
+</body>
+</html>
